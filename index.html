@@ -15,7 +15,6 @@
     --txt:#e8ecff;--dim:#8a93c2;
     --cyber:#0ff;--cyber2:#3d7bff;
     --gold:#ffd54a;--danger:#ff3d6e;--ok:#2bff9e;
-    --sbw:252px;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{height:100%}
@@ -41,11 +40,13 @@
 
   /* ============ SIDEBAR ============ */
   #sidebar{
-    position:fixed;left:0;top:0;bottom:0;width:var(--sbw);z-index:90;
+    position:fixed;left:0;top:0;bottom:0;width:252px;z-index:90;
     background:linear-gradient(180deg,rgba(9,13,28,.92),rgba(6,8,18,.96));
     border-right:1px solid var(--stroke);backdrop-filter:blur(12px);
-    display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.2,.8,.2,1);
+    display:flex;flex-direction:column;
+    transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);
   }
+  #sidebar.open{transform:translateX(0);box-shadow:40px 0 90px rgba(0,0,0,.6)}
   .sb-logo{display:flex;align-items:center;gap:11px;padding:20px 18px;border-bottom:1px solid var(--stroke)}
   .sb-logo .bolt{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;
     background:linear-gradient(135deg,#3d7bff,#00e0ff 60%,#b14bff);
@@ -69,15 +70,14 @@
   .sb-foot button{display:inline-flex;align-items:center;gap:7px;background:none;border:none;color:var(--dim);cursor:pointer;font-family:'Rajdhani';font-weight:700;font-size:13px;padding:8px;border-radius:8px;transition:.2s}
   .sb-foot button:hover{color:var(--cyber)}
   .sidebar-overlay{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.6);display:none}
-  .sidebar-overlay.show{display:block}
 
   /* ============ LAYOUT ============ */
-  .wrap{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;margin-left:var(--sbw);transition:margin-left .3s cubic-bezier(.2,.8,.2,1)}
+  .wrap{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;margin-left:0}
   header{display:flex;align-items:center;gap:14px;padding:13px clamp(14px,3vw,30px);
     background:linear-gradient(180deg,rgba(6,9,20,.9),rgba(6,9,20,.35));border-bottom:1px solid var(--stroke);backdrop-filter:blur(10px);
     position:sticky;top:0;z-index:50}
   .hamburger{width:40px;height:40px;border-radius:10px;border:1px solid var(--stroke);background:var(--panel);color:var(--txt);
-    font-size:18px;cursor:pointer;display:none;place-items:center;transition:.2s}
+    font-size:18px;cursor:pointer;display:grid;place-items:center;transition:.2s}
   .hamburger:hover{border-color:var(--cyber);color:var(--cyber)}
   .hamburger svg{width:20px;height:20px}
   .logo{display:flex;align-items:center;gap:12px;cursor:pointer;margin-right:auto}
@@ -207,6 +207,18 @@
   .wins{display:inline-flex;align-items:center;gap:6px;font-family:'Orbitron';font-size:12px;color:var(--txt)}
   .wins b{color:var(--ok)}
   .mono{font-family:'Orbitron';font-weight:800;letter-spacing:1px}
+
+  /* ============ RECORD SCORE DISPLAY ============ */
+  .recTeams{border:1px solid var(--stroke);border-radius:12px;overflow:hidden;margin:2px 0 12px}
+  .recTeam{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 14px}
+  .recTeam+.recTeam{border-top:1px dashed rgba(255,255,255,.08)}
+  .recTeam.win{background:rgba(43,255,158,.08)}
+  .recTeam.win .rname{color:var(--ok)}
+  .recTeam.win .rsc{color:var(--ok)}
+  .recTeam .rname{font-family:'Orbitron';font-weight:700;font-size:13.5px;letter-spacing:.5px;word-break:break-word}
+  .recTeam .rsc{font-family:'Orbitron';font-weight:800;font-size:16px;color:var(--txt)}
+  .recDiv{display:flex;align-items:center;gap:8px;padding:0 14px;color:var(--dim);font-size:9px;letter-spacing:3px;font-family:'Orbitron';background:rgba(255,255,255,.02)}
+  .recDiv::before,.recDiv::after{content:"";flex:1;height:1px;background:var(--stroke)}
 
   /* ============ BRACKETS ============ */
   .brgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:20px}
@@ -356,11 +368,7 @@
   .empty p{font-size:14px;max-width:440px;margin:0 auto}
 
   @media(max-width:960px){
-    :root{--sbw:0px}
-    .wrap{margin-left:0}
-    #sidebar{transform:translateX(-100%);width:252px}
-    #sidebar.open{transform:translateX(0);box-shadow:40px 0 90px rgba(0,0,0,.6)}
-    .hamburger{display:grid}
+    .sidebar-overlay.show{display:block}
     .prow{grid-template-columns:1fr}
     .pcard{position:static}
   }
@@ -396,7 +404,9 @@
       <div class="nav-sep">COMPETE</div>
       <a class="nav-item" data-view="players"><span class="ni"><svg viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg></span> Players Stats <span class="cnt" id="cntPlrs">0</span></a>
       <a class="nav-item" data-view="teams"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span> Teams &amp; Captains <span class="cnt" id="cntTeams">0</span></a>
+      <a class="nav-item" data-view="matches"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span> Matches <span class="cnt" id="cntMatches">0</span></a>
       <a class="nav-item" data-view="brackets"><span class="ni"><svg viewBox="0 0 24 24"><path d="M8 21h8M12 17v4M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M17 4h3v2a4 4 0 0 1-4 4M7 4H4v2a4 4 0 0 0 4 4"/></svg></span> Brackets <span class="cnt" id="cntBrackets">0</span></a>
+      <a class="nav-item" data-view="records"><span class="ni"><svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg></span> Records <span class="cnt" id="cntRecords">0</span></a>
       <a class="nav-item" data-view="members"><span class="ni"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Members <span class="cnt" id="cntMems">0</span></a>
       <div class="nav-sep">ACCOUNT</div>
       <a class="nav-item" data-view="profile"><span class="ni"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Profile</a>
@@ -404,7 +414,7 @@
     </nav>
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
-      <span>v3.1</span>
+      <span>v3.2</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -515,6 +525,18 @@
         <div class="grid" id="teamGrid"></div>
       </section>
 
+      <!-- ============ MATCHES ============ -->
+      <section id="matchesView" class="hidden">
+        <div class="page-title">MATCHES</div>
+        <div class="page-sub">Schedule your fixtures — teams, formats, times &amp; stream links.</div>
+        <div class="stats" id="matchSummary"></div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="matchSearch" placeholder="Search team / venue / game..." /></div>
+          <button class="addbtn" id="addFixtureBtn">+ ADD MATCH</button>
+        </div>
+        <div class="grid" id="matchGrid"></div>
+      </section>
+
       <!-- ============ BRACKETS ============ -->
       <section id="bracketsView" class="hidden">
         <div class="page-title">BRACKETS</div>
@@ -527,6 +549,18 @@
           </div>
         </div>
         <div class="brgrid" id="bracketGrid"></div>
+      </section>
+
+      <!-- ============ RECORDS ============ -->
+      <section id="recordsView" class="hidden">
+        <div class="page-title">RECORDS</div>
+        <div class="page-sub">Match results logbook — every score, winner &amp; tie, saved forever.</div>
+        <div class="stats" id="recSummary"></div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="recSearch" placeholder="Search team / game / notes..." /></div>
+          <button class="addbtn" id="addRecBtn">+ ADD RECORD</button>
+        </div>
+        <div class="grid" id="recGrid"></div>
       </section>
 
       <!-- ============ MEMBERS ============ -->
@@ -795,6 +829,67 @@
     </div>
   </div>
 
+  <!-- ============ MATCH FORM MODAL ============ -->
+  <div class="overlay" id="mtFormOverlay">
+    <div class="modal">
+      <h3><span class="mi" id="mtModalTitle">ADD MATCH</span></h3>
+      <form id="mtForm">
+        <input type="hidden" id="mtfId" />
+        <div class="field"><label>Game</label><select id="mtfGame"></select></div>
+        <div class="row2">
+          <div class="field"><label>Team A</label><input id="mtfA" list="teamList" placeholder="Team A (optional / TBD)" /></div>
+          <div class="field"><label>Team B</label><input id="mtfB" list="teamList" placeholder="Team B (optional / TBD)" /></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Format</label><select id="mtfFormat">
+            <option value="1v1">1 vs 1</option><option value="2v2">2 vs 2</option><option value="3v3">3 vs 3</option>
+            <option value="3v5">3 vs 5</option><option value="5v5">5 vs 5</option><option value="Squad">Squad (Full)</option>
+          </select></div>
+          <div class="field"><label>Status</label><select id="mtfStatus">
+            <option value="up">Upcoming</option><option value="live">Live</option><option value="done">Completed</option>
+          </select></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Date</label><input id="mtfDate" type="date" required /></div>
+          <div class="field"><label>Time</label><input id="mtfTime" type="time" /></div>
+        </div>
+        <div class="field"><label>Venue / Room (optional)</label><input id="mtfVenue" placeholder="e.g. Arena A" /></div>
+        <div class="field"><label>Stream / Link (optional)</label><input id="mtfLink" placeholder="https://twitch.tv/..." /></div>
+        <div class="field"><label>Notes (optional)</label><textarea id="mtfNotes" placeholder="Rules, lobby code, stream time..."></textarea></div>
+        <div class="mbtns">
+          <button type="button" class="mbtn cancel" id="mtCancelBtn">CANCEL</button>
+          <button type="submit" class="mbtn save">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ RECORD FORM MODAL ============ -->
+  <div class="overlay" id="rFormOverlay">
+    <div class="modal">
+      <h3><span class="mi" id="rModalTitle">ADD RECORD</span></h3>
+      <form id="rForm">
+        <input type="hidden" id="rfId" />
+        <div class="field"><label>Game</label><select id="rfGame"></select></div>
+        <div class="row2">
+          <div class="field"><label>Team A</label><input id="rfA" list="teamList" placeholder="Team A" required /></div>
+          <div class="field"><label>Team B</label><input id="rfB" list="teamList" placeholder="Team B" required /></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Score A</label><input id="rfScA" type="number" min="0" placeholder="0" /></div>
+          <div class="field"><label>Score B</label><input id="rfScB" type="number" min="0" placeholder="0" /></div>
+        </div>
+        <div class="field"><label>Date</label><input id="rfDate" type="date" required /></div>
+        <div class="field"><label>Notes (optional)</label><textarea id="rfNotes" placeholder="e.g. BO3 quarter final"></textarea></div>
+        <p style="font-size:13px;color:var(--dim);line-height:1.6">Higher score wins automatically. Equal scores are recorded as a tie.</p>
+        <div class="mbtns">
+          <button type="button" class="mbtn cancel" id="rCancelBtn">CANCEL</button>
+          <button type="submit" class="mbtn save">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- ============ CONFIRM MODAL ============ -->
   <div class="overlay" id="confirmOverlay">
     <div class="modal" style="max-width:430px;text-align:center">
@@ -837,7 +932,8 @@
     {name:"Red Alert", c:"#ff3d6e", c2:"#ff0044"}
   ];
   const STAGES = { qf:{label:"Quarter Finals", short:"QF", n:4}, sf:{label:"Semi Finals", short:"SF", n:2}, f:{label:"Grand Final", short:"FINAL", n:1} };
-  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1" };
+  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1" };
+  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records" };
   const STATUS = { up:{t:"Upcoming",c:"up"}, live:{t:"Live",c:"live"}, done:{t:"Completed",c:"done"} };
 
   const ICONS = {
@@ -846,19 +942,21 @@
     shield:'<svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>',
     users:'<svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
     chart:'<svg viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></svg>',
-    search:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'
+    search:'<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>',
+    calendar:'<svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>',
+    list:'<svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>'
   };
-  const ICON_MAP = { csgo:"gamepad", pubg:"gamepad", bs:"gamepad", cod:"gamepad", qf:"trophy", sf:"trophy", f:"trophy", teams:"shield", members:"users", players:"chart" };
+  const ICON_MAP = { csgo:"gamepad", pubg:"gamepad", bs:"gamepad", cod:"gamepad", qf:"trophy", sf:"trophy", f:"trophy", teams:"shield", members:"users", players:"chart", matches:"calendar", records:"list" };
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
   function getStore(k, fb){ try{ const r=localStorage.getItem(k); return r? JSON.parse(r):fb; }catch(e){ return fb; } }
   function setStore(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
-  function saveAll(){ ["tours","plrs","mems","teams","brk","prof","set"].forEach(k=> setStore(KEYS[k], state[k==="tours"?"tournaments":k==="plrs"?"players":k==="mems"?"members":k==="teams"?"teams":k==="brk"?"brackets":k==="prof"?"profile":"settings"])); }
+  function saveAll(){ Object.entries(STATE_MAP).forEach(([k,p])=> setStore(KEYS[k], state[p])); }
   function normIdx(v){ const n=parseInt(v); return (!isNaN(n) && n>=0 && n<SWATCHES.length) ? n : 0; }
 
   function seedTours(){
@@ -913,6 +1011,24 @@
       {id:uid(),stage:"f",order:0,teamA:"",teamB:"",scoreA:0,scoreB:0}
     ];
   }
+  function seedMatches(){
+    const d=n=> new Date(Date.now()+n*864e5).toISOString().slice(0,10);
+    return [
+      {id:uid(),game:"csgo",teamA:"Strike Wolves",teamB:"Neon Cartel",format:"5v5",date:d(2),time:"19:00",status:"up",venue:"Arena A",link:"",notes:"BO3 — live on Twitch"},
+      {id:uid(),game:"pubg",teamA:"Skull Squad PK",teamB:"Ghost Vapor",format:"Squad",date:d(1),time:"21:30",status:"live",venue:"Lobby 2",link:"",notes:""},
+      {id:uid(),game:"bs",teamA:"Blood Echo",teamB:"Crimson Unit",format:"3v3",date:d(0),time:"18:00",status:"done",venue:"",link:"https://twitch.tv/gt",notes:"Finished 2-0"},
+      {id:uid(),game:"cod",teamA:"Verdansk Vipers",teamB:"Night Ghosts",format:"5v5",date:d(3),time:"20:00",status:"up",venue:"",link:"",notes:""}
+    ];
+  }
+  function seedRecords(){
+    const d=n=> new Date(Date.now()+n*864e5).toISOString().slice(0,10);
+    return [
+      {id:uid(),game:"csgo",teamA:"Strike Wolves",teamB:"Neon Cartel",scoreA:2,scoreB:1,date:d(-1),notes:"BO3 quarter final"},
+      {id:uid(),game:"pubg",teamA:"Skull Squad PK",teamB:"Ghost Vapor",scoreA:1,scoreB:1,date:d(-2),notes:"Draw — replay scheduled"},
+      {id:uid(),game:"bs",teamA:"Blood Echo",teamB:"Crimson Unit",scoreA:2,scoreB:0,date:d(-3),notes:""},
+      {id:uid(),game:"cod",teamA:"Verdansk Vipers",teamB:"Night Ghosts",scoreA:0,scoreB:2,date:d(-4),notes:"Sweep — GG"}
+    ];
+  }
   function defaultProfile(){ return { tag:"GhostX", name:"Aamir Khan", country:"Pakistan", game:"csgo", level:42, hours:1500, email:"you@mail.com",
     bio:"Pro esports player. Champion of the arena.", avatar:0, yt:"", disc:"GhostX#1234", tw:"", ig:"" }; }
 
@@ -922,6 +1038,8 @@
     state.members     = getStore(KEYS.mems,  null) ?? seedMems();
     state.teams       = getStore(KEYS.teams, null) ?? seedTeams();
     state.brackets    = getStore(KEYS.brk,   null) ?? seedBrackets();
+    state.matches     = getStore(KEYS.mat,   null) ?? seedMatches();
+    state.records     = getStore(KEYS.rec,   null) ?? seedRecords();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
@@ -951,7 +1069,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",brackets:"bracketsView",members:"membersView",profile:"profileView",settings:"settingsView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",members:"membersView",profile:"profileView",settings:"settingsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -959,14 +1077,27 @@
     if(v==="home"){ renderStats(); renderGames(); renderRecent(); }
     if(v==="players"){ renderPlrSummary(); renderPlayers(); }
     if(v==="teams"){ renderTeamSummary(); renderTeams(); }
+    if(v==="matches"){ renderMatchSummary(); renderMatches(); }
     if(v==="brackets"){ renderStageChips(); syncBrackets(); renderBrackets(); }
+    if(v==="records"){ renderRecSummary(); renderRecords(); }
     if(v==="members"){ renderMembers(); }
     if(v==="profile"){ renderProfile(); }
     closeSidebar();
     window.scrollTo({top:0,behavior:"smooth"});
   }
+  let sbPinned=false;
+  const fineHover = !!(window.matchMedia && window.matchMedia("(hover:hover) and (pointer:fine)").matches);
   function openSidebar(){ $("sidebar").classList.add("open"); $("sbOverlay").classList.add("show"); }
-  function closeSidebar(){ $("sidebar").classList.remove("open"); $("sbOverlay").classList.remove("show"); }
+  function closeSidebar(){ if(sbPinned) return; $("sidebar").classList.remove("open"); $("sbOverlay").classList.remove("show"); }
+  function toggleSidebar(){
+    if(fineHover){
+      const isOpen=$("sidebar").classList.contains("open");
+      if(isOpen && sbPinned){ sbPinned=false; closeSidebar(); }
+      else { sbPinned=true; openSidebar(); }
+    } else {
+      if($("sidebar").classList.contains("open")) closeSidebar(); else openSidebar();
+    }
+  }
 
   /* ===================== TOURNAMENTS ===================== */
   function statFor(g){ return state.tournaments.filter(t=>t.game===g).length; }
@@ -1054,7 +1185,7 @@
   /* ===================== TOURNAMENT FORM ===================== */
   function fillSelects(){
     const opts=Object.entries(GAMES).map(([id,g])=>`<option value="${id}">${g.name}</option>`).join("");
-    ["fGame","pfGame","mfGame","pGame","tfGame"].forEach(id=> $(id).innerHTML=opts);
+    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame"].forEach(id=> $(id).innerHTML=opts);
   }
   function openTourForm(t){
     const ed=!!t;
@@ -1409,6 +1540,163 @@
     saveAll(); $("mFormOverlay").classList.remove("show"); renderMembers();
   }
 
+  /* ===================== MATCHES ===================== */
+  function renderMatchSummary(){
+    const total=state.matches.length;
+    const up=state.matches.filter(x=>x.status==="up").length;
+    const live=state.matches.filter(x=>x.status==="live").length;
+    const done=state.matches.filter(x=>x.status==="done").length;
+    $("matchSummary").innerHTML=[
+      {n:total,l:"Matches",m:"#00e0ff"},{n:up,l:"Upcoming",m:"#3d7bff"},{n:live,l:"Live Now",m:"#ff3d6e"},{n:done,l:"Completed",m:"#2bff9e"}
+    ].map(i=>`<div class="stat" style="--main:${i.m}"><div class="num" style="color:${i.m}">${i.n}</div><div class="lbl">${i.l}</div></div>`).join("");
+    $("cntMatches").textContent=total;
+  }
+  function filteredMatches(){
+    let l=[...state.matches];
+    const q=$("matchSearch")? $("matchSearch").value.trim().toLowerCase():"";
+    if(q) l=l.filter(m=>[m.teamA,m.teamB,m.venue,m.notes].some(x=>(x||"").toLowerCase().includes(q))||gameOf(m.game).name.toLowerCase().includes(q));
+    return l.sort((a,b)=> (new Date(a.date)-new Date(b.date)) || ((a.time||"").localeCompare(b.time||"")));
+  }
+  function matchHTML(m){
+    const g=gameOf(m.game);
+    return `<article class="tcard slideup ${g.cls}">
+      <div class="top">
+        <div>
+          <div class="fmt" style="font-size:15px">${g.short}</div>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+            <span class="badge ${STATUS[m.status].c}">${STATUS[m.status].t}</span>
+            <span style="font-size:11px;color:var(--dim);letter-spacing:1px">${esc(m.format||"—")}</span>
+          </div>
+        </div>
+        <div style="text-align:right">
+          <div class="team">${esc(m.teamA||"TBD")}</div>
+          <div style="font-family:'Orbitron';font-size:11px;font-weight:800;color:var(--cyber);letter-spacing:2px;margin:3px 0">VS</div>
+          <div class="team">${esc(m.teamB||"TBD")}</div>
+        </div>
+      </div>
+      <div class="body">
+        <div class="row"><span class="ico">DATE</span> <b>${fmtDate(m.date)}</b> ${m.time?`· <b>${esc(m.time)}</b>`:""}</div>
+        ${m.venue?`<div class="row"><span class="ico">VENUE</span> <b>${esc(m.venue)}</b></div>`:""}
+        ${m.link?`<div class="row"><span class="ico">LINK</span> <b style="color:var(--cyber);word-break:break-all">${esc(m.link)}</b></div>`:""}
+        ${m.notes?`<div class="desc">${esc(m.notes)}</div>`:""}
+      </div>
+      <div class="foot">
+        <button class="tbtn edit" data-edit="${m.id}">EDIT</button>
+        <button class="tbtn del" data-del="${m.id}">DELETE</button>
+      </div>
+    </article>`;
+  }
+  function renderMatches(){
+    const l=filteredMatches();
+    $("matchGrid").innerHTML=l.length? l.map(matchHTML).join("") : emptyHTML("calendar","No matches scheduled","Add your next fixture — click ADD MATCH.");
+  }
+  function openMatchForm(m){
+    const ed=!!m;
+    $("mtModalTitle").textContent=ed?"EDIT MATCH":"ADD MATCH";
+    $("mtfId").value=ed?m.id:"";
+    $("mtfGame").value=ed?m.game:"csgo";
+    $("mtfA").value=ed?m.teamA:"";
+    $("mtfB").value=ed?m.teamB:"";
+    $("mtfFormat").value=ed?m.format:"5v5";
+    $("mtfStatus").value=ed?m.status:"up";
+    $("mtfDate").value=ed?m.date:new Date().toISOString().slice(0,10);
+    $("mtfTime").value=ed?(m.time||""):"";
+    $("mtfVenue").value=ed?(m.venue||""):"";
+    $("mtfLink").value=ed?(m.link||""):"";
+    $("mtfNotes").value=ed?(m.notes||""):"";
+    $("mtFormOverlay").classList.add("show");
+    setTimeout(()=>$("mtfA").focus(),120);
+  }
+  function submitMatch(e){
+    e.preventDefault();
+    const date=$("mtfDate").value;
+    if(!date){ toast("Match date is required!","warn"); return; }
+    const id=$("mtfId").value;
+    const data={ game:$("mtfGame").value, teamA:$("mtfA").value.trim(), teamB:$("mtfB").value.trim(),
+      format:$("mtfFormat").value, status:$("mtfStatus").value, date, time:$("mtfTime").value,
+      venue:$("mtfVenue").value.trim(), link:$("mtfLink").value.trim(), notes:$("mtfNotes").value.trim(), updatedAt:Date.now() };
+    if(id){ const i=state.matches.findIndex(x=>x.id===id); if(i>-1){ state.matches[i]={...state.matches[i],...data}; toast("Match updated"); } }
+    else{ data.id=uid(); data.createdAt=Date.now(); state.matches.unshift(data); toast("Match added"); }
+    saveAll(); $("mtFormOverlay").classList.remove("show"); renderMatchSummary(); renderMatches();
+  }
+
+  /* ===================== RECORDS ===================== */
+  function recWinner(r){ const a=+r.scoreA||0,b=+r.scoreB||0; return a===b? null : (a>b? r.teamA : r.teamB); }
+  function renderRecSummary(){
+    const total=state.records.length;
+    const ties=state.records.filter(r=>(+r.scoreA||0)===(+r.scoreB||0)).length;
+    const scores=state.records.reduce((s,r)=>s+(+r.scoreA||0)+(+r.scoreB||0),0);
+    const wins={};
+    state.records.forEach(r=>{ const w=recWinner(r); if(w) wins[w]=(wins[w]||0)+1; });
+    let top=null,tc=0; for(const t in wins){ if(wins[t]>tc){ top=t; tc=wins[t]; } }
+    $("recSummary").innerHTML=[
+      {n:total,l:"Records",m:"#00e0ff"},{n:scores.toLocaleString(),l:"Total Scores",m:"#ffd54a"},{n:ties,l:"Ties",m:"#9b4dff"},{n:top?esc(top):"—",l:"Top Team",m:"#2bff9e"}
+    ].map(i=>`<div class="stat" style="--main:${i.m}"><div class="num" style="color:${i.m};font-size:clamp(14px,2vw,20px)">${i.n}</div><div class="lbl">${i.l}</div></div>`).join("");
+    $("cntRecords").textContent=total;
+  }
+  function filteredRecords(){
+    let l=[...state.records];
+    const q=$("recSearch")? $("recSearch").value.trim().toLowerCase():"";
+    if(q) l=l.filter(r=>[r.teamA,r.teamB,r.notes].some(x=>(x||"").toLowerCase().includes(q))||gameOf(r.game).name.toLowerCase().includes(q));
+    return l.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  }
+  function recordHTML(r){
+    const g=gameOf(r.game), w=recWinner(r);
+    const winA = w && w===r.teamA, winB = w && w===r.teamB;
+    return `<article class="tcard slideup ${g.cls}">
+      <div class="top">
+        <div>
+          <div class="fmt" style="font-size:15px">${g.short}</div>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:8px">
+            <span class="badge ${w?"act":"tbd"}">${w? esc(w)+" WON":"TIE"}</span>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--dim);text-align:right">${fmtDate(r.date)}</div>
+      </div>
+      <div class="body">
+        <div class="recTeams">
+          <div class="recTeam ${winA?"win":""}"><span class="rname">${esc(r.teamA||"—")}</span><span class="rsc">${+r.scoreA||0}</span></div>
+          <div class="recDiv"><span>VS</span></div>
+          <div class="recTeam ${winB?"win":""}"><span class="rname">${esc(r.teamB||"—")}</span><span class="rsc">${+r.scoreB||0}</span></div>
+        </div>
+        ${r.notes?`<div class="desc">${esc(r.notes)}</div>`:""}
+      </div>
+      <div class="foot">
+        <button class="tbtn edit" data-edit="${r.id}">EDIT</button>
+        <button class="tbtn del" data-del="${r.id}">DELETE</button>
+      </div>
+    </article>`;
+  }
+  function renderRecords(){
+    const l=filteredRecords();
+    $("recGrid").innerHTML=l.length? l.map(recordHTML).join("") : emptyHTML("list","No records yet","Log your first match result — click ADD RECORD.");
+  }
+  function openRecForm(r){
+    const ed=!!r;
+    $("rModalTitle").textContent=ed?"EDIT RECORD":"ADD RECORD";
+    $("rfId").value=ed?r.id:"";
+    $("rfGame").value=ed?r.game:"csgo";
+    $("rfA").value=ed?r.teamA:"";
+    $("rfB").value=ed?r.teamB:"";
+    $("rfScA").value=ed?+r.scoreA||0:"";
+    $("rfScB").value=ed?+r.scoreB||0:"";
+    $("rfDate").value=ed?r.date:new Date().toISOString().slice(0,10);
+    $("rfNotes").value=ed?(r.notes||""):"";
+    $("rFormOverlay").classList.add("show");
+    setTimeout(()=>$("rfA").focus(),120);
+  }
+  function submitRec(e){
+    e.preventDefault();
+    const teamA=$("rfA").value.trim(), teamB=$("rfB").value.trim(), date=$("rfDate").value;
+    if(!teamA||!teamB||!date){ toast("Team names & date are required!","warn"); return; }
+    const id=$("rfId").value;
+    const data={ game:$("rfGame").value, teamA, teamB, scoreA:+$("rfScA").value||0, scoreB:+$("rfScB").value||0,
+      date, notes:$("rfNotes").value.trim(), updatedAt:Date.now() };
+    if(id){ const i=state.records.findIndex(x=>x.id===id); if(i>-1){ state.records[i]={...state.records[i],...data}; toast("Record updated"); } }
+    else{ data.id=uid(); data.createdAt=Date.now(); state.records.unshift(data); toast("Record added"); }
+    saveAll(); $("rFormOverlay").classList.remove("show"); renderRecSummary(); renderRecords();
+  }
+
   /* ===================== PROFILE ===================== */
   function renderAvatarRow(){
     $("avatarRow").innerHTML=SWATCHES.map((s,i)=>`<button type="button" class="${state.profile.avatar===i?"sel":""}" data-av="${i}" style="background:${swatch(i)}"></button>`).join("");
@@ -1472,9 +1760,10 @@
 
   /* ===================== EXPORT / IMPORT / RESET ===================== */
   function exportData(){
-    const data={ app:"GamesTournaments", version:3, exportedAt:new Date().toISOString(),
+    const data={ app:"GamesTournaments", version:4, exportedAt:new Date().toISOString(),
       tournaments:state.tournaments, teams:state.teams, brackets:state.brackets,
-      players:state.players, members:state.members, profile:state.profile, settings:state.settings };
+      players:state.players, members:state.members, matches:state.matches, records:state.records,
+      profile:state.profile, settings:state.settings };
     const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
     const a=document.createElement("a");
     a.href=URL.createObjectURL(blob);
@@ -1493,6 +1782,8 @@
         if(Array.isArray(d.brackets)) state.brackets=d.brackets;
         if(Array.isArray(d.players)) state.players=d.players;
         if(Array.isArray(d.members)) state.members=d.members;
+        if(Array.isArray(d.matches)) state.matches=d.matches;
+        if(Array.isArray(d.records)) state.records=d.records;
         if(d.profile&&typeof d.profile==="object") state.profile=Object.assign(defaultProfile(),d.profile);
         if(d.settings&&typeof d.settings==="object") state.settings=Object.assign(state.settings,d.settings);
         saveAll(); renderSettings(); switchView("home");
@@ -1502,7 +1793,7 @@
     reader.readAsText(file);
   }
   function resetAll(){
-    openConfirm("This will delete <b>ALL</b> data (tournaments, teams, brackets, players, members) and restore demo data.", ()=>{
+    openConfirm("This will delete <b>ALL</b> data (tournaments, matches, records, teams, brackets, players, members) and restore demo data.", ()=>{
       Object.values(KEYS).forEach(k=>localStorage.removeItem(k));
       load(); renderSettings(); switchView("home"); toast("All data reset","warn");
     });
@@ -1600,10 +1891,14 @@
   function wire(){
     // nav / sidebar
     document.querySelectorAll(".nav-item").forEach(n=> n.addEventListener("click",()=> switchView(n.dataset.view)));
-    $("menuBtn").addEventListener("click",openSidebar);
-    $("sbOverlay").addEventListener("click",closeSidebar);
+    $("menuBtn").addEventListener("click",toggleSidebar);
+    $("sbOverlay").addEventListener("click",()=>{ sbPinned=false; closeSidebar(); });
     $("homeBtn").addEventListener("click",()=> switchView("home"));
     $("sbSoundBtn").addEventListener("click",()=> toggleSetting("sound"));
+    if(fineHover){
+      $("menuBtn").addEventListener("mouseenter",()=>{ if(!sbPinned) openSidebar(); });
+      $("sidebar").addEventListener("mouseleave",()=>{ if(!sbPinned) closeSidebar(); });
+    }
 
     // home
     $("gamesRow").addEventListener("click",e=>{ const c=e.target.closest(".gamecard"); if(c) openGame(c.dataset.game); });
@@ -1693,6 +1988,32 @@
         if(m) openConfirm("Remove member <b>"+esc(m.name)+"</b> from the squad?",()=>{ state.members=state.members.filter(x=>x.id!==m.id); saveAll(); renderMembers(); toast("Member removed","warn"); }); }
     });
 
+    // matches
+    $("addFixtureBtn").addEventListener("click",()=> openMatchForm(null));
+    $("mtForm").addEventListener("submit",submitMatch);
+    $("mtCancelBtn").addEventListener("click",()=> $("mtFormOverlay").classList.remove("show"));
+    $("mtFormOverlay").addEventListener("click",e=>{ if(e.target===$("mtFormOverlay")) $("mtFormOverlay").classList.remove("show"); });
+    $("matchSearch").addEventListener("input",()=> renderMatches());
+    $("matchGrid").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-edit]"), dl=e.target.closest("[data-del]");
+      if(ed){ const m=state.matches.find(x=>x.id===ed.dataset.edit); if(m) openMatchForm(m); }
+      if(dl){ const m=state.matches.find(x=>x.id===dl.dataset.del);
+        if(m) openConfirm("Delete match <b>"+esc(m.teamA||"TBD")+" vs "+esc(m.teamB||"TBD")+"</b>?",()=>{ state.matches=state.matches.filter(x=>x.id!==m.id); saveAll(); renderMatchSummary(); renderMatches(); toast("Match deleted","warn"); }); }
+    });
+
+    // records
+    $("addRecBtn").addEventListener("click",()=> openRecForm(null));
+    $("rForm").addEventListener("submit",submitRec);
+    $("rCancelBtn").addEventListener("click",()=> $("rFormOverlay").classList.remove("show"));
+    $("rFormOverlay").addEventListener("click",e=>{ if(e.target===$("rFormOverlay")) $("rFormOverlay").classList.remove("show"); });
+    $("recSearch").addEventListener("input",()=> renderRecords());
+    $("recGrid").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-edit]"), dl=e.target.closest("[data-del]");
+      if(ed){ const r=state.records.find(x=>x.id===ed.dataset.edit); if(r) openRecForm(r); }
+      if(dl){ const r=state.records.find(x=>x.id===dl.dataset.del);
+        if(r) openConfirm("Delete this record <b>"+esc(r.teamA)+" "+(+r.scoreA||0)+" - "+(+r.scoreB||0)+" "+esc(r.teamB)+"</b>?",()=>{ state.records=state.records.filter(x=>x.id!==r.id); saveAll(); renderRecSummary(); renderRecords(); toast("Record deleted","warn"); }); }
+    });
+
     // profile
     $("avatarRow").addEventListener("click",e=>{
       const b=e.target.closest("[data-av]"); if(!b) return;
@@ -1726,7 +2047,7 @@
 
     document.addEventListener("keydown",e=>{
       if(e.key!=="Escape") return;
-      ["formOverlay","pFormOverlay","tFormOverlay","bFormOverlay","mFormOverlay"].forEach(id=> $(id).classList.remove("show"));
+      ["formOverlay","pFormOverlay","tFormOverlay","bFormOverlay","mFormOverlay","mtFormOverlay","rFormOverlay"].forEach(id=> $(id).classList.remove("show"));
       closeConfirm(); closeSidebar();
     });
   }
