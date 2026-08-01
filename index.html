@@ -44,9 +44,7 @@
     background:linear-gradient(180deg,rgba(9,13,28,.92),rgba(6,8,18,.96));
     border-right:1px solid var(--stroke);backdrop-filter:blur(12px);
     display:flex;flex-direction:column;
-    transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);
   }
-  #sidebar.open{transform:translateX(0);box-shadow:40px 0 90px rgba(0,0,0,.6)}
   .sb-logo{display:flex;align-items:center;gap:11px;padding:20px 18px;border-bottom:1px solid var(--stroke)}
   .sb-logo .bolt{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;
     background:linear-gradient(135deg,#3d7bff,#00e0ff 60%,#b14bff);
@@ -72,12 +70,12 @@
   .sidebar-overlay{position:fixed;inset:0;z-index:80;background:rgba(0,0,0,.6);display:none}
 
   /* ============ LAYOUT ============ */
-  .wrap{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;margin-left:0}
+  .wrap{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;margin-left:252px}
   header{display:flex;align-items:center;gap:14px;padding:13px clamp(14px,3vw,30px);
     background:linear-gradient(180deg,rgba(6,9,20,.9),rgba(6,9,20,.35));border-bottom:1px solid var(--stroke);backdrop-filter:blur(10px);
     position:sticky;top:0;z-index:50}
   .hamburger{width:40px;height:40px;border-radius:10px;border:1px solid var(--stroke);background:var(--panel);color:var(--txt);
-    font-size:18px;cursor:pointer;display:grid;place-items:center;transition:.2s}
+    font-size:18px;cursor:pointer;display:none;place-items:center;transition:.2s}
   .hamburger:hover{border-color:var(--cyber);color:var(--cyber)}
   .hamburger svg{width:20px;height:20px}
   .logo{display:flex;align-items:center;gap:12px;cursor:pointer;margin-right:auto}
@@ -339,6 +337,18 @@
   .mbtn.confirm{background:linear-gradient(120deg,#ff3d6e,#b5174a);color:#fff;box-shadow:0 10px 26px -10px #ff3d6e}
   .mbtn.confirm:hover{transform:translateY(-2px)}
 
+  /* ============ LOGIN ============ */
+  #loginOverlay{z-index:200}
+  .loginbox{text-align:center;max-width:400px}
+  .lg-logo{width:76px;height:76px;margin:0 auto 18px;border-radius:22px;display:grid;place-items:center;
+    background:linear-gradient(135deg,#3d7bff,#00e0ff 60%,#b14bff);box-shadow:0 0 34px rgba(0,200,255,.55);
+    animation:pulse 2.4s ease-in-out infinite}
+  .lg-logo svg{width:38px;height:38px;color:#0a1026}
+  .loginbox h3{justify-content:center;margin-bottom:6px}
+  .loginbox .lg-sub{color:var(--dim);font-size:11px;letter-spacing:4px;margin:0 0 22px;text-transform:uppercase}
+  .loginbox .lg-hint{color:#5a6394;font-size:12px;margin-top:16px;letter-spacing:1px}
+  .loginbox .lg-hint b{color:var(--cyber)}
+
   #toasts{position:fixed;right:18px;bottom:18px;z-index:300;display:flex;flex-direction:column;gap:10px}
   .toast{display:flex;align-items:center;padding:14px 18px;border-radius:14px;background:#0d1430;border:1px solid var(--stroke);
     box-shadow:0 16px 40px -12px rgba(0,0,0,.8);font-weight:600;letter-spacing:.5px;font-size:14px;min-width:240px;animation:slidein .3s cubic-bezier(.2,.8,.2,1)}
@@ -368,6 +378,10 @@
   .empty p{font-size:14px;max-width:440px;margin:0 auto}
 
   @media(max-width:960px){
+    .wrap{margin-left:0}
+    #sidebar{transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+    #sidebar.open{transform:translateX(0);box-shadow:40px 0 90px rgba(0,0,0,.6)}
+    .hamburger{display:grid}
     .sidebar-overlay.show{display:block}
     .prow{grid-template-columns:1fr}
     .pcard{position:static}
@@ -414,7 +428,7 @@
     </nav>
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
-      <span>v3.2</span>
+      <span>v3.3</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -650,6 +664,7 @@
             <button class="setbtn blue" id="importBtn">IMPORT BACKUP</button>
             <input type="file" id="importFile" accept=".json,application/json" hidden />
             <button class="setbtn danger" id="resetBtn">RESET ALL DATA</button>
+            <button class="setbtn danger" id="logoutBtn">LOGOUT</button>
           </div>
         </div>
       </section>
@@ -906,6 +921,28 @@
     </div>
   </div>
 
+  <!-- ============ LOGIN ============ -->
+  <div class="overlay show" id="loginOverlay">
+    <div class="modal loginbox">
+      <div class="lg-logo"><svg class="fill" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <h3>GAMES TOURNAMENTS</h3>
+      <p class="lg-sub">Esports Arena · Member Access</p>
+      <form id="loginForm">
+        <div class="field">
+          <label>Username</label>
+          <input id="loginUser" placeholder="Enter username" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input id="loginPass" type="password" placeholder="Enter password" autocomplete="current-password" />
+        </div>
+        <div class="mbtns" style="justify-content:center;margin-top:6px">
+          <button type="submit" class="mbtn save" style="width:100%">LOGIN</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div id="toasts"></div>
 
   <datalist id="countryList"></datalist>
@@ -1085,19 +1122,9 @@
     closeSidebar();
     window.scrollTo({top:0,behavior:"smooth"});
   }
-  let sbPinned=false;
-  const fineHover = !!(window.matchMedia && window.matchMedia("(hover:hover) and (pointer:fine)").matches);
   function openSidebar(){ $("sidebar").classList.add("open"); $("sbOverlay").classList.add("show"); }
-  function closeSidebar(){ if(sbPinned) return; $("sidebar").classList.remove("open"); $("sbOverlay").classList.remove("show"); }
-  function toggleSidebar(){
-    if(fineHover){
-      const isOpen=$("sidebar").classList.contains("open");
-      if(isOpen && sbPinned){ sbPinned=false; closeSidebar(); }
-      else { sbPinned=true; openSidebar(); }
-    } else {
-      if($("sidebar").classList.contains("open")) closeSidebar(); else openSidebar();
-    }
-  }
+  function closeSidebar(){ $("sidebar").classList.remove("open"); $("sbOverlay").classList.remove("show"); }
+  function toggleSidebar(){ if($("sidebar").classList.contains("open")) closeSidebar(); else openSidebar(); }
 
   /* ===================== TOURNAMENTS ===================== */
   function statFor(g){ return state.tournaments.filter(t=>t.game===g).length; }
@@ -1758,6 +1785,28 @@
     toast(names[k]+(state.settings[k]?" enabled":" disabled"));
   }
 
+  /* ===================== LOGIN / AUTH ===================== */
+  const AUTH_KEY="gt_auth";
+  function authGet(){ try{ return localStorage.getItem(AUTH_KEY)==="1"; }catch(e){ return false; } }
+  function doLogin(e){
+    e.preventDefault();
+    const u=$("loginUser").value.trim(), p=$("loginPass").value;
+    if(u==="ROG" && p==="ROG141"){
+      try{ localStorage.setItem(AUTH_KEY,"1"); }catch(err){}
+      $("loginOverlay").classList.remove("show");
+      toast("Welcome back, ROG");
+    } else {
+      toast("Wrong username or password!","warn");
+      $("loginPass").value="";
+    }
+  }
+  function logout(){
+    try{ localStorage.removeItem(AUTH_KEY); }catch(err){}
+    $("loginUser").value=""; $("loginPass").value="";
+    $("loginOverlay").classList.add("show");
+    toast("You have been logged out","warn");
+  }
+
   /* ===================== EXPORT / IMPORT / RESET ===================== */
   function exportData(){
     const data={ app:"GamesTournaments", version:4, exportedAt:new Date().toISOString(),
@@ -1892,13 +1941,9 @@
     // nav / sidebar
     document.querySelectorAll(".nav-item").forEach(n=> n.addEventListener("click",()=> switchView(n.dataset.view)));
     $("menuBtn").addEventListener("click",toggleSidebar);
-    $("sbOverlay").addEventListener("click",()=>{ sbPinned=false; closeSidebar(); });
+    $("sbOverlay").addEventListener("click",closeSidebar);
     $("homeBtn").addEventListener("click",()=> switchView("home"));
     $("sbSoundBtn").addEventListener("click",()=> toggleSetting("sound"));
-    if(fineHover){
-      $("menuBtn").addEventListener("mouseenter",()=>{ if(!sbPinned) openSidebar(); });
-      $("sidebar").addEventListener("mouseleave",()=>{ if(!sbPinned) closeSidebar(); });
-    }
 
     // home
     $("gamesRow").addEventListener("click",e=>{ const c=e.target.closest(".gamecard"); if(c) openGame(c.dataset.game); });
@@ -2033,6 +2078,10 @@
     $("importBtn").addEventListener("click",()=> $("importFile").click());
     $("importFile").addEventListener("change",e=>{ if(e.target.files[0]) importData(e.target.files[0]); e.target.value=""; });
     $("resetBtn").addEventListener("click",resetAll);
+    $("logoutBtn").addEventListener("click",logout);
+
+    // login
+    $("loginForm").addEventListener("submit",doLogin);
 
     // confirm modal
     $("confirmOk").addEventListener("click",()=>{ if(pendingCb){ const cb=pendingCb; pendingCb=null; cb(); } closeConfirm(); });
@@ -2053,6 +2102,12 @@
   }
 
   /* ===================== BOOT ===================== */
+  if(authGet()){
+    $("loginOverlay").classList.remove("show");
+  } else {
+    $("loginOverlay").classList.add("show");
+    setTimeout(()=>$("loginUser").focus(),200);
+  }
   $("countryList").innerHTML=COUNTRY_LIST.map(c=>`<option value="${c}">`).join("");
   fillSelects();
   load();
