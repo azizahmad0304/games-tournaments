@@ -307,6 +307,55 @@
   .setbtn.danger{border-color:var(--danger);color:var(--danger)}
   .setbtn.danger:hover{background:rgba(255,61,110,.1)}
 
+  /* ============ BACKGROUNDS ============ */
+  .bggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+  .bgcard{border-radius:18px;overflow:hidden;border:2px solid var(--stroke);background:var(--panel);cursor:pointer;transition:.25s}
+  .bgcard:hover{transform:translateY(-6px);border-color:var(--cyber)}
+  .bgcard.sel{border-color:var(--cyber);box-shadow:0 0 34px rgba(0,255,255,.28)}
+  .bgprev{height:150px;position:relative;overflow:hidden;border-bottom:1px solid var(--stroke)}
+  .bgprev.storm{background:linear-gradient(160deg,#0d1538 0%,#05060f 55%,#101b4d 100%)}
+  .bgprev.storm::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(100deg,transparent 0 14px,rgba(150,175,255,.18) 14px 15px,transparent 15px 26px);animation:bgRain 1.1s linear infinite}
+  @keyframes bgRain{to{transform:translateX(-26px)}}
+  .bgprev.aurora{background:linear-gradient(180deg,#05060f 0%,#0a0d1d 100%)}
+  .bgprev.aurora::before{content:"";position:absolute;left:-25%;right:-25%;top:18%;height:96px;background:linear-gradient(90deg,rgba(61,123,255,0),rgba(61,123,255,.55),rgba(178,75,255,.5),rgba(0,224,255,.5),rgba(61,123,255,0));filter:blur(14px);transform:rotate(-8deg);animation:bgAurora 7s ease-in-out infinite alternate}
+  @keyframes bgAurora{to{transform:rotate(-6deg) translateX(80px) scaleY(1.5)}}
+  .bgprev.matrix{background:#04070a}
+  .bgprev.matrix::before{content:"0101 11 001 10 0110";color:rgba(0,255,158,.6);font-family:monospace;position:absolute;inset:0;display:grid;place-items:center;font-size:17px;letter-spacing:5px;text-shadow:0 0 14px rgba(0,255,158,.8);animation:bgMatrix 2s ease-in-out infinite}
+  @keyframes bgMatrix{50%{opacity:.35}}
+  .bgbody{padding:16px 18px 18px}
+  .bgbody h4{font-family:'Orbitron';font-size:16px;letter-spacing:1px}
+  .bgbody p{color:var(--dim);font-size:13px;margin:6px 0 13px;line-height:1.5}
+
+  /* full-screen background themes */
+  #bgFX{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+  #bgFX .aurora{position:absolute;left:-30%;right:-30%;top:0;height:58%;opacity:0;filter:blur(20px);mix-blend-mode:screen;
+    background:linear-gradient(115deg,transparent 0%,rgba(61,123,255,.5) 22%,rgba(178,75,255,.45) 44%,rgba(0,224,255,.5) 66%,transparent 92%);
+    background-size:240% 100%;transform:rotate(-7deg);transition:opacity 1s}
+  #bgFX .aurora.a1{animation:bgAurora 11s ease-in-out infinite alternate}
+  #bgFX .aurora.a2{top:22%;height:42%;opacity:0;animation:bgAurora 14s ease-in-out infinite alternate-reverse}
+  #bgFX .aurora.a3{top:8%;height:70%;animation:bgAurora 9s ease-in-out infinite alternate}
+  body.bg-aurora #bgFX .aurora{opacity:1}
+  body.bg-aurora #bgFX .aurora.a2{opacity:.55}
+  #matrixCv{position:fixed;inset:0;z-index:0;pointer-events:none;display:none}
+  body.bg-matrix #matrixCv{display:block}
+  body.bg-aurora{background:radial-gradient(1200px 700px at 60% -10%,#1a1745 0%,transparent 60%),radial-gradient(900px 600px at 15% 110%,#0d1a3d 0%,transparent 55%),#05060f}
+  body.bg-matrix{background:radial-gradient(1200px 700px at 70% -10%,#062a1a 0%,transparent 60%),radial-gradient(900px 600px at 10% 110%,#04130c 0%,transparent 55%),#04070a}
+  body.bg-aurora .cloud,body.bg-aurora .fog,body.bg-matrix .cloud,body.bg-matrix .fog{opacity:0;transition:opacity .6s}
+
+  /* register player */
+  .regrow{display:grid;grid-template-columns:1.4fr 1fr;gap:22px;align-items:stretch}
+  .regform{background:linear-gradient(160deg,rgba(16,22,44,.9),rgba(8,11,24,.95));border:1px solid var(--stroke);border-radius:18px;padding:22px}
+  .regform h3{font-family:'Orbitron';font-size:15px;letter-spacing:1.5px;color:var(--cyber);margin-bottom:18px}
+  .regcard{border-radius:18px;border:1px solid var(--stroke);overflow:hidden;background:linear-gradient(160deg,#101c44,#070b1c);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center;position:relative;min-height:280px}
+  .regcard::before{content:"";position:absolute;inset:0;background:radial-gradient(400px 200px at 50% 0%,rgba(0,255,255,.12),transparent 70%);pointer-events:none}
+  .reg-av{width:76px;height:76px;border-radius:20px;display:grid;place-items:center;font-family:'Orbitron';font-size:30px;color:#04121f;font-weight:800;box-shadow:0 12px 30px -8px var(--main);position:relative}
+  .reg-name{font-family:'Orbitron';font-size:18px;letter-spacing:1px;margin-top:14px;color:var(--txt)}
+  .reg-tag{color:var(--cyber);font-size:13px;margin-top:4px}
+  .reg-meta{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px}
+  .reg-meta span{font-size:11px;letter-spacing:1px;padding:5px 12px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid var(--stroke);color:var(--dim);text-transform:uppercase}
+  @media(max-width:960px){.regrow{grid-template-columns:1fr}}
+
   /* ============ MODALS ============ */
   .overlay{position:fixed;inset:0;z-index:100;background:rgba(2,4,12,.72);backdrop-filter:blur(6px);
     display:none;align-items:center;justify-content:center;padding:16px}
@@ -397,7 +446,9 @@
 <body>
 
   <canvas id="storm"></canvas>
+  <canvas id="matrixCv"></canvas>
   <div id="stormFlash"></div>
+  <div id="bgFX"><div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div></div>
   <div class="cloud" style="top:-60px;left:-8%;width:38vw;height:140px"></div>
   <div class="cloud" style="top:120px;right:-6%;width:30vw;height:110px"></div>
   <div class="cloud" style="top:40%;left:-10%;width:34vw;height:120px"></div>
@@ -425,10 +476,12 @@
       <div class="nav-sep">ACCOUNT</div>
       <a class="nav-item" data-view="profile"><span class="ni"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Profile</a>
       <a class="nav-item" data-view="settings"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span> Settings</a>
+      <a class="nav-item" data-view="backgrounds"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></span> Animated Backgrounds</a>
+      <a class="nav-item" data-view="register"><span class="ni"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span> Register Player</a>
     </nav>
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
-      <span>v3.3</span>
+      <span>v3.4</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -667,6 +720,48 @@
             <button class="setbtn danger" id="logoutBtn">LOGOUT</button>
           </div>
         </div>
+      </section>
+
+      <!-- ============ ANIMATED BACKGROUNDS ============ -->
+      <section id="backgroundsView" class="hidden">
+        <div class="page-title">ANIMATED BACKGROUNDS</div>
+        <div class="page-sub">Pick your arena atmosphere — thunderstorm, neon aurora or cyber matrix. Saves automatically.</div>
+        <div class="bggrid" id="bgGrid"></div>
+      </section>
+
+      <!-- ============ REGISTER PLAYER ============ -->
+      <section id="registerView" class="hidden">
+        <div class="page-title">REGISTER PLAYER</div>
+        <div class="page-sub">Register new players into the arena — add, edit or remove them anytime.</div>
+        <div class="regrow">
+          <form class="regform" id="regForm">
+            <h3>NEW PLAYER REGISTRATION</h3>
+            <div class="row2">
+              <div class="field"><label>Player Name</label><input id="rgName" placeholder="e.g. GhostX" required /></div>
+              <div class="field"><label>Gamer Tag</label><input id="rgTag" placeholder="e.g. GhostX#001" /></div>
+            </div>
+            <div class="row2">
+              <div class="field"><label>Game</label><select id="rgGame"></select></div>
+              <div class="field"><label>Role</label><select id="rgRole">
+                <option>IGL</option><option>Sniper</option><option>AWPer</option><option>Entry</option><option>Support</option><option>Fragger</option><option>Lurker</option><option>Coach</option>
+              </select></div>
+            </div>
+            <div class="row2">
+              <div class="field"><label>Country</label><input id="rgCountry" list="countryList" placeholder="e.g. Pakistan" required /></div>
+              <div class="field"><label>Contact (Discord)</label><input id="rgContact" placeholder="GhostX#1234" /></div>
+            </div>
+            <div class="mbtns" style="margin-top:6px"><button type="submit" class="mbtn save">+ REGISTER PLAYER</button></div>
+          </form>
+          <div class="regcard" id="regCard"></div>
+        </div>
+        <div class="section-head" style="margin-top:44px">
+          <h3>REGISTERED PLAYERS</h3>
+          <span class="sub" id="regCount"></span>
+        </div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="regSearch" placeholder="Search player / tag / game / country..." /></div>
+        </div>
+        <div class="grid" id="regGrid"></div>
       </section>
 
     </main>
@@ -987,7 +1082,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0,background:"storm"} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -1078,7 +1173,7 @@
     state.matches     = getStore(KEYS.mat,   null) ?? seedMatches();
     state.records     = getStore(KEYS.rec,   null) ?? seedRecords();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
-    state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0}, getStore(KEYS.set, {}));
+    state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0,background:"storm"}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
     saveAll();
@@ -1106,7 +1201,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",members:"membersView",profile:"profileView",settings:"settingsView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -1119,6 +1214,8 @@
     if(v==="records"){ renderRecSummary(); renderRecords(); }
     if(v==="members"){ renderMembers(); }
     if(v==="profile"){ renderProfile(); }
+    if(v==="backgrounds"){ renderBgs(); }
+    if(v==="register"){ renderRegCard(); renderRegistered(); }
     closeSidebar();
     window.scrollTo({top:0,behavior:"smooth"});
   }
@@ -1212,7 +1309,7 @@
   /* ===================== TOURNAMENT FORM ===================== */
   function fillSelects(){
     const opts=Object.entries(GAMES).map(([id,g])=>`<option value="${id}">${g.name}</option>`).join("");
-    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame"].forEach(id=> $(id).innerHTML=opts);
+    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame"].forEach(id=> $(id).innerHTML=opts);
   }
   function openTourForm(t){
     const ed=!!t;
@@ -1327,7 +1424,7 @@
       headshots:+$("pfHS").value||0, matches:+$("pfMatches").value||0, wins:+$("pfWins").value||0, updatedAt:Date.now() };
     if(id){ const i=state.players.findIndex(x=>x.id===id); if(i>-1){ state.players[i]={...state.players[i],...data}; toast("Player stats updated"); } }
     else{ data.id=uid(); data.createdAt=Date.now(); state.players.push(data); toast("Player added"); }
-    saveAll(); $("pFormOverlay").classList.remove("show"); renderPlrSummary(); renderPlayers();
+    saveAll(); $("pFormOverlay").classList.remove("show"); renderPlrSummary(); renderPlayers(); renderRegistered();
   }
 
   /* ===================== TEAMS & CAPTAINS ===================== */
@@ -1776,6 +1873,7 @@
     $("sbSoundBtn").textContent = state.settings.sound? "Sound: ON" : "Sound: OFF";
     $("accentRow").innerHTML=ACCENTS.map((a,i)=>`<button class="accent ${i===state.settings.accent?"sel":""}" data-ac="${i}" style="background:linear-gradient(135deg,${a.c},${a.c2});color:${a.c}" title="${a.name}"></button>`).join("");
     applyAccent();
+    applyBg();
   }
   function toggleSetting(k){
     state.settings[k]=!state.settings[k];
@@ -1783,6 +1881,93 @@
     saveAll(); renderSettings();
     const names={sound:"Thunder sound",rain:"Rain",lightning:"Lightning"};
     toast(names[k]+(state.settings[k]?" enabled":" disabled"));
+  }
+
+  /* ===================== ANIMATED BACKGROUNDS ===================== */
+  const BGS={ storm:{name:"Thunderstorm",desc:"Falling rain, random lightning & screen flashes — the classic arena storm."},
+    aurora:{name:"Neon Aurora",desc:"Hypnotic neon light bands drifting across the night sky."},
+    matrix:{name:"Cyber Matrix",desc:"Endless green code rain in a digital underworld."} };
+  function applyBg(){
+    const bg=state.settings.background||"storm";
+    document.body.classList.remove("bg-storm","bg-aurora","bg-matrix");
+    document.body.classList.add("bg-"+bg);
+  }
+  function renderBgs(){
+    $("bgGrid").innerHTML=Object.entries(BGS).map(([k,b])=>{
+      const sel=state.settings.background===k;
+      return `<div class="bgcard ${sel?"sel":""}" data-bg="${k}">
+        <div class="bgprev ${k}"></div>
+        <div class="bgbody">
+          <h4>${b.name}</h4>
+          <p>${b.desc}</p>
+          <span class="badge ${sel?"act":"tbd"}">${sel?"ACTIVE":"APPLY"}</span>
+        </div>
+      </div>`;
+    }).join("");
+  }
+  function setBg(k){
+    state.settings.background=k; saveAll(); renderBgs(); applyBg();
+    toast("Background changed to "+BGS[k].name);
+  }
+
+  /* ===================== REGISTER PLAYER ===================== */
+  function renderRegCard(){
+    const name=$("rgName").value.trim()||"New Player";
+    const tag=$("rgTag").value.trim();
+    const g=gameOf($("rgGame").value);
+    $("regCard").innerHTML=`
+      <div class="reg-av" style="background:${swatch(name.length)}">${initial(name)}</div>
+      <div class="reg-name">${esc(name)}</div>
+      <div class="reg-tag">${esc(tag||"@"+g.short)}</div>
+      <div class="reg-meta">
+        <span>${esc(g.name)}</span><span>${esc($("rgRole").value)}</span><span>${esc($("rgCountry").value||"Country")}</span>
+      </div>`;
+  }
+  function filteredReg(){
+    let l=[...state.players];
+    const q=$("regSearch")? $("regSearch").value.trim().toLowerCase():"";
+    if(q) l=l.filter(p=>(p.name||"").toLowerCase().includes(q)||(p.country||"").toLowerCase().includes(q)||(p.tag||"").toLowerCase().includes(q)||(gameOf(p.game).name.toLowerCase()).includes(q));
+    return l;
+  }
+  function renderRegistered(){
+    const l=filteredReg();
+    $("regCount").textContent=l.length+" registered";
+    $("regGrid").innerHTML=l.length? l.map(p=>{
+      const g=gameOf(p.game);
+      return `<article class="tcard slideup ${g.cls}">
+        <div class="top">
+          <div style="display:flex;align-items:center;gap:12px">
+            <div class="mono" style="width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:17px;color:#081020;background:${swatch(p.name.length)}">${initial(p.name)}</div>
+            <div>
+              <div class="team">${esc(p.name)}</div>
+              <div style="font-size:11px;color:var(--dim);letter-spacing:1px;margin-top:3px">${g.name} · ${esc(p.role||"—")}</div>
+            </div>
+          </div>
+          <span class="badge act">${esc(p.country||"—")}</span>
+        </div>
+        <div class="body">
+          <div class="row"><span class="ico">TAG</span> Gamer Tag &nbsp;<b>${esc(p.tag||"—")}</b></div>
+          <div class="row"><span class="ico">MAIL</span> Contact &nbsp;<b>${esc(p.contact||"—")}</b></div>
+          <div class="row"><span class="ico">GAME</span> ${g.short} &nbsp;·&nbsp; Kills <b>${(+p.kills||0).toLocaleString()}</b> &nbsp;·&nbsp; Matches <b>${+p.matches||0}</b></div>
+        </div>
+        <div class="foot">
+          <button class="tbtn edit" data-edit="${p.id}">EDIT</button>
+          <button class="tbtn del" data-del="${p.id}">DELETE</button>
+        </div>
+      </article>`;
+    }).join("") : emptyHTML("users","No players registered","Register your first player from the form above.");
+  }
+  function submitReg(e){
+    e.preventDefault();
+    const name=$("rgName").value.trim(), country=$("rgCountry").value.trim();
+    if(!name||!country){ toast("Player name & country are required!","warn"); return; }
+    if(state.players.some(p=>(p.name||"").toLowerCase()===name.toLowerCase())){ toast("A player with that name already exists!","warn"); return; }
+    const data={ id:uid(), name, tag:$("rgTag").value.trim(), country, game:$("rgGame").value, role:$("rgRole").value,
+      contact:$("rgContact").value.trim(), kills:0, deaths:0, assists:0, headshots:0, matches:0, wins:0, createdAt:Date.now() };
+    state.players.push(data);
+    saveAll();
+    $("regForm").reset(); renderRegCard(); renderRegistered(); renderPlrSummary();
+    toast(name+" registered!");
   }
 
   /* ===================== LOGIN / AUTH ===================== */
@@ -1858,10 +2043,31 @@
   /* ===================== STORM ===================== */
   const cv=$("storm"), cctx=cv.getContext("2d");
   let W,H,dpr;
+  const mcv=$("matrixCv"), mctx=mcv.getContext("2d");
+  const MCHARS="01アイウエオカキクケコサシスセソタチツテト#$%&*<>";
+  let MCOLS=[];
+  function sizeMatrix(){
+    mcv.width=W*dpr; mcv.height=H*dpr; mcv.style.width=W+"px"; mcv.style.height=H+"px";
+    mctx.setTransform(dpr,0,0,dpr,0,0);
+    MCOLS=[]; const cols=Math.ceil(W/15);
+    for(let i=0;i<cols;i++) MCOLS.push(-Math.random()*H);
+  }
+  function drawMatrix(){
+    mctx.fillStyle="rgba(4,7,10,.16)";
+    mctx.fillRect(0,0,W,H);
+    mctx.font="15px monospace";
+    for(let i=0;i<MCOLS.length;i++){
+      const x=i*15, y=MCOLS[i];
+      mctx.fillStyle=Math.random()<0.12?"rgba(190,255,225,.95)":"rgba(0,255,158,.5)";
+      mctx.fillText(MCHARS[Math.floor(Math.random()*MCHARS.length)],x,y);
+      MCOLS[i] = y>H&&Math.random()>0.985 ? -Math.random()*H*0.5 : y+15;
+    }
+  }
   function size(){
     dpr=Math.min(window.devicePixelRatio||1,2); W=innerWidth; H=innerHeight;
     cv.width=W*dpr; cv.height=H*dpr; cv.style.width=W+"px"; cv.style.height=H+"px";
     cctx.setTransform(dpr,0,0,dpr,0,0);
+    sizeMatrix();
   }
   size(); addEventListener("resize",size);
   const DROPS=[];
@@ -1911,12 +2117,16 @@
   }
   function loop(t){
     requestAnimationFrame(loop);
-    if(state.settings.rain) drawRain();
-    if(state.settings.lightning && t-lastBolt>2600+Math.random()*4200 && Math.random()<0.5){
-      bolt=makeBolt(); boltLife=3; lastBolt=t; flash=0.85; thunder();
+    if(state.settings.background==="storm"){
+      if(state.settings.rain) drawRain();
+      if(state.settings.lightning && t-lastBolt>2600+Math.random()*4200 && Math.random()<0.5){
+        bolt=makeBolt(); boltLife=3; lastBolt=t; flash=0.85; thunder();
+      }
+      if(bolt) { boltLife--; drawBolt(); }
+      if(flash>0){ flash*=0.86; $("stormFlash").style.opacity=flash; }
+    } else if(state.settings.background==="matrix"){
+      drawMatrix();
     }
-    if(bolt) { boltLife--; drawBolt(); }
-    if(flash>0){ flash*=0.86; $("stormFlash").style.opacity=flash; }
   }
   function flashUp(v){ flash=Math.max(flash,v); }
   let audioCtx=null;
@@ -2079,6 +2289,21 @@
     $("importFile").addEventListener("change",e=>{ if(e.target.files[0]) importData(e.target.files[0]); e.target.value=""; });
     $("resetBtn").addEventListener("click",resetAll);
     $("logoutBtn").addEventListener("click",logout);
+
+    // backgrounds
+    $("bgGrid").addEventListener("click",e=>{ const c=e.target.closest("[data-bg]"); if(c) setBg(c.dataset.bg); });
+
+    // register player
+    $("regForm").addEventListener("submit",submitReg);
+    ["rgName","rgTag","rgCountry","rgContact"].forEach(id=> $(id).addEventListener("input",()=> renderRegCard()));
+    ["rgGame","rgRole"].forEach(id=> $(id).addEventListener("change",()=> renderRegCard()));
+    $("regSearch").addEventListener("input",()=> renderRegistered());
+    $("regGrid").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-edit]"), dl=e.target.closest("[data-del]");
+      if(ed){ const p=state.players.find(x=>x.id===ed.dataset.edit); if(p) openPlrForm(p); }
+      if(dl){ const p=state.players.find(x=>x.id===dl.dataset.del);
+        if(p) openConfirm("Delete player <b>"+esc(p.name)+"</b> and all their stats?",()=>{ state.players=state.players.filter(x=>x.id!==p.id); saveAll(); renderPlrSummary(); renderRegistered(); renderRegCard(); toast("Player removed","warn"); }); }
+    });
 
     // login
     $("loginForm").addEventListener("submit",doLogin);
