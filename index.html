@@ -42,9 +42,9 @@
   body.pt-toxic{--bg:#030a02;--bg2:#06130a;--panel:rgba(20,46,8,.8);--panel2:rgba(26,58,12,.9);--stroke:rgba(118,255,3,.26);--sb-grad:linear-gradient(180deg,rgba(10,24,4,.94),rgba(3,9,2,.97));--hd-grad:linear-gradient(180deg,rgba(10,24,4,.9),rgba(3,9,2,.35));--pn-grad:linear-gradient(160deg,rgba(14,30,5,.92),rgba(5,12,2,.96));--md-grad:linear-gradient(170deg,#0d2205,#040a02);--nav-bg:linear-gradient(90deg,rgba(118,255,3,.15),rgba(118,255,3,.03));--nav-bd:rgba(118,255,3,.42);--nav-glow:rgba(118,255,3,.12);--aur1:rgba(118,255,3,.1);--aur2:rgba(178,255,89,.08);--aur3:rgba(0,255,65,.08)}
   body.pt-galaxy{--bg:#05030f;--bg2:#0a0718;--panel:rgba(24,18,66,.8);--panel2:rgba(32,24,82,.9);--stroke:rgba(124,90,255,.28);--sb-grad:linear-gradient(180deg,rgba(12,9,36,.94),rgba(5,3,14,.97));--hd-grad:linear-gradient(180deg,rgba(12,9,36,.9),rgba(5,3,14,.35));--pn-grad:linear-gradient(160deg,rgba(16,12,42,.92),rgba(6,4,18,.96));--md-grad:linear-gradient(170deg,#120b32,#07051a);--nav-bg:linear-gradient(90deg,rgba(49,27,146,.18),rgba(49,27,146,.03));--nav-bd:rgba(49,27,146,.45);--nav-glow:rgba(49,27,146,.15);--aur1:rgba(49,27,146,.15);--aur2:rgba(0,229,255,.09);--aur3:rgba(124,77,255,.1)}
   body.pt-chrome{--bg:#050709;--bg2:#0a0e11;--panel:rgba(30,36,40,.8);--panel2:rgba(38,46,52,.9);--stroke:rgba(176,190,197,.24);--sb-grad:linear-gradient(180deg,rgba(13,16,18,.94),rgba(5,7,8,.97));--hd-grad:linear-gradient(180deg,rgba(13,16,18,.9),rgba(5,7,8,.35));--pn-grad:linear-gradient(160deg,rgba(16,20,23,.92),rgba(6,8,10,.96));--md-grad:linear-gradient(170deg,#0f1518,#06090b);--nav-bg:linear-gradient(90deg,rgba(176,190,197,.15),rgba(176,190,197,.03));--nav-bd:rgba(176,190,197,.4);--nav-glow:rgba(176,190,197,.1);--aur1:rgba(176,190,197,.1);--aur2:rgba(236,239,241,.06);--aur3:rgba(0,172,193,.07)}
-  body.pt-default::before,body.pt-csgo::before,body.pt-pubg::before,body.pt-bs::before,body.pt-cod::before,body.pt-gold::before,body.pt-emerald::before,body.pt-violet::before,body.pt-crimson::before,body.pt-ocean::before,body.pt-lime::before,body.pt-rose::before,body.pt-graphite::before,body.pt-inferno::before,body.pt-frost::before,body.pt-berry::before,body.pt-sunset::before,body.pt-toxic::before,body.pt-galaxy::before,body.pt-chrome::before{content:"";position:fixed;inset:-25%;z-index:0;pointer-events:none;background:radial-gradient(42% 34% at 18% 8%,var(--aur1,rgba(0,255,255,.1)),transparent 60%),radial-gradient(36% 30% at 84% 16%,var(--aur2,rgba(255,61,110,.08)),transparent 60%),radial-gradient(38% 40% at 58% 92%,var(--aur3,rgba(80,60,255,.09)),transparent 62%);animation:ptdrift 17s ease-in-out infinite alternate,ptbreathe 9s ease-in-out infinite}
-  @keyframes ptdrift{0%{transform:translate3d(-2%,-1%,0) rotate(0deg)}100%{transform:translate3d(2%,1.5%,0) rotate(4deg)}}
-  @keyframes ptbreathe{0%,100%{opacity:.75}50%{opacity:1}}
+  body.pt-default::before,body.pt-csgo::before,body.pt-pubg::before,body.pt-bs::before,body.pt-cod::before,body.pt-gold::before,body.pt-emerald::before,body.pt-violet::before,body.pt-crimson::before,body.pt-ocean::before,body.pt-lime::before,body.pt-rose::before,body.pt-graphite::before,body.pt-inferno::before,body.pt-frost::before,body.pt-berry::before,body.pt-sunset::before,body.pt-toxic::before,body.pt-galaxy::before,body.pt-chrome::before{content:"";position:fixed;inset:-25%;z-index:0;pointer-events:none;background:radial-gradient(42% 34% at 18% 8%,var(--aur1,rgba(0,255,255,.1)),transparent 60%),radial-gradient(36% 30% at 84% 16%,var(--aur2,rgba(255,61,110,.08)),transparent 60%),radial-gradient(38% 40% at 58% 92%,var(--aur3,rgba(80,60,255,.09)),transparent 62%);animation:ptdrift 12s ease-in-out infinite alternate,ptbreathe 6s ease-in-out infinite}
+  @keyframes ptdrift{0%{transform:translate3d(-3.5%,-2%,0) rotate(-2deg) scale(1)}100%{transform:translate3d(3.5%,2.5%,0) rotate(4deg) scale(1.06)}}
+  @keyframes ptbreathe{0%,100%{opacity:.82}50%{opacity:1}}
   body.gl-low .nav-item.active{box-shadow:none}
   body.gl-low .addbtn,body.gl-low .chip.active,body.gl-low .gamecard,body.gl-low .mbtn.save{box-shadow:none}
   body.gl-high .nav-item.active{box-shadow:0 0 18px var(--nav-glow) inset,0 0 22px var(--cyber)}
@@ -308,10 +308,13 @@
     background:linear-gradient(135deg,rgba(0,255,255,.15),rgba(80,60,255,.15));border:1px solid var(--stroke);flex:none;color:var(--cyber)}
   .kd{font-family:'Orbitron';font-weight:700;color:var(--cyber)}
   .vfy{display:inline-flex;vertical-align:middle;margin-left:6px;line-height:1}
-  .vfy svg{width:16px;height:16px;display:block}
-  .vfy.b{color:#1d9bf0;filter:drop-shadow(0 0 5px rgba(29,155,240,.85))}
-  .vfy.g{color:#ffd700;filter:drop-shadow(0 0 7px rgba(255,215,0,.95));animation:vtick 2.2s ease-in-out infinite}
-  @keyframes vtick{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+  .vfy svg{width:18px;height:18px;display:block}
+  .vfy.b{color:#1d9bf0;filter:drop-shadow(0 0 6px rgba(29,155,240,.95))}
+  .vfy.g{color:#ffd700;filter:drop-shadow(0 0 9px rgba(255,215,0,1));animation:vtick 2.2s ease-in-out infinite}
+  @keyframes vtick{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
+  .vfy-legend{display:flex;gap:18px;flex-wrap:wrap;align-items:center;font-size:12px;color:var(--dim);margin:4px 0 14px;padding:10px 14px;border:1px dashed var(--stroke);border-radius:12px;background:rgba(255,255,255,.03)}
+  .vfy-legend span{display:inline-flex;align-items:center;gap:6px}
+  .vfy-legend b{color:var(--cyber);font-weight:700}
   .kd.good{color:var(--ok)} .kd.mid{color:var(--gold)} .kd.bad{color:var(--danger)}
   .bar{width:56px;height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;display:inline-block;vertical-align:middle;margin-right:6px}
   .bar i{display:block;height:100%;border-radius:6px;background:linear-gradient(90deg,var(--cyber),var(--cyber2))}
@@ -417,6 +420,84 @@
   .achcard .tbtn.edit:hover{border-color:var(--cyber);color:var(--cyber);background:rgba(0,255,255,.08)}
   .achcard .tbtn.del:hover{border-color:var(--danger);color:var(--danger);background:rgba(255,61,110,.1)}
 
+  /* ============ VERIFY BADGES ============ */
+  .vbgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-top:18px}
+  .vbcard{display:flex;gap:14px;padding:18px;border-radius:16px;background:var(--panel);border:1px solid var(--stroke);border-left:4px solid var(--vbc,#1d9bf0);transition:.25s;position:relative;overflow:hidden}
+  .vbcard::after{content:"";position:absolute;inset:0;background:radial-gradient(520px 110px at 88% -30%,var(--vbc,#1d9bf0)22,transparent 60%);pointer-events:none}
+  .vbcard:hover{transform:translateY(-3px);border-color:var(--vbc,#1d9bf0)}
+  .vbcard .vbico{width:62px;height:62px;border-radius:14px;display:flex;align-items:center;justify-content:center;background:var(--vbc,#1d9bf0)14;border:1px solid var(--vbc,#1d9bf0)33;flex:none}
+  .vbcard .vbico .vfy svg{width:30px;height:30px}
+  .vbcard .vbbody{min-width:0;flex:1}
+  .vbcard .vbtitle{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .vbcard h4{margin:0 0 6px;font-size:15px;letter-spacing:.4px}
+  .vbcard p{margin:0 0 10px;font-size:12.5px;color:var(--dim);line-height:1.5}
+  .vbcard .vbchip{font-size:9px;letter-spacing:1.6px;font-weight:800;padding:3px 9px;border-radius:99px;border:1px solid;flex:none}
+  .vbcard .vbmeta{display:flex;gap:14px;font-size:11px;color:var(--dim);margin-bottom:12px;align-items:center}
+  .vbcard .vbmeta i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:5px;vertical-align:-2px;border:1px solid rgba(255,255,255,.25)}
+  .vb-hint{margin-top:18px;font-size:12.5px;color:var(--dim);background:var(--panel);border:1px dashed var(--stroke);border-radius:12px;padding:12px 16px;line-height:1.6}
+  .colrow{display:flex;align-items:center;gap:10px}
+  .colrow input[type="color"]{width:52px;height:40px;border:none;border-radius:10px;background:transparent;cursor:pointer;padding:0}
+  .colrow span{font-family:'Orbitron';font-size:12px;color:var(--dim)}
+  .vbprev{height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--stroke);border-radius:10px;background:rgba(255,255,255,.03)}
+  .vbprev .vfy svg{width:24px;height:24px}
+
+  /* ============ ANIMATED PROFILE AVATARS & FRAMES ============ */
+  .avcat{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 4px}
+  .avcat button{font-family:'Orbitron';font-size:10px;letter-spacing:1px;font-weight:700;padding:6px 12px;border-radius:99px;border:1px solid var(--stroke);background:rgba(255,255,255,.04);color:var(--dim);cursor:pointer;transition:.2s;text-transform:uppercase}
+  .avcat button:hover{color:var(--txt);border-color:var(--cyber)}
+  .avcat button.sel{background:linear-gradient(120deg,var(--cyber),var(--cyber2));color:#000;border:none}
+  .avatar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(74px,1fr));gap:8px;max-height:320px;overflow:auto;padding:8px;border:1px solid var(--stroke);border-radius:14px;background:rgba(0,0,0,.18)}
+  .avcell{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px;border-radius:12px;border:1px solid transparent;background:transparent;cursor:pointer;transition:.18s;color:var(--dim)}
+  .avcell:hover{border-color:var(--cyber);background:rgba(0,255,255,.05);color:var(--txt)}
+  .avcell.sel{border-color:var(--cyber);background:rgba(0,255,255,.1);box-shadow:0 0 14px var(--nav-glow);color:var(--txt)}
+  .avcell .avemo{width:42px;height:42px;display:grid;place-items:center;font-size:26px;border-radius:50%;background:var(--panel2);border:1px solid var(--stroke)}
+  .avcell em{font-style:normal;font-size:9px;font-weight:700;letter-spacing:.4px}
+  .anim-bounce .avemo,.anim-bounce,.anim-bounce svg{animation:pa-b 1.3s ease-in-out infinite}
+  .anim-pulse .avemo,.anim-pulse{animation:pa-p 1.6s ease-in-out infinite}
+  .anim-shake .avemo,.anim-shake{animation:pa-s .9s ease-in-out infinite}
+  .anim-wiggle .avemo,.anim-wiggle{animation:pa-w 1.2s ease-in-out infinite}
+  .anim-zoom .avemo,.anim-zoom{animation:pa-z 1.7s ease-in-out infinite}
+  .anim-rise .avemo,.anim-rise{animation:pa-r 1.1s ease-in-out infinite}
+  .anim-glow .avemo,.anim-glow{animation:pa-g 2s ease-in-out infinite}
+  .anim-flicker .avemo,.anim-flicker{animation:pa-f 1.1s steps(2,end) infinite}
+  .anim-float .avemo,.anim-float{animation:pa-f2 2.6s ease-in-out infinite}
+  .anim-spin .avemo,.anim-spin{animation:pa-sp 3s linear infinite}
+  @keyframes pa-b{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes pa-p{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
+  @keyframes pa-s{0%,100%{transform:translate(0,0)}25%{transform:translate(2px,-2px)}75%{transform:translate(-2px,2px)}}
+  @keyframes pa-w{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+  @keyframes pa-z{0%,100%{transform:scale(1)}50%{transform:scale(1.22)}}
+  @keyframes pa-r{0%{transform:translateY(9px);opacity:.3}100%{transform:translateY(0);opacity:1}}
+  @keyframes pa-g{0%,100%{filter:drop-shadow(0 0 2px #ffd700)}50%{filter:drop-shadow(0 0 10px #ffd700)}}
+  @keyframes pa-f{0%,100%{opacity:1}50%{opacity:.35}}
+  @keyframes pa-f2{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  @keyframes pa-sp{to{transform:rotate(360deg)}}
+  .frame-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(86px,1fr));gap:10px;max-height:340px;overflow:auto;padding:10px;border:1px solid var(--stroke);border-radius:14px;background:rgba(0,0,0,.18);margin-top:8px}
+  .fcell{display:flex;flex-direction:column;align-items:center;gap:5px;padding:9px 4px;border-radius:12px;border:1px solid transparent;background:transparent;cursor:pointer;transition:.18s;color:var(--dim)}
+  .fcell:hover{border-color:var(--cyber);background:rgba(0,255,255,.05);color:var(--txt)}
+  .fcell.sel{border-color:var(--cyber);background:rgba(0,255,255,.1);box-shadow:0 0 14px var(--nav-glow);color:var(--txt)}
+  .fcell em{font-style:normal;font-size:9px;font-weight:700;letter-spacing:.3px;text-align:center;line-height:1.25}
+  .pf{position:relative;display:inline-flex;align-items:center;justify-content:center;width:78px;height:78px;border-radius:50%;flex:none}
+  .pf .pf-in{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:32px;overflow:hidden;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.12),rgba(0,0,0,.42))}
+  .pf::before{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none}
+  .pf.s-grad::before{background:conic-gradient(from 0deg,var(--c1),var(--c2),var(--c1));-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px))}
+  .pf.s-solid::before{border:3px solid var(--c1)}
+  .pf.s-glow::before{border:3px solid var(--c1);box-shadow:0 0 14px var(--c1),0 0 28px var(--c1)}
+  .pf.s-dash::before{border:3px dashed var(--c1)}
+  .pf.s-ring::before{border:3px solid var(--c1);outline:2px solid var(--c2);outline-offset:5px;box-shadow:0 0 10px var(--c1)66}
+  .pf.a-spin::before{animation:pf-spin 3s linear infinite}
+  .pf.a-glow::before{animation:pf-glow 2s ease-in-out infinite}
+  .pf.a-pulse::before{animation:pf-pulse 2.2s ease-in-out infinite}
+  .pf.a-flicker::before{animation:pf-flicker 1.3s steps(2,end) infinite}
+  .pf.a-breathe{animation:pf-breathe 3s ease-in-out infinite}
+  @keyframes pf-spin{to{transform:rotate(360deg)}}
+  @keyframes pf-glow{0%,100%{box-shadow:0 0 8px var(--c1)}50%{box-shadow:0 0 22px var(--c1),0 0 38px var(--c2)}}
+  @keyframes pf-pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.05);opacity:.86}}
+  @keyframes pf-flicker{0%,100%{opacity:1}50%{opacity:.4}}
+  @keyframes pf-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
+  .pcard .pavatar.pf{width:110px;height:110px;margin:-55px auto 0}
+  .pcard .pavatar .pav{width:94px;height:94px;margin:0}
+
   .accent{width:44px;height:44px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:.2s}
   .accent:hover{transform:scale(1.15)}
   .accent.sel{border-color:#fff;box-shadow:0 0 16px currentColor}
@@ -499,12 +580,46 @@
   .reg-meta span{font-size:11px;letter-spacing:1px;padding:5px 12px;border-radius:100px;background:rgba(255,255,255,.05);border:1px solid var(--stroke);color:var(--dim);text-transform:uppercase}
   @media(max-width:960px){.regrow{grid-template-columns:1fr}}
 
+  /* ============ DASHBOARD GAMING ADS ============ */
+  .adwrap{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--stroke);margin:26px 0 4px;box-shadow:0 18px 44px rgba(0,0,0,.4)}
+  .adtrack{display:flex;transition:transform .65s cubic-bezier(.22,.61,.36,1)}
+  .adslide{min-width:100%;height:190px;position:relative;display:flex;align-items:center;gap:22px;padding:24px 60px;color:#04121f;cursor:pointer;overflow:hidden}
+  .adic{font-size:52px;flex:none;filter:drop-shadow(0 8px 16px rgba(0,0,0,.35));animation:adicfloat 3s ease-in-out infinite}
+  @keyframes adicfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+  .adinfo{position:relative;z-index:2;min-width:0}
+  .adinfo .adtag{font-family:'Orbitron';font-size:10px;letter-spacing:2.5px;font-weight:800;background:rgba(0,0,0,.35);color:#fff;display:inline-block;padding:4px 10px;border-radius:99px;margin-bottom:8px}
+  .adinfo h3{margin:0 0 6px;font-family:'Orbitron';font-size:clamp(16px,2.2vw,22px);letter-spacing:1px;color:#04121f}
+  .adinfo p{margin:0 0 12px;font-size:13.5px;font-weight:600;color:rgba(4,18,31,.82);max-width:560px}
+  .adcta{position:relative;z-index:2;border:none;cursor:pointer;font-family:'Orbitron';font-weight:800;font-size:11px;letter-spacing:1.5px;padding:10px 18px;border-radius:10px;background:#04121f;color:#fff;transition:.2s;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+  .adcta:hover{transform:translateY(-2px) scale(1.04)}
+  .adglow{position:absolute;right:-40px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.4),transparent 65%);filter:blur(6px);animation:adglow 4.5s ease-in-out infinite}
+  @keyframes adglow{0%,100%{transform:scale(1) translateY(0);opacity:.55}50%{transform:scale(1.25) translateY(14px);opacity:.95}}
+  .adbadge{position:absolute;top:12px;left:12px;z-index:5;display:flex;align-items:center;gap:5px;font-family:'Orbitron';font-size:9px;letter-spacing:2px;font-weight:800;background:rgba(0,0,0,.6);color:#fff;padding:4px 9px;border-radius:99px}
+  .adbadge svg{width:11px;height:11px;color:#ffd54a}
+  .adbtn{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.35);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.2s}
+  .adbtn svg{width:20px;height:20px}
+  .adbtn:hover{background:rgba(0,0,0,.6);transform:translateY(-50%) scale(1.1)}
+  .adprev{left:12px}.adnext{right:12px}
+  .addots{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);z-index:5;display:flex;gap:7px}
+  .addots .dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.3);border:1px solid rgba(255,255,255,.5);cursor:pointer;transition:.25s}
+  .addots .dot.on{background:#04121f;transform:scale(1.25);box-shadow:0 0 10px rgba(0,0,0,.4)}
+  .adwrap.paused .adslide{animation-play-state:paused}
+
   /* ============ PANEL THEMES ============ */
   .theme-card{border-radius:18px;overflow:hidden;border:2px solid var(--stroke);background:var(--pn-grad);cursor:pointer;transition:.25s}
   .theme-card:hover{transform:translateY(-6px);border-color:var(--cyber)}
   .theme-card.sel{border-color:var(--cyber);box-shadow:0 0 34px var(--nav-glow)}
-  .theme-prev{height:150px;position:relative;overflow:hidden;border-bottom:1px solid var(--stroke)}
-  .theme-prev::after{content:"";position:absolute;inset:0;background:radial-gradient(300px 140px at 50% 0%,rgba(255,255,255,.16),transparent 70%)}
+  .theme-prev{height:150px;position:relative;overflow:hidden;border-bottom:1px solid var(--stroke);background-size:200% 200% !important;animation:tpbg 9s ease-in-out infinite alternate}
+  @keyframes tpbg{0%{background-position:0% 0%}100%{background-position:100% 100%}}
+  .theme-prev::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 32%,rgba(255,255,255,.35) 50%,transparent 68%);background-size:240% 100%;background-position:120% 0;animation:tpsweep 3.4s linear infinite;z-index:2;pointer-events:none}
+  @keyframes tpsweep{0%{background-position:120% 0}100%{background-position:-40% 0}}
+  .theme-prev::after{content:"";position:absolute;inset:0;background:radial-gradient(300px 140px at 50% 0%,rgba(255,255,255,.18),transparent 70%);z-index:1;animation:tpglow 4s ease-in-out infinite alternate}
+  @keyframes tpglow{0%{opacity:.55}100%{opacity:1}}
+  .theme-prev .tp-orb{position:absolute;bottom:-16px;border-radius:50%;background:rgba(255,255,255,.4);z-index:3;animation:tporb linear infinite}
+  .theme-prev .tp-orb.o1{left:12%;width:14px;height:14px;animation-duration:3.6s}
+  .theme-prev .tp-orb.o2{left:42%;width:9px;height:9px;animation-duration:4.4s;animation-delay:.7s}
+  .theme-prev .tp-orb.o3{left:70%;width:18px;height:18px;animation-duration:3.9s;animation-delay:1.2s}
+  @keyframes tporb{0%{transform:translateY(0);opacity:0}14%{opacity:.9}100%{transform:translateY(-175px);opacity:0}}
   .theme-prev .tp-side{position:absolute;left:0;top:0;bottom:0;width:30%;background:linear-gradient(180deg,rgba(0,0,0,.5),rgba(0,0,0,.82));border-right:1px solid rgba(255,255,255,.2)}
   .theme-prev .tp-side::before{content:"";position:absolute;left:16%;top:14%;width:50%;height:7px;border-radius:4px;background:rgba(255,255,255,.75)}
   .theme-prev .tp-panel{position:absolute;left:38%;top:14%;right:10%;height:58%;border-radius:10px;background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.24)}
@@ -790,6 +905,7 @@
       <a class="nav-item" data-view="ranked"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg></span> Ranked &amp; Normal <span class="cnt" id="cntRanked">0</span></a>
       <a class="nav-item" data-view="points"><span class="ni"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></span> Points Table</a>
       <a class="nav-item" data-view="ach"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span> Achievements &amp; Medals <span class="cnt" id="cntAch">0</span></a>
+      <a class="nav-item" data-view="vbadges"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span> Verify Badges <span class="cnt" id="cntVb">0</span></a>
       <a class="nav-item" data-view="members"><span class="ni"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Members <span class="cnt" id="cntMems">0</span></a>
       <div class="nav-sep">PROTECTION</div>
       <a class="nav-item" data-view="sec"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span> Anti-Cheat &amp; Security <span class="cnt" id="cntCheats">0</span></a>
@@ -838,6 +954,14 @@
           <p>Pick your battlefield. <b>CS GO 2</b> · <b>PUBG PC</b> · <b>Blood Strike</b> · <b>COD MW19</b></p>
         </div>
 
+        <div class="adwrap" id="adWrap">
+          <button class="adbtn adprev" id="adPrev" aria-label="Previous ad"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+          <button class="adbtn adnext" id="adNext" aria-label="Next ad"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+          <div class="adbadge"><svg viewBox="0 0 24 24" class="fill"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> AD</div>
+          <div class="adtrack" id="adTrack"></div>
+          <div class="addots" id="adDots"></div>
+        </div>
+
         <div class="section-head">
           <h3>SELECT GAME</h3>
           <span class="sub" id="dashCount"></span>
@@ -878,6 +1002,7 @@
       <section id="playersView" class="hidden">
         <div class="page-title">PLAYERS STATS</div>
         <div class="page-sub">Track kills, KD, headshots, matches &amp; win rate — add / edit / delete anytime.</div>
+        <div class="vfy-legend"><span><i class="vfy b"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7 13.6 6 18 5l-1.1 4.4L21 12l-4.1 2.6L18 19l-4.4-1.1L12 22.3 10.4 18 6 19l1.1-4.4L3 12l4.1-2.6L6 5l4.4 1.1z" opacity=".25"/><path d="m10.6 13.2 4.3-4.3 1.4 1.4-5.7 5.7-2.8-2.8 1.4-1.4z"/></svg></i> Blue Tick = Verified</span><span><i class="vfy g"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7 13.6 6 18 5l-1.1 4.4L21 12l-4.1 2.6L18 19l-4.4-1.1L12 22.3 10.4 18 6 19l1.1-4.4L3 12l4.1-2.6L6 5l4.4 1.1z" opacity=".25"/><path d="m10.6 13.2 4.3-4.3 1.4 1.4-5.7 5.7-2.8-2.8 1.4-1.4z"/></svg></i> Gold Tick = Legend</span><span>Use <b>VERIFY</b> button or <b>Verification Badge</b> in the form</span></div>
         <div class="stats" id="plrSummary"></div>
         <div class="toolbar">
           <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="plrSearch" placeholder="Search player / country / game..." /></div>
@@ -978,6 +1103,11 @@
               <label>Avatar Color</label>
               <div class="avatars" id="avatarRow"></div>
             </div>
+            <div class="section-head" style="margin:22px 0 4px"><h3 style="font-size:15px">ANIMATED AVATAR</h3><span class="sub">50 avatars · pick one</span></div>
+            <div class="avcat" id="avCats"></div>
+            <div class="avatar-grid" id="avatarGrid"></div>
+            <div class="section-head" style="margin:24px 0 4px"><h3 style="font-size:15px">ANIMATED FRAME</h3><span class="sub">70 frames · neon, fire, ice &amp; more</span></div>
+            <div class="frame-grid" id="frameGrid"></div>
             <div class="row2">
               <div class="field"><label>Gamer Tag</label><input id="pTag" placeholder="e.g. GhostX" required /></div>
               <div class="field"><label>Real Name</label><input id="pName" placeholder="e.g. Aamir" /></div>
@@ -1152,6 +1282,19 @@
           <button class="addbtn" id="addAchBtn">+ ADD ACHIEVEMENT</button>
         </div>
         <div class="achgrid" id="achGrid"></div>
+      </section>
+
+      <!-- ============ VERIFY BADGES ============ -->
+      <section id="vbView" class="hidden">
+        <div class="page-title">VERIFY BADGES</div>
+        <div class="page-sub">Design the blue &amp; gold ticks shown on player profiles. Add, edit or delete badge styles anytime.</div>
+        <div class="stats" id="vbSummary"></div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="vbSearch" placeholder="Search badge..." /></div>
+          <button class="addbtn" id="addVbBtn">+ ADD BADGE</button>
+        </div>
+        <div class="vbgrid" id="vbGrid"></div>
+        <div class="vb-hint">💡 Badges apply to players via the <b>VERIFY</b> button or the <b>Verification Badge</b> dropdown in the player form.</div>
       </section>
 
       <!-- ============ PANEL THEMES ============ -->
@@ -1433,6 +1576,31 @@
         <div class="field"><label>Description</label><textarea id="afDesc" placeholder="What makes this achievement special?"></textarea></div>
         <div class="mbtns">
           <button type="button" class="mbtn cancel" id="aCancelBtn">CANCEL</button>
+          <button type="submit" class="mbtn save">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ VERIFY BADGE FORM MODAL ============ -->
+  <div class="overlay" id="vbFormOverlay">
+    <div class="modal">
+      <h3><span class="mi" id="vbModalTitle">ADD BADGE</span></h3>
+      <form id="vbForm">
+        <input type="hidden" id="vbfId" />
+        <div class="row2">
+          <div class="field"><label>Badge Name</label><input id="vbfName" placeholder="e.g. Gold Tick" required /></div>
+          <div class="field"><label>Color</label><div class="colrow"><input type="color" id="vbfColor" value="#1d9bf0" /><span id="vbfColorVal">#1d9bf0</span></div></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Glow</label><select id="vbfGlow">
+            <option value="soft">Soft (no glow)</option><option value="med">Medium (blue tick glow)</option><option value="high">High (gold legend glow + pulse)</option>
+          </select></div>
+          <div class="field"><label>Live Preview</label><div class="vbprev" id="vbPrev"></div></div>
+        </div>
+        <div class="field"><label>Description</label><textarea id="vbfDesc" placeholder="What does this badge mean?"></textarea></div>
+        <div class="mbtns">
+          <button type="button" class="mbtn cancel" id="vbCancelBtn">CANCEL</button>
           <button type="submit" class="mbtn save">SAVE</button>
         </div>
       </form>
@@ -1800,8 +1968,8 @@
     {name:"Red Alert", c:"#ff3d6e", c2:"#ff0044"}
   ];
   const STAGES = { qf:{label:"Quarter Finals", short:"QF", n:4}, sf:{label:"Semi Finals", short:"SF", n:2}, f:{label:"Grand Final", short:"FINAL", n:1} };
-  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1" };
-  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach" };
+  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1" };
+  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges" };
   const STATUS = { up:{t:"Upcoming",c:"up"}, live:{t:"Live",c:"live"}, done:{t:"Completed",c:"done"} };
 
   const ICONS = {
@@ -1818,7 +1986,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], profile:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], profile:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -1925,7 +2093,15 @@
     ];
   }
   function defaultProfile(){ return { tag:"GhostX", name:"Aamir Khan", country:"Pakistan", game:"csgo", level:42, hours:1500, email:"you@mail.com",
-    bio:"Pro esports player. Champion of the arena.", avatar:0, yt:"", disc:"GhostX#1234", tw:"", ig:"" }; }
+    bio:"Pro esports player. Champion of the arena.", avatar:0, avatarE:"🎮", frame:"f0", yt:"", disc:"GhostX#1234", tw:"", ig:"" }; }
+  function seedVbadges(){
+    return [
+      {id:"blue",name:"Blue Tick",color:"#1d9bf0",glow:"med",desc:"Official verified player"},
+      {id:"gold",name:"Gold Tick",color:"#ffd700",glow:"high",desc:"Legend status — glowing gold"},
+      {id:"pink",name:"Creator Pink",color:"#ff4db8",glow:"soft",desc:"Content creator spotlight"},
+      {id:"emerald",name:"Elite Emerald",color:"#2bff9e",glow:"high",desc:"Elite squad member badge"}
+    ];
+  }
   function seedCheats(){
     const d=n=> new Date(Date.now()+n*864e5).toISOString().slice(0,10);
     return [
@@ -1965,6 +2141,7 @@
     state.cheats      = getStore(KEYS.sec,   null) ?? seedCheats();
     state.standings   = getStore(KEYS.stand, null) ?? seedStandings();
     state.ach         = getStore(KEYS.ach,   null) ?? seedAch();
+    state.vbadges     = getStore(KEYS.gbadges, null) ?? seedVbadges();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
@@ -1994,12 +2171,12 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",sec:"secView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",sec:"secView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
     document.querySelectorAll(".nav-item").forEach(n=> n.classList.toggle("active", n.dataset.view===v));
-    if(v==="home"){ renderStats(); renderGames(); renderRecent(); }
+    if(v==="home"){ renderStats(); renderGames(); renderRecent(); renderAds(); }
     if(v==="players"){ renderPlrSummary(); renderPlayers(); }
     if(v==="teams"){ renderTeamSummary(); renderTeams(); }
     if(v==="matches"){ renderMatchSummary(); renderMatches(); }
@@ -2014,6 +2191,7 @@
     if(v==="ranked"){ renderRankedSummary(); renderRanked(); }
     if(v==="points"){ renderPoints(); }
     if(v==="ach"){ renderAchSummary(); renderAch(); }
+    if(v==="vbadges"){ renderVbSummary(); renderVb(); }
     if(v==="themes"){ renderThemes(); }
     if(v==="learn"){ renderLearn(); }
     if(v==="bgm"){ renderBgm(); }
@@ -2086,6 +2264,48 @@
     const r=[...state.tournaments].sort((a,b)=>new Date(b.start)-new Date(a.start)).slice(0,6);
     $("recentGrid").innerHTML=r.length? r.map(cardHTML).join("") : emptyHTML("gamepad","No tournaments yet","Add your first tournament from any game.");
   }
+  /* ===================== DASHBOARD GAMING ADS ===================== */
+  const ADS=[
+    {id:"cs",game:"csgo",icon:"🔫",title:"CS GO 2 — SEASON 7",line:"New operation, ranked reset & a $50,000 prize pool. Drop in and clutch!",btn:"PLAY NOW",c1:"#ff7a1a",c2:"#ffd54a"},
+    {id:"pg",game:"pubg",icon:"🪂",title:"PUBG PC — WARZONE WEEKEND",line:"Double XP plus exclusive chicken dinner skins. Squad up before it ends!",btn:"JOIN NOW",c1:"#ffb700",c2:"#ff7a00"},
+    {id:"bs",game:"bs",icon:"⚔️",title:"BLOOD STRIKE — CLAN WARS",line:"3v3 ranked sprint. Climb to the top 100 and earn clan banners.",btn:"FIGHT",c1:"#ff2d55",c2:"#ff7a5c"},
+    {id:"cod",game:"cod",icon:"🎖️",title:"COD MW19 — NIGHTFALL OPS",line:"Free battle-pass tier unlocks all week. Gear up with meta loadouts.",btn:"LOADOUT",c1:"#8bc34a",c2:"#cddc39"},
+    {id:"ff",game:null,icon:"🎲",title:"FREE FIRE MAX — BOOYAH EVENT",line:"Booyah weekend: 2x rank points, exclusive diamond royale loot.",btn:"BOOYAH!",c1:"#ff9d2f",c2:"#ff2e63"},
+    {id:"val",game:null,icon:"💥",title:"VALORANT — UNRATED CLASH",line:"5v5 spike rush tournament every Friday. Clutch or be clutched.",btn:"RUSH",c1:"#ff4655",c2:"#0f1923"},
+    {id:"cricket",game:null,icon:"🏏",title:"CRICKET 26 — WORLD SERIES CUP",line:"Real-time ranked matches, pitch mastery & the biggest prize yet.",btn:"STRIKE",c1:"#38e07a",c2:"#2bff9e"},
+    {id:"pass",game:null,icon:"👑",title:"ROG LEGENDS PASS 2026",line:"Season rewards, verified badges and medal unlocks across every game.",btn:"GET PASS",c1:"#7c4dff",c2:"#00e0ff"},
+    {id:"prem",game:null,icon:"💎",title:"PREMIUM ARENA",line:"25 soundtracks, 20 animated themes, verified ticks and ad-clean arena.",btn:"UPGRADE",c1:"#d4af37",c2:"#fff3a0"}
+  ];
+  let adIdx=0, adTimer=null;
+  function renderAds(){
+    const tr=$("adTrack");
+    tr.innerHTML=ADS.map((a,i)=>`
+      <div class="adslide" data-adi="${i}" style="background:linear-gradient(115deg,${a.c1},${a.c2})">
+        <div class="adic">${a.icon}</div>
+        <div class="adinfo">
+          <div class="adtag">${a.game?esc(GAMES[a.game].name.toUpperCase()):"GAMES TOURNAMENTS PRO"}</div>
+          <h3>${esc(a.title)}</h3>
+          <p>${esc(a.line)}</p>
+          <button class="adcta">${esc(a.btn)}</button>
+        </div>
+        <div class="adglow"></div>
+      </div>`).join("");
+    $("adDots").innerHTML=ADS.map((a,i)=>`<i class="dot ${i===0?"on":""}" data-dot="${i}"></i>`).join("");
+    adGo(adIdx, true);
+    if(adTimer) clearInterval(adTimer);
+    adTimer=setInterval(()=> adGo(adIdx+1), 4200);
+  }
+  function adGo(i, instant){
+    adIdx=(i+ADS.length)%ADS.length;
+    const tr=$("adTrack");
+    const w=tr.clientWidth||tr.offsetWidth||tr.parentElement.clientWidth||720;
+    tr.style.transition=instant?"none":"";
+    tr.style.transform=`translateX(${-adIdx*w}px)`;
+    if(instant) setTimeout(()=>{ tr.style.transition=""; },40);
+    document.querySelectorAll("#adDots .dot").forEach((d,k)=> d.classList.toggle("on", k===adIdx));
+  }
+  function adPause(){ if(adTimer){ clearInterval(adTimer); adTimer=null; } $("adWrap").classList.add("paused"); }
+  function adResume(){ if(!adTimer){ $("adWrap").classList.remove("paused"); adTimer=setInterval(()=> adGo(adIdx+1), 4200); } }
   function openGame(id){
     state.game=id; state.format="all"; state.search="";
     $("searchInput").value="";
@@ -2176,8 +2396,10 @@
     const matches=state.players.reduce((s,p)=>s+(+p.matches||0),0);
     const avgKD=deaths? (kills/deaths) : 0;
     const top=[...state.players].sort((a,b)=>(+b.kills||0)-(+a.kills||0))[0];
+    const vfy=state.players.filter(p=>p.verified==="blue").length, lgd=state.players.filter(p=>p.verified==="gold").length;
     $("plrSummary").innerHTML=[
       {n:total,l:"Players",m:"#00e0ff"},{n:kills.toLocaleString(),l:"Total Kills",m:"#ff3d6e"},{n:avgKD.toFixed(2),l:"Avg K/D",m:"#2bff9e"},
+      {n:vfy,l:"Verified ✓",m:"#1d9bf0"},{n:lgd,l:"Legends ★",m:"#ffd700"},
       {n:matches.toLocaleString(),l:"Matches",m:"#ffd54a"},{n:top?esc(top.name):"—",l:"Top Fragger",m:"#9b4dff"}
     ].map(i=>`<div class="stat" style="--main:${i.m}"><div class="num" style="color:${i.m};font-size:clamp(14px,2vw,20px)">${i.n}</div><div class="lbl">${i.l}</div></div>`).join("");
     $("cntPlrs").textContent=total;
@@ -2211,6 +2433,7 @@
   }
   function openPlrForm(p){
     const ed=!!p;
+    fillVbSelect();
     $("pModalTitle").textContent=ed?"EDIT PLAYER":"ADD PLAYER";
     $("pfId").value=ed?p.id:"";
     $("pfName").value=ed?p.name:"";
@@ -2632,17 +2855,62 @@
   }
 
   /* ===================== PROFILE ===================== */
+  const AV_CATS=[["army","Army"],["sigma","Sigma"],["gamer","Gamer"],["fighter","Fighter"],["tech","Tech"],["crypto","Crypto"],["ninja","Ninja"],["space","Space"],["rich","Rich"],["beast","Beast"]];
+  const AVATARS=[
+    {e:"🪖",n:"Army Guy",c:"army",a:"bounce"},{e:"🎖️",n:"Medal Vet",c:"army",a:"pulse"},{e:"🔫",n:"Rifleman",c:"army",a:"shake"},{e:"💣",n:"Bomber",c:"army",a:"wiggle"},{e:"🎯",n:"Marksman",c:"army",a:"zoom"},
+    {e:"🧠",n:"Sigma Brain",c:"sigma",a:"pulse"},{e:"🗿",n:"Chad Stone",c:"sigma",a:"bounce"},{e:"👔",n:"Boss Sigma",c:"sigma",a:"rise"},{e:"😎",n:"Cool Guy",c:"sigma",a:"wiggle"},{e:"🥶",n:"Ice Sigma",c:"sigma",a:"float"},
+    {e:"🎮",n:"Gamer Pro",c:"gamer",a:"pulse"},{e:"🕹️",n:"Arcade Hero",c:"gamer",a:"wiggle"},{e:"👾",n:"Pixel Invader",c:"gamer",a:"bounce"},{e:"🖥️",n:"PC Master",c:"gamer",a:"rise"},{e:"🎧",n:"Headphone",c:"gamer",a:"bounce"},
+    {e:"🥊",n:"Boxer",c:"fighter",a:"shake"},{e:"💪",n:"Muscle",c:"fighter",a:"pulse"},{e:"🏆",n:"Champion",c:"fighter",a:"glow"},{e:"🔥",n:"On Fire",c:"fighter",a:"zoom"},{e:"⚡",n:"Lightning",c:"fighter",a:"flicker"},
+    {e:"🤖",n:"Robot",c:"tech",a:"rise"},{e:"💻",n:"Coder",c:"tech",a:"pulse"},{e:"📡",n:"Radar",c:"tech",a:"spin"},{e:"🔧",n:"Engineer",c:"tech",a:"shake"},{e:"🛰️",n:"Satellite",c:"tech",a:"spin"},
+    {e:"💰",n:"Money Bag",c:"crypto",a:"pulse"},{e:"📈",n:"Bull Run",c:"crypto",a:"rise"},{e:"🚀",n:"To The Moon",c:"crypto",a:"zoom"},{e:"🪙",n:"Coin Stack",c:"crypto",a:"bounce"},{e:"💎",n:"Diamond Hand",c:"crypto",a:"glow"},
+    {e:"🥷",n:"Ninja",c:"ninja",a:"float"},{e:"🗡️",n:"Blade",c:"ninja",a:"shake"},{e:"🛡️",n:"Guardian",c:"ninja",a:"pulse"},{e:"🌙",n:"Night Assassin",c:"ninja",a:"float"},{e:"🎭",n:"Mystery Mask",c:"ninja",a:"flicker"},
+    {e:"👨‍🚀",n:"Astronaut",c:"space",a:"float"},{e:"🪐",n:"Saturn Lord",c:"space",a:"spin"},{e:"🌠",n:"Shooting Star",c:"space",a:"zoom"},{e:"🚀",n:"Rocket Pilot",c:"space",a:"rise"},{e:"👽",n:"Alien",c:"space",a:"bounce"},
+    {e:"🤑",n:"Rich Kid",c:"rich",a:"bounce"},{e:"🏦",n:"Banker",c:"rich",a:"pulse"},{e:"💸",n:"Cash Rain",c:"rich",a:"rise"},{e:"👑",n:"King Crown",c:"rich",a:"glow"},{e:"🎩",n:"Top Hat",c:"rich",a:"wiggle"},
+    {e:"🐺",n:"Wolf Pack",c:"beast",a:"pulse"},{e:"🦁",n:"Lion King",c:"beast",a:"glow"},{e:"🐯",n:"Tiger",c:"beast",a:"shake"},{e:"🦅",n:"Eagle Eye",c:"beast",a:"float"},{e:"🦂",n:"Scorpion",c:"beast",a:"wiggle"}
+  ];
+  const FRAME_COLORS=[["neon","Neon","#00e0ff","#ff3d6e"],["fire","Fire","#ff7a1a","#ffd54a"],["ice","Ice","#80deea","#ffffff"],["gold","Gold","#d4af37","#fff3a0"],["toxic","Toxic","#76ff03","#00ff41"],["blood","Blood","#ff2d55","#ff7a5c"],["royal","Royal","#7c4dff","#b44dff"],["emerald","Emerald","#00e676","#00b0ff"],["sunset","Sunset","#ff6d00","#ff1744"],["galaxy","Galaxy","#311b92","#00e5ff"],["rose","Rose","#f48fb1","#ffd1dc"],["berry","Berry","#c2185b","#ff80ab"],["chrome","Chrome","#b0bec5","#eceff1"],["acid","Acid","#c0ff00","#00ffc8"]];
+  const FRAME_STYLES=[["grad","Gradient","spin"],["solid","Solid","pulse"],["glow","Glow","glow"],["dash","Dash","flicker"],["ring","Ring","breathe"]];
+  const FRAMES=[];
+  FRAME_COLORS.forEach((fc,ci)=>{ FRAME_STYLES.forEach((fs,si)=>{ FRAMES.push({id:"f"+(ci*5+si), n:fc[1]+" "+fs[1], c1:fc[2], c2:fc[3], s:fs[0], a:fs[2]}); }); });
+  function frameById(id){ return FRAMES.find(f=>f.id===id); }
+  function avatarByEmoji(e){ return AVATARS.find(a=>a.e===e); }
+  let avCatSel="all";
+  function renderAvCats(){
+    $("avCats").innerHTML='<button type="button" data-cat="all" class="'+(avCatSel==="all"?"sel":"")+'">All</button>'+AV_CATS.map(([k,n])=>`<button type="button" data-cat="${k}" class="${avCatSel===k?"sel":""}">${n}</button>`).join("");
+  }
+  function renderAvatarGrid(){
+    const cur=state.profile.avatarE||"";
+    const list=avCatSel==="all"?AVATARS:AVATARS.filter(a=>a.c===avCatSel);
+    $("avatarGrid").innerHTML=list.map(a=>`
+      <button type="button" class="avcell ${a.e===cur?"sel":""} anim-${a.a}" data-avem="${a.e}" title="${a.n}">
+        <span class="avemo">${a.e}</span><em>${a.n}</em>
+      </button>`).join("")||'<div style="grid-column:1/-1;text-align:center;color:var(--dim);padding:16px">No avatars in this category.</div>';
+  }
+  function renderFrameGrid(){
+    const cur=state.profile.frame||"";
+    const avE=state.profile.avatarE||"👤";
+    $("frameGrid").innerHTML=FRAMES.map(f=>`
+      <button type="button" class="fcell ${f.id===cur?"sel":""}" data-frm="${f.id}" title="${f.n}">
+        <span class="pf s-${f.s} a-${f.a}" style="--c1:${f.c1};--c2:${f.c2}"><span class="pf-in">${avE}</span></span>
+        <em>${f.n}</em>
+      </button>`).join("");
+  }
   function renderAvatarRow(){
     $("avatarRow").innerHTML=SWATCHES.map((s,i)=>`<button type="button" class="${state.profile.avatar===i?"sel":""}" data-av="${i}" style="background:${swatch(i)}"></button>`).join("");
   }
   function renderProfile(){
     const p=state.profile;
-    renderAvatarRow();
+    renderAvatarRow(); renderAvCats(); renderAvatarGrid(); renderFrameGrid();
     const letter=initial(p.tag);
+    const avE=p.avatarE||"";
+    const fr=frameById(p.frame);
+    const avatarInner=avE? `<span class="anim-${(avatarByEmoji(avE)||{}).a||"pulse"}" style="display:inline-flex">${avE}</span>` : letter;
     const socials=[["YT",p.yt],["DC",p.disc],["TW",p.tw],["IG",p.ig]].filter(s=>s[1]).map(s=>`<span title="${esc(s[1])}">${s[0]}</span>`).join("");
     $("profileCard").innerHTML=`
       <div class="banner"></div>
-      <div class="pav" style="background:${swatch(p.avatar)}">${letter}</div>
+      <div class="pavatar pf ${fr?`s-${fr.s} a-${fr.a}`:""}" ${fr?`style="--c1:${fr.c1};--c2:${fr.c2}"`:""}>
+        <div class="pav" style="background:${swatch(p.avatar)}">${avatarInner}</div>
+      </div>
       <h3>${esc(p.tag||"Your Tag")}</h3>
       <div class="plv">LEVEL ${+p.level||1}</div>
       <div class="country">${esc(p.country||"—")} · ${esc(gameOf(p.game).name)}</div>
@@ -3169,6 +3437,96 @@
     });
   }
 
+  /* ===================== VERIFY BADGES ===================== */
+  function vbTickSVG(){ return '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1.7 13.6 6 18 5l-1.1 4.4L21 12l-4.1 2.6L18 19l-4.4-1.1L12 22.3 10.4 18 6 19l1.1-4.4L3 12l4.1-2.6L6 5l4.4 1.1z" opacity=".25"/><path d="m10.6 13.2 4.3-4.3 1.4 1.4-5.7 5.7-2.8-2.8 1.4-1.4z"/></svg>'; }
+  function vbTick(b){
+    const cls=(b.glow==="high"||b.glow==="max")?"g":"b";
+    return `<span class="vfy ${cls}" style="color:${b.color}" title="${esc(b.name)}">${vbTickSVG()}</span>`;
+  }
+  function vbById(id){ return (state.vbadges||[]).find(b=>b.id===id); }
+  function plrTick(p){
+    const v=p.verified||"none";
+    if(!v||v==="none") return "";
+    const b=vbById(v)||{color:(v==="gold"?"#ffd700":"#1d9bf0"),glow:(v==="gold"?"high":"med"),name:(v==="gold"?"Gold Verified Legend":"Verified Player")};
+    return vbTick(b);
+  }
+  function fillVbSelect(){
+    const sel=$("pfVerified"); if(!sel) return;
+    sel.innerHTML='<option value="none">None</option>'+state.vbadges.map(b=>`<option value="${b.id}">${esc(b.name)}</option>`).join("");
+  }
+  function filteredVb(){
+    let l=[...state.vbadges];
+    const q=$("vbSearch")? $("vbSearch").value.trim().toLowerCase():"";
+    if(q) l=l.filter(b=>(b.name||"").toLowerCase().includes(q)||(b.desc||"").toLowerCase().includes(q)||(b.color||"").includes(q));
+    return l;
+  }
+  function renderVbSummary(){
+    const all=state.vbadges.length, high=state.vbadges.filter(b=>b.glow==="high").length, soft=state.vbadges.filter(b=>b.glow==="soft").length;
+    const used=state.players.filter(p=>p.verified&&p.verified!=="none").length;
+    $("vbSummary").innerHTML=`<div class="stat"><b>${all}</b><span>Badge Designs</span></div><div class="stat"><b>${high}</b><span>Glowing Gold</span></div><div class="stat"><b>${soft}</b><span>Soft Badges</span></div><div class="stat"><b>${used}</b><span>Players Verified</span></div>`;
+    const c=$("cntVb"); if(c) c.textContent=all;
+  }
+  function renderVb(){
+    const l=filteredVb();
+    $("vbGrid").innerHTML=l.length? l.map(b=>`
+      <div class="vbcard" style="--vbc:${b.color}">
+        <div class="vbico">${vbTick(b)}</div>
+        <div class="vbbody">
+          <div class="vbtitle"><h4>${esc(b.name)}</h4><span class="vbchip" style="color:${b.color};border-color:${b.color}55;background:${b.color}18">${b.glow==="high"?"GLOW":"TICK"}</span></div>
+          <p>${esc(b.desc||"")}</p>
+          <div class="vbmeta"><span>Color <i style="background:${b.color}"></i>${b.color.toUpperCase()}</span><span>Glow: <b style="color:${b.glow==="high"?"var(--gold)":b.glow==="med"?"#7ec8ff":"var(--dim)"}">${b.glow.toUpperCase()}</b></span></div>
+          <div class="abtns">
+            <button class="tbtn edit" data-vbedit="${b.id}">EDIT</button>
+            <button class="tbtn del" data-vbdel="${b.id}">DEL</button>
+          </div>
+        </div>
+      </div>`).join("") : `<div class="empty" style="grid-column:1/-1"><div class="big">✅</div><h4>No badges yet</h4><p>Click ADD BADGE to design your first verification tick.</p></div>`;
+  }
+  function renderVbPrev(){
+    const col=$("vbfColor").value;
+    const glow=$("vbfGlow").value;
+    $("vbPrev").innerHTML=vbTick({name:$("vbfName").value||"Badge",color:col,glow});
+    $("vbfColorVal").textContent=col.toUpperCase();
+  }
+  function openVbForm(b){
+    const ed=!!b;
+    $("vbModalTitle").textContent=ed?"EDIT BADGE":"ADD BADGE";
+    $("vbfId").value=ed?b.id:"";
+    $("vbfName").value=ed?b.name:"";
+    $("vbfColor").value=ed?b.color:"#1d9bf0";
+    $("vbfGlow").value=ed?b.glow:"med";
+    $("vbfDesc").value=ed?b.desc:"";
+    renderVbPrev();
+    $("vbFormOverlay").classList.add("show");
+    setTimeout(()=>{ try{ $("vbfName").focus(); }catch(e){} },120);
+  }
+  function submitVb(e){
+    e.preventDefault();
+    const name=$("vbfName").value.trim();
+    if(!name){ toast("Badge name required!","warn"); return; }
+    const id=$("vbfId").value;
+    const data={ name, color:$("vbfColor").value, glow:$("vbfGlow").value, desc:$("vbfDesc").value.trim() };
+    if(id){
+      const i=state.vbadges.findIndex(x=>x.id===id);
+      if(i>-1){ state.vbadges[i]={...state.vbadges[i],...data,updatedAt:Date.now()}; toast("Badge updated"); }
+    }else{
+      state.vbadges.push({...data,id:uid(),createdAt:Date.now()});
+      toast("Badge added");
+    }
+    saveAll();
+    $("vbFormOverlay").classList.remove("show");
+    renderVbSummary(); renderVb();
+  }
+  function deleteVb(id){
+    openConfirm(`Delete badge <b>${esc((state.vbadges.find(x=>x.id===id)||{}).name||"")}</b>? Players using it will show no tick.`,()=>{
+      state.players.forEach(p=>{ if(p.verified===id) p.verified="none"; });
+      state.vbadges=state.vbadges.filter(x=>x.id!==id);
+      saveAll();
+      renderVbSummary(); renderVb(); renderPlrSummary(); renderPlayers();
+      toast("Badge deleted","warn");
+    });
+  }
+
   /* ===================== PANEL THEMES ===================== */
   const THEMES={
     default:{name:"Neon Classic",tag:"DEFAULT",desc:"The classic cyber arena look.",c1:"#3d7bff",c2:"#00e0ff"},
@@ -3201,7 +3559,7 @@
       const sel=state.settings.panelTheme===k;
       return `<div class="theme-card ${sel?"sel":""}" data-theme="${k}">
         <div class="theme-prev" style="background:linear-gradient(135deg,${t.c1},${t.c2})">
-          <div class="tp-side"></div><div class="tp-panel"></div>
+          <div class="tp-side"></div><div class="tp-panel"></div><i class="tp-orb o1"></i><i class="tp-orb o2"></i><i class="tp-orb o3"></i>
         </div>
         <div class="theme-body">
           <h4>${t.name}</h4>
@@ -3788,6 +4146,7 @@
     sizeCamp();
   }
   size(); addEventListener("resize",size);
+  addEventListener("resize",()=>{ if(typeof adGo==="function") adGo(adIdx,true); });
   const DROPS=[];
   for(let i=0;i<240;i++) DROPS.push({x:Math.random()*2000,y:Math.random()*1200,l:12+Math.random()*16,sp:11+Math.random()*13,w:(Math.random()*2)|0});
   let flash=0,lastBolt=0,bolt=null,boltLife=0,lastAct=Date.now();
@@ -4357,6 +4716,16 @@
 
     // home
     $("gamesRow").addEventListener("click",e=>{ const c=e.target.closest(".gamecard"); if(c) openGame(c.dataset.game); });
+    $("adNext").addEventListener("click",()=>{ adGo(adIdx+1); adResume(); });
+    $("adPrev").addEventListener("click",()=>{ adGo(adIdx-1); adResume(); });
+    $("adTrack").addEventListener("click",e=>{
+      const s=e.target.closest(".adslide"); if(!s) return;
+      const a=ADS[+s.dataset.adi];
+      if(a.game) openGame(a.game); else switchView("register");
+    });
+    $("adDots").addEventListener("click",e=>{ const d=e.target.closest(".dot"); if(d){ adGo(+d.dataset.dot); adResume(); } });
+    $("adWrap").addEventListener("mouseenter",adPause);
+    $("adWrap").addEventListener("mouseleave",adResume);
 
     // game view
     $("backBtn").addEventListener("click",()=> switchView("home"));
@@ -4385,9 +4754,11 @@
       const ed=e.target.closest("[data-edit]"), dl=e.target.closest("[data-del]"), vf=e.target.closest("[data-vfy]");
       if(ed){ const p=state.players.find(x=>x.id===ed.dataset.edit); if(p) openPlrForm(p); }
       if(vf){ const p=state.players.find(x=>x.id===vf.dataset.vfy); if(p){
-        p.verified=p.verified==="gold"?"none":(p.verified==="blue"?"gold":"blue");
+        const cycle=["none",...state.vbadges.map(b=>b.id)];
+        const i=cycle.indexOf(p.verified); p.verified=cycle[(i+1)%cycle.length];
+        const nb=vbById(p.verified);
         saveAll(); renderPlrSummary(); renderPlayers();
-        toast("Verification → "+(p.verified==="blue"?"Blue Tick":p.verified==="gold"?"Gold Tick":"None"),"ok");
+        toast("Verification → "+(nb?nb.name:"None"),"ok");
       } }
       if(dl){ const p=state.players.find(x=>x.id===dl.dataset.del);
         if(p) openConfirm("Delete player <b>"+esc(p.name)+"</b> and all their stats?",()=>{ state.players=state.players.filter(x=>x.id!==p.id); saveAll(); renderPlrSummary(); renderPlayers(); toast("Player deleted","warn"); }); }
@@ -4448,6 +4819,19 @@
       if(ed){ const a=state.ach.find(x=>x.id===ed.dataset.aedit); if(a) openAchForm(a); }
       if(dl){ deleteAch(dl.dataset.adel); }
     });
+    $("vbSearch").addEventListener("input",()=> renderVb());
+    $("addVbBtn").addEventListener("click",()=> openVbForm(null));
+    $("vbForm").addEventListener("submit",submitVb);
+    $("vbCancelBtn").addEventListener("click",()=> $("vbFormOverlay").classList.remove("show"));
+    $("vbFormOverlay").addEventListener("click",e=>{ if(e.target===$("vbFormOverlay")) $("vbFormOverlay").classList.remove("show"); });
+    $("vbGrid").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-vbedit]"), dl=e.target.closest("[data-vbdel]");
+      if(ed){ const b=state.vbadges.find(x=>x.id===ed.dataset.vbedit); if(b) openVbForm(b); }
+      if(dl){ deleteVb(dl.dataset.vbdel); }
+    });
+    $("vbfColor").addEventListener("input",()=> renderVbPrev());
+    $("vbfGlow").addEventListener("change",()=> renderVbPrev());
+    $("vbfName").addEventListener("input",()=> renderVbPrev());
     $("addMatchBtn").addEventListener("click",()=> openBForm(null));
     $("autoBuildBtn").addEventListener("click",autoBuild);
     $("bForm").addEventListener("submit",submitB);
@@ -4501,7 +4885,21 @@
     // profile
     $("avatarRow").addEventListener("click",e=>{
       const b=e.target.closest("[data-av]"); if(!b) return;
-      state.profile.avatar=+b.dataset.av; saveAll(); renderAvatarRow();
+      state.profile.avatar=+b.dataset.av; saveAll(); renderAvatarRow(); renderProfile();
+    });
+    $("avCats").addEventListener("click",e=>{
+      const b=e.target.closest("[data-cat]"); if(!b) return;
+      avCatSel=b.dataset.cat; renderAvCats(); renderAvatarGrid();
+    });
+    $("avatarGrid").addEventListener("click",e=>{
+      const b=e.target.closest("[data-avem]"); if(!b) return;
+      state.profile.avatarE=b.dataset.avem; saveAll(); renderAvatarGrid(); renderProfile();
+      toast("Avatar set: "+(avatarByEmoji(b.dataset.avem)||{}).n);
+    });
+    $("frameGrid").addEventListener("click",e=>{
+      const b=e.target.closest("[data-frm]"); if(!b) return;
+      state.profile.frame=b.dataset.frm; saveAll(); renderFrameGrid(); renderProfile();
+      toast("Frame applied: "+(frameById(b.dataset.frm)||{}).n);
     });
     $("profileForm").addEventListener("submit",saveProfile);
 
@@ -4627,7 +5025,7 @@
 
     document.addEventListener("keydown",e=>{
       if(e.key!=="Escape") return;
-      ["formOverlay","pFormOverlay","tFormOverlay","sFormOverlay","aFormOverlay","bFormOverlay","mFormOverlay","mtFormOverlay","rFormOverlay","cFormOverlay","wFormOverlay","nFormOverlay","qFormOverlay"].forEach(id=> $(id).classList.remove("show"));
+      ["formOverlay","pFormOverlay","tFormOverlay","sFormOverlay","aFormOverlay","vbFormOverlay","bFormOverlay","mFormOverlay","mtFormOverlay","rFormOverlay","cFormOverlay","wFormOverlay","nFormOverlay","qFormOverlay"].forEach(id=> $(id).classList.remove("show"));
       closeConfirm(); closeSidebar();
     });
   }
