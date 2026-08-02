@@ -496,6 +496,148 @@
     .toolbar{flex-direction:column;align-items:stretch}
     .viewhead{flex-direction:column;align-items:flex-start}
   }
+
+  /* ============ PREMIUM ESPORT UPGRADE ============ */
+  #fxScan{position:fixed;inset:0;z-index:3;pointer-events:none;opacity:.05;
+    background:repeating-linear-gradient(0deg,rgba(180,220,255,.55) 0 1px,transparent 1px 3px)}
+  #fxVin{position:fixed;inset:0;z-index:3;pointer-events:none;
+    background:radial-gradient(ellipse at 50% 42%,transparent 52%,rgba(0,0,8,.55) 100%)}
+  #fxOrbs{position:fixed;inset:0;z-index:3;pointer-events:none;overflow:hidden}
+  #fxOrbs i{position:absolute;border-radius:50%;filter:blur(3px);opacity:.35;animation:orbFloat 13s ease-in-out infinite}
+  @keyframes orbFloat{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(18px,-26px) scale(1.12)}}
+
+  /* premium logo & titles */
+  header{position:relative;overflow:hidden}
+  header::after{content:"";position:absolute;left:0;right:0;top:0;height:2px;pointer-events:none;
+    background:linear-gradient(90deg,transparent,#0ff 30%,var(--gold) 50%,#b14bff 70%,transparent);background-size:250% 100%;
+    animation:hdSweep 5s linear infinite;z-index:5}
+  @keyframes hdSweep{0%{background-position:0% 0}100%{background-position:250% 0}}
+  header .logo h1,.sb-logo h1{
+    background:linear-gradient(90deg,#fff 0%,#ffe9a8 22%,var(--gold) 40%,#7df9ff 65%,#fff 100%);
+    background-size:220% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    animation:goldShine 6s ease-in-out infinite}
+  @keyframes goldShine{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  .sb-logo .bolt{background:linear-gradient(135deg,#ffd54a,#ff9d2f 40%,#ff3d6e 90%);box-shadow:0 0 26px rgba(255,213,74,.55),inset 0 0 12px rgba(255,255,255,.45)}
+  .page-title{background:linear-gradient(90deg,#fff,var(--gold) 30%,#ff9d2f 55%,#7df9ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    text-shadow:0 0 34px rgba(255,213,74,.35);filter:drop-shadow(0 0 12px rgba(61,123,255,.25))}
+  .vtitle h2{background:linear-gradient(90deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .section-head h3{font-family:'Orbitron';letter-spacing:2px;background:linear-gradient(90deg,#fff,var(--gold));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+
+  /* premium gradient borders on cards */
+  .tcard,.setcard,.regform,.bgcard,.theme-card,.regcard{position:relative}
+  .tcard::before,.setcard::before,.regform::before,.bgcard::before,.theme-card::before,.regcard::before{
+    content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;pointer-events:none;z-index:0;opacity:.75;
+    background:linear-gradient(165deg,var(--cyber) 0%,rgba(61,123,255,.15) 28%,rgba(177,75,255,.4) 62%,var(--gold) 100%);
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;
+    transition:opacity .3s}
+  .tcard:hover::before,.setcard:hover::before,.bgcard:hover::before,.theme-card:hover::before,.regcard:hover::before{opacity:1}
+  .tcard:hover{transform:translateY(-6px);border-color:transparent;box-shadow:0 20px 50px -20px var(--main),0 0 34px -8px var(--nav-glow)}
+
+  /* premium stats */
+  .stat{background:linear-gradient(160deg,rgba(18,26,52,.85),rgba(9,12,26,.9));border:1px solid rgba(120,140,255,.22)}
+  .stat::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--main)}
+  .stat::after{width:3px;background:linear-gradient(var(--main),transparent)}
+  .stat .num{text-shadow:0 0 18px var(--main);position:relative}
+  .stat .lbl{position:relative;color:var(--dim)}
+  .stat::before{width:100%;height:100%;background:radial-gradient(120px 80px at 20% -20%,var(--main) 0%,transparent 70%);opacity:.18;z-index:0}
+
+  /* premium buttons */
+  .addbtn{background:linear-gradient(120deg,var(--gold),#ff9d2f 30%,#ff3d6e 55%,#b14bff 85%);background-size:240% auto;
+    color:#160a02;box-shadow:0 14px 36px -12px rgba(255,157,47,.75),inset 0 1px 0 rgba(255,255,255,.5)}
+  .addbtn:hover{background-position:right center;box-shadow:0 18px 46px -12px rgba(255,157,47,.95)}
+  .addbtn.ghost{background:transparent;color:var(--cyber);border:1px solid var(--cyber);box-shadow:none}
+  .chip.active{background:linear-gradient(120deg,var(--gold),#ff9d2f);color:#160a02;border-color:transparent;box-shadow:0 0 22px rgba(255,213,74,.6)}
+  .badge.act{color:var(--gold);border-color:var(--gold);background:rgba(255,213,74,.1)}
+  .tbtn.edit{background:linear-gradient(120deg,rgba(0,255,255,.16),rgba(61,123,255,.16));border-color:var(--cyber);color:var(--cyber)}
+  .tbtn.edit:hover{box-shadow:0 0 18px rgba(0,255,255,.35);background:linear-gradient(120deg,rgba(0,255,255,.26),rgba(61,123,255,.26))}
+  .tbtn.del{background:linear-gradient(120deg,rgba(255,61,110,.14),rgba(255,92,43,.14));border-color:rgba(255,61,110,.6);color:#ff8fb0}
+  .tbtn.del:hover{box-shadow:0 0 18px rgba(255,61,110,.4)}
+
+  /* premium nav active */
+  .nav-item.active::before{content:"";position:absolute;left:-12px;top:20%;bottom:20%;width:4px;border-radius:0 6px 6px 0;
+    background:linear-gradient(var(--gold),var(--cyber));box-shadow:0 0 14px var(--gold)}
+
+  /* game cards sheen */
+  .gamecard{background:linear-gradient(160deg,rgba(16,22,44,.9),rgba(8,11,24,.96));overflow:hidden}
+  .gamecard::after{content:"";position:absolute;left:-60%;top:0;width:50%;height:100%;z-index:0;pointer-events:none;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.10),transparent);transform:skewX(-18deg);transition:.6s}
+  .gamecard:hover::after{left:130%}
+  .gamecard>*{position:relative;z-index:1}
+  .gamecard:hover{box-shadow:0 24px 60px -22px var(--main)}
+
+  /* premium modal */
+  .modal{border:1px solid rgba(120,140,255,.25);box-shadow:0 30px 90px -20px rgba(0,0,0,.8),0 0 60px -24px var(--cyber)}
+  .modal h3 .mi{background:linear-gradient(135deg,var(--gold),#ff9d2f 40%,#ff3d6e);color:#160a02;box-shadow:0 0 18px rgba(255,213,74,.5)}
+  .modal h3 .mi svg{color:#160a02}
+
+  /* premium tables */
+  #playersView table th{background:linear-gradient(90deg,rgba(61,123,255,.14),rgba(0,255,255,.05));color:var(--cyber)}
+  #playersView table tbody tr:hover{background:rgba(255,213,74,.04)}
+
+  /* premium scrollbar */
+  ::-webkit-scrollbar-thumb{background:linear-gradient(#ffd54a,#ff9d2f 40%,#ff3d6e);border-radius:8px}
+  ::-webkit-scrollbar-thumb:hover{background:linear-gradient(#ffe98a,#ffb02f 40%,#ff5c8a)}
+
+  /* premium field focus */
+  input:focus,select:focus{border-color:var(--gold)!important;box-shadow:0 0 0 3px rgba(255,213,74,.14)!important}
+
+  /* theme-card active */
+  .theme-card.sel{box-shadow:0 0 30px -6px rgba(255,213,74,.6)}
+  .theme-card.sel::before{opacity:1;background:linear-gradient(165deg,var(--gold),var(--cyber) 60%,#b14bff)}
+
+  /* ============ PINK PANTHER AI CHAT ============ */
+  .chat-fab{position:fixed;right:22px;bottom:22px;z-index:55;width:62px;height:62px;border-radius:50%;border:none;cursor:pointer;
+    background:linear-gradient(135deg,#ff9dd0,#ff4fa3 45%,#e6137e 90%);
+    box-shadow:0 10px 30px -6px rgba(255,79,163,.7),inset 0 2px 0 rgba(255,255,255,.6);
+    display:grid;place-items:center;transition:.3s;animation:fabPulse 2.6s ease-in-out infinite}
+  .chat-fab:hover{transform:translateY(-3px) scale(1.06)}
+  @keyframes fabPulse{0%,100%{box-shadow:0 10px 30px -6px rgba(255,79,163,.7)}50%{box-shadow:0 10px 42px -2px rgba(255,79,163,1)}}
+  .chat-fab .pdot{position:absolute;top:2px;right:2px;width:14px;height:14px;border-radius:50%;background:#ffd54a;border:2px solid #1c0a14;animation:blink 1.4s step-end infinite}
+  body:not(.authed) .chat-fab,body:not(.authed) .chat-panel{display:none}
+  .chat-panel{position:fixed;right:22px;bottom:94px;z-index:55;width:362px;max-width:calc(100vw - 32px);height:min(520px,calc(100vh - 150px));
+    display:flex;flex-direction:column;border-radius:22px;overflow:hidden;
+    background:linear-gradient(170deg,#23102c,#120a1c 60%,#160a20);border:1px solid rgba(255,79,163,.4);
+    box-shadow:0 30px 80px -18px rgba(0,0,0,.8),0 0 50px -18px rgba(255,79,163,.6);
+    transform:translateY(16px) scale(.96);opacity:0;pointer-events:none;transition:.28s cubic-bezier(.2,.8,.2,1)}
+  .chat-panel.show{transform:none;opacity:1;pointer-events:auto}
+  .chat-head{display:flex;align-items:center;gap:12px;padding:14px 16px;background:linear-gradient(120deg,rgba(255,79,163,.18),rgba(230,19,126,.1));border-bottom:1px solid rgba(255,79,163,.3)}
+  .chat-av{width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#ff9dd0,#e6137e);box-shadow:0 0 18px rgba(255,79,163,.6);flex:none}
+  .chat-av svg{width:28px;height:28px;color:#1c0a14}
+  .chat-head b{font-family:'Orbitron';font-size:13px;letter-spacing:1px;color:#ffd6ea}
+  .chat-head small{display:block;color:#c98aa8;font-size:11px;letter-spacing:1px;margin-top:2px}
+  .chat-head .close{margin-left:auto;width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,79,163,.4);background:transparent;color:#ff9dd0;cursor:pointer;font-size:16px;display:grid;place-items:center}
+  .chat-head .close:hover{background:rgba(255,79,163,.15)}
+  .chat-body{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+  .chat-msg{max-width:85%;padding:10px 13px;border-radius:14px;font-size:14px;line-height:1.45;letter-spacing:.3px;animation:msgIn .25s ease}
+  @keyframes msgIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  .chat-bot{align-self:flex-start;background:rgba(255,79,163,.12);border:1px solid rgba(255,79,163,.28);color:#ffe4f2;border-bottom-left-radius:4px}
+  .chat-user{align-self:flex-end;background:linear-gradient(120deg,rgba(61,123,255,.35),rgba(177,75,255,.3));border:1px solid rgba(120,140,255,.4);color:#fff;border-bottom-right-radius:4px}
+  .chat-typing{align-self:flex-start;display:inline-flex;gap:4px;align-items:center;padding:11px 14px;background:rgba(255,79,163,.12);border:1px solid rgba(255,79,163,.28);border-radius:14px;border-bottom-left-radius:4px}
+  .chat-typing i{width:6px;height:6px;border-radius:50%;background:#ff9dd0;animation:tp 1s ease-in-out infinite}
+  .chat-typing i:nth-child(2){animation-delay:.15s}
+  .chat-typing i:nth-child(3){animation-delay:.3s}
+  @keyframes tp{0%,100%{transform:translateY(0);opacity:.4}50%{transform:translateY(-5px);opacity:1}}
+  .chat-actions{display:flex;flex-direction:column;gap:8px;margin-top:4px}
+  .chat-actions button{font-family:'Rajdhani';font-weight:700;font-size:13px;letter-spacing:.5px;text-align:left;padding:10px 14px;border-radius:12px;cursor:pointer;
+    border:1px solid rgba(255,79,163,.35);background:rgba(255,79,163,.07);color:#ffcfe6;transition:.2s}
+  .chat-actions button:hover{background:rgba(255,79,163,.2);transform:translateX(3px)}
+  .chat-tour{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+  .chat-tour button{flex:1;min-width:120px;font-family:'Orbitron';font-weight:700;font-size:12px;letter-spacing:1px;padding:10px;border-radius:12px;cursor:pointer;
+    border:1px solid rgba(255,213,74,.5);background:rgba(255,213,74,.1);color:#ffd54a}
+  .chat-tour button:hover{background:rgba(255,213,74,.22)}
+  .chat-quick{display:flex;flex-wrap:wrap;gap:8px;padding:10px 14px;border-top:1px solid rgba(255,79,163,.2);background:rgba(10,6,16,.4)}
+  .chat-quick button{font-family:'Rajdhani';font-weight:700;font-size:12px;letter-spacing:.5px;padding:7px 12px;border-radius:100px;cursor:pointer;
+    border:1px solid rgba(255,79,163,.4);background:rgba(255,79,163,.08);color:#ffcfe6;transition:.2s}
+  .chat-quick button:hover{background:rgba(255,79,163,.22);border-color:#ff4fa3}
+  .chat-in{display:flex;gap:8px;padding:10px 12px;border-top:1px solid rgba(255,79,163,.2);background:rgba(10,6,16,.6)}
+  .chat-in input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,79,163,.3);border-radius:12px;padding:10px 12px;color:#fff;font-family:'Rajdhani';font-size:14px;outline:none;min-width:0}
+  .chat-in input:focus{border-color:#ff4fa3;box-shadow:0 0 0 3px rgba(255,79,163,.18)}
+  .chat-in button{width:42px;height:42px;border-radius:12px;border:none;cursor:pointer;background:linear-gradient(135deg,#ff9dd0,#e6137e);display:grid;place-items:center;flex:none;box-shadow:0 6px 18px -4px rgba(255,79,163,.7)}
+  .chat-in button svg{width:18px;height:18px;color:#1c0a14}
+  @media(max-width:640px){.chat-panel{right:12px;bottom:84px;height:min(460px,calc(100vh - 130px))}.chat-fab{right:14px;bottom:14px}}
+
+
 </style>
 </head>
 <body>
@@ -508,6 +650,9 @@
   <div class="cloud" style="top:120px;right:-6%;width:30vw;height:110px"></div>
   <div class="cloud" style="top:40%;left:-10%;width:34vw;height:120px"></div>
   <div class="fog"></div>
+  <div id="fxScan"></div>
+  <div id="fxVin"></div>
+  <div id="fxOrbs"><i style="left:8%;top:22%;width:7px;height:7px;background:#0ff"></i><i style="left:70%;top:14%;width:5px;height:5px;background:#ffd54a;animation-delay:-4s"></i><i style="left:38%;top:74%;width:8px;height:8px;background:#ff3d6e;animation-delay:-8s"></i><i style="left:86%;top:64%;width:6px;height:6px;background:#b14bff;animation-delay:-2s"></i><i style="left:20%;top:88%;width:5px;height:5px;background:#7df9ff;animation-delay:-6s"></i></div>
 
   <!-- ============ SIDEBAR ============ -->
   <aside id="sidebar">
@@ -544,7 +689,7 @@
     </nav>
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
-      <span>v3.6</span>
+      <span>v3.7</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -1367,6 +1512,49 @@
 
   <div id="toasts"></div>
 
+  <!-- ============ PINK PANTHER AI CHAT ============ -->
+  <button class="chat-fab" id="chatFab" title="Pinky AI Guide">
+    <svg viewBox="0 0 48 48">
+      <path d="M10 16 L5 4 L21 11 Z" fill="#e87aa8"/>
+      <path d="M38 16 L43 4 L27 11 Z" fill="#e87aa8"/>
+      <ellipse cx="24" cy="28" rx="17" ry="15" fill="#ff9dd0"/>
+      <path d="M14 14 Q16 9 20 11 M34 14 Q32 9 28 11" stroke="#e87aa8" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+      <ellipse cx="17.5" cy="27" rx="2.4" ry="3.8" fill="#1c0a14"/>
+      <ellipse cx="30.5" cy="27" rx="2.4" ry="3.8" fill="#1c0a14"/>
+      <ellipse cx="24" cy="34" rx="4.4" ry="3.2" fill="#1c0a14"/>
+      <path d="M24 37 c-2 2.4 -4.4 1.4 -5.6 -.8 M24 37 c2 2.4 4.4 1.4 5.6 -.8" stroke="#1c0a14" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M5 28 l-5 -2.4 M5 31 l-5 .4 M43 28 l5 -2.4 M43 31 l5 .4" stroke="#e87aa8" stroke-width="1.3" fill="none" stroke-linecap="round"/>
+    </svg>
+    <span class="pdot"></span>
+  </button>
+
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-head">
+      <div class="chat-av">
+        <svg viewBox="0 0 48 48">
+          <path d="M10 16 L5 4 L21 11 Z" fill="#e87aa8"/>
+          <path d="M38 16 L43 4 L27 11 Z" fill="#e87aa8"/>
+          <ellipse cx="24" cy="28" rx="17" ry="15" fill="#ff9dd0"/>
+          <ellipse cx="17.5" cy="27" rx="2.4" ry="3.8" fill="#1c0a14"/>
+          <ellipse cx="30.5" cy="27" rx="2.4" ry="3.8" fill="#1c0a14"/>
+          <ellipse cx="24" cy="34" rx="4.4" ry="3.2" fill="#1c0a14"/>
+          <path d="M24 37 c-2 2.4 -4.4 1.4 -5.6 -.8 M24 37 c2 2.4 4.4 1.4 5.6 -.8" stroke="#1c0a14" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <b>PINKY — AI GUIDE</b>
+        <small>Pink Panther · Esports Mentor</small>
+      </div>
+      <button class="close" id="chatClose" title="Close">x</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <div class="chat-quick" id="chatQuick"></div>
+    <div class="chat-in">
+      <input id="chatInput" placeholder="Ask me anything about the arena..." autocomplete="off" />
+      <button id="chatSend" title="Send"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+    </div>
+  </div>
+
   <datalist id="countryList"></datalist>
   <datalist id="teamList"></datalist>
 
@@ -1409,7 +1597,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -1539,7 +1727,7 @@
     state.ranked      = getStore(KEYS.ranked,null) ?? seedRanked();
     state.cheats      = getStore(KEYS.sec,   null) ?? seedCheats();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
-    state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5}, getStore(KEYS.set, {}));
+    state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
     saveAll();
@@ -2695,6 +2883,180 @@
   }
   function lockScreen(){ logout(); }
 
+  /* ===================== PINK PANTHER AI ===================== */
+  const ONBOARD=[
+    {v:"home",t:"Dashboard",d:"Your command center — every stat at a glance."},
+    {v:"players",t:"Players Stats",d:"Track kills, deaths, headshots and win rates."},
+    {v:"teams",t:"Teams & Captains",d:"Build squads, pick emblems and assign captains."},
+    {v:"cups",t:"Tournament Cups",d:"Prize cups with dates, statuses and big pools."},
+    {v:"warm",t:"Warm Up Matches",d:"Practice fixtures — no stats, just reps."},
+    {v:"ranked",t:"Ranked & Normal",d:"Competitive and casual match results."},
+    {v:"sec",t:"Anti-Cheat & Security",d:"Report cheaters, ban hackers, harden your login."},
+    {v:"themes",t:"Panel Themes",d:"Recolor the whole arena with PC game skins."}
+  ];
+  const QUICK=["How do I start?","How many players?","Add a tournament","Register a player","Report a cheater","Change password","What's new?"];
+  let tourIdx=-1, autoOnboarded=false;
+  function chatOpen(){ $("chatPanel").classList.add("show"); setTimeout(()=>$("chatInput").focus(),150); }
+  function chatClose(){
+    $("chatPanel").classList.remove("show");
+    if(autoOnboarded && !state.settings.onboarded){ state.settings.onboarded=true; saveAll(); }
+    autoOnboarded=false;
+  }
+  function chatSay(html, acts){
+    const d=document.createElement("div"); d.className="chat-msg chat-bot"; d.innerHTML=html;
+    if(acts&&acts.length){ const w=document.createElement("div"); w.className="chat-actions";
+      acts.forEach(a=>{ const b=document.createElement("button"); b.textContent=a.t; b.onclick=()=>a.fn(); w.appendChild(b); });
+      d.appendChild(w); }
+    $("chatBody").appendChild(d);
+    $("chatBody").scrollTop=$("chatBody").scrollHeight;
+  }
+  function chatUser(text){
+    const d=document.createElement("div"); d.className="chat-msg chat-user"; d.textContent=text;
+    $("chatBody").appendChild(d);
+    $("chatBody").scrollTop=$("chatBody").scrollHeight;
+  }
+  function botThink(then){
+    const tp=document.createElement("div"); tp.className="chat-typing"; tp.innerHTML="<i></i><i></i><i></i>";
+    $("chatBody").appendChild(tp); $("chatBody").scrollTop=$("chatBody").scrollHeight;
+    setTimeout(()=>{ tp.remove(); then(); }, 420+Math.random()*420);
+  }
+  function chatAsk(text){
+    if(!text||!text.trim()) return;
+    chatUser(text);
+    botThink(()=>{ const r=botReply(text); chatSay(r.html, r.acts); });
+  }
+  function renderQuick(){
+    $("chatQuick").innerHTML=QUICK.map(q=>`<button>${esc(q)}</button>`).join("");
+    $("chatQuick").querySelectorAll("button").forEach(b=> b.addEventListener("click",()=>chatAsk(b.textContent)));
+  }
+  function maybeOnboard(){
+    autoOnboarded=!state.settings.onboarded;
+    chatOpen();
+    if(!state.settings.onboarded){
+      chatSay("Welcome to the arena, <b>Champion</b>! I'm <b>Pinky</b>, your AI guide. I'll walk you through the panels so you never get lost.", [
+        {t:"Start Guided Tour",fn:startTour},
+        {t:"Just Exploring",fn:()=>{ state.settings.onboarded=true; saveAll(); }}
+      ]);
+    } else {
+      chatSay("Welcome back, <b>Champion</b>! Good to see you again. Want to jump back in or explore something new?", [
+        {t:"What's new?",fn:()=>chatAsk("What's new?")},
+        {t:"Help me",fn:()=>chatAsk("help")}
+      ]);
+    }
+  }
+  function startTour(){ tourIdx=0; tourStep(); }
+  function tourStep(){
+    if(tourIdx>=ONBOARD.length){
+      tourIdx=-1; state.settings.onboarded=true; saveAll();
+      chatSay("That was the full arena tour! You're ready, <b>Champion</b>. Ask me anything, anytime."); return;
+    }
+    const s=ONBOARD[tourIdx];
+    switchView(s.v);
+    chatSay("<b>"+(tourIdx+1)+". "+s.t+"</b><br>"+s.d, [
+      {t:"Next",fn:()=>{ tourIdx++; tourStep(); }},
+      {t:"Skip Tour",fn:()=>{ tourIdx=ONBOARD.length; tourStep(); }}
+    ]);
+  }
+  function botReply(q){
+    const t=q.toLowerCase();
+    const has=(...k)=>k.some(x=>t.includes(x));
+    const act=(t2,v)=>({t:t2,fn:()=>switchView(v)});
+    const cnt={ cup:state.cups.length, tournament:state.tournaments.length, player:state.players.length, team:state.teams.length,
+      fixture:state.matches.length, ranked:state.ranked.length, warm:state.warm.length, member:state.members.length,
+      record:state.records.length, report:state.cheats.length, banned:state.cheats.filter(x=>x.status==="banned").length,
+      open:state.cheats.filter(x=>x.status==="open").length };
+    if(has("banned","cheater","hack","anti-cheat","anticheat","report a cheater")){
+      return {html:"The <b>Anti-Cheat</b> panel keeps the arena clean.<br><br>Currently: <b>"+cnt.banned+"</b> banned, <b>"+cnt.open+"</b> open reports, <b>"+cnt.report+"</b> total.<br><br>Tap <b>+ REPORT PLAYER</b> to flag a suspect, add evidence, and set status to Banned when confirmed.", acts:[act("Open Anti-Cheat","sec")]};
+    }
+    if(has("how many","count","kitne","kitni","statistics","stats")){
+      const live=[["Tournaments",cnt.tournament],["Players",cnt.player],["Teams",cnt.team],["Cups",cnt.cup],["Fixtures",cnt.fixture],["Ranked & Normal",cnt.ranked],["Warm-Ups",cnt.warm],["Members",cnt.member],["Records",cnt.record],["Reports",cnt.report],["Banned",cnt.banned]]
+        .map(([n,v])=>`<b>${v}</b> ${n}`).join(" · ");
+      return {html:"Here's the live arena pulse:<br><br>"+live, acts:[act("Open Dashboard","home")]};
+    }
+    if(has("top player","best player","who is best","highest kills")){
+      const top=state.players.slice().sort((a,b)=>(b.kills||0)-(a.kills||0))[0];
+      return top? {html:"Current MVP is <b>"+esc(top.name)+"</b> with <b>"+(top.kills||0)+"</b> kills and <b>"+(top.wins||0)+"</b> wins.", acts:[act("Open Players","players")]}
+        : {html:"No players registered yet. Use <b>Register Player</b> to build your squad first.", acts:[act("Register Player","register")]};
+    }
+    if(has("prize","pool","winning","kiti")){
+      const p=state.cups.reduce((s,c)=>s+(+c.prize||0),0)+state.tournaments.reduce((s,x)=>s+(+x.prize||0),0);
+      return {html:"Total prize money across cups & tournaments: <b>$"+p.toLocaleString()+"</b>. Keep stacking those cups!", acts:[act("Tournament Cups","cups")]};
+    }
+    if(has("add tournament","new tournament","create tournament","tournament")){
+      return {html:"Open <b>Home</b>, tap a game card, then hit <b>+ ADD TOURNAMENT</b>. Fill in team, format, prize and dates — then save. Simple!", acts:[act("Go to Home","home")]};
+    }
+    if(has("register","add player","new player","player")){
+      return {html:"Go to <b>Register Player</b> under ACCOUNT. Add name, tag, country and role — your player appears in <b>Players Stats</b> instantly with full stat tracking.", acts:[act("Open Register","register")]};
+    }
+    if(has("cup")){
+      return {html:"<b>Tournament Cups</b> is where prize cups live. Tap <b>+ ADD CUP</b>, set game, format, prize and dates. Status badges show Upcoming / Live / Completed.", acts:[act("Open Tournament Cups","cups")]};
+    }
+    if(has("warm")){
+      return {html:"<b>Warm Up Matches</b> are practice fixtures — venue, time and notes, no pressure and no stats. Perfect for scrims.", acts:[act("Open Warm-Ups","warm")]};
+    }
+    if(has("ranked","normal match","competitive")){
+      return {html:"<b>Ranked & Normal</b> logs competitive and casual results. Pick the type, teams and scores — the app declares the winner automatically.", acts:[act("Open Ranked & Normal","ranked")]};
+    }
+    if(has("bracket","playoff","knockout")){
+      return {html:"<b>Brackets</b> runs your playoff tree — Quarter Final to Final. Use <b>Auto-Build</b> or add stage matches manually.", acts:[act("Open Brackets","brackets")]};
+    }
+    if(has("fixture","schedule","matches")){
+      return {html:"The <b>Matches</b> tab lists scheduled fixtures with dates and venues. Add, edit or delete them there.", acts:[act("Open Matches","matches")]};
+    }
+    if(has("team","captain")){
+      return {html:"<b>Teams & Captains</b> lets you create squads, choose emblems and assign captains. The backbone of every cup run.", acts:[act("Open Teams","teams")]};
+    }
+    if(has("member","squad","roster")){
+      return {html:"<b>Members</b> is your active squad roster — add players with roles and Active/Bench status.", acts:[act("Open Members","members")]};
+    }
+    if(has("record","result","history")){
+      return {html:"<b>Records</b> keeps every match result for history. Log wins and losses with scores there.", acts:[act("Open Records","records")]};
+    }
+    if(has("profile","bio","tag")){
+      return {html:"<b>Profile</b> is your esports identity — tag, name, country, avatar, social links and bio.", acts:[act("Open Profile","profile")]};
+    }
+    if(has("password","login","security","lock")){
+      return {html:"Head to <b>Anti-Cheat & Security → LOGIN SECURITY</b>. There you can change username/password, toggle Suspicious Activity Alerts, enable Auto-Lock and lock the screen instantly.", acts:[act("Open Security","sec")]};
+    }
+    if(has("theme","skin","recolor")){
+      return {html:"<b>Panel Themes</b> gives PC game skins — CS GO 2, PUBG PC, Blood Strike and COD MW19. Tap one and the whole arena recolors instantly.", acts:[act("Open Panel Themes","themes")]};
+    }
+    if(has("appearance","glass","glow","compact","corner")){
+      return {html:"<b>Appearance</b> tunes the look: glass blur, glow intensity, compact mode and corner style. Make the arena yours.", acts:[act("Open Appearance","appearance")]};
+    }
+    if(has("background","aurora","matrix","storm","rain")){
+      return {html:"<b>Animated Backgrounds</b> offers Thunderstorm, Neon Aurora and Cyber Matrix — with rain and lightning toggles.", acts:[act("Open Backgrounds","backgrounds")]};
+    }
+    if(has("setting","accent")){
+      return {html:"<b>Settings</b> has sound/rain/lightning toggles, accent colors, export/import backup and a full data reset.", acts:[act("Open Settings","settings")]};
+    }
+    if(has("backup","export","import","save data")){
+      return {html:"In <b>Settings</b> you'll find <b>Export Backup</b> (download all data as JSON) and <b>Import</b> to restore it. Keep your legacy safe!", acts:[act("Open Settings","settings")]};
+    }
+    if(has("reset","delete all","clear all","wipe")){
+      return {html:"Careful, Champion! <b>Reset All Data</b> in Settings wipes everything and restores demo data. It always asks for confirmation first.", acts:[act("Open Settings","settings")]};
+    }
+    if(has("new in","whats new","what's new","latest","update","v3.7","version")){
+      return {html:"Latest drop <b>v3.7</b>: a premium esport makeover + me, Pinky!<br>v3.6 added <b>Anti-Cheat & Security</b>.<br>v3.5 added <b>Tournament Cups, Warm-Up, Ranked & Normal</b> + <b>Panel Themes</b> + <b>Appearance</b>."};
+    }
+    if(has("start","begin","guide","help","how to","learn","kya","samjhao")){
+      return {html:"Pro start guide:<br><br>1. <b>Home</b> — browse games & add tournaments<br>2. <b>Register Player</b> — build your roster<br>3. <b>Tournament Cups</b> — set up prize cups<br>4. <b>Ranked & Normal</b> — log matches<br>5. <b>Anti-Cheat</b> — keep it clean<br><br>Want me to walk you through it?", acts:[{t:"Start Guided Tour",fn:startTour},{t:"Go Home",fn:()=>switchView("home")}]};
+    }
+    if(has("hello","hi ","hey","salam","assalam","yo","good")){
+      return {html:"Hey Champion! I'm <b>Pinky</b>, your AI arena guide. Ask me about any tab, tournament, stat or security feature — or tap a quick question below."};
+    }
+    if(has("who are you","your name","what are you","pinky","panther")){
+      return {html:"I'm <b>Pinky</b>, the Pink Panther AI mentor of this arena. New or pro — I'll guide you through every tab and feature like a coach."};
+    }
+    if(has("thank","shukria","great","awesome","nice","love")){
+      return {html:"Anytime, Champion! Keep building your legacy. Ask me anything else!"};
+    }
+    if(has("bye","goodbye","khuda hafiz","exit")){
+      return {html:"See you on the battlefield! I'll be right here when you need me. Pinky out."};
+    }
+    return {html:"I'm still sharpening my claws on that one. Try a suggestion below, or ask about <b>tournaments</b>, <b>players</b>, <b>cups</b>, <b>anti-cheat</b> or <b>themes</b>."};
+  }
+
   /* ===================== LOGIN / AUTH ===================== */
   const AUTH_KEY="gt_auth";
   function authGet(){ try{ return localStorage.getItem(AUTH_KEY)==="1"; }catch(e){ return false; } }
@@ -2703,8 +3065,10 @@
     const u=$("loginUser").value.trim(), p=$("loginPass").value;
     if(u===state.settings.user && p===state.settings.pass){
       try{ localStorage.setItem(AUTH_KEY,"1"); }catch(err){}
+      document.body.classList.add("authed");
       $("loginOverlay").classList.remove("show");
       toast("Welcome back, "+u);
+      setTimeout(maybeOnboard,350);
     } else {
       toast("Wrong username or password!","warn");
       $("loginPass").value="";
@@ -2712,6 +3076,8 @@
   }
   function logout(){
     try{ localStorage.removeItem(AUTH_KEY); }catch(err){}
+    document.body.classList.remove("authed");
+    chatClose();
     $("loginUser").value=""; $("loginPass").value="";
     $("loginOverlay").classList.add("show");
     toast("You have been logged out","warn");
@@ -3108,6 +3474,13 @@
     // login
     $("loginForm").addEventListener("submit",doLogin);
 
+    // pinky chat
+    $("chatFab").addEventListener("click",()=>{ const p=$("chatPanel"); if(p.classList.contains("show")) chatClose(); else chatOpen(); });
+    $("chatClose").addEventListener("click",chatClose);
+    $("chatSend").addEventListener("click",()=>{ const i=$("chatInput"); chatAsk(i.value); i.value=""; i.focus(); });
+    $("chatInput").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); $("chatSend").click(); } });
+    renderQuick();
+
     // confirm modal
     $("confirmOk").addEventListener("click",()=>{ if(pendingCb){ const cb=pendingCb; pendingCb=null; cb(); } closeConfirm(); });
     $("confirmCancel").addEventListener("click",closeConfirm);
@@ -3128,6 +3501,7 @@
 
   /* ===================== BOOT ===================== */
   if(authGet()){
+    document.body.classList.add("authed");
     $("loginOverlay").classList.remove("show");
   } else {
     $("loginOverlay").classList.add("show");
