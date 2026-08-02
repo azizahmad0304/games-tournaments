@@ -23,10 +23,10 @@
     --nav-bd:rgba(0,255,255,.25);
     --nav-glow:rgba(0,255,255,.08);
   }
-  body.pt-csgo{--sb-grad:linear-gradient(180deg,rgba(30,17,5,.94),rgba(12,7,2,.97));--hd-grad:linear-gradient(180deg,rgba(30,17,5,.9),rgba(12,7,2,.35));--pn-grad:linear-gradient(160deg,rgba(32,20,8,.92),rgba(15,9,3,.96));--md-grad:linear-gradient(170deg,#2b1806,#120a02);--nav-bg:linear-gradient(90deg,rgba(255,122,26,.16),rgba(255,122,26,.03));--nav-bd:rgba(255,122,26,.38);--nav-glow:rgba(255,122,26,.12)}
-  body.pt-pubg{--sb-grad:linear-gradient(180deg,rgba(26,18,4,.94),rgba(10,7,2,.97));--hd-grad:linear-gradient(180deg,rgba(26,18,4,.9),rgba(10,7,2,.35));--pn-grad:linear-gradient(160deg,rgba(28,20,7,.92),rgba(12,8,2,.96));--md-grad:linear-gradient(170deg,#241a05,#120b02);--nav-bg:linear-gradient(90deg,rgba(255,183,0,.16),rgba(255,183,0,.03));--nav-bd:rgba(255,183,0,.4);--nav-glow:rgba(255,183,0,.12)}
-  body.pt-bs{--sb-grad:linear-gradient(180deg,rgba(26,6,12,.94),rgba(10,2,5,.97));--hd-grad:linear-gradient(180deg,rgba(26,6,12,.9),rgba(10,2,5,.35));--pn-grad:linear-gradient(160deg,rgba(28,9,14,.92),rgba(12,3,6,.96));--md-grad:linear-gradient(170deg,#25080f,#100309);--nav-bg:linear-gradient(90deg,rgba(255,45,85,.16),rgba(255,45,85,.03));--nav-bd:rgba(255,45,85,.4);--nav-glow:rgba(255,45,85,.12)}
-  body.pt-cod{--sb-grad:linear-gradient(180deg,rgba(9,17,9,.94),rgba(4,8,4,.97));--hd-grad:linear-gradient(180deg,rgba(9,17,9,.9),rgba(4,8,4,.35));--pn-grad:linear-gradient(160deg,rgba(13,22,12,.92),rgba(5,9,5,.96));--md-grad:linear-gradient(170deg,#101d10,#060b06);--nav-bg:linear-gradient(90deg,rgba(139,195,74,.16),rgba(139,195,74,.03));--nav-bd:rgba(139,195,74,.4);--nav-glow:rgba(139,195,74,.12)}
+  body.pt-csgo{--bg:#0d0804;--bg2:#160d05;--panel:rgba(46,27,9,.8);--panel2:rgba(56,34,12,.9);--stroke:rgba(255,150,60,.25);--sb-grad:linear-gradient(180deg,rgba(30,17,5,.94),rgba(12,7,2,.97));--hd-grad:linear-gradient(180deg,rgba(30,17,5,.9),rgba(12,7,2,.35));--pn-grad:linear-gradient(160deg,rgba(32,20,8,.92),rgba(15,9,3,.96));--md-grad:linear-gradient(170deg,#2b1806,#120a02);--nav-bg:linear-gradient(90deg,rgba(255,122,26,.16),rgba(255,122,26,.03));--nav-bd:rgba(255,122,26,.38);--nav-glow:rgba(255,122,26,.12)}
+  body.pt-pubg{--bg:#0c0802;--bg2:#151003;--panel:rgba(52,38,8,.8);--panel2:rgba(62,46,12,.9);--stroke:rgba(255,200,70,.25);--sb-grad:linear-gradient(180deg,rgba(26,18,4,.94),rgba(10,7,2,.97));--hd-grad:linear-gradient(180deg,rgba(26,18,4,.9),rgba(10,7,2,.35));--pn-grad:linear-gradient(160deg,rgba(28,20,7,.92),rgba(12,8,2,.96));--md-grad:linear-gradient(170deg,#241a05,#120b02);--nav-bg:linear-gradient(90deg,rgba(255,183,0,.16),rgba(255,183,0,.03));--nav-bd:rgba(255,183,0,.4);--nav-glow:rgba(255,183,0,.12)}
+  body.pt-bs{--bg:#0d0306;--bg2:#17040a;--panel:rgba(56,14,24,.8);--panel2:rgba(66,18,30,.9);--stroke:rgba(255,90,120,.25);--sb-grad:linear-gradient(180deg,rgba(26,6,12,.94),rgba(10,2,5,.97));--hd-grad:linear-gradient(180deg,rgba(26,6,12,.9),rgba(10,2,5,.35));--pn-grad:linear-gradient(160deg,rgba(28,9,14,.92),rgba(12,3,6,.96));--md-grad:linear-gradient(170deg,#25080f,#100309);--nav-bg:linear-gradient(90deg,rgba(255,45,85,.16),rgba(255,45,85,.03));--nav-bd:rgba(255,45,85,.4);--nav-glow:rgba(255,45,85,.12)}
+  body.pt-cod{--bg:#050905;--bg2:#0a1109;--panel:rgba(24,38,22,.8);--panel2:rgba(30,46,28,.9);--stroke:rgba(150,210,110,.22);--sb-grad:linear-gradient(180deg,rgba(9,17,9,.94),rgba(4,8,4,.97));--hd-grad:linear-gradient(180deg,rgba(9,17,9,.9),rgba(4,8,4,.35));--pn-grad:linear-gradient(160deg,rgba(13,22,12,.92),rgba(5,9,5,.96));--md-grad:linear-gradient(170deg,#101d10,#060b06);--nav-bg:linear-gradient(90deg,rgba(139,195,74,.16),rgba(139,195,74,.03));--nav-bd:rgba(139,195,74,.4);--nav-glow:rgba(139,195,74,.12)}
   body.gl-low .nav-item.active{box-shadow:none}
   body.gl-low .addbtn,body.gl-low .chip.active,body.gl-low .gamecard,body.gl-low .mbtn.save{box-shadow:none}
   body.gl-high .nav-item.active{box-shadow:0 0 18px var(--nav-glow) inset,0 0 22px var(--cyber)}
@@ -329,6 +329,10 @@
   .switch.on{background:linear-gradient(120deg,var(--cyber),var(--cyber2))}
   .switch.on::after{transform:translateX(23px)}
   .accentrow{display:flex;gap:12px;flex-wrap:wrap}
+  .watchbtn{display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--cyber),var(--cyber2));color:#000;font-weight:800;font-size:13px;padding:10px 12px;border-radius:10px;text-decoration:none;letter-spacing:.5px}
+  .watchbtn:hover{filter:brightness(1.15)}
+  .chip-link{display:inline-flex;margin:3px;padding:6px 11px;font-size:12px;background:rgba(255,255,255,.06);border:1px solid var(--stroke);border-radius:999px;color:var(--txt);cursor:pointer;text-decoration:none;transition:.2s}
+  .chip-link:hover{background:rgba(255,255,255,.13);border-color:var(--cyber);color:#fff}
   .accent{width:44px;height:44px;border-radius:50%;cursor:pointer;border:3px solid transparent;transition:.2s}
   .accent:hover{transform:scale(1.15)}
   .accent.sel{border-color:#fff;box-shadow:0 0 16px currentColor}
@@ -699,11 +703,13 @@
       <a class="nav-item" data-view="register"><span class="ni"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg></span> Register Player</a>
       <div class="nav-sep">CUSTOMIZE</div>
       <a class="nav-item" data-view="themes"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 10-10c0 1.7-1.3 3-3 3h-2.3a2 2 0 0 0-1.5 3.3c.6.7.3 1.7-.6 1.7H12z"/><circle cx="7.5" cy="10.5" r="1.5"/><circle cx="12" cy="7.5" r="1.5"/><circle cx="16.5" cy="10.5" r="1.5"/></svg></span> Panel Themes</a>
+      <a class="nav-item" data-view="learn"><span class="ni"><svg viewBox="0 0 24 24"><path d="M22 12V6l-8 6 8 6z"/><path d="M17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg></span> Learn &amp; Tutorials</a>
       <a class="nav-item" data-view="appearance"><span class="ni"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span> Appearance</a>
     </nav>
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
-      <span>v3.7</span>
+      <button id="sbBgmBtn">Music</button>
+      <span>v3.8</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -921,6 +927,10 @@
             <div class="lbl">Lightning Strikes <small>Random lightning bolts &amp; screen flashes</small></div>
             <button class="switch" id="tgLight" data-k="lightning"></button>
           </div>
+          <div class="setrow">
+            <div class="lbl">Background Music <small>Ambient arena loop — chill pads &amp; arpeggio while you play</small></div>
+            <button class="switch" id="tgBgm" data-k="bgm"></button>
+          </div>
         </div>
 
         <div class="setcard">
@@ -1027,6 +1037,13 @@
         <div class="page-title">PANEL THEMES</div>
         <div class="page-sub">Recolor the whole arena with PC game panel skins — CS GO 2, PUBG PC, Blood Strike &amp; more.</div>
         <div class="bggrid" id="themeGrid"></div>
+      </section>
+
+      <!-- ============ LEARN & TUTORIALS ============ -->
+      <section id="learnView" class="hidden">
+        <div class="page-title">LEARN &amp; TUTORIALS</div>
+        <div class="page-sub">Level up with hand-picked video tutorial recommendations — beginner guides, aim training, maps &amp; pro settings.</div>
+        <div class="grid" id="learnGrid"></div>
       </section>
 
       <!-- ============ APPEARANCE ============ -->
@@ -1611,7 +1628,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], profile:null, settings:{sound:false,rain:true,lightning:true,bgm:false,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -1741,7 +1758,7 @@
     state.ranked      = getStore(KEYS.ranked,null) ?? seedRanked();
     state.cheats      = getStore(KEYS.sec,   null) ?? seedCheats();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
-    state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""}, getStore(KEYS.set, {}));
+    state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
     saveAll();
@@ -1769,7 +1786,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",appearance:"appearanceView",sec:"secView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",appearance:"appearanceView",sec:"secView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -1788,6 +1805,7 @@
     if(v==="warm"){ renderWarmSummary(); renderWarm(); }
     if(v==="ranked"){ renderRankedSummary(); renderRanked(); }
     if(v==="themes"){ renderThemes(); }
+    if(v==="learn"){ renderLearn(); }
     if(v==="appearance"){ renderAppearance(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
     closeSidebar();
@@ -2444,7 +2462,9 @@
     $("tgSound").classList.toggle("on",state.settings.sound);
     $("tgRain").classList.toggle("on",state.settings.rain);
     $("tgLight").classList.toggle("on",state.settings.lightning);
+    $("tgBgm").classList.toggle("on",state.settings.bgm);
     $("sbSoundBtn").textContent = state.settings.sound? "Sound: ON" : "Sound: OFF";
+    $("sbBgmBtn").textContent = state.settings.bgm? "Music: ON" : "Music: OFF";
     $("accentRow").innerHTML=ACCENTS.map((a,i)=>`<button class="accent ${i===state.settings.accent?"sel":""}" data-ac="${i}" style="background:linear-gradient(135deg,${a.c},${a.c2});color:${a.c}" title="${a.name}"></button>`).join("");
     applyAccent();
     applyBg();
@@ -2454,8 +2474,9 @@
   function toggleSetting(k){
     state.settings[k]=!state.settings[k];
     if(k==="sound" && state.settings.sound){ ensureAudio(); flashUp(0.5); thunder(); }
+    if(k==="bgm"){ if(state.settings.bgm){ ensureAudio(); bgmStart(); } else bgmStop(); }
     saveAll(); renderSettings();
-    const names={sound:"Thunder sound",rain:"Rain",lightning:"Lightning"};
+    const names={sound:"Thunder sound",rain:"Rain",lightning:"Lightning",bgm:"Background music"};
     toast(names[k]+(state.settings[k]?" enabled":" disabled"));
   }
 
@@ -2788,6 +2809,29 @@
   function setTheme(k){
     state.settings.panelTheme=k; saveAll(); renderThemes(); applyPanelTheme();
     toast("Panel theme: "+THEMES[k].name);
+  }
+
+  /* ===================== LEARN & TUTORIALS ===================== */
+  const LEARN_GAMES=[
+    {key:"csgo",name:"CS GO 2",color:"#ff7a1a",c2:"#ffd54a",desc:"Tactical shooter mastery — crosshair, utility & team play.",topics:["Beginner guide","Aim training routine","All maps guide","Crosshair & settings","Utility & nades","Tournament strategy"]},
+    {key:"pubg",name:"PUBG PC",color:"#ffb700",c2:"#ff7a00",desc:"Survive & rotate smart — loot routes, recoil control & squad play.",topics:["Beginner guide","Recoil & aim control","Erangel + Miramar map guide","Best settings 2026","Squad strategy","Solo vs Squad tips"]},
+    {key:"bs",name:"Blood Strike",color:"#ff2d55",c2:"#ff7a5c",desc:"Fast arena fights — movement, abilities & weapon mastery.",topics:["Beginner guide","Movement & abilities","Weapons guide","Best settings","Ranked climbing tips"]},
+    {key:"cod",name:"COD MW19",color:"#8bc34a",c2:"#cddc39",desc:"Modern Warfare meta — loadouts, map angles & WZ strategy.",topics:["Beginner guide","Aim training","Class setup & loadouts","Map guide","WZ strategy"]}
+  ];
+  function ytQuery(name,topic){ return "https://www.youtube.com/results?search_query="+encodeURIComponent(name+" "+topic+" tutorial 2026"); }
+  function renderLearn(){
+    $("learnGrid").innerHTML=LEARN_GAMES.map(g=>`
+      <article class="tcard slideup" style="background:linear-gradient(160deg,${g.color}22,transparent 60%),var(--pn-grad)">
+        <div class="top" style="background:linear-gradient(135deg,${g.color},${g.c2});color:#000;border-bottom:none">
+          <div style="font-weight:800;font-size:17px;letter-spacing:1px">${g.name}</div>
+          <span style="font-size:11px;opacity:.75;font-weight:700">VIDEO GUIDES</span>
+        </div>
+        <div class="body">
+          <p style="margin:0 0 12px;font-size:13px;color:var(--dim);line-height:1.5">${g.desc}</p>
+          <a target="_blank" rel="noopener" href="${ytQuery(g.name,"full course")}" class="watchbtn">&#9654; Watch recommended course</a>
+          <div style="margin-top:12px">${g.topics.map(t=>`<a class="chip-link" target="_blank" rel="noopener" href="${ytQuery(g.name,t)}">${t}</a>`).join("")}</div>
+        </div>
+      </article>`).join("");
   }
 
   /* ===================== APPEARANCE ===================== */
@@ -3192,6 +3236,10 @@
     if(has("background","aurora","matrix","storm","rain")){
       return {html:maybeProbe("<b>Animated Backgrounds</b> offers Thunderstorm, Neon Aurora, Cyber Matrix and Campsite Night — a boy by the bonfire under the stars with lightning. Rain & lightning toggles control the weather."), acts:[act("Open Backgrounds","backgrounds")]};
     }
+    if(has("tutorial","video guide","seekh","sikh","learn to play","improve my","practice","aim train","coach")){
+      chatMem.lastTopic="learn";
+      return {html:"Great idea, "+tagline()+"! The new <b>Learn & Tutorials</b> tab has recommended video guides for CS GO 2, PUBG PC, Blood Strike and COD MW19 — beginner basics, aim training, map guides & pro settings. Want me to open it?", acts:[act("Open Tutorials","learn")]};
+    }
     if(has("setting","accent")){
       return {html:maybeProbe("<b>Settings</b> has sound/rain/lightning toggles, accent colors, export/import backup and a full data reset."), acts:[act("Open Settings","settings")]};
     }
@@ -3201,8 +3249,8 @@
     if(has("reset","delete all","clear all","wipe")){
       return {html:maybeProbe("Careful, Champion! <b>Reset All Data</b> in Settings wipes everything and restores demo data. It always asks for confirmation first."), acts:[act("Open Settings","settings")]};
     }
-    if(has("new in","whats new","what's new","latest","update","v3.7","version")){
-      return {html:"Latest drop <b>v3.7</b>: a premium esport makeover + me, Pinky!<br>v3.6 added <b>Anti-Cheat & Security</b>.<br>v3.5 added <b>Tournament Cups, Warm-Up, Ranked & Normal</b> + <b>Panel Themes</b> + <b>Appearance</b>."};
+    if(has("new in","whats new","what's new","latest","update","v3.7","v3.8","version")){
+      return {html:"Latest drop <b>v3.8</b>: me, Pinky, got smarter — I remember your name & game, follow up and suggest tutorials. Plus <b>Learn & Tutorials</b> video recommendations, <b>Background Music</b> and themes that recolor the whole arena.<br>v3.7 added the premium esport look + Campsite Night background."};
     }
     if(has("help","guide","how do i start","how to start","begin","learn","walk me through","tour","samjha","help me")){
       chatMem.lastTopic="guide";
@@ -3543,6 +3591,66 @@
     }catch(e){}
   }
 
+  /* ---- ambient background music (Web Audio, no files) ---- */
+  let bgmOn=false, bgmGain=null, bgmTimer=null, bgmNext=0, bgmStep=0;
+  const BGM_CHORDS=[[220,277.18,329.63],[174.61,220,261.63],[164.81,207.65,246.94],[130.81,196,246.94]];
+  function bgmStart(){
+    if(bgmOn||!state.settings.bgm) return;
+    ensureAudio();
+    if(!audioCtx) return;
+    bgmOn=true;
+    try{
+      bgmGain=audioCtx.createGain(); bgmGain.gain.value=0; bgmGain.connect(audioCtx.destination);
+      bgmGain.gain.linearRampToValueAtTime(0.14, audioCtx.currentTime+2.5);
+      bgmNext=audioCtx.currentTime+0.1; bgmStep=0;
+      bgmTimer=setInterval(bgmTick,150);
+    }catch(e){ bgmOn=false; }
+  }
+  function bgmStop(){
+    if(!bgmOn) return; bgmOn=false;
+    if(bgmTimer){ clearInterval(bgmTimer); bgmTimer=null; }
+    if(bgmGain&&audioCtx){ try{ bgmGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime+1); }catch(e){} }
+  }
+  function bgmTick(){
+    if(!bgmOn||!audioCtx) return;
+    const t=audioCtx.currentTime;
+    try{
+      while(bgmNext<t+0.9){
+        const chords=BGM_CHORDS[Math.floor(bgmStep/16)%BGM_CHORDS.length];
+        const s=bgmStep%16;
+        if(s===0) chords.forEach((f,i)=> padNote(f*0.5, bgmNext, 3.6, i===0?0.055:0.04));
+        if(s%2===0){ const f=chords[Math.floor(Math.random()*3)]*2; pluckNote(f, bgmNext+0.02, 0.05); }
+        bgmStep++; bgmNext+=0.5;
+      }
+    }catch(e){}
+  }
+  function padNote(freq,when,dur,vol){
+    try{
+      const o=audioCtx.createOscillator(); o.type="sine"; o.frequency.value=freq;
+      const o2=audioCtx.createOscillator(); o2.type="triangle"; o2.frequency.value=freq*2.01;
+      const lp=audioCtx.createBiquadFilter(); lp.type="lowpass"; lp.frequency.value=900;
+      const g=audioCtx.createGain(); g.gain.value=0;
+      g.gain.setValueAtTime(0,when);
+      g.gain.linearRampToValueAtTime(vol,when+0.9);
+      g.gain.setValueAtTime(vol,when+dur-1.2);
+      g.gain.linearRampToValueAtTime(0,when+dur);
+      const og=audioCtx.createGain(); og.gain.value=0.3;
+      o.connect(lp); o2.connect(og).connect(lp); lp.connect(g); g.connect(bgmGain);
+      o.start(when); o.stop(when+dur+0.1); o2.start(when); o2.stop(when+dur+0.1);
+    }catch(e){}
+  }
+  function pluckNote(freq,when,vol){
+    try{
+      const o=audioCtx.createOscillator(); o.type="triangle"; o.frequency.value=freq;
+      const g=audioCtx.createGain(); g.gain.value=0;
+      g.gain.setValueAtTime(0,when);
+      g.gain.linearRampToValueAtTime(vol,when+0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001,when+0.7);
+      o.connect(g).connect(bgmGain);
+      o.start(when); o.stop(when+0.8);
+    }catch(e){}
+  }
+
   /* ===================== WIRING ===================== */
   function wire(){
     // nav / sidebar
@@ -3551,6 +3659,7 @@
     $("sbOverlay").addEventListener("click",closeSidebar);
     $("homeBtn").addEventListener("click",()=> switchView("home"));
     $("sbSoundBtn").addEventListener("click",()=> toggleSetting("sound"));
+    $("sbBgmBtn").addEventListener("click",()=> toggleSetting("bgm"));
 
     // home
     $("gamesRow").addEventListener("click",e=>{ const c=e.target.closest(".gamecard"); if(c) openGame(c.dataset.game); });
@@ -3677,6 +3786,7 @@
     $("tgSound").addEventListener("click",()=> toggleSetting("sound"));
     $("tgRain").addEventListener("click",()=> toggleSetting("rain"));
     $("tgLight").addEventListener("click",()=> toggleSetting("lightning"));
+    $("tgBgm").addEventListener("click",()=> toggleSetting("bgm"));
     $("accentRow").addEventListener("click",e=>{
       const b=e.target.closest("[data-ac]"); if(!b) return;
       state.settings.accent=+b.dataset.ac; saveAll(); renderSettings(); toast("Accent color changed");
@@ -3814,6 +3924,10 @@
   renderSettings();
   switchView("home");
   requestAnimationFrame(loop);
+  if(state.settings.bgm){
+    const bgmBoot=()=>{ bgmStart(); document.removeEventListener("pointerdown", bgmBoot); };
+    document.addEventListener("pointerdown", bgmBoot);
+  }
 })();
 </script>
 </body>
