@@ -1611,7 +1611,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -1741,7 +1741,7 @@
     state.ranked      = getStore(KEYS.ranked,null) ?? seedRanked();
     state.cheats      = getStore(KEYS.sec,   null) ?? seedCheats();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
-    state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false}, getStore(KEYS.set, {}));
+    state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
     saveAll();
@@ -2909,8 +2909,32 @@
     {v:"sec",t:"Anti-Cheat & Security",d:"Report cheaters, ban hackers, harden your login."},
     {v:"themes",t:"Panel Themes",d:"Recolor the whole arena with PC game skins."}
   ];
-  const QUICK=["How do I start?","How many players?","Add a tournament","Register a player","Report a cheater","Change password","What's new?"];
-  let tourIdx=-1, autoOnboarded=false;
+  const QUICK=["How do I start?","How many players?","Tell me a joke","Give me a tip","What can you do?","Change password","What's new?"];
+  const GAME_ALIASES=[["csgo","CS GO 2"],["cs2","CS GO 2"],["cs go","CS GO 2"],["counter strike","CS GO 2"],["pubg","PUBG PC"],["playerunknown","PUBG PC"],["blood strike","Blood Strike"],["bloodstrike","Blood Strike"],["cod","COD MW19"],["call of duty","COD MW19"],["modern warfare","COD MW19"]];
+  const JOKES=[
+    "Why did the fragger unplug his PC? He kept getting reported for 'aim'... by himself.",
+    "My aim is so bad, my crosshair filed a missing person report.",
+    "The phrase 'GG EZ' is actually ancient Roman for 'please 1v1 me, I lost'.",
+    "Coach said 'watch the flank'... so I subscribed to his Twitch.",
+    "My WiFi is so slow, my lag switch thinks I'm playing in 240p.",
+    "Squad wipe? No thanks — I already wiped the floor with my hopes last match."
+  ];
+  const TIPS=[
+    "Learn 3 reliable pre-fire angles per map — muscle memory wins clutches.",
+    "Lower your sensitivity slightly and practice flicks 10 min before each session.",
+    "Warm-up: 5 min aim drills + 2 warm-up matches in the app before Ranked.",
+    "Call your info clearly: enemy, count, position. Silence loses rounds.",
+    "Keep crosshair at head height at ALL times — don't aim at the floor.",
+    "Take a 5-min break every 3 matches. Tilt is a silent rank-killer."
+  ];
+  const MOTIVE=[
+    "Every pro started as a nobody in a lobby. Keep grinding, Champion.",
+    "One more match, one more clutch. That's how legends are made.",
+    "Your rank is just a number — your heart wins tournaments.",
+    "Haters say 'lucky'. Losers said that about every champion."
+  ];
+  const PRAISE=["That's the spirit!","Love that energy!","Now we're talking!","Champion mindset!","That's what I like to hear!"];
+  let tourIdx=-1, autoOnboarded=false, chatMem={ name:state.settings.chatName||"", game:state.settings.chatGame||"", msgs:0, lastTopic:"", convo:[] };
   function chatOpen(){ $("chatPanel").classList.add("show"); setTimeout(()=>$("chatInput").focus(),150); }
   function chatClose(){
     $("chatPanel").classList.remove("show");
@@ -2930,15 +2954,17 @@
     $("chatBody").appendChild(d);
     $("chatBody").scrollTop=$("chatBody").scrollHeight;
   }
-  function botThink(then){
+  function botThink(then, ms){
     const tp=document.createElement("div"); tp.className="chat-typing"; tp.innerHTML="<i></i><i></i><i></i>";
     $("chatBody").appendChild(tp); $("chatBody").scrollTop=$("chatBody").scrollHeight;
-    setTimeout(()=>{ tp.remove(); then(); }, 420+Math.random()*420);
+    setTimeout(()=>{ tp.remove(); then(); }, ms!=null?ms:480+Math.random()*420);
   }
   function chatAsk(text){
     if(!text||!text.trim()) return;
     chatUser(text);
-    botThink(()=>{ const r=botReply(text); chatSay(r.html, r.acts); });
+    const r=botReply(text);
+    const d=Math.min(1800, 460+r.html.length*0.55+Math.random()*320);
+    botThink(()=>chatSay(r.html, r.acts), d);
   }
   function renderQuick(){
     $("chatQuick").innerHTML=QUICK.map(q=>`<button>${esc(q)}</button>`).join("");
@@ -2953,9 +2979,10 @@
         {t:"Just Exploring",fn:()=>{ state.settings.onboarded=true; saveAll(); }}
       ]);
     } else {
-      chatSay("Welcome back, <b>Champion</b>! Good to see you again. Want to jump back in or explore something new?", [
+      chatSay("Welcome back"+(chatMem.name?", <b>"+esc(chatMem.name)+"</b>":"")+"! I remember we were talking about <b>"+(chatMem.game||"the arena")+"</b>. Want to pick up where we left off?", [
         {t:"What's new?",fn:()=>chatAsk("What's new?")},
-        {t:"Help me",fn:()=>chatAsk("help")}
+        {t:"Help me",fn:()=>chatAsk("help")},
+        {t:"Tell me a joke",fn:()=>chatAsk("Tell me a joke")}
       ]);
     }
   }
@@ -2972,104 +2999,219 @@
       {t:"Skip Tour",fn:()=>{ tourIdx=ONBOARD.length; tourStep(); }}
     ]);
   }
+  function tagline(){ return chatMem.name?esc(chatMem.name):"Champion"; }
+  function greetWord(){
+    const h=new Date().getHours();
+    return h<5?"Good night, night owl":h<12?"Good morning":h<17?"Good afternoon":h<21?"Good evening":"Good night";
+  }
+  let lastProbe=-1;
+  function maybeProbe(html){
+    if(/\?\s*$/.test(html)) return html;
+    const p=[
+      "Want me to show you around the arena?",
+      "Anything else on your mind, "+tagline()+"?",
+      "I can also set up a tournament or register your squad — just say the word.",
+      "Curious about the Anti-Cheat tab? It keeps the arena clean.",
+      "Want a pro tip for "+(chatMem.game||"your game")+"?",
+      "Should I pull up the live stats?"
+    ];
+    let i=Math.floor(Math.random()*p.length);
+    if(i===lastProbe) i=(i+1)%p.length;
+    lastProbe=i;
+    return html+"<br><br>"+p[i];
+  }
   function botReply(q){
-    const t=q.toLowerCase();
+    const raw=q.trim();
+    const t=raw.toLowerCase().replace(/[^a-z0-9\s']/gi," ").replace(/\s+/g," ").trim();
     const has=(...k)=>k.some(x=>t.includes(x));
     const act=(t2,v)=>({t:t2,fn:()=>switchView(v)});
     const cnt={ cup:state.cups.length, tournament:state.tournaments.length, player:state.players.length, team:state.teams.length,
       fixture:state.matches.length, ranked:state.ranked.length, warm:state.warm.length, member:state.members.length,
       record:state.records.length, report:state.cheats.length, banned:state.cheats.filter(x=>x.status==="banned").length,
       open:state.cheats.filter(x=>x.status==="open").length };
+    chatMem.msgs++;
+    chatMem.convo.push({u:raw});
+    if(chatMem.convo.length>8) chatMem.convo.shift();
+
+    /* ---- remember the name ---- */
+    let nmWord=null;
+    const nmMatch=raw.match(/(?:my name is|call me|mera naam|mujhe bulao)\s+([a-z0-9_]+)/i);
+    if(nmMatch && !["pinky","panther","champion"].includes(nmMatch[1].toLowerCase())) nmWord=nmMatch[1];
+    else{
+      const mb=raw.match(/\b(i am|i'm)\s+([A-Z][a-zA-Z0-9_]+)/);
+      if(mb && !["Pinky","Panther","Champion","Pro","The","I","A","No","Yes","So"].includes(mb[2])) nmWord=mb[2];
+    }
+    if(nmWord){
+      chatMem.name=nmWord.replace(/[._\-]+$/,"");
+      state.settings.chatName=chatMem.name; saveAll();
+      chatMem.lastTopic="intro";
+      return {html:"Nice to meet you, <b>"+esc(chatMem.name)+"</b>! I'll remember that name. What's your main game — CS GO 2, PUBG PC, Blood Strike or COD MW19?"};
+    }
+
+    /* ---- remember the game ---- */
+    let g=null;
+    for(const [a,gn] of GAME_ALIASES){ if(t.includes(a)){ g=gn; break; } }
+    const gamePhrase=has("i play","my game","favourite game","favorite game","game is","khelta","kheli") || t.split(" ").length<=3;
+    const pick=!has("add","create","new","how","tournament","cup","open","show","set up","setup","start","register","win","match","team","tip");
+    if(g && pick && (gamePhrase || t.length<24)){
+      chatMem.game=g; state.settings.chatGame=g; saveAll();
+      chatMem.lastTopic="game";
+      return {html:"<b>"+g+"</b> — great pick, "+tagline()+"! Want me to set up a tournament, register your squad, or pull up the live stats?", acts:[act("Set up a tournament","home"),act("Register player","register"),act("Live stats","players")]};
+    }
+
+    /* ---- conversational glue: yes / no / ok / continue ---- */
+    if(/^(yes|yeah|yep|haan|han|ha)\b/.test(t)){
+      if(chatMem.lastTopic==="joke"){ chatMem.lastTopic="joke"; return {html:"<b>"+esc(JOKES[Math.floor(Math.random()*JOKES.length)])+"</b><br><br>Want another?", acts:[{t:"Another!",fn:()=>chatAsk("Tell me a joke")}]}; }
+      chatMem.lastTopic="";
+      return {html:"Great! What would you like to do next — explore the tabs, check stats, or hear a tip?", acts:[act("Open Dashboard","home"),act("Live stats","players"),{t:"Give me a tip",fn:()=>chatAsk("Give me a tip")}]};
+    }
+    if(/^(no|nah|nope|nai|ni)\b/.test(t)){
+      return {html:maybeProbe("No problem, "+tagline()+". Anything else you'd like to explore?")};
+    }
+    if(/^(ok|okay|acha|theek|fine|right|alright)\b/.test(t)){
+      return {html:"Perfect, "+tagline()+". Want to keep exploring, or shall I set something up for you?", acts:[act("Open Dashboard","home"),{t:"Guide me",fn:()=>chatAsk("help")}]};
+    }
+    if(has("continue","go on","tell me more","aur batao","what else","and then","phir kya","mtlb","explain","kuch aur")){
+      if(chatMem.lastTopic==="guide") return {html:maybeProbe("Here's the rest of the map: <b>Members</b> builds your roster, <b>Records</b> keeps history, <b>Brackets</b> runs playoffs and <b>Profile</b> is your identity — all under ACCOUNT."),acts:[{t:"Show me",fn:startTour}]};
+      if(chatMem.lastTopic==="sec") return {html:maybeProbe("Beyond reports, Security lets you change login credentials, toggle Suspicious Alerts and enable Auto-Lock so your arena stays yours."),acts:[act("Open Anti-Cheat","sec")]};
+      if(chatMem.lastTopic==="stats") return {html:maybeProbe("You can dig deeper in <b>Players Stats</b> — kills, deaths, headshots, KD and win-rate per player, sortable however you like."),acts:[act("Open Players","players")]};
+      return {html:"Sure! Where should I take you — tournaments, players, themes, or security?", acts:[act("Tournaments","home"),act("Players","players"),act("Themes","themes"),act("Anti-Cheat","sec")]};
+    }
+
+    /* ---- small talk & personality ---- */
+    if(has("joke","funny","hasi","hahaha","lol")){
+      chatMem.lastTopic="joke";
+      return {html:maybeProbe("<b>"+esc(JOKES[Math.floor(Math.random()*JOKES.length)])+"</b>")};
+    }
+    if(has("tip","advice","improve","practice","get better","pro tip","suggestion")){
+      chatMem.lastTopic="tip";
+      const tk=chatMem.game?" for <b>"+esc(chatMem.game)+"</b>":"";
+      return {html:maybeProbe("<b>Pro tip"+tk+":</b> "+esc(TIPS[Math.floor(Math.random()*TIPS.length)]))+"<br><br>Want another?", acts:[{t:"Another tip!",fn:()=>chatAsk("Give me a tip")},{t:"Warm-up matches",fn:()=>switchView("warm")}]};
+    }
+    if(has("motivate","motivation","tired","losing","bad day","tilt","feeling down")){
+      return {html:maybeProbe("<b>"+esc(MOTIVE[Math.floor(Math.random()*MOTIVE.length)])+"</b>")};
+    }
+    if(has("what can you do","what do you do","kya kya","capabilities","skills")){
+      chatMem.lastTopic="cap";
+      return {html:"I'm your all-in-one arena coach. I can:<br><br>• Guide you through every tab<br>• Track tournaments, players, cups & records<br>• Run your brackets & Anti-Cheat<br>• Recolor themes & backgrounds<br>• Keep the conversation going with you!<br><br>Try <b>'Give me a tip'</b> or <b>'Tell me a joke'</b> anytime.", acts:[act("Open Dashboard","home"),{t:"Give me a tip",fn:()=>chatAsk("Give me a tip")},{t:"Tell me a joke",fn:()=>chatAsk("Tell me a joke")}]};
+    }
+    if(has("how are you","how r u","kya haal","kaise ho","kesi hai","how's it going")){
+      return {html:maybeProbe("I'm feeling sharp and fully loaded, "+tagline()+"! Ready to talk strategy, stats or setups. How about you?")};
+    }
+    if(has("my name","what is my name","mera naam kya","do you remember me","remember me")){
+      return chatMem.name? {html:maybeProbe("Of course — you're <b>"+esc(chatMem.name)+"</b>, my favorite Champion!")}
+        : {html:"You haven't told me your name yet! Try <b>'My name is Alex'</b> and I'll remember it."};
+    }
+    if(has("favorite game","favourite game","which game","my game")){
+      return chatMem.game? {html:maybeProbe("You told me you play <b>"+esc(chatMem.game)+"</b>. Want to dive into its tournaments or stats?"),acts:[act("Tournaments","home"),act("Players","players")]}
+        : {html:"Not sure yet — tell me your game (CS GO 2, PUBG PC, Blood Strike or COD MW19) and I'll remember it!"};
+    }
+    if(has("i love you","i like you","best ai","you are great","you're great","smart","love you")){
+      return {html:maybeProbe(esc(PRAISE[Math.floor(Math.random()*PRAISE.length)])+" I'm here for you, "+tagline()+". Now let's get back to winning.")};
+    }
+    if(has("music","song","playlist")){
+      return {html:maybeProbe("Drop-in anthem for clutches: something heavy with a hard drop — silence the lobby, then drop the bass. What's your pre-match song?")};
+    }
+    if(has("thank","shukria","thanks")){
+      return {html:maybeProbe("Anytime, "+tagline()+"! Keep building your legacy.")};
+    }
+    if(has("bye","goodbye","khuda hafiz","see you","good night pinky")){
+      return {html:"See you on the battlefield, "+tagline()+"! I'll remember our chat — Pinky out."+(chatMem.game?" And good luck in "+esc(chatMem.game)+"!":"")};
+    }
+    if(/\b(hello|hi|hey|salam|assalam|yo|good morning|good afternoon|good evening|good night|gm|gn)\b/.test(t)){
+      const n=chatMem.name?", <b>"+esc(chatMem.name)+"</b>":"";
+      return {html:greetWord()+"!"+n+" I'm <b>Pinky</b>, your AI arena guide. Ask me anything — tournaments, players, stats, themes — or just chat with me."+maybeProbe("")};
+    }
+    if(has("who are you","your name","what are you","pinky","panther")){
+      return {html:maybeProbe("I'm <b>Pinky</b>, the Pink Panther AI mentor of this arena. New or pro — I'll coach you through every tab and feature.")};
+    }
+
+    /* ---- arena features ---- */
     if(has("banned","cheater","hack","anti-cheat","anticheat","report a cheater")){
-      return {html:"The <b>Anti-Cheat</b> panel keeps the arena clean.<br><br>Currently: <b>"+cnt.banned+"</b> banned, <b>"+cnt.open+"</b> open reports, <b>"+cnt.report+"</b> total.<br><br>Tap <b>+ REPORT PLAYER</b> to flag a suspect, add evidence, and set status to Banned when confirmed.", acts:[act("Open Anti-Cheat","sec")]};
+      chatMem.lastTopic="sec";
+      return {html:maybeProbe("The <b>Anti-Cheat</b> panel keeps the arena clean.<br><br>Currently: <b>"+cnt.banned+"</b> banned, <b>"+cnt.open+"</b> open reports, <b>"+cnt.report+"</b> total.<br><br>Tap <b>+ REPORT PLAYER</b> to flag a suspect, add evidence, and set status to Banned when confirmed."), acts:[act("Open Anti-Cheat","sec")]};
     }
     if(has("how many","count","kitne","kitni","statistics","stats")){
+      chatMem.lastTopic="stats";
       const live=[["Tournaments",cnt.tournament],["Players",cnt.player],["Teams",cnt.team],["Cups",cnt.cup],["Fixtures",cnt.fixture],["Ranked & Normal",cnt.ranked],["Warm-Ups",cnt.warm],["Members",cnt.member],["Records",cnt.record],["Reports",cnt.report],["Banned",cnt.banned]]
         .map(([n,v])=>`<b>${v}</b> ${n}`).join(" · ");
-      return {html:"Here's the live arena pulse:<br><br>"+live, acts:[act("Open Dashboard","home")]};
+      return {html:maybeProbe("Here's the live arena pulse:<br><br>"+live), acts:[act("Open Dashboard","home")]};
     }
-    if(has("top player","best player","who is best","highest kills")){
+    if(has("top player","best player","who is best","highest kills","mvp")){
       const top=state.players.slice().sort((a,b)=>(b.kills||0)-(a.kills||0))[0];
-      return top? {html:"Current MVP is <b>"+esc(top.name)+"</b> with <b>"+(top.kills||0)+"</b> kills and <b>"+(top.wins||0)+"</b> wins.", acts:[act("Open Players","players")]}
+      return top? {html:maybeProbe("Current MVP is <b>"+esc(top.name)+"</b> with <b>"+(top.kills||0)+"</b> kills and <b>"+(top.wins||0)+"</b> wins."), acts:[act("Open Players","players")]}
         : {html:"No players registered yet. Use <b>Register Player</b> to build your squad first.", acts:[act("Register Player","register")]};
     }
     if(has("prize","pool","winning","kiti")){
       const p=state.cups.reduce((s,c)=>s+(+c.prize||0),0)+state.tournaments.reduce((s,x)=>s+(+x.prize||0),0);
-      return {html:"Total prize money across cups & tournaments: <b>$"+p.toLocaleString()+"</b>. Keep stacking those cups!", acts:[act("Tournament Cups","cups")]};
+      return {html:maybeProbe("Total prize money across cups & tournaments: <b>$"+p.toLocaleString()+"</b>. Keep stacking those cups!"), acts:[act("Tournament Cups","cups")]};
     }
     if(has("add tournament","new tournament","create tournament","tournament")){
-      return {html:"Open <b>Home</b>, tap a game card, then hit <b>+ ADD TOURNAMENT</b>. Fill in team, format, prize and dates — then save. Simple!", acts:[act("Go to Home","home")]};
+      chatMem.lastTopic="tour";
+      return {html:maybeProbe("Open <b>Home</b>, tap a game card, then hit <b>+ ADD TOURNAMENT</b>. Fill in team, format, prize and dates — then save. Simple!"), acts:[act("Go to Home","home")]};
     }
     if(has("register","add player","new player","player")){
-      return {html:"Go to <b>Register Player</b> under ACCOUNT. Add name, tag, country and role — your player appears in <b>Players Stats</b> instantly with full stat tracking.", acts:[act("Open Register","register")]};
+      return {html:maybeProbe("Go to <b>Register Player</b> under ACCOUNT. Add name, tag, country and role — your player appears in <b>Players Stats</b> instantly with full stat tracking."), acts:[act("Open Register","register")]};
     }
     if(has("cup")){
-      return {html:"<b>Tournament Cups</b> is where prize cups live. Tap <b>+ ADD CUP</b>, set game, format, prize and dates. Status badges show Upcoming / Live / Completed.", acts:[act("Open Tournament Cups","cups")]};
+      return {html:maybeProbe("<b>Tournament Cups</b> is where prize cups live. Tap <b>+ ADD CUP</b>, set game, format, prize and dates. Status badges show Upcoming / Live / Completed."), acts:[act("Open Tournament Cups","cups")]};
     }
     if(has("warm")){
-      return {html:"<b>Warm Up Matches</b> are practice fixtures — venue, time and notes, no pressure and no stats. Perfect for scrims.", acts:[act("Open Warm-Ups","warm")]};
+      return {html:maybeProbe("<b>Warm Up Matches</b> are practice fixtures — venue, time and notes, no pressure and no stats. Perfect for scrims."), acts:[act("Open Warm-Ups","warm")]};
     }
     if(has("ranked","normal match","competitive")){
-      return {html:"<b>Ranked & Normal</b> logs competitive and casual results. Pick the type, teams and scores — the app declares the winner automatically.", acts:[act("Open Ranked & Normal","ranked")]};
+      return {html:maybeProbe("<b>Ranked & Normal</b> logs competitive and casual results. Pick the type, teams and scores — the app declares the winner automatically."), acts:[act("Open Ranked & Normal","ranked")]};
     }
     if(has("bracket","playoff","knockout")){
-      return {html:"<b>Brackets</b> runs your playoff tree — Quarter Final to Final. Use <b>Auto-Build</b> or add stage matches manually.", acts:[act("Open Brackets","brackets")]};
+      return {html:maybeProbe("<b>Brackets</b> runs your playoff tree — Quarter Final to Final. Use <b>Auto-Build</b> or add stage matches manually."), acts:[act("Open Brackets","brackets")]};
     }
     if(has("fixture","schedule","matches")){
-      return {html:"The <b>Matches</b> tab lists scheduled fixtures with dates and venues. Add, edit or delete them there.", acts:[act("Open Matches","matches")]};
+      return {html:maybeProbe("The <b>Matches</b> tab lists scheduled fixtures with dates and venues. Add, edit or delete them there."), acts:[act("Open Matches","matches")]};
     }
     if(has("team","captain")){
-      return {html:"<b>Teams & Captains</b> lets you create squads, choose emblems and assign captains. The backbone of every cup run.", acts:[act("Open Teams","teams")]};
+      return {html:maybeProbe("<b>Teams & Captains</b> lets you create squads, choose emblems and assign captains. The backbone of every cup run."), acts:[act("Open Teams","teams")]};
     }
     if(has("member","squad","roster")){
-      return {html:"<b>Members</b> is your active squad roster — add players with roles and Active/Bench status.", acts:[act("Open Members","members")]};
+      return {html:maybeProbe("<b>Members</b> is your active squad roster — add players with roles and Active/Bench status."), acts:[act("Open Members","members")]};
     }
     if(has("record","result","history")){
-      return {html:"<b>Records</b> keeps every match result for history. Log wins and losses with scores there.", acts:[act("Open Records","records")]};
+      return {html:maybeProbe("<b>Records</b> keeps every match result for history. Log wins and losses with scores there."), acts:[act("Open Records","records")]};
     }
     if(has("profile","bio","tag")){
-      return {html:"<b>Profile</b> is your esports identity — tag, name, country, avatar, social links and bio.", acts:[act("Open Profile","profile")]};
+      return {html:maybeProbe("<b>Profile</b> is your esports identity — tag, name, country, avatar, social links and bio."), acts:[act("Open Profile","profile")]};
     }
     if(has("password","login","security","lock")){
-      return {html:"Head to <b>Anti-Cheat & Security → LOGIN SECURITY</b>. There you can change username/password, toggle Suspicious Activity Alerts, enable Auto-Lock and lock the screen instantly.", acts:[act("Open Security","sec")]};
+      return {html:maybeProbe("Head to <b>Anti-Cheat & Security → LOGIN SECURITY</b>. There you can change username/password, toggle Suspicious Activity Alerts, enable Auto-Lock and lock the screen instantly."), acts:[act("Open Security","sec")]};
     }
     if(has("theme","skin","recolor")){
-      return {html:"<b>Panel Themes</b> gives PC game skins — CS GO 2, PUBG PC, Blood Strike and COD MW19. Tap one and the whole arena recolors instantly.", acts:[act("Open Panel Themes","themes")]};
+      return {html:maybeProbe("<b>Panel Themes</b> gives PC game skins — CS GO 2, PUBG PC, Blood Strike and COD MW19. Tap one and the whole arena recolors instantly."), acts:[act("Open Panel Themes","themes")]};
     }
     if(has("appearance","glass","glow","compact","corner")){
-      return {html:"<b>Appearance</b> tunes the look: glass blur, glow intensity, compact mode and corner style. Make the arena yours.", acts:[act("Open Appearance","appearance")]};
+      return {html:maybeProbe("<b>Appearance</b> tunes the look: glass blur, glow intensity, compact mode and corner style. Make the arena yours."), acts:[act("Open Appearance","appearance")]};
     }
     if(has("background","aurora","matrix","storm","rain")){
-      return {html:"<b>Animated Backgrounds</b> offers Thunderstorm, Neon Aurora, Cyber Matrix and Campsite Night — a boy by the bonfire under the stars with lightning. Rain & lightning toggles control the weather.", acts:[act("Open Backgrounds","backgrounds")]};
+      return {html:maybeProbe("<b>Animated Backgrounds</b> offers Thunderstorm, Neon Aurora, Cyber Matrix and Campsite Night — a boy by the bonfire under the stars with lightning. Rain & lightning toggles control the weather."), acts:[act("Open Backgrounds","backgrounds")]};
     }
     if(has("setting","accent")){
-      return {html:"<b>Settings</b> has sound/rain/lightning toggles, accent colors, export/import backup and a full data reset.", acts:[act("Open Settings","settings")]};
+      return {html:maybeProbe("<b>Settings</b> has sound/rain/lightning toggles, accent colors, export/import backup and a full data reset."), acts:[act("Open Settings","settings")]};
     }
     if(has("backup","export","import","save data")){
-      return {html:"In <b>Settings</b> you'll find <b>Export Backup</b> (download all data as JSON) and <b>Import</b> to restore it. Keep your legacy safe!", acts:[act("Open Settings","settings")]};
+      return {html:maybeProbe("In <b>Settings</b> you'll find <b>Export Backup</b> (download all data as JSON) and <b>Import</b> to restore it. Keep your legacy safe!"), acts:[act("Open Settings","settings")]};
     }
     if(has("reset","delete all","clear all","wipe")){
-      return {html:"Careful, Champion! <b>Reset All Data</b> in Settings wipes everything and restores demo data. It always asks for confirmation first.", acts:[act("Open Settings","settings")]};
+      return {html:maybeProbe("Careful, Champion! <b>Reset All Data</b> in Settings wipes everything and restores demo data. It always asks for confirmation first."), acts:[act("Open Settings","settings")]};
     }
     if(has("new in","whats new","what's new","latest","update","v3.7","version")){
       return {html:"Latest drop <b>v3.7</b>: a premium esport makeover + me, Pinky!<br>v3.6 added <b>Anti-Cheat & Security</b>.<br>v3.5 added <b>Tournament Cups, Warm-Up, Ranked & Normal</b> + <b>Panel Themes</b> + <b>Appearance</b>."};
     }
-    if(has("start","begin","guide","help","how to","learn","kya","samjhao")){
+    if(has("help","guide","how do i start","how to start","begin","learn","walk me through","tour","samjha","help me")){
+      chatMem.lastTopic="guide";
       return {html:"Pro start guide:<br><br>1. <b>Home</b> — browse games & add tournaments<br>2. <b>Register Player</b> — build your roster<br>3. <b>Tournament Cups</b> — set up prize cups<br>4. <b>Ranked & Normal</b> — log matches<br>5. <b>Anti-Cheat</b> — keep it clean<br><br>Want me to walk you through it?", acts:[{t:"Start Guided Tour",fn:startTour},{t:"Go Home",fn:()=>switchView("home")}]};
     }
-    if(has("hello","hi ","hey","salam","assalam","yo","good")){
-      return {html:"Hey Champion! I'm <b>Pinky</b>, your AI arena guide. Ask me about any tab, tournament, stat or security feature — or tap a quick question below."};
-    }
-    if(has("who are you","your name","what are you","pinky","panther")){
-      return {html:"I'm <b>Pinky</b>, the Pink Panther AI mentor of this arena. New or pro — I'll guide you through every tab and feature like a coach."};
-    }
-    if(has("thank","shukria","great","awesome","nice","love")){
-      return {html:"Anytime, Champion! Keep building your legacy. Ask me anything else!"};
-    }
-    if(has("bye","goodbye","khuda hafiz","exit")){
-      return {html:"See you on the battlefield! I'll be right here when you need me. Pinky out."};
-    }
-    return {html:"I'm still sharpening my claws on that one. Try a suggestion below, or ask about <b>tournaments</b>, <b>players</b>, <b>cups</b>, <b>anti-cheat</b> or <b>themes</b>."};
+
+    /* ---- fallback ---- */
+    chatMem.lastTopic="";
+    return {html:maybeProbe("Hmm, "+tagline()+", I want to make sure I help you right. Ask about <b>tournaments</b>, <b>players</b>, <b>cups</b>, <b>themes</b> or <b>anti-cheat</b> — or just say <b>'Give me a tip'</b>."), acts:[{t:"Give me a tip",fn:()=>chatAsk("Give me a tip")},{t:"Show me around",fn:startTour}]};
   }
 
   /* ===================== LOGIN / AUTH ===================== */
@@ -3667,6 +3809,7 @@
   fillSelects();
   load();
   $("teamList").innerHTML = state.teams.map(t=>`<option value="${esc(t.name)}">`).join("");
+  chatMem.name=state.settings.chatName||""; chatMem.game=state.settings.chatGame||"";
   wire();
   renderSettings();
   switchView("home");
