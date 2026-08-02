@@ -179,6 +179,10 @@
   .vtitle p{color:var(--dim);font-size:13px;letter-spacing:.5px}
   .page-title{font-family:'Orbitron';font-size:clamp(20px,3.4vw,30px);letter-spacing:2px;margin-bottom:6px}
   .page-sub{color:var(--dim);font-size:14px;letter-spacing:.5px;margin-bottom:22px}
+  .sec-h{display:flex;align-items:center;gap:10px;font-family:'Orbitron';letter-spacing:2px;font-size:13px;color:var(--cyber);margin:30px 0 14px}
+  .sec-h .mi{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:var(--nav-bg);border:1px solid var(--nav-bd);box-shadow:0 0 14px -4px var(--nav-glow)}
+  .sec-h .mi svg{width:16px;height:16px}
+  .opt-in{background:var(--pn-grad);border:1px solid var(--stroke);color:var(--txt);border-radius:10px;padding:10px 12px;font-family:'Rajdhani';font-size:14px;letter-spacing:1px;width:130px;cursor:pointer}
 
   .toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin:20px 0}
   .chips{display:flex;gap:10px;flex-wrap:wrap}
@@ -216,6 +220,8 @@
   .badge.act{color:var(--ok);border-color:var(--ok);background:rgba(43,255,158,.08)}
   .badge.ben{color:var(--dim);border-color:var(--dim);background:rgba(255,255,255,.05)}
   .badge.tbd{color:var(--dim);border-color:var(--dim);background:rgba(255,255,255,.05)}
+  .badge.warn{color:var(--warn);border-color:var(--warn);background:rgba(255,170,64,.1)}
+  .badge.danger{color:var(--danger);border-color:var(--danger);background:rgba(255,61,110,.14)}
   @keyframes blink{50%{opacity:.4}}
   .tcard .body{padding:14px 18px;display:grid;gap:8px;flex:1}
   .tcard .row{display:flex;align-items:center;gap:9px;font-size:14px;color:var(--dim);letter-spacing:.4px}
@@ -525,6 +531,8 @@
       <a class="nav-item" data-view="warm"><span class="ni"><svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span> Warm Up Matches <span class="cnt" id="cntWarm">0</span></a>
       <a class="nav-item" data-view="ranked"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg></span> Ranked &amp; Normal <span class="cnt" id="cntRanked">0</span></a>
       <a class="nav-item" data-view="members"><span class="ni"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Members <span class="cnt" id="cntMems">0</span></a>
+      <div class="nav-sep">PROTECTION</div>
+      <a class="nav-item" data-view="sec"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span> Anti-Cheat &amp; Security <span class="cnt" id="cntCheats">0</span></a>
       <div class="nav-sep">ACCOUNT</div>
       <a class="nav-item" data-view="profile"><span class="ni"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Profile</a>
       <a class="nav-item" data-view="settings"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span> Settings</a>
@@ -536,7 +544,7 @@
     </nav>
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
-      <span>v3.5</span>
+      <span>v3.6</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -898,6 +906,55 @@
         </div>
       </section>
 
+      <!-- ============ ANTI-CHEAT & SECURITY ============ -->
+      <section id="secView" class="hidden">
+        <div class="page-title">ANTI-CHEAT &amp; SECURITY</div>
+        <div class="page-sub">Track suspicious players, ban cheaters &amp; harden your arena with login controls.</div>
+
+        <div class="sumrow" id="cheatSummary"></div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="cheatSearch" placeholder="Search player / game / reason..." /></div>
+          <button class="addbtn" id="addCheatBtn">+ REPORT PLAYER</button>
+        </div>
+        <div class="grid" id="cheatGrid"></div>
+
+        <div class="sec-h"><span class="mi"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span> LOGIN SECURITY</div>
+        <div class="setcard">
+          <h4>CHANGE LOGIN CREDENTIALS</h4>
+          <form id="secForm" class="regform" style="gap:10px">
+            <div class="field"><label>Current Password</label><input type="password" id="secCur" placeholder="Enter current password" /></div>
+            <div class="row2">
+              <div class="field"><label>New Username</label><input id="secUser" placeholder="New username" /></div>
+              <div class="field"><label>New Password</label><input type="password" id="secPass" placeholder="Min 5 characters" /></div>
+            </div>
+            <div class="field"><label>Confirm New Password</label><input type="password" id="secPass2" placeholder="Re-enter new password" /></div>
+            <button type="submit" class="addbtn" style="width:100%;justify-content:center">UPDATE CREDENTIALS</button>
+          </form>
+        </div>
+        <div class="setcard">
+          <h4>PROTECTION TOGGLES</h4>
+          <div class="setrow">
+            <div class="lbl">Suspicious Activity Alerts <small>Notify me when a player is reported or flagged</small></div>
+            <button class="switch" id="tgAlerts"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Auto-Lock <small>Lock the app after a few minutes of inactivity</small></div>
+            <button class="switch" id="tgAutoLock"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Lock After <small>Minutes of inactivity before auto-lock</small></div>
+            <select id="lockMins" class="opt-in"><option>1</option><option>2</option><option>5</option><option>10</option><option>15</option><option>30</option></select>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>SESSION</h4>
+          <div class="setrow">
+            <div class="lbl">Lock Screen Now <small>Immediately lock the app back to the login screen</small></div>
+            <button class="tbtn del" id="lockBtn" style="width:auto">LOCK NOW</button>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer>© 2026 <b>GAMES TOURNAMENTS</b> · Build. Battle. Conquer.</footer>
@@ -1232,6 +1289,44 @@
     </div>
   </div>
 
+  <!-- ============ CHEAT REPORT MODAL ============ -->
+  <div class="overlay" id="qFormOverlay">
+    <div class="modal">
+      <h3><span class="mi" id="qModalTitle">REPORT PLAYER</span></h3>
+      <form id="qForm" class="regform" style="gap:12px">
+        <input type="hidden" id="qfId" />
+        <div class="row2">
+          <div class="field"><label>Player Name</label><input id="qfPlayer" placeholder="e.g. ShadowHax" required /></div>
+          <div class="field"><label>Game</label><select id="qfGame"></select></div>
+        </div>
+        <div class="field"><label>Reason</label><select id="qfReason">
+          <option value="aim">Aimbot / Triggerbot</option>
+          <option value="wall">Wallhack / ESP</option>
+          <option value="speed">Speed / Jump Hacks</option>
+          <option value="radar">Radar / Map Hack</option>
+          <option value="smurf">Smurfing / Ghosting</option>
+          <option value="toxic">Toxicity / Griefing</option>
+          <option value="other">Other</option>
+        </select></div>
+        <div class="field"><label>Evidence (clip / screenshot link)</label><input id="qfEvidence" placeholder="https://..." /></div>
+        <div class="row2">
+          <div class="field"><label>Status</label><select id="qfStatus">
+            <option value="open">Open Report</option>
+            <option value="review">Under Review</option>
+            <option value="banned">Banned</option>
+            <option value="clear">Cleared</option>
+          </select></div>
+          <div class="field"><label>Reported By</label><input id="qfReporter" placeholder="e.g. Referee" /></div>
+        </div>
+        <div class="field"><label>Date</label><input type="date" id="qfDate" /></div>
+        <div class="row2">
+          <button type="button" class="tbtn del" id="qCancelBtn">CANCEL</button>
+          <button type="submit" class="tbtn edit" style="justify-content:center">SAVE REPORT</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- ============ CONFIRM MODAL ============ -->
   <div class="overlay" id="confirmOverlay">
     <div class="modal" style="max-width:430px;text-align:center">
@@ -1296,8 +1391,8 @@
     {name:"Red Alert", c:"#ff3d6e", c2:"#ff0044"}
   ];
   const STAGES = { qf:{label:"Quarter Finals", short:"QF", n:4}, sf:{label:"Semi Finals", short:"SF", n:2}, f:{label:"Grand Final", short:"FINAL", n:1} };
-  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1" };
-  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked" };
+  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1" };
+  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats" };
   const STATUS = { up:{t:"Upcoming",c:"up"}, live:{t:"Live",c:"live"}, done:{t:"Completed",c:"done"} };
 
   const ICONS = {
@@ -1314,7 +1409,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft"} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], profile:null, settings:{sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -1422,6 +1517,14 @@
   }
   function defaultProfile(){ return { tag:"GhostX", name:"Aamir Khan", country:"Pakistan", game:"csgo", level:42, hours:1500, email:"you@mail.com",
     bio:"Pro esports player. Champion of the arena.", avatar:0, yt:"", disc:"GhostX#1234", tw:"", ig:"" }; }
+  function seedCheats(){
+    const d=n=> new Date(Date.now()+n*864e5).toISOString().slice(0,10);
+    return [
+      {id:uid(),player:"ShadowHax",game:"csgo",reason:"aim",evidence:"",status:"banned",date:d(-2),reporter:"Referee"},
+      {id:uid(),player:"WallWizard",game:"pubg",reason:"wall",evidence:"https://clip.example.com/1",status:"review",date:d(0),reporter:"Admin"},
+      {id:uid(),player:"FastFingers",game:"bs",reason:"speed",evidence:"",status:"open",date:d(0),reporter:"Referee"}
+    ];
+  }
 
   function load(){
     state.tournaments = getStore(KEYS.tours, null) ?? seedTours();
@@ -1434,8 +1537,9 @@
     state.cups        = getStore(KEYS.cups,  null) ?? seedCups();
     state.warm        = getStore(KEYS.warm,  null) ?? seedWarm();
     state.ranked      = getStore(KEYS.ranked,null) ?? seedRanked();
+    state.cheats      = getStore(KEYS.sec,   null) ?? seedCheats();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
-    state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft"}, getStore(KEYS.set, {}));
+    state.settings    = Object.assign({sound:false,rain:true,lightning:true,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
     saveAll();
@@ -1463,7 +1567,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",appearance:"appearanceView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",appearance:"appearanceView",sec:"secView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -1483,6 +1587,7 @@
     if(v==="ranked"){ renderRankedSummary(); renderRanked(); }
     if(v==="themes"){ renderThemes(); }
     if(v==="appearance"){ renderAppearance(); }
+    if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
     closeSidebar();
     window.scrollTo({top:0,behavior:"smooth"});
   }
@@ -1576,7 +1681,7 @@
   /* ===================== TOURNAMENT FORM ===================== */
   function fillSelects(){
     const opts=Object.entries(GAMES).map(([id,g])=>`<option value="${id}">${g.name}</option>`).join("");
-    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame"].forEach(id=> $(id).innerHTML=opts);
+    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame","qfGame"].forEach(id=> $(id).innerHTML=opts);
   }
   function openTourForm(t){
     const ed=!!t;
@@ -2499,16 +2604,107 @@
     applyAppearance();
   }
 
+  /* ===================== ANTI-CHEAT & SECURITY ===================== */
+  const SECSTATUS={
+    open:{t:"OPEN",c:"up"},
+    review:{t:"REVIEW",c:"live"},
+    banned:{t:"BANNED",c:"danger"},
+    clear:{t:"CLEARED",c:"done"}
+  };
+  const SECREASONS={ aim:"Aimbot", wall:"Wallhack / ESP", speed:"Speed Hacks", radar:"Radar Hack", smurf:"Smurfing", toxic:"Toxicity", other:"Other" };
+  function filteredCheats(){
+    let l=[...state.cheats];
+    const q=$("cheatSearch")? $("cheatSearch").value.trim().toLowerCase():"";
+    if(q) l=l.filter(r=>(r.player||"").toLowerCase().includes(q)||(gameOf(r.game).name.toLowerCase()).includes(q)||(SECREASONS[r.reason]||"").toLowerCase().includes(q));
+    return l.sort((a,b)=>new Date(b.date)-new Date(a.date));
+  }
+  function renderCheatSummary(){
+    const total=state.cheats.length;
+    const open=state.cheats.filter(r=>r.status==="open").length;
+    const review=state.cheats.filter(r=>r.status==="review").length;
+    const banned=state.cheats.filter(r=>r.status==="banned").length;
+    $("cheatSummary").innerHTML=[
+      {n:total,l:"Reports",m:"#00e0ff"},{n:open,l:"Open",m:"#ffd54a"},{n:review,l:"Review",m:"#ff3d6e"},{n:banned,l:"Banned",m:"#ff5c2b"}
+    ].map(i=>`<div class="stat" style="--main:${i.m}"><div class="num" style="color:${i.m}">${i.n}</div><div class="lbl">${i.l}</div></div>`).join("");
+    $("cntCheats").textContent=total;
+  }
+  function renderCheats(){
+    const l=filteredCheats();
+    $("cheatGrid").innerHTML=l.length? l.map(r=>{
+      const g=gameOf(r.game), s=SECSTATUS[r.status]||SECSTATUS.open;
+      return `<article class="tcard slideup ${g.cls}">
+        <div class="top">
+          <div>
+            <div class="team">${esc(r.player)}</div>
+            <div style="font-size:11px;color:var(--dim);letter-spacing:1px;margin-top:3px">${g.name} · ${SECREASONS[r.reason]||"Other"}</div>
+          </div>
+          <span class="badge ${s.c}">${s.t}</span>
+        </div>
+        <div class="body">
+          ${r.evidence?`<div class="row"><span class="ico">EVIDENCE</span> <a href="${esc(r.evidence)}" target="_blank" rel="noopener" style="color:var(--cyber)">View link</a></div>`:""}
+          <div class="row"><span class="ico">DATE</span> ${fmtDate(r.date)} &nbsp;·&nbsp; <span class="ico">BY</span> ${esc(r.reporter||"—")}</div>
+        </div>
+        <div class="foot">
+          <button class="tbtn edit" data-edit="${r.id}">EDIT</button>
+          <button class="tbtn del" data-del="${r.id}">DELETE</button>
+        </div>
+      </article>`;
+    }).join("") : emptyHTML("gamepad","No reports yet","The arena is clean — report a player when needed.");
+  }
+  function openCheatForm(r){
+    const ed=!!r;
+    $("qModalTitle").textContent=ed?"EDIT REPORT":"REPORT PLAYER";
+    $("qfId").value=ed?r.id:"";
+    $("qfPlayer").value=ed?r.player:"";
+    $("qfGame").value=ed?r.game:"csgo";
+    $("qfReason").value=ed?r.reason:"aim";
+    $("qfEvidence").value=ed?r.evidence:"";
+    $("qfStatus").value=ed?r.status:"open";
+    $("qfReporter").value=ed?r.reporter:"";
+    $("qfDate").value=ed?r.date:new Date().toISOString().slice(0,10);
+    $("qFormOverlay").classList.add("show");
+    setTimeout(()=>$("qfPlayer").focus(),120);
+  }
+  function submitCheat(e){
+    e.preventDefault();
+    const player=$("qfPlayer").value.trim();
+    if(!player){ toast("Player name is required!","warn"); return; }
+    const id=$("qfId").value;
+    const data={ player, game:$("qfGame").value, reason:$("qfReason").value, evidence:$("qfEvidence").value.trim(),
+      status:$("qfStatus").value, reporter:$("qfReporter").value.trim(), date:$("qfDate").value, updatedAt:Date.now() };
+    if(id){ const i=state.cheats.findIndex(x=>x.id===id); if(i>-1){ state.cheats[i]={...state.cheats[i],...data}; toast("Report updated"); } }
+    else{ data.id=uid(); data.createdAt=Date.now(); state.cheats.unshift(data); toast("Player reported"); }
+    if(state.settings.secAlerts) toast("Security alert: player "+data.player+" reported");
+    saveAll(); $("qFormOverlay").classList.remove("show"); renderCheatSummary(); renderCheats();
+  }
+  function renderSecurity(){
+    $("tgAlerts").classList.toggle("on", !!state.settings.secAlerts);
+    $("tgAutoLock").classList.toggle("on", !!state.settings.autoLock);
+    $("lockMins").value=String(state.settings.lockMins||5);
+  }
+  function submitSec(e){
+    e.preventDefault();
+    const cur=$("secCur").value, user=$("secUser").value.trim(), p1=$("secPass").value, p2=$("secPass2").value;
+    if(cur!==state.settings.pass){ toast("Current password is wrong!","warn"); return; }
+    if(p1&&p1.length<5){ toast("New password must be at least 5 characters!","warn"); return; }
+    if(p1!==p2){ toast("Passwords do not match!","warn"); return; }
+    if(user) state.settings.user=user;
+    if(p1) state.settings.pass=p1;
+    saveAll(); $("secForm").reset();
+    toast("Login credentials updated");
+  }
+  function lockScreen(){ logout(); }
+
   /* ===================== LOGIN / AUTH ===================== */
   const AUTH_KEY="gt_auth";
   function authGet(){ try{ return localStorage.getItem(AUTH_KEY)==="1"; }catch(e){ return false; } }
   function doLogin(e){
     e.preventDefault();
     const u=$("loginUser").value.trim(), p=$("loginPass").value;
-    if(u==="ROG" && p==="ROG141"){
+    if(u===state.settings.user && p===state.settings.pass){
       try{ localStorage.setItem(AUTH_KEY,"1"); }catch(err){}
       $("loginOverlay").classList.remove("show");
-      toast("Welcome back, ROG");
+      toast("Welcome back, "+u);
     } else {
       toast("Wrong username or password!","warn");
       $("loginPass").value="";
@@ -2523,10 +2719,10 @@
 
   /* ===================== EXPORT / IMPORT / RESET ===================== */
   function exportData(){
-    const data={ app:"GamesTournaments", version:5, exportedAt:new Date().toISOString(),
+    const data={ app:"GamesTournaments", version:6, exportedAt:new Date().toISOString(),
       tournaments:state.tournaments, teams:state.teams, brackets:state.brackets,
       players:state.players, members:state.members, matches:state.matches, records:state.records,
-      cups:state.cups, warm:state.warm, ranked:state.ranked,
+      cups:state.cups, warm:state.warm, ranked:state.ranked, cheats:state.cheats,
       profile:state.profile, settings:state.settings };
     const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
     const a=document.createElement("a");
@@ -2551,6 +2747,7 @@
         if(Array.isArray(d.cups)) state.cups=d.cups;
         if(Array.isArray(d.warm)) state.warm=d.warm;
         if(Array.isArray(d.ranked)) state.ranked=d.ranked;
+        if(Array.isArray(d.cheats)) state.cheats=d.cheats;
         if(d.profile&&typeof d.profile==="object") state.profile=Object.assign(defaultProfile(),d.profile);
         if(d.settings&&typeof d.settings==="object") state.settings=Object.assign(state.settings,d.settings);
         saveAll(); renderSettings(); switchView("home");
@@ -2605,7 +2802,7 @@
   size(); addEventListener("resize",size);
   const DROPS=[];
   for(let i=0;i<240;i++) DROPS.push({x:Math.random()*2000,y:Math.random()*1200,l:12+Math.random()*16,sp:11+Math.random()*13,w:(Math.random()*2)|0});
-  let flash=0,lastBolt=0,bolt=null,boltLife=0;
+  let flash=0,lastBolt=0,bolt=null,boltLife=0,lastAct=Date.now();
 
   function drawRain(){
     cctx.clearRect(0,0,W,H);
@@ -2650,6 +2847,9 @@
   }
   function loop(t){
     requestAnimationFrame(loop);
+    if(state.settings.autoLock && authGet() && t-lastAct>(state.settings.lockMins||5)*60000){
+      lastAct=t; logout(); toast("App locked due to inactivity","warn"); return;
+    }
     if(state.settings.background==="storm"){
       if(state.settings.rain) drawRain();
       if(state.settings.lightning && t-lastBolt>2600+Math.random()*4200 && Math.random()<0.5){
@@ -2886,6 +3086,25 @@
     $("glowRow").addEventListener("click",e=>{ const b=e.target.closest("[data-glow]"); if(!b) return; state.settings.glow=b.dataset.glow; saveAll(); renderAppearance(); });
     $("cornerRow").addEventListener("click",e=>{ const b=e.target.closest("[data-cor]"); if(!b) return; state.settings.corners=b.dataset.cor; saveAll(); renderAppearance(); });
 
+    // anti-cheat & security
+    $("addCheatBtn").addEventListener("click",()=> openCheatForm(null));
+    $("qForm").addEventListener("submit",submitCheat);
+    $("qCancelBtn").addEventListener("click",()=> $("qFormOverlay").classList.remove("show"));
+    $("qFormOverlay").addEventListener("click",e=>{ if(e.target===$("qFormOverlay")) $("qFormOverlay").classList.remove("show"); });
+    $("cheatSearch").addEventListener("input",()=> renderCheats());
+    $("cheatGrid").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-edit]"), dl=e.target.closest("[data-del]");
+      if(ed){ const r=state.cheats.find(x=>x.id===ed.dataset.edit); if(r) openCheatForm(r); }
+      if(dl){ const r=state.cheats.find(x=>x.id===dl.dataset.del);
+        if(r) openConfirm("Delete report for <b>"+esc(r.player)+"</b>?",()=>{ state.cheats=state.cheats.filter(x=>x.id!==r.id); saveAll(); renderCheatSummary(); renderCheats(); toast("Report deleted","warn"); }); }
+    });
+    $("secForm").addEventListener("submit",submitSec);
+    $("tgAlerts").addEventListener("click",()=>{ state.settings.secAlerts=!state.settings.secAlerts; saveAll(); renderSecurity(); toast("Alerts "+(state.settings.secAlerts?"enabled":"disabled")); });
+    $("tgAutoLock").addEventListener("click",()=>{ state.settings.autoLock=!state.settings.autoLock; saveAll(); renderSecurity(); toast("Auto-lock "+(state.settings.autoLock?"enabled":"disabled")); });
+    $("lockMins").addEventListener("change",e=>{ state.settings.lockMins=+e.target.value||5; saveAll(); toast("Auto-lock: "+state.settings.lockMins+" min"); });
+    $("lockBtn").addEventListener("click",()=>{ openConfirm("Lock the app now? You'll need to login again.",lockScreen); });
+    ["mousedown","mousemove","keydown","touchstart","wheel"].forEach(evt=> document.addEventListener(evt,()=>{ lastAct=Date.now(); },{passive:true}));
+
     // login
     $("loginForm").addEventListener("submit",doLogin);
 
@@ -2902,7 +3121,7 @@
 
     document.addEventListener("keydown",e=>{
       if(e.key!=="Escape") return;
-      ["formOverlay","pFormOverlay","tFormOverlay","bFormOverlay","mFormOverlay","mtFormOverlay","rFormOverlay","cFormOverlay","wFormOverlay","nFormOverlay"].forEach(id=> $(id).classList.remove("show"));
+      ["formOverlay","pFormOverlay","tFormOverlay","bFormOverlay","mFormOverlay","mtFormOverlay","rFormOverlay","cFormOverlay","wFormOverlay","nFormOverlay","qFormOverlay"].forEach(id=> $(id).classList.remove("show"));
       closeConfirm(); closeSidebar();
     });
   }
