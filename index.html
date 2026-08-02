@@ -1073,8 +1073,12 @@
       <!-- ============ POINTS TABLE ============ -->
       <section id="pointsView" class="hidden">
         <div class="page-title">POINTS TABLE</div>
-        <div class="page-sub">Live league standings — every team's wins, losses, draws &amp; points, sorted by position.</div>
+        <div class="page-sub">Live league standings — every team's wins, losses, draws &amp; points, sorted by position. Add, edit or delete entries anytime.</div>
         <div class="chips" id="ptChips"></div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="ptSearch" placeholder="Search team..." /></div>
+          <button class="addbtn" id="addStandBtn">+ ADD ENTRY</button>
+        </div>
         <div class="table-wrap"><table class="ptable" id="pointsTbl"></table></div>
       </section>
 
@@ -1302,6 +1306,27 @@
         </div>
         <div class="mbtns">
           <button type="button" class="mbtn cancel" id="tCancelBtn">CANCEL</button>
+          <button type="submit" class="mbtn save">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ POINTS TABLE ENTRY FORM MODAL ============ -->
+  <div class="overlay" id="sFormOverlay">
+    <div class="modal">
+      <h3><span class="mi" id="sModalTitle">ADD ENTRY</span></h3>
+      <form id="sForm">
+        <input type="hidden" id="sfId" />
+        <div class="field"><label>Team Name</label><input id="sfTeam" placeholder="e.g. Strike Wolves" required /></div>
+        <div class="field"><label>Game</label><select id="sfGame"></select></div>
+        <div class="row3">
+          <div class="field"><label>Wins</label><input id="sfWins" type="number" min="0" placeholder="0" /></div>
+          <div class="field"><label>Losses</label><input id="sfLosses" type="number" min="0" placeholder="0" /></div>
+          <div class="field"><label>Draws</label><input id="sfDraws" type="number" min="0" placeholder="0" /></div>
+        </div>
+        <div class="mbtns">
+          <button type="button" class="mbtn cancel" id="sCancelBtn">CANCEL</button>
           <button type="submit" class="mbtn save">SAVE</button>
         </div>
       </form>
@@ -1669,8 +1694,8 @@
     {name:"Red Alert", c:"#ff3d6e", c2:"#ff0044"}
   ];
   const STAGES = { qf:{label:"Quarter Finals", short:"QF", n:4}, sf:{label:"Semi Finals", short:"SF", n:2}, f:{label:"Grand Final", short:"FINAL", n:1} };
-  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1" };
-  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats" };
+  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1" };
+  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings" };
   const STATUS = { up:{t:"Upcoming",c:"up"}, live:{t:"Live",c:"live"}, done:{t:"Completed",c:"done"} };
 
   const ICONS = {
@@ -1687,7 +1712,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], profile:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], profile:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -1804,6 +1829,9 @@
     ];
   }
 
+  function seedStandings(){
+    return state.teams.map(t=>({id:uid(), team:t.name, game:t.game, wins:t.wins||0, losses:t.losses||0, draws:t.draws||0}));
+  }
   function load(){
     state.tournaments = getStore(KEYS.tours, null) ?? seedTours();
     state.players     = getStore(KEYS.plrs,  null) ?? seedPlrs();
@@ -1816,6 +1844,7 @@
     state.warm        = getStore(KEYS.warm,  null) ?? seedWarm();
     state.ranked      = getStore(KEYS.ranked,null) ?? seedRanked();
     state.cheats      = getStore(KEYS.sec,   null) ?? seedCheats();
+    state.standings   = getStore(KEYS.stand, null) ?? seedStandings();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
@@ -1962,7 +1991,7 @@
   /* ===================== TOURNAMENT FORM ===================== */
   function fillSelects(){
     const opts=Object.entries(GAMES).map(([id,g])=>`<option value="${id}">${g.name}</option>`).join("");
-    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame","qfGame"].forEach(id=> $(id).innerHTML=opts);
+    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame","qfGame","sfGame"].forEach(id=> $(id).innerHTML=opts);
   }
   function openTourForm(t){
     const ed=!!t;
@@ -2849,30 +2878,70 @@
   }
   function renderPoints(){
     renderPtChips();
-    const f=ptFilterGame();
-    let teams=state.teams.map(t=>({...t, gameName:(GAMES[t.game]||{name:t.game||"—"}).name}));
-    if(f!=="all") teams=teams.filter(t=>t.game===f);
-    teams=teams.map(t=>{
+    const f=ptFilterGame(), q=(state.ptSearch||"").toLowerCase().trim();
+    let rows=state.standings.map(t=>({...t, gameName:(GAMES[t.game]||{name:t.game||"—"}).name}));
+    if(f!=="all") rows=rows.filter(t=>t.game===f);
+    if(q) rows=rows.filter(t=>(t.team||"").toLowerCase().includes(q));
+    rows=rows.map(t=>{
       const w=t.wins||0, l=t.losses||0, d=t.draws||0, p=w+l+d;
       return {...t, p, w, l, d, pts:w*3+d*1, wr:p?Math.round(w/p*100):0};
     }).sort((a,b)=> b.pts-a.pts || b.w-a.w || a.p-b.p);
-    if(!teams.length){
-      $("pointsTbl").innerHTML=`<tbody><tr><td style="text-align:center;color:var(--dim);padding:30px">No teams yet — add teams to see standings.</td></tr></tbody>`;
+    const head=`<thead><tr><th>POS</th><th>TEAM</th><th>GAME</th><th>P</th><th>W</th><th>L</th><th>D</th><th>PTS</th><th>WR%</th><th>ACTIONS</th></tr></thead>`;
+    if(!rows.length){
+      $("pointsTbl").innerHTML=head+`<tbody><tr><td colspan="10" style="text-align:center;color:var(--dim);padding:30px">No entries yet — click <b>+ ADD ENTRY</b> to start the table.</td></tr></tbody>`;
       return;
     }
-    $("pointsTbl").innerHTML=`<thead><tr><th>POS</th><th>TEAM</th><th>GAME</th><th>P</th><th>W</th><th>L</th><th>D</th><th>PTS</th><th>WR%</th></tr></thead><tbody>`+
-      teams.map((t,i)=>{
+    $("pointsTbl").innerHTML=head+`<tbody>`+
+      rows.map((t,i)=>{
         const posCls=i===0?"top":i===1?"two":i===2?"three":"rest";
         const m=(GAMES[t.game]||{cls:""}).cls;
         return `<tr>
           <td><span class="pt-pos ${posCls}">${i+1}</span></td>
-          <td><span class="team"><i class="gicon sm ${m}">${esc((t.tag||t.name).slice(0,2).toUpperCase())}</i> ${esc(t.name)}</span></td>
+          <td><span class="team"><i class="gicon sm ${m}">${esc((t.team||"?").slice(0,2).toUpperCase())}</i> ${esc(t.team)}</span></td>
           <td>${esc(t.gameName)}</td>
           <td>${t.p}</td><td>${t.w}</td><td>${t.l}</td><td>${t.d}</td>
           <td class="pts">${t.pts}</td>
           <td><span class="wrbar"><i style="width:${t.wr}%"></i></span> ${t.wr}%</td>
+          <td><button class="tbtn edit" data-sedit="${t.id}">EDIT</button> <button class="tbtn del" data-sdel="${t.id}">DEL</button></td>
         </tr>`;
       }).join("")+`</tbody>`;
+  }
+  function openStandForm(t){
+    const ed=!!t;
+    $("sModalTitle").textContent=ed?"EDIT ENTRY":"ADD ENTRY";
+    $("sfId").value=ed?t.id:"";
+    $("sfTeam").value=ed?t.team:"";
+    $("sfGame").value=ed?t.game:"csgo";
+    $("sfWins").value=ed?t.wins:"";
+    $("sfLosses").value=ed?t.losses:"";
+    $("sfDraws").value=ed?t.draws:"";
+    $("sFormOverlay").classList.add("show");
+    setTimeout(()=>{ try{ $("sfTeam").focus(); }catch(e){} },120);
+  }
+  function submitStand(e){
+    e.preventDefault();
+    const team=$("sfTeam").value.trim();
+    if(!team){ toast("Team name required!","warn"); return; }
+    const id=$("sfId").value;
+    const data={ team, game:$("sfGame").value, wins:+$("sfWins").value||0, losses:+$("sfLosses").value||0, draws:+$("sfDraws").value||0 };
+    if(id){
+      const i=state.standings.findIndex(x=>x.id===id);
+      if(i>-1){ state.standings[i]={...state.standings[i],...data, updatedAt:Date.now()}; toast("Entry updated"); }
+    }else{
+      state.standings.push({...data, id:uid(), createdAt:Date.now()});
+      toast("Entry added to the points table");
+    }
+    saveAll();
+    $("sFormOverlay").classList.remove("show");
+    renderPoints();
+  }
+  function deleteStanding(id){
+    openConfirm(`Remove <b>${esc((state.standings.find(x=>x.id===id)||{}).team||"entry")}</b> from the points table?`,()=>{
+      state.standings=state.standings.filter(x=>x.id!==id);
+      saveAll();
+      renderPoints();
+      toast("Entry removed","warn");
+    });
   }
 
   /* ===================== PANEL THEMES ===================== */
@@ -3806,9 +3875,10 @@
     }catch(e){}
   }
   function setBgmTrack(i){
-    state.settings.bgmTrack=i; saveAll(); renderBgm(); renderSettings();
-    if(state.settings.bgm){ bgmStop(); bgmStart(); }
-    toast("BGM: "+BGM_TRACKS[i].name);
+    state.settings.bgmTrack=i; state.settings.bgm=true; saveAll(); renderBgm(); renderSettings();
+    if(bgmOn){ bgmStop(); }
+    ensureAudio(); bgmStart();
+    toast("BGM playing: "+BGM_TRACKS[i].name);
   }
   function renderBgm(){
     $("bgmTabSwitch").classList.toggle("on",state.settings.bgm);
@@ -3902,6 +3972,16 @@
     $("ptChips").addEventListener("click",e=>{
       const c=e.target.closest(".chip"); if(!c) return;
       state.ptGame=c.dataset.pt; renderPtChips(); renderPoints();
+    });
+    $("ptSearch").addEventListener("input",e=>{ state.ptSearch=e.target.value; renderPoints(); });
+    $("addStandBtn").addEventListener("click",()=> openStandForm(null));
+    $("sForm").addEventListener("submit",submitStand);
+    $("sCancelBtn").addEventListener("click",()=> $("sFormOverlay").classList.remove("show"));
+    $("sFormOverlay").addEventListener("click",e=>{ if(e.target===$("sFormOverlay")) $("sFormOverlay").classList.remove("show"); });
+    $("pointsTbl").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-sedit]"), dl=e.target.closest("[data-sdel]");
+      if(ed){ const s=state.standings.find(x=>x.id===ed.dataset.sedit); if(s) openStandForm(s); }
+      if(dl){ deleteStanding(dl.dataset.sdel); }
     });
     $("addMatchBtn").addEventListener("click",()=> openBForm(null));
     $("autoBuildBtn").addEventListener("click",autoBuild);
@@ -4082,7 +4162,7 @@
 
     document.addEventListener("keydown",e=>{
       if(e.key!=="Escape") return;
-      ["formOverlay","pFormOverlay","tFormOverlay","bFormOverlay","mFormOverlay","mtFormOverlay","rFormOverlay","cFormOverlay","wFormOverlay","nFormOverlay","qFormOverlay"].forEach(id=> $(id).classList.remove("show"));
+      ["formOverlay","pFormOverlay","tFormOverlay","sFormOverlay","bFormOverlay","mFormOverlay","mtFormOverlay","rFormOverlay","cFormOverlay","wFormOverlay","nFormOverlay","qFormOverlay"].forEach(id=> $(id).classList.remove("show"));
       closeConfirm(); closeSidebar();
     });
   }
