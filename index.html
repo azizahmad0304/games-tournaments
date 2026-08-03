@@ -584,14 +584,20 @@
   .adwrap{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--stroke);margin:26px 0 4px;box-shadow:0 18px 44px rgba(0,0,0,.4)}
   .adtrack{display:flex;transition:transform .65s cubic-bezier(.22,.61,.36,1)}
   .adslide{min-width:100%;height:190px;position:relative;display:flex;align-items:center;gap:22px;padding:24px 60px;color:#04121f;cursor:pointer;overflow:hidden}
-  .adic{font-size:52px;flex:none;filter:drop-shadow(0 8px 16px rgba(0,0,0,.35));animation:adicfloat 3s ease-in-out infinite}
+  .adlogo{font-family:'Orbitron';font-weight:900;font-size:clamp(30px,5vw,58px);letter-spacing:2px;color:#fff;flex:none;line-height:.9;
+    text-shadow:0 2px 0 rgba(0,0,0,.25),0 6px 22px rgba(0,0,0,.35);-webkit-text-stroke:1px rgba(4,18,31,.25);max-width:150px;word-break:break-word;position:relative;z-index:1}
+  .adic{font-size:46px;flex:none;filter:drop-shadow(0 8px 16px rgba(0,0,0,.35));animation:adicfloat 3s ease-in-out infinite;position:relative;z-index:1}
   @keyframes adicfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
   .adinfo{position:relative;z-index:2;min-width:0}
   .adinfo .adtag{font-family:'Orbitron';font-size:10px;letter-spacing:2.5px;font-weight:800;background:rgba(0,0,0,.35);color:#fff;display:inline-block;padding:4px 10px;border-radius:99px;margin-bottom:8px}
   .adinfo h3{margin:0 0 6px;font-family:'Orbitron';font-size:clamp(16px,2.2vw,22px);letter-spacing:1px;color:#04121f}
   .adinfo p{margin:0 0 12px;font-size:13.5px;font-weight:600;color:rgba(4,18,31,.82);max-width:560px}
-  .adcta{position:relative;z-index:2;border:none;cursor:pointer;font-family:'Orbitron';font-weight:800;font-size:11px;letter-spacing:1.5px;padding:10px 18px;border-radius:10px;background:#04121f;color:#fff;transition:.2s;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+  .adcta{position:relative;z-index:2;display:inline-flex;align-items:center;gap:6px;text-decoration:none;border:none;cursor:pointer;font-family:'Orbitron';font-weight:800;font-size:11px;letter-spacing:1.5px;padding:10px 18px;border-radius:10px;background:#04121f;color:#fff;transition:.2s;box-shadow:0 6px 18px rgba(0,0,0,.3)}
   .adcta:hover{transform:translateY(-2px) scale(1.04)}
+  .adcta::after{content:"↗";font-size:13px;opacity:.85}
+  .adplats{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+  .adplats span{font-size:10px;font-weight:800;letter-spacing:1px;padding:3px 9px;border-radius:99px;background:rgba(0,0,0,.28);color:#fff}
+  .adplats .adsite{background:rgba(255,255,255,.18);color:#04121f}
   .adglow{position:absolute;right:-40px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.4),transparent 65%);filter:blur(6px);animation:adglow 4.5s ease-in-out infinite}
   @keyframes adglow{0%,100%{transform:scale(1) translateY(0);opacity:.55}50%{transform:scale(1.25) translateY(14px);opacity:.95}}
   .adbadge{position:absolute;top:12px;left:12px;z-index:5;display:flex;align-items:center;gap:5px;font-family:'Orbitron';font-size:9px;letter-spacing:2px;font-weight:800;background:rgba(0,0,0,.6);color:#fff;padding:4px 9px;border-radius:99px}
@@ -862,6 +868,60 @@
   .chat-in button svg{width:18px;height:18px;color:#1c0a14}
   @media(max-width:640px){.chat-panel{right:12px;bottom:84px;height:min(460px,calc(100vh - 130px))}.chat-fab{right:14px;bottom:14px}}
 
+  /* ============ PREMIUM MEMBERSHIP ============ */
+  .nav-item.prem .ni svg{color:#ffd54a}
+  .nav-item.prem{position:relative}
+  .nav-item.prem:not(.active):hover{background:rgba(255,213,74,.08)}
+  .nav-item.prem.active{background:linear-gradient(90deg,rgba(255,213,74,.16),rgba(212,175,55,.06));border-left-color:#ffd54a}
+  .nav-item.prem .cnt{color:#ffd54a;background:rgba(255,213,74,.12)}
+  .premchip{display:none;align-items:center;gap:6px;font-family:'Orbitron';font-weight:800;font-size:11px;letter-spacing:1.5px;color:#ffd54a;
+    background:linear-gradient(135deg,rgba(255,213,74,.18),rgba(212,175,55,.08));border:1px solid rgba(255,213,74,.5);padding:6px 12px;border-radius:100px;box-shadow:0 0 16px rgba(255,213,74,.25)}
+  .premchip svg{width:13px;height:13px}
+  body.premium .premchip{display:inline-flex}
+  body.premium .sb-logo h1{color:#ffd54a}
+  body.premium .logo h1{color:#ffd54a}
+  body.premium .premchip{animation:premPulse 2.4s ease-in-out infinite}
+  @keyframes premPulse{0%,100%{box-shadow:0 0 14px rgba(255,213,74,.25)}50%{box-shadow:0 0 26px rgba(255,213,74,.6)}}
+  .prof-prem{display:inline-flex;align-items:center;gap:5px;vertical-align:middle;font-family:'Orbitron';font-size:10px;font-weight:800;letter-spacing:1.5px;
+    color:#ffd54a;background:rgba(255,213,74,.12);border:1px solid rgba(255,213,74,.45);padding:4px 9px;border-radius:100px;margin-left:8px}
+  .prof-prem svg{width:12px;height:12px}
+  .prem-banner{display:flex;align-items:center;gap:18px;padding:26px 28px;border-radius:18px;margin-top:20px;
+    background:linear-gradient(120deg,rgba(255,213,74,.14),rgba(212,175,55,.05));border:1px solid rgba(255,213,74,.35);position:relative;overflow:hidden}
+  .prem-banner::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 20%,rgba(255,213,74,.18),transparent 55%)}
+  .prem-crown{width:64px;height:64px;border-radius:16px;flex:none;display:grid;place-items:center;color:#ffd54a;font-size:0;
+    background:linear-gradient(135deg,rgba(255,213,74,.22),rgba(212,175,55,.08));border:1px solid rgba(255,213,74,.5);box-shadow:0 0 26px rgba(255,213,74,.35)}
+  .prem-crown svg{width:32px;height:32px}
+  .prem-binfo h3{font-family:'Orbitron';font-size:22px;letter-spacing:1px;color:#ffd54a;margin:0}
+  .prem-binfo p{margin:6px 0 0;color:var(--dim);font-size:14px}
+  .prem-bstat{margin-left:auto;text-align:right;font-family:'Rajdhani';font-weight:700;font-size:15px;letter-spacing:1px;color:#fff;position:relative;z-index:1}
+  .prem-bstat b{color:#ffd54a;font-family:'Orbitron';font-size:14px;letter-spacing:1px}
+  .prem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+  .prem-plan{position:relative;padding:26px 22px;border-radius:16px;border:1px solid var(--stroke);background:rgba(10,14,28,.6);transition:.25s;display:flex;flex-direction:column}
+  .prem-plan:hover{transform:translateY(-4px);border-color:rgba(255,213,74,.4)}
+  .prem-plan.hot{border-color:rgba(255,213,74,.55);background:linear-gradient(160deg,rgba(255,213,74,.12),rgba(10,14,28,.7))}
+  .prem-plan.hot::before{content:"MOST POPULAR";position:absolute;top:-11px;left:50%;transform:translateX(-50%);font-family:'Orbitron';font-size:9px;letter-spacing:2px;color:#1c1400;
+    background:linear-gradient(90deg,#ffd54a,#ffb020);padding:4px 12px;border-radius:100px;font-weight:800}
+  .prem-plan h4{font-family:'Orbitron';font-size:15px;letter-spacing:1.5px;color:#fff;margin:0}
+  .prem-plan .pprice{font-family:'Orbitron';font-size:30px;color:#ffd54a;margin:14px 0 4px}
+  .prem-plan .pprice small{font-size:12px;color:var(--dim);letter-spacing:1px;font-family:'Rajdhani'}
+  .prem-plan p{font-size:13px;color:var(--dim);margin:4px 0 14px;line-height:1.5}
+  .prem-plan ul{list-style:none;padding:0;margin:0 0 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .prem-plan li{font-size:13px;color:#cfd8ff;display:flex;gap:8px;align-items:center}
+  .prem-plan li::before{content:"✓";color:#ffd54a;font-weight:800}
+  .prem-plan button{margin-top:auto;font-family:'Orbitron';font-weight:800;font-size:12px;letter-spacing:1.5px;padding:12px;border-radius:12px;cursor:pointer;transition:.2s;
+    border:1px solid rgba(255,213,74,.5);background:linear-gradient(135deg,#ffd54a,#ffb020);color:#1c1400}
+  .prem-plan button:hover{transform:translateY(-2px);box-shadow:0 8px 22px -6px rgba(255,213,74,.7)}
+  .prem-plan button.done{background:rgba(255,213,74,.14);color:#ffd54a;border-color:rgba(255,213,74,.4);cursor:default}
+  .prem-compare{border:1px solid var(--stroke);border-radius:14px;overflow:hidden;margin-top:18px}
+  .prem-compare .prow{display:grid;grid-template-columns:2fr 1fr 2fr;gap:10px;padding:12px 16px;align-items:center}
+  .prem-compare .prow:nth-child(even){background:rgba(255,255,255,.02)}
+  .prem-compare .prow.ph{background:rgba(255,213,74,.08);font-family:'Orbitron';font-size:11px;letter-spacing:1.5px;color:#fff}
+  .prem-compare .pfeat{font-family:'Rajdhani';font-weight:700;font-size:14px;color:#cfd8ff}
+  .prem-compare .pgold{color:#ffd54a;font-family:'Rajdhani';font-weight:700;font-size:13px;letter-spacing:.5px}
+  .prem-actions{display:flex;gap:14px;align-items:center;margin-top:30px;flex-wrap:wrap}
+  .prem-up{background:linear-gradient(135deg,#ffd54a,#ffb020);color:#1c1400;border:none}
+  .prem-up:hover{box-shadow:0 8px 24px -6px rgba(255,213,74,.7)}
+  @media(max-width:760px){.prem-grid{grid-template-columns:1fr}.prem-banner{flex-wrap:wrap}.prem-bstat{margin-left:0;text-align:left}.prem-compare .prow{grid-template-columns:1fr 1fr}}
 
 </style>
 </head>
@@ -910,6 +970,7 @@
       <div class="nav-sep">PROTECTION</div>
       <a class="nav-item" data-view="sec"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span> Anti-Cheat &amp; Security <span class="cnt" id="cntCheats">0</span></a>
       <div class="nav-sep">ACCOUNT</div>
+      <a class="nav-item prem" data-view="premium"><span class="ni"><svg viewBox="0 0 24 24"><path d="M2 7h20l-4 12a3 3 0 0 1-2.8 2H8.8a3 3 0 0 1-2.8-2z"/><path d="M12 3 9.5 7h5L12 3z"/></svg></span> Premium <span class="cnt" id="cntPrem">FREE</span></a>
       <a class="nav-item" data-view="profile"><span class="ni"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Profile</a>
       <a class="nav-item" data-view="settings"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span> Settings</a>
       <a class="nav-item" data-view="backgrounds"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></span> Animated Backgrounds</a>
@@ -923,7 +984,7 @@
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
       <button id="sbBgmBtn">Music</button>
-      <span>v4.1</span>
+      <span>v4.2</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -939,6 +1000,7 @@
           <small>ESPORTS ARENA</small>
         </div>
       </div>
+      <div class="premchip" id="premChip" title="Premium member"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 7h20l-4 12a3 3 0 0 1-2.8 2H8.8a3 3 0 0 1-2.8-2z"/><path d="M12 3 9.5 7h5L12 3z"/></svg> PRO</div>
       <div class="hbtns">
         <button class="iconbtn" id="clearAllBtn" title="Clear all tournaments"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
       </div>
@@ -1406,6 +1468,38 @@
             <div class="lbl">Lock Screen Now <small>Immediately lock the app back to the login screen</small></div>
             <button class="tbtn del" id="lockBtn" style="width:auto">LOCK NOW</button>
           </div>
+        </div>
+      </section>
+
+      <!-- ============ PREMIUM MEMBERSHIP ============ -->
+      <section id="premiumView" class="hidden">
+        <div class="page-title">PREMIUM MEMBERSHIP</div>
+        <div class="page-sub">Unlock the full pro arena — exclusive themes, verified glow, ad-free arena &amp; more.</div>
+        <div class="prem-banner" id="premBanner">
+          <div class="prem-crown"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 7h20l-4 12a3 3 0 0 1-2.8 2H8.8a3 3 0 0 1-2.8-2z"/><path d="M12 3 9.5 7h5L12 3z"/></svg></div>
+          <div class="prem-binfo">
+            <h3 id="premBTitle">GO PREMIUM</h3>
+            <p id="premBSub">Become a PRO member and unlock the gold arena experience.</p>
+          </div>
+          <div class="prem-bstat" id="premBStat">STATUS: <b>FREE</b></div>
+        </div>
+        <div class="stats" id="premSummary"></div>
+        <div class="section-head" style="margin-top:34px"><h3>CHOOSE YOUR PLAN</h3><span class="sub">cancel anytime</span></div>
+        <div class="prem-grid" id="premPlans"></div>
+        <div class="section-head" style="margin-top:40px"><h3>FREE VS PREMIUM</h3><span class="sub">full comparison</span></div>
+        <div class="prem-compare">
+          <div class="prow ph"><div class="pfeat">Feature</div><div>FREE</div><div class="pgold">PREMIUM</div></div>
+          <div class="prow"><div class="pfeat">Animated panel themes</div><div>20</div><div class="pgold">20 + GOLD ROYAL GLOW</div></div>
+          <div class="prow"><div class="pfeat">BGM soundtracks</div><div>25</div><div class="pgold">25 + PICK ANY</div></div>
+          <div class="prow"><div class="pfeat">Verify badges</div><div>4</div><div class="pgold">UNLIMITED + GOLD GLOW</div></div>
+          <div class="prow"><div class="pfeat">Profile frames</div><div>70</div><div class="pgold">70 + PREMIUM CROWN</div></div>
+          <div class="prow"><div class="pfeat">Dashboard ads</div><div>Shown</div><div class="pgold">AD-FREE ARENA</div></div>
+          <div class="prow"><div class="pfeat">Pro badge on profile</div><div>—</div><div class="pgold">GOLD CROWN BADGE</div></div>
+          <div class="prow"><div class="pfeat">Priority event invites</div><div>—</div><div class="pgold">EARLY SLOT</div></div>
+        </div>
+        <div class="prem-actions">
+          <button class="addbtn prem-up" id="premUpBtn">UPGRADE TO PREMIUM</button>
+          <button class="tbtn del" id="premCancelBtn" style="width:auto">CANCEL PREMIUM</button>
         </div>
       </section>
 
@@ -1968,8 +2062,8 @@
     {name:"Red Alert", c:"#ff3d6e", c2:"#ff0044"}
   ];
   const STAGES = { qf:{label:"Quarter Finals", short:"QF", n:4}, sf:{label:"Semi Finals", short:"SF", n:2}, f:{label:"Grand Final", short:"FINAL", n:1} };
-  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1" };
-  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges" };
+  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1", prem:"gt_prem_v1" };
+  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges", prem:"premium" };
   const STATUS = { up:{t:"Upcoming",c:"up"}, live:{t:"Live",c:"live"}, done:{t:"Completed",c:"done"} };
 
   const ICONS = {
@@ -1986,7 +2080,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], profile:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -2142,6 +2236,7 @@
     state.standings   = getStore(KEYS.stand, null) ?? seedStandings();
     state.ach         = getStore(KEYS.ach,   null) ?? seedAch();
     state.vbadges     = getStore(KEYS.gbadges, null) ?? seedVbadges();
+    state.premium     = getStore(KEYS.prem, null);
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
@@ -2171,7 +2266,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",sec:"secView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",sec:"secView",premium:"premiumView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -2197,6 +2292,7 @@
     if(v==="bgm"){ renderBgm(); }
     if(v==="appearance"){ renderAppearance(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
+    if(v==="premium"){ renderPremium(); }
     closeSidebar();
     window.scrollTo({top:0,behavior:"smooth"});
   }
@@ -2266,27 +2362,30 @@
   }
   /* ===================== DASHBOARD GAMING ADS ===================== */
   const ADS=[
-    {id:"cs",game:"csgo",icon:"🔫",title:"CS GO 2 — SEASON 7",line:"New operation, ranked reset & a $50,000 prize pool. Drop in and clutch!",btn:"PLAY NOW",c1:"#ff7a1a",c2:"#ffd54a"},
-    {id:"pg",game:"pubg",icon:"🪂",title:"PUBG PC — WARZONE WEEKEND",line:"Double XP plus exclusive chicken dinner skins. Squad up before it ends!",btn:"JOIN NOW",c1:"#ffb700",c2:"#ff7a00"},
-    {id:"bs",game:"bs",icon:"⚔️",title:"BLOOD STRIKE — CLAN WARS",line:"3v3 ranked sprint. Climb to the top 100 and earn clan banners.",btn:"FIGHT",c1:"#ff2d55",c2:"#ff7a5c"},
-    {id:"cod",game:"cod",icon:"🎖️",title:"COD MW19 — NIGHTFALL OPS",line:"Free battle-pass tier unlocks all week. Gear up with meta loadouts.",btn:"LOADOUT",c1:"#8bc34a",c2:"#cddc39"},
-    {id:"ff",game:null,icon:"🎲",title:"FREE FIRE MAX — BOOYAH EVENT",line:"Booyah weekend: 2x rank points, exclusive diamond royale loot.",btn:"BOOYAH!",c1:"#ff9d2f",c2:"#ff2e63"},
-    {id:"val",game:null,icon:"💥",title:"VALORANT — UNRATED CLASH",line:"5v5 spike rush tournament every Friday. Clutch or be clutched.",btn:"RUSH",c1:"#ff4655",c2:"#0f1923"},
-    {id:"cricket",game:null,icon:"🏏",title:"CRICKET 26 — WORLD SERIES CUP",line:"Real-time ranked matches, pitch mastery & the biggest prize yet.",btn:"STRIKE",c1:"#38e07a",c2:"#2bff9e"},
-    {id:"pass",game:null,icon:"👑",title:"ROG LEGENDS PASS 2026",line:"Season rewards, verified badges and medal unlocks across every game.",btn:"GET PASS",c1:"#7c4dff",c2:"#00e0ff"},
-    {id:"prem",game:null,icon:"💎",title:"PREMIUM ARENA",line:"25 soundtracks, 20 animated themes, verified ticks and ad-clean arena.",btn:"UPGRADE",c1:"#d4af37",c2:"#fff3a0"}
+    {id:"cs2",game:"csgo",logo:"CS2",icon:"🔫",title:"COUNTER-STRIKE 2 — SEASON 2026",line:"New operation, refreshed ranked & the $250K Major. Queue up now.",btn:"PLAY FREE",url:"https://www.counter-strike.net/",plats:["PC"],c1:"#ff7a1a",c2:"#ffd54a"},
+    {id:"pubg",game:"pubg",logo:"PUBG",icon:"🪂",title:"PUBG: BATTLEGROUNDS — ANNIVERSARY",line:"Anniversary crates, double XP & the ultimate chicken dinner.",btn:"PLAY FREE",url:"https://pubg.com/",plats:["PC","Console"],c1:"#ffb700",c2:"#ff7a00"},
+    {id:"ff",game:null,logo:"FREE FIRE",icon:"🔥",title:"FREE FIRE MAX — BOOYAH FEST 2026",line:"New map, elite pass rewards & diamond royale events live now.",btn:"DOWNLOAD",url:"https://ff.garena.com/",plats:["Android","iOS"],c1:"#ff9d2f",c2:"#ff2e63"},
+    {id:"val",game:null,logo:"VALORANT",icon:"💥",title:"VALORANT — VCT 2026 CLASH",line:"Ranked act is live. Clutch rounds, unlock skins, climb to Radiant.",btn:"PLAY FREE",url:"https://playvalorant.com/",plats:["PC"],c1:"#ff4655",c2:"#0f1923"},
+    {id:"cod",game:"cod",logo:"COD",icon:"🎖️",title:"CALL OF DUTY: WARZONE — SEASON 6",line:"New map drop, free battle pass tiers & meta loadouts.",btn:"PLAY NOW",url:"https://www.callofduty.com/warzone",plats:["PC","Console"],c1:"#8bc34a",c2:"#cddc39"},
+    {id:"fn",game:null,logo:"FORTNITE",icon:"🎯",title:"FORTNITE — CHAPTER 6",line:"New season, live events & battle royale with 100 players.",btn:"PLAY FREE",url:"https://www.fortnite.com/",plats:["ALL"],c1:"#7c4dff",c2:"#00e0ff"},
+    {id:"gta",game:null,logo:"GTA ONLINE",icon:"🚗",title:"GTA ONLINE — BONUS WEEK",line:"Double GTA$ and RP across heists, races and deathmatches.",btn:"PLAY NOW",url:"https://www.rockstargames.com/GTAOnline",plats:["PC","Console"],c1:"#00b8ff",c2:"#9b4dff"},
+    {id:"fc",game:null,logo:"EA FC 26",icon:"⚽",title:"EA SPORTS FC 26 — ULTIMATE TEAM",line:"Build your dream squad, weekend league & pack drops are live.",btn:"GET IT",url:"https://www.ea.com/games/ea-sports-fc",plats:["ALL"],c1:"#2bff9e",c2:"#00c8a0"},
+    {id:"dota",game:null,logo:"DOTA 2",icon:"⚔️",title:"DOTA 2 — TI ROAD",line:"Crownfall act, DPC season & the biggest prize pool in esports.",btn:"PLAY FREE",url:"https://www.dota2.com/",plats:["PC"],c1:"#ff2e63",c2:"#7a2bff"},
+    {id:"genshin",game:null,logo:"GENSHIN",icon:"✨",title:"GENSHIN IMPACT — NEW UPDATE",line:"A new region, fresh characters & an open world to explore.",btn:"DOWNLOAD",url:"https://genshin.hoyoverse.com/",plats:["ALL"],c1:"#ffd54a",c2:"#ff6b9d"}
   ];
   let adIdx=0, adTimer=null;
   function renderAds(){
     const tr=$("adTrack");
     tr.innerHTML=ADS.map((a,i)=>`
       <div class="adslide" data-adi="${i}" style="background:linear-gradient(115deg,${a.c1},${a.c2})">
+        <div class="adlogo">${a.logo}</div>
         <div class="adic">${a.icon}</div>
         <div class="adinfo">
-          <div class="adtag">${a.game?esc(GAMES[a.game].name.toUpperCase()):"GAMES TOURNAMENTS PRO"}</div>
+          <div class="adtag">${a.game?esc(GAMES[a.game].name.toUpperCase()):"OFFICIAL GAMING AD"}</div>
           <h3>${esc(a.title)}</h3>
           <p>${esc(a.line)}</p>
-          <button class="adcta">${esc(a.btn)}</button>
+          <div class="adplats">${a.plats.map(p=>`<span>${p}</span>`).join("")}<span class="adsite">OFFICIAL SITE ↗</span></div>
+          <a class="adcta" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.btn)}</a>
         </div>
         <div class="adglow"></div>
       </div>`).join("");
@@ -2911,7 +3010,7 @@
       <div class="pavatar pf ${fr?`s-${fr.s} a-${fr.a}`:""}" ${fr?`style="--c1:${fr.c1};--c2:${fr.c2}"`:""}>
         <div class="pav" style="background:${swatch(p.avatar)}">${avatarInner}</div>
       </div>
-      <h3>${esc(p.tag||"Your Tag")}</h3>
+      <h3>${esc(p.tag||"Your Tag")} ${premActive()?`<span class="prof-prem" title="Premium member"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 7h20l-4 12a3 3 0 0 1-2.8 2H8.8a3 3 0 0 1-2.8-2z"/><path d="M12 3 9.5 7h5L12 3z"/></svg> PRO</span>`:""}</h3>
       <div class="plv">LEVEL ${+p.level||1}</div>
       <div class="country">${esc(p.country||"—")} · ${esc(gameOf(p.game).name)}</div>
       <div class="bio">${esc(p.bio||"No bio yet — add one!")}</div>
@@ -3525,6 +3624,65 @@
       renderVbSummary(); renderVb(); renderPlrSummary(); renderPlayers();
       toast("Badge deleted","warn");
     });
+  }
+
+  /* ===================== PREMIUM MEMBERSHIP ===================== */
+  const PREM_PLANS=[
+    {id:"monthly",name:"MONTHLY PRO",price:"$4.99",per:"/ month",line:"Perfect to try the pro arena for a month.",feats:["All premium themes & gold glow","Ad-free dashboard","Gold crown badge on profile","Unlimited verify badges","Priority event invites"],hot:false},
+    {id:"yearly",name:"YEARLY PRO",price:"$39.99",per:"/ year",line:"Best value — save 33% and lock the gold look.",feats:["Everything in Monthly","Save 33% vs monthly","Exclusive seasonal avatars","Early slot in every tournament","Dedicated support"],hot:true},
+    {id:"lifetime",name:"LIFETIME PRO",price:"$99.99",per:"once",line:"One payment. Pro forever — even future builds.",feats:["Everything in Yearly","Lifetime upgrades included","Lifetime PRO crown badge","Name in hall of legends","No renewal ever"],hot:false}
+  ];
+  const premActive=()=> !!(state.premium && state.premium.plan);
+  function premTier(){
+    if(!premActive()) return "FREE";
+    return (state.premium.plan||"pro").toUpperCase()+" PRO";
+  }
+  function renderPremium(){
+    const p=state.premium, active=premActive();
+    $("cntPrem").textContent=active? "PRO":"FREE";
+    document.body.classList.toggle("premium", active);
+    $("premChip").style.display=active? "inline-flex":"none";
+    $("premBTitle").textContent=active? "YOU ARE PREMIUM":"GO PREMIUM";
+    $("premBSub").textContent=active
+      ? `PRO member since ${fmtDate(p.since)}. Enjoy the gold arena — ad-free, unlimited badges & more.`
+      : "Become a PRO member and unlock the gold arena experience.";
+    $("premBStat").innerHTML=`STATUS: <b>${esc(premTier())}</b>`;
+    $("premSummary").innerHTML=`
+      <div class="stat"><div class="num">${active?"<span style='color:#ffd54a'>PRO</span>":"FREE"}</div><span>Current Tier</span></div>
+      <div class="stat"><div class="num">${active? fmtDate(p.since):"—"}</div><span>Member Since</span></div>
+      <div class="stat"><div class="num">${active?"ACTIVE":"INACTIVE"}</div><span>Status</span></div>
+      <div class="stat"><div class="num">${active?"∞":"0"}</div><span>Badge Slots</span></div>`;
+    $("premPlans").innerHTML=PREM_PLANS.map(pl=>`
+      <div class="prem-plan ${pl.hot?"hot":""}">
+        <h4>${pl.name}</h4>
+        <div class="pprice">${pl.price}<small>${pl.per}</small></div>
+        <p>${pl.line}</p>
+        <ul>${pl.feats.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>
+        <button data-plan="${pl.id}" class="${active&&state.premium.plan===pl.id?"done":""}">${active&&state.premium.plan===pl.id?"CURRENT PLAN":"GO PRO"}</button>
+      </div>`).join("");
+    $("premUpBtn").textContent=active? "MANAGE PREMIUM":"UPGRADE TO PREMIUM";
+    $("premCancelBtn").style.display=active? "inline-flex":"none";
+  }
+  function activatePremium(plan){
+    state.premium={ plan, since:new Date().toISOString() };
+    saveAll(); renderPremium();
+    document.body.classList.add("premium");
+    toast("Welcome to PREMIUM, "+PREM_PLANS.find(x=>x.id===plan).name+"!"); 
+  }
+  function cancelPremium(){
+    openConfirm(`Cancel <b>${esc(premTier())}</b> membership? You will return to the free tier.`,()=>{
+      state.premium=null;
+      saveAll(); renderPremium();
+      document.body.classList.remove("premium");
+      toast("Premium cancelled","warn");
+    });
+  }
+  function applyPremiumShell(){
+    if(state.premium){
+      document.body.classList.add("premium");
+      $("premChip").style.display="inline-flex";
+      $("cntPrem").textContent="PRO";
+    }
   }
 
   /* ===================== PANEL THEMES ===================== */
@@ -4714,14 +4872,22 @@
     $("sbSoundBtn").addEventListener("click",()=> toggleSetting("sound"));
     $("sbBgmBtn").addEventListener("click",()=> toggleSetting("bgm"));
 
+    // premium
+    $("premPlans").addEventListener("click",e=>{ const b=e.target.closest("[data-plan]"); if(b) activatePremium(b.dataset.plan); });
+    $("premUpBtn").addEventListener("click",()=> switchView("premium"));
+    $("premCancelBtn").addEventListener("click",cancelPremium);
+
     // home
     $("gamesRow").addEventListener("click",e=>{ const c=e.target.closest(".gamecard"); if(c) openGame(c.dataset.game); });
     $("adNext").addEventListener("click",()=>{ adGo(adIdx+1); adResume(); });
     $("adPrev").addEventListener("click",()=>{ adGo(adIdx-1); adResume(); });
     $("adTrack").addEventListener("click",e=>{
       const s=e.target.closest(".adslide"); if(!s) return;
+      if(e.target.closest("a.adcta")) return;
       const a=ADS[+s.dataset.adi];
-      if(a.game) openGame(a.game); else switchView("register");
+      if(a.game) openGame(a.game);
+      else if(a.url){ window.open(a.url,"_blank","noopener"); }
+      else switchView("register");
     });
     $("adDots").addEventListener("click",e=>{ const d=e.target.closest(".dot"); if(d){ adGo(+d.dataset.dot); adResume(); } });
     $("adWrap").addEventListener("mouseenter",adPause);
@@ -5045,6 +5211,7 @@
   chatMem.name=state.settings.chatName||""; chatMem.game=state.settings.chatGame||"";
   wire();
   renderSettings();
+  applyPremiumShell();
   switchView("home");
   requestAnimationFrame(loop);
   if(state.settings.bgm){
