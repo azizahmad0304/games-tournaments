@@ -328,7 +328,8 @@
   .pcard{border:1px solid var(--stroke);border-radius:20px;background:var(--panel);overflow:hidden;text-align:center;position:sticky;top:80px}
   .pcard .banner{height:90px;background:linear-gradient(120deg,#3d7bff,#9b4dff,#00e0ff);background-size:200% auto;animation:shine 6s linear infinite}
   .pcard .pav{width:96px;height:96px;margin:-48px auto 0;border-radius:50%;display:grid;place-items:center;font-size:44px;font-family:'Orbitron';font-weight:900;
-    color:#fff;border:3px solid var(--cyber);box-shadow:0 0 30px rgba(0,255,255,.35);position:relative;z-index:1;background:linear-gradient(135deg,#3d7bff,#00e0ff)}
+    color:#fff;border:3px solid var(--cyber);box-shadow:0 0 30px rgba(0,255,255,.35);position:relative;z-index:1;background:linear-gradient(135deg,#3d7bff,#00e0ff);overflow:hidden}
+  .pcard .pav svg{width:100%;height:100%}
   .pcard h3{font-family:'Orbitron';font-size:19px;letter-spacing:1px;margin-top:12px}
   .pcard .plv{display:inline-block;margin-top:8px;font-size:11px;letter-spacing:2px;color:#02131f;font-weight:800;padding:4px 12px;border-radius:100px;background:linear-gradient(120deg,var(--cyber),var(--cyber2))}
   .pcard .country{color:var(--dim);font-size:13px;margin-top:8px}
@@ -388,6 +389,7 @@
   .bgm-card.playing .bstate{display:inline-block;background:linear-gradient(120deg,var(--cyber),var(--cyber2));color:#000;border:none}
   .bgm-card .bwave{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px;margin-bottom:10px}
   .bgm-card h4{margin:0 0 4px;font-size:14px;letter-spacing:.5px}
+  .bgm-card .yt-tag{display:inline-block;margin-left:6px;font-size:8px;font-weight:900;letter-spacing:1px;color:#ff0000;border:1px solid #ff000066;background:#ff000018;border-radius:4px;padding:1px 4px;vertical-align:middle}
   .bgm-card p{margin:0;font-size:12px;color:var(--dim);line-height:1.45}
   .bgm-card .bnums{display:flex;gap:6px;margin-top:10px}
   .bgm-card .bnums i{width:5px;height:14px;border-radius:2px;background:var(--cyber);opacity:.85;animation:bgmpulse 1s ease-in-out infinite}
@@ -450,7 +452,8 @@
   .avcell{display:flex;flex-direction:column;align-items:center;gap:4px;padding:8px 4px;border-radius:12px;border:1px solid transparent;background:transparent;cursor:pointer;transition:.18s;color:var(--dim)}
   .avcell:hover{border-color:var(--cyber);background:rgba(0,255,255,.05);color:var(--txt)}
   .avcell.sel{border-color:var(--cyber);background:rgba(0,255,255,.1);box-shadow:0 0 14px var(--nav-glow);color:var(--txt)}
-  .avcell .avemo{width:42px;height:42px;display:grid;place-items:center;font-size:26px;border-radius:50%;background:var(--panel2);border:1px solid var(--stroke)}
+  .avcell .avemo{width:42px;height:42px;display:grid;place-items:center;font-size:26px;border-radius:50%;background:var(--panel2);border:1px solid var(--stroke);overflow:hidden}
+  .avcell .avemo svg{width:100%;height:100%}
   .avcell em{font-style:normal;font-size:9px;font-weight:700;letter-spacing:.4px}
   .anim-bounce .avemo,.anim-bounce,.anim-bounce svg{animation:pa-b 1.3s ease-in-out infinite}
   .anim-pulse .avemo,.anim-pulse{animation:pa-p 1.6s ease-in-out infinite}
@@ -478,13 +481,17 @@
   .fcell.sel{border-color:var(--cyber);background:rgba(0,255,255,.1);box-shadow:0 0 14px var(--nav-glow);color:var(--txt)}
   .fcell em{font-style:normal;font-size:9px;font-weight:700;letter-spacing:.3px;text-align:center;line-height:1.25}
   .pf{position:relative;display:inline-flex;align-items:center;justify-content:center;width:78px;height:78px;border-radius:50%;flex:none}
-  .pf .pf-in{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:32px;overflow:hidden;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.12),rgba(0,0,0,.42))}
-  .pf::before{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none}
+  .pf .pf-in{width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:32px;overflow:hidden;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.12),rgba(0,0,0,.42));border:1px solid rgba(0,0,0,.4)}
+  .pf .pf-in svg{width:100%;height:100%}
+  .pf::before{content:"";position:absolute;inset:0;border-radius:50%;pointer-events:none;z-index:1}
+  .pf::after{content:"";position:absolute;inset:3px;border-radius:50%;border:1px solid rgba(255,255,255,.18);pointer-events:none;z-index:2}
   .pf.s-grad::before{background:conic-gradient(from 0deg,var(--c1),var(--c2),var(--c1));-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px));mask:radial-gradient(farthest-side,transparent calc(100% - 5px),#000 calc(100% - 4px))}
   .pf.s-solid::before{border:3px solid var(--c1)}
   .pf.s-glow::before{border:3px solid var(--c1);box-shadow:0 0 14px var(--c1),0 0 28px var(--c1)}
   .pf.s-dash::before{border:3px dashed var(--c1)}
   .pf.s-ring::before{border:3px solid var(--c1);outline:2px solid var(--c2);outline-offset:5px;box-shadow:0 0 10px var(--c1)66}
+  .pf.s-bevel::before{background:conic-gradient(from 0deg,var(--c1),var(--c2),var(--c1));-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 7px),transparent calc(100% - 4px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 9px),#000 calc(100% - 7px),transparent calc(100% - 4px),#000 calc(100% - 3px));box-shadow:inset 0 0 10px var(--c1)44}
+  .pf.s-duo::before{background:conic-gradient(from 0deg,var(--c1),var(--c2),var(--c1));-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 11px),#000 calc(100% - 9px),transparent calc(100% - 6px),#000 calc(100% - 4px),transparent calc(100% - 2px),#000);mask:radial-gradient(farthest-side,transparent calc(100% - 11px),#000 calc(100% - 9px),transparent calc(100% - 6px),#000 calc(100% - 4px),transparent calc(100% - 2px),#000)}
   .pf.a-spin::before{animation:pf-spin 3s linear infinite}
   .pf.a-glow::before{animation:pf-glow 2s ease-in-out infinite}
   .pf.a-pulse::before{animation:pf-pulse 2.2s ease-in-out infinite}
@@ -984,7 +991,7 @@
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
       <button id="sbBgmBtn">Music</button>
-      <span>v4.2</span>
+      <span>v4.3</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -1376,7 +1383,7 @@
       <!-- ============ BGM SOUNDS ============ -->
       <section id="bgmView" class="hidden">
         <div class="page-title">BGM SOUNDS</div>
-        <div class="page-sub">Pick your arena soundtrack — 10 synthesized background music tracks, all made inside the app.</div>
+        <div class="page-sub">Pick your arena soundtrack — 27 background music tracks, 25 synthesized in-app plus the official CS2 &amp; PUBG PC menu themes streamed from YouTube.</div>
         <div class="setcard" style="margin-bottom:16px">
           <div class="setrow">
             <div class="lbl">Background Music <small>Master switch — turns the selected track on / off</small></div>
@@ -2187,7 +2194,7 @@
     ];
   }
   function defaultProfile(){ return { tag:"GhostX", name:"Aamir Khan", country:"Pakistan", game:"csgo", level:42, hours:1500, email:"you@mail.com",
-    bio:"Pro esports player. Champion of the arena.", avatar:0, avatarE:"🎮", frame:"f0", yt:"", disc:"GhostX#1234", tw:"", ig:"" }; }
+    bio:"Pro esports player. Champion of the arena.", avatar:0, avatarE:"a10", frame:"f0", yt:"", disc:"GhostX#1234", tw:"", ig:"" }; }
   function seedVbadges(){
     return [
       {id:"blue",name:"Blue Tick",color:"#1d9bf0",glow:"med",desc:"Official verified player"},
@@ -2238,6 +2245,7 @@
     state.vbadges     = getStore(KEYS.gbadges, null) ?? seedVbadges();
     state.premium     = getStore(KEYS.prem, null);
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
+    state.profile.avatarE = normAv(state.profile.avatarE);
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
@@ -2364,7 +2372,7 @@
   const ADS=[
     {id:"cs2",game:"csgo",logo:"CS2",icon:"🔫",title:"COUNTER-STRIKE 2 — SEASON 2026",line:"New operation, refreshed ranked & the $250K Major. Queue up now.",btn:"PLAY FREE",url:"https://www.counter-strike.net/",plats:["PC"],c1:"#ff7a1a",c2:"#ffd54a"},
     {id:"pubg",game:"pubg",logo:"PUBG",icon:"🪂",title:"PUBG: BATTLEGROUNDS — ANNIVERSARY",line:"Anniversary crates, double XP & the ultimate chicken dinner.",btn:"PLAY FREE",url:"https://pubg.com/",plats:["PC","Console"],c1:"#ffb700",c2:"#ff7a00"},
-    {id:"ff",game:null,logo:"FREE FIRE",icon:"🔥",title:"FREE FIRE MAX — BOOYAH FEST 2026",line:"New map, elite pass rewards & diamond royale events live now.",btn:"DOWNLOAD",url:"https://ff.garena.com/",plats:["Android","iOS"],c1:"#ff9d2f",c2:"#ff2e63"},
+    {id:"codm",game:null,logo:"COD MOBILE",icon:"📱",title:"CALL OF DUTY: MOBILE — SEASON 2026",line:"Ranked multiplayer, battle royale & new map drops on the go. Download free now.",btn:"DOWNLOAD",url:"https://www.callofduty.com/mobile",plats:["Android","iOS"],c1:"#ff9d2f",c2:"#8bc34a"},
     {id:"val",game:null,logo:"VALORANT",icon:"💥",title:"VALORANT — VCT 2026 CLASH",line:"Ranked act is live. Clutch rounds, unlock skins, climb to Radiant.",btn:"PLAY FREE",url:"https://playvalorant.com/",plats:["PC"],c1:"#ff4655",c2:"#0f1923"},
     {id:"cod",game:"cod",logo:"COD",icon:"🎖️",title:"CALL OF DUTY: WARZONE — SEASON 6",line:"New map drop, free battle pass tiers & meta loadouts.",btn:"PLAY NOW",url:"https://www.callofduty.com/warzone",plats:["PC","Console"],c1:"#8bc34a",c2:"#cddc39"},
     {id:"fn",game:null,logo:"FORTNITE",icon:"🎯",title:"FORTNITE — CHAPTER 6",line:"New season, live events & battle royale with 100 players.",btn:"PLAY FREE",url:"https://www.fortnite.com/",plats:["ALL"],c1:"#7c4dff",c2:"#00e0ff"},
@@ -2674,7 +2682,7 @@
       if(w) html+=`<div class="bmatch champ" style="grid-column:1/-1">
         <div class="chbanner">${ICONS.trophy} CHAMPION</div>
         <div class="bteams">
-          <div class="bteam win"><span class="slot">1</span><span class="nm">${esc(w)}</span><span class="won">WIN</span></div>
+          <div class="bteam win"><span class="slot">1</span><span class="nm">${esc(w)}${tickByName(w)}</span><span class="won">WIN</span></div>
         </div>
         <div class="badv" style="text-align:center;padding-bottom:12px">Grand Final winner — <b>${esc(w)}</b> are the champions!</div>
       </div>`;
@@ -2689,8 +2697,8 @@
         return `<div class="bmatch ${st==="f"&&w?"champ":""}">
           <div class="bh"><b>${stInfo.short} ${m.order!==undefined?m.order+1:""}</b><span class="st ${w?"":"pend"}">${w? "FINISHED" : "PENDING"}</span></div>
           <div class="bteams">
-            <div class="bteam ${w===m.teamA?"win":""}"><span class="slot">A</span><span class="nm">${esc(m.teamA||"TBD — auto from winners")}</span><span class="sc">${+m.scoreA||0}</span>${w===m.teamA?'<span class="won">WIN</span>':""}</div>
-            <div class="bteam ${w===m.teamB?"win":""}"><span class="slot">B</span><span class="nm">${esc(m.teamB||"TBD — auto from winners")}</span><span class="sc">${+m.scoreB||0}</span>${w===m.teamB?'<span class="won">WIN</span>':""}</div>
+            <div class="bteam ${w===m.teamA?"win":""}"><span class="slot">A</span><span class="nm">${esc(m.teamA||"TBD — auto from winners")}${tickByName(m.teamA)}</span><span class="sc">${+m.scoreA||0}</span>${w===m.teamA?'<span class="won">WIN</span>':""}</div>
+            <div class="bteam ${w===m.teamB?"win":""}"><span class="slot">B</span><span class="nm">${esc(m.teamB||"TBD — auto from winners")}${tickByName(m.teamB)}</span><span class="sc">${+m.scoreB||0}</span>${w===m.teamB?'<span class="won">WIN</span>':""}</div>
           </div>
           ${st!=="f"?`<div class="badv">Winner advances to <b>${nextStage}</b>${st==="qf"?" ("+nextSlot+")":""}</div>`:""}
           <div class="foot" style="border-top:1px dashed rgba(255,255,255,.08)">
@@ -2754,7 +2762,7 @@
             <div style="font-size:11px;color:var(--dim);letter-spacing:1px;margin-top:6px">${g.name}</div>
           </div>
           <div style="text-align:right">
-            <div class="team">${esc(m.name)}</div>
+            <div class="team">${esc(m.name)}${tickByName(m.name)}</div>
             <div style="font-size:12px;color:var(--dim);margin-top:5px">${esc(m.country)}</div>
           </div>
         </div>
@@ -2955,42 +2963,104 @@
 
   /* ===================== PROFILE ===================== */
   const AV_CATS=[["army","Army"],["sigma","Sigma"],["gamer","Gamer"],["fighter","Fighter"],["tech","Tech"],["crypto","Crypto"],["ninja","Ninja"],["space","Space"],["rich","Rich"],["beast","Beast"]];
+  const SKINS=["#ffdbb5","#f0c9a0","#e0ac69","#c68642","#8d5524","#ffe0c7"];
+  const TOPS=["#171a21","#23272f","#3a4150","#5a6472","#2b2b3a","#ff7a1a","#00d2ff","#9b4dff","#ffd700","#ff2e63","#2bff9e","#00c8a0"];
+  const CAT_BG={army:["#5c7a3a","#26351a"],sigma:["#4a3f7a","#191530"],gamer:["#1f5a7a","#0d2634"],fighter:["#8a2f2f","#381010"],tech:["#2f5a7a","#101f2f"],crypto:["#6a6a1f","#26260c"],ninja:["#3a3a52","#12121f"],space:["#1f3a8a","#0a1026"],rich:["#7a641f","#2b230c"],beast:["#5a442a","#1c140a"]};
+  function shade(hex,p){ const n=parseInt(hex.slice(1),16); if(isNaN(n)) return hex; const r=(n>>16)&255,g=(n>>8)&255,b=n&255; const t=p>0?f=>Math.round(f+(255-f)*p/100):f=>Math.round(f*(1+p/100)); return "#"+((1<<24)+(t(r)<<16)+(t(g)<<8)+t(b)).toString(16).slice(1); }
+  function avAcc(a){
+    const top=a.top, v=a.v, skin=a.skin, c=a.c;
+    let s="";
+    const brows=`<path d="M36 29 Q42 26 47 29 M49 29 Q54 26 60 29" stroke="${top}" stroke-width="2.4" fill="none" stroke-linecap="round"/>`;
+    const eyes=`<g><circle cx="41" cy="35" r="3.2" fill="#f4f4f4"/><circle cx="55" cy="35" r="3.2" fill="#f4f4f4"/><circle cx="${v===1?42:40}" cy="${v===2?37:35}" r="1.7" fill="#0f1115"/><circle cx="${v===1?56:54}" cy="${v===2?37:35}" r="1.7" fill="#0f1115"/><circle cx="${v===2?40.6:40}" cy="${v===2?34.2:34}" r="0.6" fill="#fff"/></g>`;
+    const mouth=`<path d="M43 45 Q48 48.5 53 45" stroke="#a24f3b" stroke-width="2" fill="none" stroke-linecap="round"/>`;
+    if(c!=="tech"&&c!=="space") s+=brows+eyes+mouth;
+    if(c==="army"){
+      const hel=v===0?"#5a6420":v===1?"#7a5a2e":"#46536b";
+      s+=`<path d="M26 38 C26 20 70 20 70 38 L70 42 C70 30 60 24 48 24 C36 24 26 30 26 42 Z" fill="${hel}"/><path d="M26 34 L70 34" stroke="${shade(hel,-28)}" stroke-width="2.4"/><path d="M48 25l1.8 3.5 4 .6-2.9 2.8.7 4-3.6-1.9-3.6 1.9.7-4-2.9-2.8 4-.6z" fill="${v===2?"#fff":"#ffd54a"}"/>`;
+    }
+    if(c==="sigma"){
+      s+=`<path d="M34 33 L42 39 L54 39 L62 33 L62 40 Q58 46 48 46 Q38 46 34 40 Z" fill="#0d0f14" opacity=".92"/>`+
+        (v===0?`<path d="M24 52 C28 42 68 42 72 52 C72 62 64 68 48 68 C32 68 24 62 24 52 Z" fill="${top}"/>`:"");
+    }
+    if(c==="gamer"){
+      s+=`<path d="M26 38 C26 24 70 24 70 38 L70 33 C70 21 60 17 48 17 C36 17 26 21 26 33 Z" fill="${top}"/><rect x="15" y="29" width="13" height="17" rx="5" fill="${top}"/><rect x="68" y="29" width="13" height="17" rx="5" fill="${top}"/><rect x="18" y="33" width="7" height="9" rx="3" fill="${shade(top,-25)}"/><rect x="71" y="33" width="7" height="9" rx="3" fill="${shade(top,-25)}"/>`;
+    }
+    if(c==="fighter"){
+      const band=v===0?"#e23d5b":v===1?"#2bff9e":"#ffd700";
+      s+=`<path d="M27 31 Q48 25 69 31 L67 36 Q48 30 29 36 Z" fill="${band}"/><path d="M39 45 Q48 48 57 45" stroke="${shade(skin,-18)}" stroke-width="2.6" fill="none" stroke-linecap="round"/>`;
+    }
+    if(c==="tech"){
+      s+=`<path d="M30 35 L66 35" stroke="${top}" stroke-width="5" stroke-linecap="round"/><circle cx="48" cy="35" r="3" fill="#ffd54a"/><path d="M26 44 L70 44" stroke="#0c0f16" stroke-width="2.6"/><rect x="40" y="12" width="3" height="7" rx="1.5" fill="#ffd54a"/><circle cx="41.5" cy="11" r="2.4" fill="#ffd54a"/>`;
+    }
+    if(c==="crypto"){
+      s+=`<path d="M22 54 C26 40 70 40 74 54 C74 64 66 70 48 70 C30 70 22 64 22 54 Z" fill="${top}"/><circle cx="40" cy="57" r="3" fill="${v===1?"#ffd700":"#2bff9e"}"/><circle cx="52" cy="59" r="2" fill="${v===1?"#2bff9e":"#ffd700"}"/>`;
+    }
+    if(c==="ninja"){
+      s+=`<path d="M24 42 L72 42 L72 47 L68 54 C60 62 36 62 28 54 L24 47 Z" fill="${top}"/><path d="M20 40 L76 40" stroke="#e23d5b" stroke-width="3" stroke-linecap="round"/><path d="M41 35 L55 35" stroke="#e23d5b" stroke-width="2.6" stroke-linecap="round"/>`;
+    }
+    if(c==="space"){
+      s+=`<path d="M27 35 C27 26 40 22 48 22 C56 22 69 26 69 35 L69 41 C69 50 60 54 48 54 C36 54 27 50 27 41 Z" fill="#bfe6ff" opacity=".85"/><path d="M40 30 Q48 26 56 30" stroke="#7fb6e8" stroke-width="2.6" fill="none"/><path d="M40 47 Q48 51 56 47" stroke="#7fb6e8" stroke-width="2.6" fill="none"/><path d="M20 52 L76 52" stroke="#e8f4ff" stroke-width="6" stroke-linecap="round"/>`;
+    }
+    if(c==="rich"){
+      s+=`<path d="M32 30 L38 18 L44 26 L48 15 L52 26 L58 18 L64 30 Z" fill="${top}"/><rect x="30" y="28" width="36" height="7" rx="3" fill="${top}"/><circle cx="48" cy="27" r="1.6" fill="#ffd700"/><path d="M22 52 C28 44 68 44 74 52 L74 56 C74 64 62 68 48 68 C34 68 22 64 22 56 Z" fill="${top}"/>`;
+    }
+    if(c==="beast"){
+      s+=`<path d="M34 22 Q26 8 16 16 L26 32 Z" fill="${top}"/><path d="M62 22 Q70 8 80 16 L70 32 Z" fill="${top}"/><path d="M30 22 L26 30" stroke="${shade(top,-25)}" stroke-width="2.5"/><path d="M66 22 L70 30" stroke="${shade(top,-25)}" stroke-width="2.5"/><ellipse cx="48" cy="44" rx="9" ry="7" fill="#2a1a12"/><circle cx="44" cy="42" r="1.4" fill="#fff"/><circle cx="52" cy="42" r="1.4" fill="#fff"/>`;
+    }
+    return s;
+  }
+  function avArt(a){
+    const bg=CAT_BG[a.c]||CAT_BG.gamer, skin=a.skin, s2=shade(skin,-18);
+    return `<svg viewBox="0 0 96 96" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" role="img" aria-label="${a.n}">
+      <defs><radialGradient id="ag${a.id}" cx="35%" cy="30%" r="90%"><stop offset="0" stop-color="${bg[0]}"/><stop offset="1" stop-color="${bg[1]}"/></radialGradient></defs>
+      <rect width="96" height="96" fill="url(#ag${a.id})"/>
+      <path d="M10 96 C10 62 30 52 48 52 C66 52 86 62 86 96 Z" fill="#10131a"/>
+      <path d="M10 96 C10 62 30 52 48 52 L48 96 Z" fill="#1b2029"/>
+      <rect x="42" y="44" width="12" height="14" rx="4" fill="${s2}"/>
+      <circle cx="26" cy="38" r="4.5" fill="${s2}"/>
+      <circle cx="70" cy="38" r="4.5" fill="${s2}"/>
+      <circle cx="48" cy="34" r="21" fill="${skin}"/>
+      ${avAcc(a)}
+    </svg>`;
+  }
   const AVATARS=[
-    {e:"🪖",n:"Army Guy",c:"army",a:"bounce"},{e:"🎖️",n:"Medal Vet",c:"army",a:"pulse"},{e:"🔫",n:"Rifleman",c:"army",a:"shake"},{e:"💣",n:"Bomber",c:"army",a:"wiggle"},{e:"🎯",n:"Marksman",c:"army",a:"zoom"},
-    {e:"🧠",n:"Sigma Brain",c:"sigma",a:"pulse"},{e:"🗿",n:"Chad Stone",c:"sigma",a:"bounce"},{e:"👔",n:"Boss Sigma",c:"sigma",a:"rise"},{e:"😎",n:"Cool Guy",c:"sigma",a:"wiggle"},{e:"🥶",n:"Ice Sigma",c:"sigma",a:"float"},
-    {e:"🎮",n:"Gamer Pro",c:"gamer",a:"pulse"},{e:"🕹️",n:"Arcade Hero",c:"gamer",a:"wiggle"},{e:"👾",n:"Pixel Invader",c:"gamer",a:"bounce"},{e:"🖥️",n:"PC Master",c:"gamer",a:"rise"},{e:"🎧",n:"Headphone",c:"gamer",a:"bounce"},
-    {e:"🥊",n:"Boxer",c:"fighter",a:"shake"},{e:"💪",n:"Muscle",c:"fighter",a:"pulse"},{e:"🏆",n:"Champion",c:"fighter",a:"glow"},{e:"🔥",n:"On Fire",c:"fighter",a:"zoom"},{e:"⚡",n:"Lightning",c:"fighter",a:"flicker"},
-    {e:"🤖",n:"Robot",c:"tech",a:"rise"},{e:"💻",n:"Coder",c:"tech",a:"pulse"},{e:"📡",n:"Radar",c:"tech",a:"spin"},{e:"🔧",n:"Engineer",c:"tech",a:"shake"},{e:"🛰️",n:"Satellite",c:"tech",a:"spin"},
-    {e:"💰",n:"Money Bag",c:"crypto",a:"pulse"},{e:"📈",n:"Bull Run",c:"crypto",a:"rise"},{e:"🚀",n:"To The Moon",c:"crypto",a:"zoom"},{e:"🪙",n:"Coin Stack",c:"crypto",a:"bounce"},{e:"💎",n:"Diamond Hand",c:"crypto",a:"glow"},
-    {e:"🥷",n:"Ninja",c:"ninja",a:"float"},{e:"🗡️",n:"Blade",c:"ninja",a:"shake"},{e:"🛡️",n:"Guardian",c:"ninja",a:"pulse"},{e:"🌙",n:"Night Assassin",c:"ninja",a:"float"},{e:"🎭",n:"Mystery Mask",c:"ninja",a:"flicker"},
-    {e:"👨‍🚀",n:"Astronaut",c:"space",a:"float"},{e:"🪐",n:"Saturn Lord",c:"space",a:"spin"},{e:"🌠",n:"Shooting Star",c:"space",a:"zoom"},{e:"🚀",n:"Rocket Pilot",c:"space",a:"rise"},{e:"👽",n:"Alien",c:"space",a:"bounce"},
-    {e:"🤑",n:"Rich Kid",c:"rich",a:"bounce"},{e:"🏦",n:"Banker",c:"rich",a:"pulse"},{e:"💸",n:"Cash Rain",c:"rich",a:"rise"},{e:"👑",n:"King Crown",c:"rich",a:"glow"},{e:"🎩",n:"Top Hat",c:"rich",a:"wiggle"},
-    {e:"🐺",n:"Wolf Pack",c:"beast",a:"pulse"},{e:"🦁",n:"Lion King",c:"beast",a:"glow"},{e:"🐯",n:"Tiger",c:"beast",a:"shake"},{e:"🦅",n:"Eagle Eye",c:"beast",a:"float"},{e:"🦂",n:"Scorpion",c:"beast",a:"wiggle"}
+    {n:"Army Guy",c:"army",a:"bounce"},{n:"Medal Vet",c:"army",a:"pulse"},{n:"Rifleman",c:"army",a:"shake"},{n:"Bomber",c:"army",a:"wiggle"},{n:"Marksman",c:"army",a:"zoom"},
+    {n:"Sigma Brain",c:"sigma",a:"pulse"},{n:"Chad Stone",c:"sigma",a:"bounce"},{n:"Boss Sigma",c:"sigma",a:"rise"},{n:"Cool Guy",c:"sigma",a:"wiggle"},{n:"Ice Sigma",c:"sigma",a:"float"},
+    {n:"Gamer Pro",c:"gamer",a:"pulse"},{n:"Arcade Hero",c:"gamer",a:"wiggle"},{n:"Pixel Invader",c:"gamer",a:"bounce"},{n:"PC Master",c:"gamer",a:"rise"},{n:"Headphone",c:"gamer",a:"bounce"},
+    {n:"Boxer",c:"fighter",a:"shake"},{n:"Muscle",c:"fighter",a:"pulse"},{n:"Champion",c:"fighter",a:"glow"},{n:"On Fire",c:"fighter",a:"zoom"},{n:"Lightning",c:"fighter",a:"flicker"},
+    {n:"Robot",c:"tech",a:"rise"},{n:"Coder",c:"tech",a:"pulse"},{n:"Radar",c:"tech",a:"spin"},{n:"Engineer",c:"tech",a:"shake"},{n:"Satellite",c:"tech",a:"spin"},
+    {n:"Money Bag",c:"crypto",a:"pulse"},{n:"Bull Run",c:"crypto",a:"rise"},{n:"To The Moon",c:"crypto",a:"zoom"},{n:"Coin Stack",c:"crypto",a:"bounce"},{n:"Diamond Hand",c:"crypto",a:"glow"},
+    {n:"Ninja",c:"ninja",a:"float"},{n:"Blade",c:"ninja",a:"shake"},{n:"Guardian",c:"ninja",a:"pulse"},{n:"Night Assassin",c:"ninja",a:"float"},{n:"Mystery Mask",c:"ninja",a:"flicker"},
+    {n:"Astronaut",c:"space",a:"float"},{n:"Saturn Lord",c:"space",a:"spin"},{n:"Shooting Star",c:"space",a:"zoom"},{n:"Rocket Pilot",c:"space",a:"rise"},{n:"Alien",c:"space",a:"bounce"},
+    {n:"Rich Kid",c:"rich",a:"bounce"},{n:"Banker",c:"rich",a:"pulse"},{n:"Cash Rain",c:"rich",a:"rise"},{n:"King Crown",c:"rich",a:"glow"},{n:"Top Hat",c:"rich",a:"wiggle"},
+    {n:"Wolf Pack",c:"beast",a:"pulse"},{n:"Lion King",c:"beast",a:"glow"},{n:"Tiger",c:"beast",a:"shake"},{n:"Eagle Eye",c:"beast",a:"float"},{n:"Scorpion",c:"beast",a:"wiggle"}
   ];
+  AVATARS.forEach((a,i)=>{ a.id="a"+i; a.skin=SKINS[i%SKINS.length]; a.top=TOPS[i%TOPS.length]; a.v=i%3; });
   const FRAME_COLORS=[["neon","Neon","#00e0ff","#ff3d6e"],["fire","Fire","#ff7a1a","#ffd54a"],["ice","Ice","#80deea","#ffffff"],["gold","Gold","#d4af37","#fff3a0"],["toxic","Toxic","#76ff03","#00ff41"],["blood","Blood","#ff2d55","#ff7a5c"],["royal","Royal","#7c4dff","#b44dff"],["emerald","Emerald","#00e676","#00b0ff"],["sunset","Sunset","#ff6d00","#ff1744"],["galaxy","Galaxy","#311b92","#00e5ff"],["rose","Rose","#f48fb1","#ffd1dc"],["berry","Berry","#c2185b","#ff80ab"],["chrome","Chrome","#b0bec5","#eceff1"],["acid","Acid","#c0ff00","#00ffc8"]];
-  const FRAME_STYLES=[["grad","Gradient","spin"],["solid","Solid","pulse"],["glow","Glow","glow"],["dash","Dash","flicker"],["ring","Ring","breathe"]];
+  const FRAME_STYLES=[["grad","Gradient","spin"],["solid","Solid","pulse"],["glow","Glow","glow"],["dash","Dash","flicker"],["ring","Ring","breathe"],["bevel","Bevel","pulse"],["duo","Duo Ring","spin"]];
   const FRAMES=[];
-  FRAME_COLORS.forEach((fc,ci)=>{ FRAME_STYLES.forEach((fs,si)=>{ FRAMES.push({id:"f"+(ci*5+si), n:fc[1]+" "+fs[1], c1:fc[2], c2:fc[3], s:fs[0], a:fs[2]}); }); });
+  FRAME_COLORS.forEach((fc,ci)=>{ FRAME_STYLES.forEach((fs,si)=>{ FRAMES.push({id:"f"+(ci*FRAME_STYLES.length+si), n:fc[1]+" "+fs[1], c1:fc[2], c2:fc[3], s:fs[0], a:fs[2]}); }); });
   function frameById(id){ return FRAMES.find(f=>f.id===id); }
-  function avatarByEmoji(e){ return AVATARS.find(a=>a.e===e); }
+  function avatarById(id){ return AVATARS.find(a=>a.id===id)||AVATARS[10]; }
+  function normAv(id){ return AVATARS.some(a=>a.id===id)? id : AVATARS[10].id; }
   let avCatSel="all";
   function renderAvCats(){
     $("avCats").innerHTML='<button type="button" data-cat="all" class="'+(avCatSel==="all"?"sel":"")+'">All</button>'+AV_CATS.map(([k,n])=>`<button type="button" data-cat="${k}" class="${avCatSel===k?"sel":""}">${n}</button>`).join("");
   }
   function renderAvatarGrid(){
-    const cur=state.profile.avatarE||"";
+    const cur=normAv(state.profile.avatarE);
     const list=avCatSel==="all"?AVATARS:AVATARS.filter(a=>a.c===avCatSel);
     $("avatarGrid").innerHTML=list.map(a=>`
-      <button type="button" class="avcell ${a.e===cur?"sel":""} anim-${a.a}" data-avem="${a.e}" title="${a.n}">
-        <span class="avemo">${a.e}</span><em>${a.n}</em>
+      <button type="button" class="avcell ${a.id===cur?"sel":""} anim-${a.a}" data-avem="${a.id}" title="${a.n}">
+        <span class="avemo">${avArt(a)}</span><em>${a.n}</em>
       </button>`).join("")||'<div style="grid-column:1/-1;text-align:center;color:var(--dim);padding:16px">No avatars in this category.</div>';
   }
   function renderFrameGrid(){
     const cur=state.profile.frame||"";
-    const avE=state.profile.avatarE||"👤";
+    const av=avatarById(state.profile.avatarE);
     $("frameGrid").innerHTML=FRAMES.map(f=>`
       <button type="button" class="fcell ${f.id===cur?"sel":""}" data-frm="${f.id}" title="${f.n}">
-        <span class="pf s-${f.s} a-${f.a}" style="--c1:${f.c1};--c2:${f.c2}"><span class="pf-in">${avE}</span></span>
+        <span class="pf s-${f.s} a-${f.a}" style="--c1:${f.c1};--c2:${f.c2}"><span class="pf-in">${avArt(av)}</span></span>
         <em>${f.n}</em>
       </button>`).join("");
   }
@@ -3001,9 +3071,9 @@
     const p=state.profile;
     renderAvatarRow(); renderAvCats(); renderAvatarGrid(); renderFrameGrid();
     const letter=initial(p.tag);
-    const avE=p.avatarE||"";
+    const av=avatarById(p.avatarE);
     const fr=frameById(p.frame);
-    const avatarInner=avE? `<span class="anim-${(avatarByEmoji(avE)||{}).a||"pulse"}" style="display:inline-flex">${avE}</span>` : letter;
+    const avatarInner=`<span class="anim-${av.a||"pulse"}" style="width:100%;height:100%;display:grid;place-items:center">${avArt(av)}</span>`;
     const socials=[["YT",p.yt],["DC",p.disc],["TW",p.tw],["IG",p.ig]].filter(s=>s[1]).map(s=>`<span title="${esc(s[1])}">${s[0]}</span>`).join("");
     $("profileCard").innerHTML=`
       <div class="banner"></div>
@@ -3147,7 +3217,7 @@
           <div style="display:flex;align-items:center;gap:12px">
             <div class="mono" style="width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-size:17px;color:#081020;background:${swatch(p.name.length)}">${initial(p.name)}</div>
             <div>
-              <div class="team">${esc(p.name)}</div>
+              <div class="team">${esc(p.name)}${tickByName(p.name)}</div>
               <div style="font-size:11px;color:var(--dim);letter-spacing:1px;margin-top:3px">${g.name} · ${esc(p.role||"—")}</div>
             </div>
           </div>
@@ -3548,6 +3618,12 @@
     if(!v||v==="none") return "";
     const b=vbById(v)||{color:(v==="gold"?"#ffd700":"#1d9bf0"),glow:(v==="gold"?"high":"med"),name:(v==="gold"?"Gold Verified Legend":"Verified Player")};
     return vbTick(b);
+  }
+  function tickByName(name){
+    if(!name) return "";
+    const n=String(name).trim().toLowerCase();
+    const p=(state.players||[]).find(x=>String(x.name||"").trim().toLowerCase()===n);
+    return p?plrTick(p):"";
   }
   function fillVbSelect(){
     const sel=$("pfVerified"); if(!sel) return;
@@ -4250,6 +4326,7 @@
         if(Array.isArray(d.ranked)) state.ranked=d.ranked;
         if(Array.isArray(d.cheats)) state.cheats=d.cheats;
         if(d.profile&&typeof d.profile==="object") state.profile=Object.assign(defaultProfile(),d.profile);
+        state.profile.avatarE=normAv(state.profile.avatarE);
         if(d.settings&&typeof d.settings==="object") state.settings=Object.assign(state.settings,d.settings);
         saveAll(); renderSettings(); switchView("home");
         toast("Backup imported successfully");
@@ -4703,7 +4780,21 @@
   }
 
   /* ---- ambient background music (Web Audio, no files) ---- */
-  let bgmOn=false, bgmGain=null, bgmTimer=null, bgmNext=0, bgmStep=0;
+  let bgmOn=false, bgmGain=null, bgmTimer=null, bgmNext=0, bgmStep=0, bgmYtIframe=null;
+  function bgmYtLoad(tr){
+    try{ if(bgmYtIframe){ bgmYtIframe.remove(); bgmYtIframe=null; } }catch(e){}
+    const f=document.createElement("iframe");
+    f.src="https://www.youtube.com/embed/"+tr.yt+"?autoplay=1&loop=1&playlist="+tr.yt+"&rel=0&modestbranding=1";
+    f.allow="autoplay; encrypted-media; picture-in-picture";
+    f.setAttribute("allowfullscreen","");
+    f.style.cssText="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;border:0;z-index:-1";
+    f.title="YouTube soundtrack player";
+    document.body.appendChild(f);
+    bgmYtIframe=f;
+  }
+  function bgmYtStop(){
+    try{ if(bgmYtIframe){ bgmYtIframe.remove(); bgmYtIframe=null; } }catch(e){}
+  }
   const BGM_TRACKS=[
     {id:"neon",    name:"Neon Night",    color:"#00e0ff", icon:"🌃", desc:"Cyber synth pads & glowing arpeggios", step:0.5, wave:"sine",    freq:900,  pad:.055, arp:.05, arpEvery:2,
       chords:[[220,277.18,329.63],[174.61,220,261.63],[164.81,207.65,246.94],[130.81,196,246.94]]},
@@ -4754,7 +4845,11 @@
     {id:"hype",    name:"Hype Boost",    color:"#ff4da6", icon:"⚡", desc:"EDM-style drops, kicks and euphoric arps", step:0.38, wave:"sawtooth", freq:600, pad:.045, arp:.06, arpEvery:1, kick:true, hat:true,
       chords:[[82.41,123.47,164.81],[73.42,110,146.83],[69.3,103.83,138.59],[65.41,98,130.81]]},
     {id:"drill",   name:"Street Drill",  color:"#ff2e63", icon:"🔫", desc:"Cold 808 drill bounce, dark and hard", step:0.45, wave:"sawtooth", freq:450, pad:.05, arp:.03, arpEvery:2, kick:true, hat:true,
-      chords:[[69.3,103.83,138.59],[61.74,92.5,123.47],[65.41,98,130.81],[55,82.41,110]]}
+      chords:[[69.3,103.83,138.59],[61.74,92.5,123.47],[65.41,98,130.81],[55,82.41,110]]},
+    {id:"cs2menu", name:"CS2 Main Menu", color:"#ff7a1a", icon:"🔫", desc:"Counter-Strike 2 official menu soundtrack, streamed from YouTube (needs internet).", yt:"0IMVyzGb_bs", step:0.5, wave:"sine", freq:900, pad:.055, arp:.05, arpEvery:2,
+      chords:[[220,277.18,329.63],[174.61,220,261.63],[164.81,207.65,246.94],[130.81,196,246.94]]},
+    {id:"pubgmenu", name:"PUBG Lobby Theme", color:"#ffb700", icon:"🪂", desc:"PUBG: Battlegrounds PC main lobby theme, streamed from YouTube (needs internet).", yt:"hlwnXZbZLJs", step:0.5, wave:"sine", freq:900, pad:.055, arp:.05, arpEvery:2,
+      chords:[[220,277.18,329.63],[174.61,220,261.63],[164.81,207.65,246.94],[130.81,196,246.94]]}
   ];
   function bgmTrack(){ return BGM_TRACKS[(state.settings.bgmTrack|0)%BGM_TRACKS.length]||BGM_TRACKS[0]; }
   function bgmStart(){
@@ -4762,6 +4857,8 @@
     ensureAudio();
     if(!audioCtx) return;
     bgmOn=true;
+    const tr=bgmTrack();
+    if(tr.yt){ try{ bgmYtLoad(tr); }catch(e){ bgmOn=false; } return; }
     try{
       bgmGain=audioCtx.createGain(); bgmGain.gain.value=0; bgmGain.connect(audioCtx.destination);
       bgmGain.gain.linearRampToValueAtTime(0.6, audioCtx.currentTime+2.5);
@@ -4772,14 +4869,16 @@
   function bgmStop(){
     if(!bgmOn) return; bgmOn=false;
     if(bgmTimer){ clearInterval(bgmTimer); bgmTimer=null; }
+    bgmYtStop();
     if(bgmGain&&audioCtx){ try{ bgmGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime+1); }catch(e){} }
   }
   function bgmTick(){
     if(!bgmOn||!audioCtx) return;
+    const tr=bgmTrack();
+    if(tr.yt) return;
     const t=audioCtx.currentTime;
     try{
       while(bgmNext<t+0.9){
-        const tr=bgmTrack();
         const chords=tr.chords, stepDur=tr.step||0.5;
         const s=bgmStep%16, ci=Math.floor(bgmStep/16)%chords.length, ch=chords[ci];
         if(s===0) ch.forEach((f,i)=> padNote(f*0.5, bgmNext, stepDur*7.2, i===0?tr.pad*1.25:tr.pad, tr.wave, tr.freq));
@@ -4855,7 +4954,7 @@
       return `<div class="bgm-card ${sel?"sel":""} ${playing?"playing":""}" data-bgm="${i}" style="--cyber:${t.color};--cyber2:${t.color}">
         <span class="bstate">${playing?"PLAYING":sel?"SELECTED":""}</span>
         <div class="bwave" style="background:${t.color}22;color:${t.color}">${t.icon}</div>
-        <h4>${t.name}</h4>
+        <h4>${t.name}${t.yt?'<span class="yt-tag" title="Streamed from YouTube">YT</span>':""}</h4>
         <p>${t.desc}</p>
         <div class="bnums"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>`;
@@ -5060,7 +5159,7 @@
     $("avatarGrid").addEventListener("click",e=>{
       const b=e.target.closest("[data-avem]"); if(!b) return;
       state.profile.avatarE=b.dataset.avem; saveAll(); renderAvatarGrid(); renderProfile();
-      toast("Avatar set: "+(avatarByEmoji(b.dataset.avem)||{}).n);
+      toast("Avatar set: "+(avatarById(b.dataset.avem)).n);
     });
     $("frameGrid").addEventListener("click",e=>{
       const b=e.target.closest("[data-frm]"); if(!b) return;
