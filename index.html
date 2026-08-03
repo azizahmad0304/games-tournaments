@@ -994,17 +994,63 @@
   .about-card{max-width:640px;margin:0 auto;text-align:center;padding:40px 30px;border-radius:20px;background:linear-gradient(180deg,rgba(13,20,48,.9),rgba(10,16,38,.9));border:1px solid var(--stroke)}
   .about-logo{width:88px;height:88px;margin:0 auto 18px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(135deg,#3d7bff,#00e0ff 60%,#b14bff);box-shadow:0 0 40px rgba(0,200,255,.5)}
   .about-logo svg{width:42px;height:42px;color:#0a1026}
-  .about-card h3{margin:0 0 6px;font-size:22px;letter-spacing:1px}
-  .about-tag{color:var(--cyber);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}
-  .about-text{color:var(--dim);font-size:14px;line-height:1.65;max-width:460px;margin:0 auto 22px}
-  .about-feats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
-  .about-feats span{padding:7px 14px;border-radius:20px;background:rgba(61,123,255,.12);border:1px solid rgba(61,123,255,.35);color:#aec6ff;font-size:12px}
-  .about-info{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:440px;margin:0 auto 26px}
-  .about-info div{background:#0a1026;border:1px solid var(--stroke);border-radius:14px;padding:12px}
-  .about-info small{display:block;color:var(--dim);font-size:10.5px;letter-spacing:2px;text-transform:uppercase}
-  .about-info b{font-size:15px;color:#e8ecff}
-  .about-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-  @media(max-width:520px){.about-info{grid-template-columns:1fr}}
+  .about-card h3{margin:0 0 24px;font-size:22px;letter-spacing:1px}
+  .about-ver-wrap{display:inline-block;padding:20px 42px;border-radius:18px;background:#0a1026;border:1px solid var(--stroke)}
+  .about-ver-wrap span{display:block;color:var(--dim);font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:6px}
+  .about-ver-wrap b{font-size:38px;color:var(--cyber);letter-spacing:1px}
+
+  /* ============ COLLECTIONS & COLLABS ============ */
+  .coll-sub{display:flex;align-items:center;gap:9px;font-size:13px;letter-spacing:2px;font-weight:700;color:#aec6ff;margin:6px 0 12px}
+  .coll-sub svg{width:18px;height:18px;color:var(--cyber)}
+  .coll-sub small{color:var(--dim);font-weight:500;letter-spacing:1px;text-transform:none}
+  .colgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .colcard{display:flex;flex-direction:column;padding:16px;border-radius:16px;background:#0d1430;border:1px solid var(--stroke);transition:.25s}
+  .colcard:hover{border-color:var(--cyber);transform:translateY(-3px)}
+  .colhead{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .colhead .colico{width:46px;height:46px;flex:none;border-radius:13px;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,var(--cc)44,var(--cc)22)}
+  .colttl{flex:1;min-width:0}
+  .colttl h4{margin:0;font-size:15px}
+  .colttl span{color:var(--dim);font-size:11px;letter-spacing:1px}
+  .colprog{color:var(--cyber);font-size:15px}
+  .colbar{height:7px;border-radius:4px;background:#0a1026;overflow:hidden;margin-bottom:12px;border:1px solid var(--stroke)}
+  .colbar i{display:block;height:100%;background:linear-gradient(90deg,var(--cyber),#00e0ff)}
+  .colitems{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .colitems span{font-size:12.5px;color:var(--dim);display:flex;align-items:center;gap:8px}
+  .colitems span.got{color:#2bff9e;font-weight:600}
+  .coll-claim{margin-top:auto;width:100%}
+  .collabcard{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:16px;background:#0d1430;border:1px solid var(--stroke);transition:.25s}
+  .collabcard:hover{border-color:var(--cyber)}
+  .clabico{width:50px;height:50px;flex:none;border-radius:14px;display:grid;place-items:center;font-size:24px;background:linear-gradient(135deg,rgba(61,123,255,.3),rgba(177,75,255,.25))}
+  .clabbody{flex:1;min-width:0}
+  .clabtop{display:flex;justify-content:space-between;align-items:center;gap:10px}
+  .clabtop h4{margin:0;font-size:14.5px}
+  .clabchip{font-size:10px;letter-spacing:1.5px;font-weight:700;padding:4px 10px;border-radius:20px;flex:none}
+  .clabchip.active{color:#2bff9e;background:rgba(43,255,158,.14);border:1px solid rgba(43,255,158,.4)}
+  .clabchip.soon{color:#ffd54a;background:rgba(255,213,74,.12);border:1px solid rgba(255,213,74,.4)}
+  .clabchip.ended{color:var(--dim);background:rgba(255,255,255,.06);border:1px solid var(--stroke)}
+  .clabbody p{color:var(--dim);font-size:12.5px;margin:8px 0;line-height:1.5}
+  .clabpartner{color:#aec6ff;font-size:12px}
+
+  /* ============ HIGHLIGHTS & CLIPS ============ */
+  .clipcard{display:flex;gap:14px;align-items:center}
+  .clip-thumb{width:108px;height:64px;flex:none;border-radius:12px;background:linear-gradient(135deg,#3d7bff,#b14bff);display:grid;place-items:center;font-size:26px;position:relative;overflow:hidden}
+  .clip-thumb i{position:absolute;right:6px;bottom:5px;font-size:10px;font-style:normal;background:rgba(0,0,0,.6);color:#fff;padding:1px 7px;border-radius:8px}
+  .clipinfo{flex:1;min-width:0}
+  .clip-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .clip-top h4{margin:0;font-size:14.5px}
+  .clipinfo p{color:var(--dim);font-size:12px;margin:6px 0 0}
+  .clipacts{display:flex;gap:8px;flex:none}
+  .rec-status{display:flex;align-items:center;gap:12px;margin:0 0 16px;padding:12px 16px;border-radius:12px;background:rgba(255,77,109,.12);border:1px solid rgba(255,77,109,.4);color:#ff6b85;font-weight:600;font-size:13px}
+  .rec-status b{color:#fff;font-size:15px}
+
+  /* ============ PLAYER VERIFY TICKS ============ */
+  .vbprow{display:flex;align-items:center;gap:14px;padding:11px 14px;border-radius:12px;border:1px solid var(--stroke);margin-bottom:8px;background:#0a1026}
+  .vbp-tick{width:26px;display:grid;place-items:center;flex:none}
+  .vbp-tick .vfy{transform:scale(1.4)}
+  .vbp-null{color:#3a4370;font-size:15px}
+  .vbp-name{flex:1;font-weight:600;font-size:14px}
+  .vbp-game{color:var(--dim);font-size:11px;letter-spacing:1px;text-transform:uppercase;flex:none}
+  .vbp-badge{font-size:12px;font-weight:600;flex:none}
 
 </style>
 </head>
@@ -1065,6 +1111,8 @@
       <a class="nav-item" data-view="appearance"><span class="ni"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span> Appearance</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
+      <a class="nav-item" data-view="collections"><span class="ni"><svg viewBox="0 0 24 24"><path d="M2 3h20v7H2z"/><path d="M2 10h20v11H2z"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="10" y1="6" x2="10.01" y2="6"/><line x1="6" y1="14" x2="6.01" y2="14"/><line x1="10" y1="14" x2="10.01" y2="14"/></svg></span> Collections &amp; Collabs <span class="cnt" id="cntColl">0</span></a>
+      <a class="nav-item" data-view="clips"><span class="ni"><svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg></span> Highlights &amp; Clips <span class="cnt" id="cntClips">0</span></a>
       <a class="nav-item" data-view="chat"><span class="ni"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> Chat <span class="cnt" id="cntChats">0</span></a>
       <a class="nav-item" data-view="about"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span> App About</a>
     </nav>
@@ -1443,7 +1491,13 @@
           <button class="addbtn" id="addVbBtn">+ ADD BADGE</button>
         </div>
         <div class="vbgrid" id="vbGrid"></div>
-        <div class="vb-hint">💡 Badges apply to players via the <b>VERIFY</b> button or the <b>Verification Badge</b> dropdown in the player form.</div>
+        <div class="setcard" style="margin-top:22px">
+          <div class="setrow">
+            <div class="lbl">Player Verification Ticks <small>Every player with their verify tick shown before the name</small></div>
+          </div>
+          <div id="vbPlayerList"></div>
+        </div>
+        <div class="vb-hint">💡 Attach a badge to any player by typing their name in the badge form — the tick then shows right before their name here.</div>
       </section>
 
       <!-- ============ PANEL THEMES ============ -->
@@ -1522,6 +1576,29 @@
         <div class="shopgrid" id="shopGrid"></div>
       </section>
 
+      <!-- ============ COLLECTIONS & COLLABS ============ -->
+      <section id="collectionsView" class="hidden">
+        <div class="page-title">COLLECTIONS &amp; COLLABS</div>
+        <div class="page-sub">Your loot collections across games plus the arena's official partnerships.</div>
+        <div class="coll-sub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 3h20v7H2z"/><path d="M2 10h20v11H2z"/></svg> COLLECTIONS <small>owned items out of every set</small></div>
+        <div class="colgrid" id="collGrid"></div>
+        <div class="coll-sub" style="margin-top:28px"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg> COLLABS <small>official arena partnerships</small></div>
+        <div class="colgrid" id="collabGrid"></div>
+      </section>
+
+      <!-- ============ HIGHLIGHTS & CLIPS ============ -->
+      <section id="clipsView" class="hidden">
+        <div class="page-title">HIGHLIGHTS &amp; GAMEPLAY CLIPS</div>
+        <div class="page-sub">Store your best moments — add clips or record your screen live and save it.</div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="clipSearch" placeholder="Search clips..." /></div>
+          <button class="addbtn" id="addClipBtn">+ ADD CLIP</button>
+          <button class="addbtn" id="recBtn" style="background:linear-gradient(135deg,#ff4d6d,#ff7a5c)">● RECORD CLIP</button>
+        </div>
+        <div class="rec-status" id="recStatus" style="display:none">● Recording… <b id="recTimer">0:00</b> <button class="tbtn del" id="recStopBtn">STOP &amp; SAVE</button></div>
+        <div class="grid" id="clipGrid"></div>
+      </section>
+
       <!-- ============ CHAT ============ -->
       <section id="chatView" class="hidden">
         <div class="page-title">CHAT</div>
@@ -1537,25 +1614,11 @@
       <!-- ============ APP ABOUT ============ -->
       <section id="aboutView" class="hidden">
         <div class="page-title">APP ABOUT</div>
-        <div class="page-sub">Everything about Games Tournaments — version, features &amp; credits.</div>
+        <div class="page-sub">Games Tournaments — your esports arena.</div>
         <div class="about-card">
           <div class="about-logo"><svg class="fill" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
-          <h2>GAMES TOURNAMENTS</h2>
-          <p class="about-tag">ESPORTS ARENA · PRO EDITION</p>
-          <p class="about-text">A complete esports management hub that runs entirely in your browser — tournaments, players, teams, brackets, records, Anti-Cheat, themes, background music, a game shop and a squad chat. Save your data locally, export backups and go pro anytime.</p>
-          <div class="about-feats">
-            <span>🏆 Tournaments &amp; Cups</span><span>🎯 Players &amp; Verify Badges</span><span>🛡️ Anti-Cheat</span><span>🎨 Themes &amp; Backgrounds</span><span>🎵 BGM Sounds</span><span>🛒 Game Shop</span><span>💬 Chat</span><span>📦 Backup &amp; Restore</span>
-          </div>
-          <div class="about-info">
-            <div><b>Version</b><span id="aboutVer">v4.4</span></div>
-            <div><b>Built With</b><span>Single-file HTML · CSS · JS</span></div>
-            <div><b>Platform</b><span>Web &amp; Windows Desktop</span></div>
-            <div><b>Developer</b><span>azizahmad0304</span></div>
-          </div>
-          <div class="about-actions">
-            <a class="tbtn edit" href="https://github.com/azizahmad0304/games-tournaments" target="_blank" rel="noopener">GITHUB REPO</a>
-            <button class="tbtn edit" id="aboutChatBtn">ASK PINKY</button>
-          </div>
+          <h3>GAMES TOURNAMENTS</h3>
+          <div class="about-ver-wrap"><span>APP VERSION</span><b id="aboutVer">v4.4</b></div>
         </div>
       </section>
 
@@ -1830,12 +1893,33 @@
           <div class="field"><label>Live Preview</label><div class="vbprev" id="vbPrev"></div></div>
         </div>
         <div class="field"><label>Description</label><textarea id="vbfDesc" placeholder="What does this badge mean?"></textarea></div>
-        <div class="field"><label>Attach to Player <small>pick a player to show this verify tick next to their name</small></label>
-          <select id="vbfPlayer"><option value="">None — just save the badge</option></select>
+        <div class="field"><label>Attach to Player <small>type any player's name to show this verify tick next to it</small></label>
+          <input id="vbfPlayer" list="vbfPlayerList" placeholder="Type a player name or leave empty" autocomplete="off" />
+          <datalist id="vbfPlayerList"></datalist>
         </div>
         <div class="mbtns">
           <button type="button" class="mbtn cancel" id="vbCancelBtn">CANCEL</button>
           <button type="submit" class="mbtn save">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ CLIP FORM MODAL ============ -->
+  <div class="overlay" id="clipFormOverlay">
+    <div class="modal">
+      <h3><span class="mi" id="clfModalTitle">ADD CLIP</span></h3>
+      <form id="clipForm">
+        <input type="hidden" id="clfId" />
+        <div class="field"><label>Clip Title</label><input id="clfTitle" placeholder="e.g. Ace clutch — A site" required /></div>
+        <div class="row2">
+          <div class="field"><label>Game</label><select id="clfGame"></select></div>
+          <div class="field"><label>Duration</label><input id="clfDur" placeholder="e.g. 0:47" /></div>
+        </div>
+        <div class="field"><label>Video Link (optional)</label><input id="clfUrl" placeholder="https://..." /></div>
+        <div class="mbtns">
+          <button type="button" class="mbtn cancel" id="clfCancelBtn">CANCEL</button>
+          <button type="submit" class="mbtn save">SAVE CLIP</button>
         </div>
       </form>
     </div>
@@ -2223,8 +2307,8 @@
     {name:"Red Alert", c:"#ff3d6e", c2:"#ff0044"}
   ];
   const STAGES = { qf:{label:"Quarter Finals", short:"QF", n:4}, sf:{label:"Semi Finals", short:"SF", n:2}, f:{label:"Grand Final", short:"FINAL", n:1} };
-  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1", prem:"gt_prem_v1", shop:"gt_shop_v1", chat:"gt_chat_v1" };
-  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges", prem:"premium", shop:"shop", chat:"chats" };
+  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1", prem:"gt_prem_v1", shop:"gt_shop_v1", chat:"gt_chat_v1", coll:"gt_coll_v1", clips:"gt_clips_v1" };
+  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges", prem:"premium", shop:"shop", chat:"chats", coll:"collections", clips:"clips" };
   const STATUS = { up:{t:"Upcoming",c:"up"}, live:{t:"Live",c:"live"}, done:{t:"Completed",c:"done"} };
 
   const ICONS = {
@@ -2241,7 +2325,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -2386,6 +2470,28 @@
         {from:"them", text:"GG all, what a night!", t:now-5000e3}]}
     ]};
   }
+  function seedCollections(){
+    return { colls:[
+      {id:"cs2prisma", name:"Prisma Case", game:"csgo", icon:"🔫", items:["M4A4 Neo-Noir","AK-47 Asiimov","AWP Neo-Noir","Desert Eagle Printstream","Knife Gloves"], owned:[0,2]},
+      {id:"pubgs4s", name:"PUBG S4 Survivor", game:"pubg", icon:"🪖", items:["Beryl M762 Skin","S4 Helmet","Gold Backpack","Aviator Mask","Chicken Dinner Charm"], owned:[1]},
+      {id:"codghosts", name:"COD Ghost Bundle", game:"cod", icon:"👤", items:["Ghost Outfit","M4 Blueprint","Operator Calling Card","Grau 5.56 Skin"], owned:[3]},
+      {id:"bsnight", name:"Blood Strike Nightfang", game:"bs", icon:"🔪", items:["Nightfang Knife","Striker Suit","Legendary Crate","Melee Trail"], owned:[]}
+    ], collabs:[
+      {id:"cl-pubg", name:"PUBG PC Arena Cup", partner:"PUBG: Battlegrounds", game:"pubg", icon:"🪂", status:"active", desc:"Official season lobby music & featured arena cups all year."},
+      {id:"cl-cs2", name:"CS2 MVP League", partner:"Counter-Strike 2", game:"csgo", icon:"🏆", status:"active", desc:"Round MVP anthem streams and community matchmaking nights."},
+      {id:"cl-bs", name:"Blood Strike Drop Day", partner:"Blood Strike", game:"bs", icon:"📦", status:"soon", desc:"Free legendary crates for arena members on drop weekends."},
+      {id:"cl-codm", name:"COD Mobile Showdown", partner:"Call of Duty: Mobile", game:"cod", icon:"📱", status:"soon", desc:"Cross-arena 5v5 showdowns with exclusive COD bundles."}
+    ]};
+  }
+  function seedClips(){
+    const d=n=> new Date(Date.now()+n*864e5).toISOString().slice(0,10);
+    return [
+      {id:uid(),title:"Ace clutch on A site", game:"csgo", dur:"0:47", date:d(-1), url:"", icon:"🎯"},
+      {id:uid(),title:"Chicken dinner — 12 kills", game:"pubg", dur:"1:32", date:d(-3), url:"", icon:"🏆"},
+      {id:uid(),title:"Ghost 1v4 retake", game:"cod", dur:"0:58", date:d(-6), url:"", icon:"🔥"},
+      {id:uid(),title:"Nightfang knife round", game:"bs", dur:"0:36", date:d(-8), url:"", icon:"🔪"}
+    ];
+  }
   function seedCheats(){
     const d=n=> new Date(Date.now()+n*864e5).toISOString().slice(0,10);
     return [
@@ -2429,6 +2535,8 @@
     state.premium     = getStore(KEYS.prem, null);
     state.shop        = getStore(KEYS.shop, null) ?? seedShop();
     state.chats       = getStore(KEYS.chat, null) ?? seedChats();
+    state.collections = getStore(KEYS.coll, null) ?? seedCollections();
+    state.clips       = getStore(KEYS.clips, null) ?? seedClips();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.profile.avatarE = normAv(state.profile.avatarE);
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""}, getStore(KEYS.set, {}));
@@ -2442,6 +2550,7 @@
   function fmtDate(d){ if(!d) return "—"; const x=new Date(d); return x.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"numeric"}); }
   function prize(t){ const p=parseInt(t.prize)||0; return p? "$"+p.toLocaleString("en-US") : "Free Entry"; }
   function gameOf(id){ return GAMES[id]||GAMES.csgo; }
+  function gameColor(id){ return {csgo:"#ff7a1a",pubg:"#ffb700",bs:"#ff4d6d",cod:"#00e0ff"}[id]||"#7ec8ff"; }
   function swatch(i){ const g=SWATCHES[normIdx(i)].split(","); return "linear-gradient(135deg,"+g[0]+","+g[1]+")"; }
   function initial(name){ return esc((name||"?").trim().charAt(0).toUpperCase() || "?"); }
   function emptyHTML(icon,title,msg){ return `<div class="empty" style="grid-column:1/-1"><div class="big">${ICONS[icon]||ICONS.gamepad}</div><h4>${esc(title)}</h4><p>${esc(msg)}</p></div>`; }
@@ -2459,7 +2568,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",about:"aboutView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -2489,6 +2598,8 @@
     if(v==="shop"){ renderShop(); }
     if(v==="chat"){ renderChatList(); }
     if(v==="about"){ renderAbout(); }
+    if(v==="collections"){ renderCollections(); }
+    if(v==="clips"){ renderClips(); }
     closeSidebar();
     window.scrollTo({top:0,behavior:"smooth"});
   }
@@ -2627,7 +2738,7 @@
   /* ===================== TOURNAMENT FORM ===================== */
   function fillSelects(){
     const opts=Object.entries(GAMES).map(([id,g])=>`<option value="${id}">${g.name}</option>`).join("");
-    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame","qfGame","sfGame","afGame"].forEach(id=> $(id).innerHTML=opts);
+    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame","qfGame","sfGame","afGame","clfGame"].forEach(id=> $(id).innerHTML=opts);
   }
   function openTourForm(t){
     const ed=!!t;
@@ -3818,8 +3929,21 @@
     sel.innerHTML='<option value="none">None</option>'+state.vbadges.map(b=>`<option value="${b.id}">${esc(b.name)}</option>`).join("");
   }
   function fillVbPlayer(){
-    const sel=$("vbfPlayer"); if(!sel) return;
-    sel.innerHTML='<option value="">None — just save the badge</option>'+state.players.map(p=>`<option value="${esc(p.name)}">${esc(p.name)} (${esc(gameOf(p.game).short)})</option>`).join("");
+    const dl=$("vbfPlayerList"); if(!dl) return;
+    dl.innerHTML=state.players.map(p=>`<option value="${esc(p.name)}">`).join("");
+  }
+  function renderVbPlayers(){
+    const box=$("vbPlayerList"); if(!box) return;
+    const list=[...state.players].sort((a,b)=>((b.verified&&b.verified!=="none"?1:0)-(a.verified&&a.verified!=="none"?1:0))||String(a.name||"").localeCompare(String(b.name||"")));
+    box.innerHTML=list.length? list.map(p=>{
+      const b=p.verified&&p.verified!=="none"? state.vbadges.find(x=>x.id===p.verified):null;
+      return `<div class="vbprow">
+        <span class="vbp-tick">${b?vbTick({name:b.name,color:b.color,glow:b.glow}):'<span class="vbp-null">—</span>'}</span>
+        <span class="vbp-name">${esc(p.name)}</span>
+        <span class="vbp-game">${esc(gameOf(p.game).short)}</span>
+        <span class="vbp-badge" style="${b?`color:${b.color}`:""}">${b?esc(b.name):"Not verified"}</span>
+      </div>`;
+    }).join("") : `<div class="chat-empty">No players yet — add players in the Players tab.</div>`;
   }
   function vbPlayerOf(bid){
     return state.players.filter(p=>p.verified===bid).length===1 ? state.players.find(p=>p.verified===bid).name : "";
@@ -3838,8 +3962,7 @@
   }
   function renderVb(){
     const l=filteredVb();
-    $("vbGrid").innerHTML=l.length? l.map(b=>`
-      <div class="vbcard" style="--vbc:${b.color}">
+    $("vbGrid").innerHTML=l.length? l.map(b=>`      <div class="vbcard" style="--vbc:${b.color}">
         <div class="vbico">${vbTick(b)}</div>
         <div class="vbbody">
           <div class="vbtitle"><h4>${esc(b.name)}</h4><span class="vbchip" style="color:${b.color};border-color:${b.color}55;background:${b.color}18">${b.glow==="high"?"GLOW":"TICK"}</span></div>
@@ -3851,6 +3974,7 @@
           </div>
         </div>
       </div>`).join("") : `<div class="empty" style="grid-column:1/-1"><div class="big">✅</div><h4>No badges yet</h4><p>Click ADD BADGE to design your first verification tick.</p></div>`;
+    renderVbPlayers();
   }
   function renderVbPrev(){
     const col=$("vbfColor").value;
@@ -5022,11 +5146,22 @@
 
   /* ---- ambient background music (Web Audio + YouTube streams) ---- */
   let bgmOn=false, bgmGain=null, bgmTimer=null, bgmNext=0, bgmStep=0, bgmYtIframe=null, bgmYtWatch=null, bgmYtOk=false;
+  function bgmYtCmd(cmd){
+    try{
+      const f=bgmYtIframe;
+      if(f && f.contentWindow) f.contentWindow.postMessage(JSON.stringify({event:"command",func:cmd}),"https://www.youtube-nocookie.com");
+    }catch(err){}
+  }
   function bgmYtMsg(e){
     try{
       const d=typeof e.data==="string"?JSON.parse(e.data):e.data;
       if(!d||!d.event) return;
-      if(d.event==="onStateChange" && d.info && d.info.newState===1){ bgmYtOk=true; }
+      if(d.event==="onReady"){ bgmYtCmd("unMute"); bgmYtCmd("playVideo"); }
+      if(d.event==="onStateChange"){
+        const s=d.info&&d.info.newState;
+        if(s===1){ bgmYtOk=true; }
+        else if(s===2){ bgmYtCmd("playVideo"); }
+      }
       if(d.event==="onError"){ bgmYtFail(); }
     }catch(err){}
   }
@@ -5045,16 +5180,18 @@
     if(bgmYtWatch){ clearTimeout(bgmYtWatch); bgmYtWatch=null; }
     window.removeEventListener("message", bgmYtMsg);
     bgmYtOk=false;
+    const origin=(location.protocol==="https:"||location.protocol==="http:")?location.origin:"";
     const f=document.createElement("iframe");
-    f.src="https://www.youtube-nocookie.com/embed/"+tr.yt+"?autoplay=1&enablejsapi=1&loop=1&playlist="+tr.yt+"&playsinline=1&rel=0";
-    f.allow="autoplay; encrypted-media; picture-in-picture";
+    f.src="https://www.youtube-nocookie.com/embed/"+tr.yt+"?autoplay=1&mute=1&enablejsapi=1&loop=1&playlist="+tr.yt+"&playsinline=1&rel=0"+(origin?"&origin="+encodeURIComponent(origin):"");
+    f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";
+    f.referrerPolicy="origin";
     f.setAttribute("allowfullscreen","");
     f.style.cssText="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;border:0;z-index:-1";
     f.title="YouTube soundtrack player";
     document.body.appendChild(f);
     bgmYtIframe=f;
     window.addEventListener("message", bgmYtMsg);
-    bgmYtWatch=setTimeout(()=>{ if(!bgmYtOk) bgmYtFail(); }, 11000);
+    bgmYtWatch=setTimeout(()=>{ if(!bgmYtOk) bgmYtFail(); }, 20000);
   }
   function bgmYtStop(){
     if(bgmYtWatch){ clearTimeout(bgmYtWatch); bgmYtWatch=null; }
@@ -5328,6 +5465,138 @@
   /* ===================== APP ABOUT ===================== */
   function renderAbout(){
     const ver=$("aboutVer"); if(ver) ver.textContent="v4.4";
+  }
+
+  /* ===================== COLLECTIONS & COLLABS ===================== */
+  function renderCollections(){
+    if(!state.collections) return;
+    const ownedTotal=state.collections.colls.reduce((s,c)=>s+c.owned.length,0);
+    const cnt=$("cntColl"); if(cnt) cnt.textContent=ownedTotal;
+    $("collGrid").innerHTML=state.collections.colls.map(c=>`
+      <div class="colcard">
+        <div class="colhead" style="--cc:${gameColor(c.game)}">
+          <span class="colico">${c.icon}</span>
+          <div class="colttl"><h4>${esc(c.name)}</h4><span>${esc(gameOf(c.game).short)}</span></div>
+          <b class="colprog">${c.owned.length}/${c.items.length}</b>
+        </div>
+        <div class="colbar"><i style="width:${Math.round(c.owned.length/c.items.length*100)}%"></i></div>
+        <div class="colitems">${c.items.map((it,i)=>`
+          <span class="${c.owned.includes(i)?"got":""}">${c.owned.includes(i)?"✓":"○"} ${esc(it)}</span>`).join("")}</div>
+        <button class="tbtn edit coll-claim" data-claim="${c.id}">${c.owned.length===c.items.length?"COMPLETE":"CLAIM NEXT"}</button>
+      </div>`).join("");
+    $("collabGrid").innerHTML=state.collections.collabs.map(cb=>`
+      <div class="collabcard">
+        <div class="clabico">${cb.icon}</div>
+        <div class="clabbody">
+          <div class="clabtop"><h4>${esc(cb.name)}</h4><span class="clabchip ${cb.status}">${cb.status==="active"?"ACTIVE":cb.status==="soon"?"SOON":"ENDED"}</span></div>
+          <p>${esc(cb.desc)}</p>
+          <span class="clabpartner">🤝 ${esc(cb.partner)}</span>
+        </div>
+      </div>`).join("");
+  }
+  function claimCollection(id){
+    const c=(state.collections.colls||[]).find(x=>x.id===id);
+    if(!c||c.owned.length>=c.items.length) return;
+    const next=c.owned.includes(0)?Math.max(...c.owned)+1:0;
+    const idx=c.owned.length; 
+    c.owned.push(idx);
+    saveAll(); renderCollections();
+    toast("Collected: "+c.items[idx]);
+  }
+
+  /* ===================== HIGHLIGHTS & CLIPS ===================== */
+  function filteredClips(){
+    let l=[...state.clips];
+    const q=$("clipSearch")? $("clipSearch").value.trim().toLowerCase():"";
+    if(q) l=l.filter(c=>(c.title||"").toLowerCase().includes(q)||gameOf(c.game).name.toLowerCase().includes(q)||gameOf(c.game).short.toLowerCase().includes(q));
+    return l;
+  }
+  function renderClips(){
+    if(!state.clips) return;
+    const cnt=$("cntClips"); if(cnt) cnt.textContent=state.clips.length;
+    const l=filteredClips();
+    $("clipGrid").innerHTML=l.length? l.map(c=>`
+      <div class="tcard clipcard">
+        <div class="clip-thumb"><span>${c.icon||"🎬"}</span><i>${esc(c.dur||"")}</i></div>
+        <div class="clipinfo">
+          <div class="clip-top"><h4>${esc(c.title)}</h4><span class="badge" style="background:${gameColor(c.game)}22;color:${gameColor(c.game)};border-color:${gameColor(c.game)}44">${esc(gameOf(c.game).short)}</span></div>
+          <p>${c.date||""}</p>
+        </div>
+        <div class="clipacts">
+          ${c.url?`<a class="tbtn edit" href="${esc(c.url)}" target="_blank" rel="noopener">WATCH</a>`:""}
+          <button class="tbtn del" data-cldel="${c.id}">DEL</button>
+        </div>
+      </div>`).join("") : `<div class="empty" style="grid-column:1/-1"><div class="big">🎬</div><h4>No clips yet</h4><p>Record your screen or add your best highlights.</p></div>`;
+  }
+  function openClipForm(c){
+    const ed=!!c;
+    $("clfModalTitle").textContent=ed?"EDIT CLIP":"ADD CLIP";
+    $("clfId").value=ed?c.id:"";
+    $("clfTitle").value=ed?c.title:"";
+    $("clfGame").value=ed?c.game:"csgo";
+    $("clfDur").value=ed?c.dur:"";
+    $("clfUrl").value=ed?c.url:"";
+    $("clipFormOverlay").classList.add("show");
+    setTimeout(()=>{ try{ $("clfTitle").focus(); }catch(e){} },120);
+  }
+  function submitClip(e){
+    e.preventDefault();
+    const title=$("clfTitle").value.trim();
+    if(!title){ toast("Clip title required!","warn"); return; }
+    const id=$("clfId").value;
+    const data={ title, game:$("clfGame").value, dur:$("clfDur").value.trim(), url:$("clfUrl").value.trim() };
+    if(id){
+      const i=state.clips.findIndex(x=>x.id===id);
+      if(i>-1){ state.clips[i]={...state.clips[i],...data,updatedAt:Date.now()}; toast("Clip updated"); }
+    }else{
+      state.clips.unshift({...data,id:uid(),date:new Date().toISOString().slice(0,10),icon:["🎯","🏆","🔥","🎬"][state.clips.length%4],createdAt:Date.now()});
+      toast("Clip added");
+    }
+    saveAll(); renderClips();
+    $("clipFormOverlay").classList.remove("show");
+  }
+  function deleteClip(id){
+    openConfirm(`Delete clip <b>${esc((state.clips.find(x=>x.id===id)||{}).title||"")}</b>?`,()=>{
+      state.clips=state.clips.filter(x=>x.id!==id);
+      saveAll(); renderClips();
+      toast("Clip deleted","warn");
+    });
+  }
+  let recState=null, recTimerInt=null;
+  function updateRecUi(){
+    const btn=$("recBtn"), st=$("recStatus");
+    if(recState){ if(btn) btn.textContent="■ STOP"; if(st){ st.style.display="flex"; } }
+    else { if(btn) btn.textContent="● RECORD CLIP"; if(st){ st.style.display="none"; } }
+  }
+  function tickRec(){
+    const t=$("recTimer"); if(!t||!recState) return;
+    const s=Math.floor((Date.now()-recState.start)/1000);
+    t.textContent=Math.floor(s/60)+":"+String(s%60).padStart(2,"0");
+  }
+  function toggleRecord(){
+    if(recState){
+      try{ recState.rec.stop(); }catch(e){}
+      return;
+    }
+    if(!navigator.mediaDevices || !navigator.mediaDevices.getDisplayMedia){ toast("Screen recording is not supported in this browser","warn"); return; }
+    navigator.mediaDevices.getDisplayMedia({video:{cursor:"always"},audio:true}).then(stream=>{
+      const rec=new MediaRecorder(stream); const chunks=[];
+      rec.ondataavailable=e=>{ if(e.data && e.data.size) chunks.push(e.data); };
+      rec.onstop=()=>{
+        clearInterval(recTimerInt); recTimerInt=null;
+        try{
+          const blob=new Blob(chunks,{type:rec.mimeType||"video/webm"});
+          const url=URL.createObjectURL(blob);
+          const a=document.createElement("a"); a.href=url; a.download="gameplay-clip-"+Date.now()+".webm"; a.click();
+          setTimeout(()=>URL.revokeObjectURL(url),4000);
+          toast("Clip recorded & saved to Downloads");
+        }catch(e){}
+        stream.getTracks().forEach(t=>t.stop());
+        recState=null; updateRecUi();
+      };
+      rec.start(); recState={rec,start:Date.now()};
+      updateRecUi(); recTimerInt=setInterval(tickRec,500); tickRec();
+    }).catch(()=>{ toast("Recording blocked or cancelled","warn"); });
   }
 
   /* ===================== WIRING ===================== */
@@ -5664,8 +5933,18 @@
     $("chatThread").addEventListener("click",e=>{ if(e.target.closest("#threadSend")) sendChatMsg(); });
     $("chatThread").addEventListener("keydown",e=>{ if(e.target.id==="threadInput" && e.key==="Enter"){ e.preventDefault(); sendChatMsg(); } });
 
-    // about
-    $("aboutChatBtn").addEventListener("click",()=>{ chatOpen(); setTimeout(()=>chatAsk("What's new?"),300); });
+    // collections & collabs
+    $("collGrid").addEventListener("click",e=>{ const b=e.target.closest("[data-claim]"); if(b) claimCollection(b.dataset.claim); });
+
+    // highlights & clips
+    $("addClipBtn").addEventListener("click",()=> openClipForm(null));
+    $("clipForm").addEventListener("submit",submitClip);
+    $("clfCancelBtn").addEventListener("click",()=> $("clipFormOverlay").classList.remove("show"));
+    $("clipFormOverlay").addEventListener("click",e=>{ if(e.target===$("clipFormOverlay")) $("clipFormOverlay").classList.remove("show"); });
+    $("clipGrid").addEventListener("click",e=>{ const b=e.target.closest("[data-cldel]"); if(b) deleteClip(b.dataset.cldel); });
+    $("clipSearch").addEventListener("input",renderClips);
+    $("recBtn").addEventListener("click",toggleRecord);
+    $("recStopBtn").addEventListener("click",()=>{ if(recState) toggleRecord(); });
 
     // confirm modal
     $("confirmOk").addEventListener("click",()=>{ if(pendingCb){ const cb=pendingCb; pendingCb=null; cb(); } closeConfirm(); });
@@ -5680,7 +5959,7 @@
 
     document.addEventListener("keydown",e=>{
       if(e.key!=="Escape") return;
-      ["formOverlay","pFormOverlay","tFormOverlay","sFormOverlay","aFormOverlay","vbFormOverlay","bFormOverlay","mFormOverlay","mtFormOverlay","rFormOverlay","cFormOverlay","wFormOverlay","nFormOverlay","qFormOverlay"].forEach(id=> $(id).classList.remove("show"));
+      ["formOverlay","pFormOverlay","tFormOverlay","sFormOverlay","aFormOverlay","vbFormOverlay","bFormOverlay","mFormOverlay","mtFormOverlay","rFormOverlay","cFormOverlay","wFormOverlay","nFormOverlay","qFormOverlay","clipFormOverlay"].forEach(id=> $(id).classList.remove("show"));
       closeConfirm(); closeSidebar();
     });
   }
@@ -5702,6 +5981,8 @@
   renderSettings();
   renderShop();
   renderChatList();
+  renderCollections();
+  renderClips();
   renderAbout();
   applyPremiumShell();
   switchView("home");
