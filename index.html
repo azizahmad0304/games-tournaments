@@ -543,6 +543,9 @@
   .bgbody{padding:16px 18px 18px}
   .bgbody h4{font-family:'Orbitron';font-size:16px;letter-spacing:1px}
   .bgbody p{color:var(--dim);font-size:13px;margin:6px 0 13px;line-height:1.5}
+  .bgprev.cat{background:linear-gradient(180deg,#05070f 0%,#0b1335 55%,#141a3d 100%)}
+  .bgprev.cat::before{content:"";position:absolute;left:22%;right:22%;bottom:0;height:42%;background:#060916;clip-path:polygon(0 100%,0 42%,50% 0,100% 42%,100% 100%)}
+  .bgprev.cat::after{content:"";position:absolute;left:48%;bottom:42%;width:13px;height:9px;border-radius:50% 50% 0 0;background:#060916;box-shadow:-4px 3px 0 -3px #060916,6px 1px 0 -3px #060916}
 
   /* full-screen background themes */
   #bgFX{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
@@ -564,6 +567,11 @@
   #campCv{position:fixed;inset:0;z-index:0;pointer-events:none;display:none}
   body.bg-camp #campCv{display:block}
   #campFlash{position:fixed;inset:0;z-index:1;pointer-events:none;background:#cfd8ff;opacity:0;mix-blend-mode:screen}
+  #catFlash{position:fixed;inset:0;z-index:1;pointer-events:none;background:#d6e3ff;opacity:0;mix-blend-mode:screen}
+  #catCv{position:fixed;inset:0;z-index:0;pointer-events:none;display:none}
+  body.bg-cat #catCv{display:block}
+  body.bg-cat{background:linear-gradient(180deg,#05070f 0%,#0a1130 55%,#141a3d 100%)}
+  body.bg-cat .cloud,body.bg-cat .fog{opacity:0;transition:opacity .6s}
   body.bg-camp{background:radial-gradient(1200px 700px at 60% -10%,#101a45 0%,transparent 60%),radial-gradient(900px 600px at 60% 110%,#2a1e3d 0%,transparent 55%),#070a1e}
   body.bg-camp .cloud,body.bg-camp .fog{opacity:0;transition:opacity .6s}
 
@@ -1091,6 +1099,33 @@
   .optab-btn.sel{background:linear-gradient(120deg,var(--cyber),var(--cyber2));color:#04121f;border-color:transparent;box-shadow:0 0 18px var(--cyber)}
   .optab-btn .cnt{font-family:'Orbitron';font-size:10px;background:rgba(255,255,255,.14);padding:1px 7px;border-radius:100px;margin-left:6px}
 
+  /* ============ RGB LIGHTING ============ */
+  body.rgb-on{--rgbspd:4.5s}
+  body.rgb-on.rgb-slow{--rgbspd:8s}
+  body.rgb-on.rgb-fast{--rgbspd:2.2s}
+  @keyframes rgbHue{from{filter:hue-rotate(0)}to{filter:hue-rotate(360deg)}}
+  @keyframes rgbBord{0%{border-color:#ff2d7a}17%{border-color:#ffd54a}33%{border-color:#2bff9e}50%{border-color:#00e0ff}67%{border-color:#b44dff}83%{border-color:#ff5c2a}100%{border-color:#ff2d7a}}
+  @keyframes rgbAccent{0%{box-shadow:0 0 16px #ff2d7a}17%{box-shadow:0 0 16px #ffd54a}33%{box-shadow:0 0 16px #2bff9e}50%{box-shadow:0 0 16px #00e0ff}67%{box-shadow:0 0 16px #b44dff}83%{box-shadow:0 0 16px #ff5c2a}100%{box-shadow:0 0 16px #ff2d7a}}
+  @keyframes rgbSweep{0%{transform:translateX(-22%)}100%{transform:translateX(22%)}}
+  body.rgb-cycle #app,body.rgb-cycle #sidebar{animation:rgbHue var(--rgbspd) linear infinite}
+  body.rgb-wave::after{content:"";position:fixed;inset:-60% -40%;width:180%;height:220%;pointer-events:none;z-index:3;background:linear-gradient(90deg,transparent 0%,rgba(255,45,122,.11) 22%,rgba(255,213,74,.11) 40%,rgba(43,255,158,.11) 58%,rgba(0,224,255,.11) 76%,transparent 100%);animation:rgbSweep var(--rgbspd) linear infinite}
+  body.rgb-cycle .tcard,body.rgb-cycle .setcard,body.rgb-cycle .bgcard,body.rgb-cycle .regform,body.rgb-cycle .regcard,body.rgb-cycle .theme-card,body.rgb-cycle header,
+  body.rgb-wave .tcard,body.rgb-wave .setcard,body.rgb-wave .bgcard,body.rgb-wave .regform,body.rgb-wave .regcard,body.rgb-wave .theme-card,body.rgb-wave header,
+  body.rgb-pulse .tcard,body.rgb-pulse .setcard,body.rgb-pulse .bgcard,body.rgb-pulse .regform,body.rgb-pulse .regcard,body.rgb-pulse .theme-card,body.rgb-pulse header{animation:rgbBord var(--rgbspd) linear infinite}
+  body.rgb-cycle .nav-item.active,body.rgb-cycle .switch.on,
+  body.rgb-wave .nav-item.active,body.rgb-wave .switch.on,
+  body.rgb-pulse .nav-item.active,body.rgb-pulse .switch.on{animation:rgbAccent var(--rgbspd) linear infinite}
+  body.rgb-static{--rgbc:#00e0ff;--rgbcg:rgba(0,224,255,.4)}
+  body.rgb-static[data-rgbcol="0"]{--rgbc:#ff2d7a;--rgbcg:rgba(255,45,122,.4)}
+  body.rgb-static[data-rgbcol="1"]{--rgbc:#ffd54a;--rgbcg:rgba(255,213,74,.4)}
+  body.rgb-static[data-rgbcol="2"]{--rgbc:#2bff9e;--rgbcg:rgba(43,255,158,.4)}
+  body.rgb-static[data-rgbcol="3"]{--rgbc:#00e0ff;--rgbcg:rgba(0,224,255,.4)}
+  body.rgb-static[data-rgbcol="4"]{--rgbc:#b44dff;--rgbcg:rgba(180,77,255,.4)}
+  body.rgb-static[data-rgbcol="5"]{--rgbc:#ff5c2a;--rgbcg:rgba(255,92,42,.4)}
+  body.rgb-static .tcard,body.rgb-static .setcard,body.rgb-static .bgcard,body.rgb-static .regform,body.rgb-static .regcard,body.rgb-static .theme-card,body.rgb-static header{border-color:var(--rgbc);box-shadow:0 0 16px var(--rgbcg)}
+  body.rgb-static .nav-item.active,body.rgb-static .switch.on{box-shadow:0 0 16px var(--rgbcg);border-color:var(--rgbc)}
+  body.rgb-static .switch.on{background:linear-gradient(120deg,var(--rgbc),var(--rgbc))}
+
 </style>
 </head>
 <body>
@@ -1099,7 +1134,9 @@
   <canvas id="matrixCv"></canvas>
   <div id="stormFlash"></div>
   <div id="campFlash"></div>
+  <div id="catFlash"></div>
   <canvas id="campCv"></canvas>
+  <canvas id="catCv"></canvas>
   <canvas id="genCv"></canvas>
   <div id="bgFX"><div class="aurora a1"></div><div class="aurora a2"></div><div class="aurora a3"></div></div>
   <div class="cloud" style="top:-60px;left:-8%;width:38vw;height:140px"></div>
@@ -1150,6 +1187,7 @@
       <a class="nav-item" data-view="music"><span class="ni"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M18 12V5l-7 1v13"/></svg></span> Music <span class="cnt" id="cntMusic">30</span></a>
       <a class="nav-item" data-view="appearance"><span class="ni"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span> Appearance</a>
       <a class="nav-item" data-view="opt"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z"/><path d="M12 6v6l4 2"/></svg></span> Optimization</a>
+      <a class="nav-item" data-view="rgb"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><path d="M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span> RGB Lighting</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
       <a class="nav-item" data-view="collections"><span class="ni"><svg viewBox="0 0 24 24"><path d="M2 3h20v7H2z"/><path d="M2 10h20v11H2z"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="10" y1="6" x2="10.01" y2="6"/><line x1="6" y1="14" x2="6.01" y2="14"/><line x1="10" y1="14" x2="10.01" y2="14"/></svg></span> Collections &amp; Collabs <span class="cnt" id="cntColl">0</span></a>
@@ -1653,6 +1691,46 @@
           <div class="setrow">
             <div class="lbl">Light Background Mode <small>Use a plain static background — the animated canvas stays off</small></div>
             <button class="switch" id="tgStaticBg"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ RGB LIGHTING ============ -->
+      <section id="rgbView" class="hidden">
+        <div class="page-title">RGB LIGHTING</div>
+        <div class="page-sub">Bathe the whole arena in living color — cycling hues, sweeping waves, pulsing panels or a locked-in static glow.</div>
+        <div class="setcard">
+          <div class="setrow">
+            <div class="lbl">RGB Mode <small>Master switch — turns the lighting effects on / off</small></div>
+            <button class="switch" id="rgbTabSwitch"></button>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>EFFECT MODE</h4>
+          <div class="optic" id="rgbModeRow">
+            <button data-rgbmode="cycle">CYCLE</button>
+            <button data-rgbmode="wave">WAVE</button>
+            <button data-rgbmode="pulse">PULSE</button>
+            <button data-rgbmode="static">STATIC</button>
+          </div>
+        </div>
+        <div class="setcard" id="rgbStaticCard">
+          <h4>STATIC COLOR</h4>
+          <div class="optic" id="rgbColRow">
+            <button data-rgbcol="0" style="background:#ff2d7a;color:#fff">PINK</button>
+            <button data-rgbcol="1" style="background:#ffd54a;color:#241a02">GOLD</button>
+            <button data-rgbcol="2" style="background:#2bff9e;color:#04120c">GREEN</button>
+            <button data-rgbcol="3" style="background:#00e0ff;color:#04121f">CYAN</button>
+            <button data-rgbcol="4" style="background:#b44dff;color:#fff">PURPLE</button>
+            <button data-rgbcol="5" style="background:#ff5c2a;color:#fff">ORANGE</button>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>SPEED</h4>
+          <div class="optic" id="rgbSpeedRow">
+            <button data-rgbspd="slow">SLOW</button>
+            <button data-rgbspd="med">MEDIUM</button>
+            <button data-rgbspd="fast">FAST</button>
           </div>
         </div>
       </section>
@@ -2426,7 +2504,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[], settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[],     settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -2641,7 +2719,7 @@
     state.bgml        = getStore(KEYS.bgml, null) ?? [];
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.profile.avatarE = normAv(state.profile.avatarE);
-    state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}}, getStore(KEYS.set, {}));
+    state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
     saveAll();
@@ -2670,7 +2748,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -2697,6 +2775,7 @@
     if(v==="music"){ renderMusic(); }
     if(v==="appearance"){ renderAppearance(); }
     if(v==="opt"){ renderOpt(); }
+    if(v==="rgb"){ renderRgb(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
     if(v==="premium"){ renderPremium(); }
     if(v==="shop"){ renderShop(); }
@@ -3544,7 +3623,8 @@
   const BGS={ storm:{name:"Thunderstorm",desc:"Falling rain, random lightning & screen flashes — the classic arena storm."},
     aurora:{name:"Neon Aurora",desc:"Hypnotic neon light bands drifting across the night sky."},
     matrix:{name:"Cyber Matrix",desc:"Endless green code rain in a digital underworld."},
-    camp:{name:"Campsite Night",desc:"A boy sits by the bonfire under a starry sky — his herd rests nearby as lightning flashes."} };
+    camp:{name:"Campsite Night",desc:"A boy sits by the bonfire under a starry sky — his herd rests nearby as lightning flashes."},
+    cat:{name:"Rooftop Kitten",desc:"A cat sits on the house roof gazing at the stormy sky — lightning flashes, rain pours and cars drift past on the wet road below."} };
   const BG_CONF={
     rainbow:{name:"Neon Rainbow",desc:"Glittering rainbow rain streaking through a dark arena.",css:"linear-gradient(180deg,#05060f 0%,#1a1033 60%,#05060f 100%)",mode:"rain",colors:["#ff5c8a","#ffd54a","#2bff9e","#00e0ff","#b44dff"],density:70,size:1},
     snow:{name:"Snowfall",desc:"Soft blue snow drifting down a calm winter night.",css:"linear-gradient(180deg,#0a1628 0%,#0c2036 100%)",mode:"snow",colors:["#eaf6ff","#bfe3ff"],density:70,size:2.2},
@@ -3568,7 +3648,7 @@
   };
   function applyBg(){
     const bg=state.settings.background||"storm";
-    document.body.classList.remove("bg-storm","bg-aurora","bg-matrix","bg-camp");
+    document.body.classList.remove("bg-storm","bg-aurora","bg-matrix","bg-camp","bg-cat");
     document.body.style.background="";
     document.body.classList.add("bg-"+bg);
     const gen=BG_CONF[bg];
@@ -4324,6 +4404,31 @@
     applyOpt();
   }
 
+  /* ===================== RGB LIGHTING ===================== */
+  function applyRgb(){
+    const r=state.settings.rgb||false;
+    const m=state.settings.rgbMode||"cycle";
+    const s=state.settings.rgbSpeed||"med";
+    const c=state.settings.rgbColor||0;
+    document.body.classList.toggle("rgb-on", !!r);
+    ["rgb-cycle","rgb-wave","rgb-pulse","rgb-static"].forEach(x=>document.body.classList.remove(x));
+    ["rgb-slow","rgb-med","rgb-fast"].forEach(x=>document.body.classList.remove(x));
+    if(r){ document.body.classList.add("rgb-"+m); document.body.classList.add("rgb-"+s); }
+    document.body.dataset.rgbcol=c;
+  }
+  function renderRgb(){
+    const r=state.settings.rgb||false;
+    const m=state.settings.rgbMode||"cycle";
+    const s=state.settings.rgbSpeed||"med";
+    const c=state.settings.rgbColor||0;
+    if($("rgbTabSwitch")) $("rgbTabSwitch").classList.toggle("on", !!r);
+    document.querySelectorAll("#rgbModeRow [data-rgbmode]").forEach(b=> b.classList.toggle("sel", b.dataset.rgbmode===m));
+    document.querySelectorAll("#rgbSpeedRow [data-rgbspd]").forEach(b=> b.classList.toggle("sel", b.dataset.rgbspd===s));
+    document.querySelectorAll("#rgbColRow [data-rgbcol]").forEach(b=> b.classList.toggle("sel", (+b.dataset.rgbcol)===c));
+    const sc=$("rgbStaticCard"); if(sc) sc.style.display = m==="static" && r ? "" : "none";
+    applyRgb();
+  }
+
   /* ===================== ANTI-CHEAT & SECURITY ===================== */
   const SECSTATUS={
     open:{t:"OPEN",c:"up"},
@@ -4886,12 +4991,29 @@
   }
   const ccv=$("campCv"), cctx2=ccv.getContext("2d");
   let STARS=[], CAMP_EMBERS=[], campBolt=null, campBoltLife=0, campLastBolt=0, campFlash=0;
+  const kcv=$("catCv"), kctx=kcv.getContext("2d");
+  let catBolt=null, catBoltLife=0, catLastBolt=0, catFlash=0, catSized=false;
+  const CAT_RAIN=[], CAT_CARS=[];
+  function sizeCat(){
+    kcv.width=W*dpr; kcv.height=H*dpr; kcv.style.width=W+"px"; kcv.style.height=H+"px";
+    kctx.setTransform(dpr,0,0,dpr,0,0);
+    catSized=true;
+    CAT_RAIN.length=0;
+    for(let i=0;i<190;i++) CAT_RAIN.push({x:Math.random()*W,y:Math.random()*H,l:13+Math.random()*18,sp:13+Math.random()*15,w:(Math.random()*2)|0});
+    CAT_CARS.length=0;
+    const cols=["#ff7a2a","#00e0ff","#ffd54a","#b44dff","#7df9ff","#ff5c6e","#9be564"];
+    for(let i=0;i<7;i++){
+      const dir=i%2===0?1:-1;
+      CAT_CARS.push({dir, lane:i%2, x:Math.random()*W, sp:dir*(1.6+Math.random()*1.8), len:34+Math.random()*22, col:cols[i%7]});
+    }
+  }
   function size(){
     dpr=Math.min(window.devicePixelRatio||1,2); W=innerWidth; H=innerHeight;
     cv.width=W*dpr; cv.height=H*dpr; cv.style.width=W+"px"; cv.style.height=H+"px";
     cctx.setTransform(dpr,0,0,dpr,0,0);
     sizeMatrix();
     sizeCamp();
+    sizeCat();
   }
   size(); addEventListener("resize",size);
   addEventListener("resize",()=>{ if(typeof adGo==="function") adGo(adIdx,true); });
@@ -5076,6 +5198,117 @@
     cctx2.globalAlpha=1;
     if(campFlash>0){ campFlash*=0.8; $("campFlash").style.opacity=campFlash; }
   }
+
+  /* ===================== ROOFTOP KITTEN ===================== */
+  function drawCatRain(){
+    kctx.strokeStyle="rgba(150,175,255,.35)";
+    for(const d of CAT_RAIN){
+      d.y+=d.sp; d.x+=1.1;
+      if(d.y>H+20){ d.y=-20; d.x=Math.random()*W; }
+      if(d.x>W+20) d.x=-20;
+      kctx.lineWidth=d.w; kctx.beginPath();
+      kctx.moveTo(d.x,d.y); kctx.lineTo(d.x-d.sp*0.35,d.y-d.l); kctx.stroke();
+    }
+  }
+  function makeCatBolt(){
+    const pts=[{x:W*(0.15+Math.random()*0.7),y:-10}];
+    let x=pts[0].x,y=-10;
+    while(y<H*0.3){ y+=20+Math.random()*40; x+=(Math.random()-.5)*52; pts.push({x:Math.max(0,Math.min(W,x)),y}); }
+    return pts;
+  }
+  function drawCatBolt(){
+    kctx.lineCap="round"; kctx.lineJoin="round";
+    kctx.strokeStyle="rgba(255,255,255,.95)"; kctx.lineWidth=2.4; kctx.beginPath();
+    kctx.moveTo(catBolt[0].x,catBolt[0].y);
+    for(let i=1;i<catBolt.length;i++) kctx.lineTo(catBolt[i].x,catBolt[i].y);
+    kctx.stroke();
+    kctx.strokeStyle="rgba(160,190,255,.4)"; kctx.lineWidth=8; kctx.beginPath();
+    kctx.moveTo(catBolt[0].x,catBolt[0].y);
+    for(let i=1;i<catBolt.length;i++) kctx.lineTo(catBolt[i].x,catBolt[i].y);
+    kctx.stroke();
+  }
+  function drawCat2(x,y,s){
+    kctx.fillStyle="#0b0f26";
+    kctx.beginPath(); kctx.ellipse(x,y-s*10,s*16,s*13,0,0,Math.PI*2); kctx.fill();
+    kctx.strokeStyle="#0b0f26"; kctx.lineWidth=3.4*s; kctx.lineCap="round";
+    kctx.beginPath(); kctx.moveTo(x-s*14,y+s*4);
+    kctx.quadraticCurveTo(x-s*24,y+s*15,x-s*17,y+s*1); kctx.stroke();
+    kctx.beginPath(); kctx.arc(x,y-s*26,s*9,0,Math.PI*2); kctx.fill();
+    kctx.beginPath(); kctx.moveTo(x-s*9,y-s*32); kctx.lineTo(x-s*3,y-s*41); kctx.lineTo(x-s*0.5,y-s*33); kctx.closePath(); kctx.fill();
+    kctx.beginPath(); kctx.moveTo(x+s*9,y-s*32); kctx.lineTo(x+s*3,y-s*41); kctx.lineTo(x+s*0.5,y-s*33); kctx.closePath(); kctx.fill();
+  }
+  function drawCatCar(c){
+    const y = c.lane===0 ? H*0.868 : H*0.922;
+    kctx.save();
+    if(c.dir===-1){ kctx.translate(c.x+c.len,y); kctx.scale(-1,1); kctx.translate(-c.len,0); }
+    kctx.fillStyle=c.col;
+    kctx.fillRect(c.x,y,c.len,9);
+    kctx.fillStyle="rgba(10,14,30,.85)";
+    kctx.fillRect(c.x+c.len*0.16,y-6,c.len*0.52,6);
+    kctx.fillStyle="#fff8d0";
+    kctx.fillRect(c.x,y+1,2,7);
+    kctx.fillStyle="#ff3d3d";
+    kctx.fillRect(c.x+c.len-2,y+1,2,7);
+    kctx.restore();
+  }
+  function drawCat(t){
+    if(!catSized) sizeCat();
+    kctx.clearRect(0,0,W,H);
+    const sky=kctx.createLinearGradient(0,0,0,H*0.8);
+    sky.addColorStop(0,"#04060f"); sky.addColorStop(0.45,"#0a1130"); sky.addColorStop(0.72,"#16204d"); sky.addColorStop(1,"#1c2350");
+    kctx.fillStyle=sky; kctx.fillRect(0,0,W,H);
+    kctx.fillStyle="rgba(20,28,60,.55)";
+    for(let i=0;i<4;i++){
+      const cx=(t*0.006*(0.6+i*0.2)+i*W*0.3)%(W+300)-150;
+      kctx.beginPath(); kctx.ellipse(cx,H*0.12,W*0.22,18,0,0,Math.PI*2); kctx.fill();
+    }
+    if(state.settings.lightning && t-catLastBolt>2800+Math.random()*4000){
+      catBolt=makeCatBolt(); catBoltLife=3; catLastBolt=t; catFlash=0.5; thunder();
+    }
+    if(catBolt){ catBoltLife--; if(catBoltLife>0) drawCatBolt(); else catBolt=null; }
+    drawCatRain();
+    const groundY=H*0.78, hx=W*0.5;
+    kctx.fillStyle="#050816";
+    kctx.fillRect(hx-W*0.22,groundY,W*0.44,H-groundY);
+    kctx.beginPath();
+    kctx.moveTo(hx-W*0.18,groundY-W*0.06);
+    kctx.lineTo(hx,groundY-W*0.30);
+    kctx.lineTo(hx+W*0.18,groundY-W*0.06);
+    kctx.closePath(); kctx.fill();
+    kctx.fillStyle="#0a0f26";
+    kctx.beginPath();
+    kctx.moveTo(hx-W*0.24,groundY);
+    kctx.lineTo(hx-W*0.32,groundY-W*0.10);
+    kctx.lineTo(hx,groundY-W*0.30);
+    kctx.lineTo(hx+W*0.32,groundY-W*0.10);
+    kctx.lineTo(hx+W*0.24,groundY);
+    kctx.closePath(); kctx.fill();
+    kctx.fillStyle="#060916";
+    kctx.fillRect(hx+W*0.14,groundY-W*0.27,W*0.045,groundY-W*0.13);
+    kctx.fillStyle="#ffd54a";
+    kctx.fillRect(hx-W*0.032,groundY-W*0.19,W*0.064,W*0.075);
+    kctx.fillStyle="rgba(255,213,74,.16)";
+    kctx.fillRect(hx-W*0.05,groundY-W*0.225,W*0.1,W*0.11);
+    const sc=Math.min(W,H)/900;
+    drawCat2(hx,groundY-W*0.30,sc);
+    kctx.fillStyle="#0b0f26";
+    kctx.beginPath(); kctx.ellipse(hx-W*0.28,groundY-W*0.02,12*sc,6*sc,0,0,Math.PI*2); kctx.fill();
+    kctx.beginPath(); kctx.ellipse(hx+W*0.27,groundY-W*0.02,9*sc,5*sc,0,0,Math.PI*2); kctx.fill();
+    kctx.fillStyle="#04050c";
+    kctx.fillRect(0,H*0.84,W,H*0.16);
+    kctx.fillStyle="#1b2136";
+    kctx.fillRect(0,H*0.84,W,3);
+    kctx.fillStyle="rgba(200,210,255,.28)";
+    for(let i=0;i<W;i+=W*0.085) kctx.fillRect((i+(t*0.02)%(W*0.17)),H*0.905,W*0.032,2.4);
+    for(const c of CAT_CARS){
+      c.x+=c.sp;
+      if(c.dir===1 && c.x>W+40) c.x=-40-c.len;
+      if(c.dir===-1 && c.x<-40-c.len) c.x=W+40;
+      drawCatCar(c);
+    }
+    if(catFlash>0){ catFlash*=0.8; $("catFlash").style.opacity=catFlash; }
+  }
+
   function loop(t){
     requestAnimationFrame(loop);
     if(state.settings.autoLock && authGet() && t-lastAct>(state.settings.lockMins||5)*60000){
@@ -5093,6 +5326,8 @@
       drawMatrix();
     } else if(state.settings.background==="camp"){
       drawCamp(t);
+    } else if(state.settings.background==="cat"){
+      drawCat(t);
     } else if(BG_CONF[state.settings.background]){
       drawGen(t);
     }
@@ -6487,6 +6722,12 @@
     $("tgLowRes").addEventListener("click",()=>{ state.settings.opt.lowRes=!state.settings.opt.lowRes; saveAll(); renderOpt(); toast("Low Resolution Mode "+(state.settings.opt.lowRes?"enabled":"disabled")); });
     $("tgStaticBg").addEventListener("click",()=>{ state.settings.opt.staticBg=!state.settings.opt.staticBg; saveAll(); renderOpt(); toast("Light Background Mode "+(state.settings.opt.staticBg?"enabled":"disabled")); });
 
+    // rgb lighting
+    $("rgbTabSwitch").addEventListener("click",()=>{ state.settings.rgb=!state.settings.rgb; saveAll(); renderRgb(); toast("RGB Lighting "+(state.settings.rgb?"enabled":"disabled")); });
+    $("rgbModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-rgbmode]"); if(!b) return; state.settings.rgbMode=b.dataset.rgbmode; saveAll(); renderRgb(); toast("RGB effect: "+b.dataset.rgbmode.toUpperCase()); });
+    $("rgbSpeedRow").addEventListener("click",e=>{ const b=e.target.closest("[data-rgbspd]"); if(!b) return; state.settings.rgbSpeed=b.dataset.rgbspd; saveAll(); renderRgb(); toast("RGB speed: "+b.dataset.rgbspd.toUpperCase()); });
+    $("rgbColRow").addEventListener("click",e=>{ const b=e.target.closest("[data-rgbcol]"); if(!b) return; state.settings.rgbColor=+b.dataset.rgbcol; saveAll(); renderRgb(); toast("Static color set"); });
+
     // anti-cheat & security
     $("addCheatBtn").addEventListener("click",()=> openCheatForm(null));
     $("qForm").addEventListener("submit",submitCheat);
@@ -6592,6 +6833,7 @@
   renderClips();
   renderBgs();
   renderOpt();
+  renderRgb();
   renderMusic();
   renderAbout();
   applyPremiumShell();
