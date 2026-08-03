@@ -1307,6 +1307,7 @@
       <a class="nav-item" data-view="warm"><span class="ni"><svg viewBox="0 0 24 24"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg></span> Warm Up Matches <span class="cnt" id="cntWarm">0</span></a>
       <a class="nav-item" data-view="ranked"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg></span> Ranked &amp; Normal <span class="cnt" id="cntRanked">0</span></a>
       <a class="nav-item" data-view="points"><span class="ni"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></span> Points Table</a>
+      <a class="nav-item" data-view="leaderboard"><span class="ni"><svg viewBox="0 0 24 24"><path d="M3 18h18"/><path d="M4 9l3 3 5-6 5 6 3-3v9H4z"/></svg></span> Leaderboard <span class="cnt" id="cntLb">0</span></a>
       <a class="nav-item" data-view="ach"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span> Achievements &amp; Medals <span class="cnt" id="cntAch">0</span></a>
       <a class="nav-item" data-view="vbadges"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span> Verify Badges <span class="cnt" id="cntVb">0</span></a>
       <a class="nav-item" data-view="members"><span class="ni"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Members <span class="cnt" id="cntMems">0</span></a>
@@ -1690,6 +1691,19 @@
           <button class="addbtn" id="addStandBtn">+ ADD ENTRY</button>
         </div>
         <div class="table-wrap"><table class="ptable" id="pointsTbl"></table></div>
+      </section>
+
+      <!-- ============ LEADERBOARD ============ -->
+      <section id="lbView" class="hidden">
+        <div class="page-title">LEADERBOARD</div>
+        <div class="page-sub">Global ranked ladder — every player's rank, games, wins &amp; points, sorted by score. Add, edit or delete entries anytime.</div>
+        <div class="stats" id="lbSummary"></div>
+        <div class="chips" id="lbChips"></div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="lbSearch" placeholder="Search player..." /></div>
+          <button class="addbtn" id="addLbBtn">+ ADD PLAYER</button>
+        </div>
+        <div class="table-wrap"><table class="ptable" id="lbTbl"></table></div>
       </section>
 
       <!-- ============ ACHIEVEMENTS & MEDALS ============ -->
@@ -2187,6 +2201,30 @@
     </div>
   </div>
 
+  <!-- ============ LEADERBOARD ENTRY FORM MODAL ============ -->
+  <div class="overlay" id="lFormOverlay">
+    <div class="modal">
+      <h3><span class="mi" id="lModalTitle">ADD PLAYER</span></h3>
+      <form id="lForm">
+        <input type="hidden" id="lfId" />
+        <div class="row2">
+          <div class="field"><label>Player Name</label><input id="lfName" placeholder="e.g. GhostX" required /></div>
+          <div class="field"><label>Game</label><select id="lfGame"></select></div>
+        </div>
+        <div class="row3">
+          <div class="field"><label>Team</label><input id="lfTeam" placeholder="e.g. Strike Wolves" /></div>
+          <div class="field"><label>Matches</label><input id="lfMatches" type="number" min="0" placeholder="0" /></div>
+          <div class="field"><label>Wins</label><input id="lfWins" type="number" min="0" placeholder="0" /></div>
+        </div>
+        <div class="field"><label>Points</label><input id="lfPoints" type="number" min="0" placeholder="0" /></div>
+        <div class="mbtns">
+          <button type="button" class="mbtn cancel" id="lCancelBtn">CANCEL</button>
+          <button type="submit" class="mbtn save">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <!-- ============ ACHIEVEMENT FORM MODAL ============ -->
   <div class="overlay" id="aFormOverlay">
     <div class="modal">
@@ -2652,8 +2690,8 @@
     {name:"Red Alert", c:"#ff3d6e", c2:"#ff0044"}
   ];
   const STAGES = { qf:{label:"Quarter Finals", short:"QF", n:4}, sf:{label:"Semi Finals", short:"SF", n:2}, f:{label:"Grand Final", short:"FINAL", n:1} };
-  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1", prem:"gt_prem_v1", shop:"gt_shop_v1", chat:"gt_chat_v1", coll:"gt_coll_v1", clips:"gt_clips_v1", bgml:"gt_bgml_v1" };
-  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges", prem:"premium", shop:"shop", chat:"chats", coll:"collections", clips:"clips", bgml:"bgml" };
+  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1", prem:"gt_prem_v1", shop:"gt_shop_v1", chat:"gt_chat_v1", coll:"gt_coll_v1", clips:"gt_clips_v1", bgml:"gt_bgml_v1", lboard:"gt_lboard_v1" };
+  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges", prem:"premium", shop:"shop", chat:"chats", coll:"collections", clips:"clips", bgml:"bgml", lboard:"leaderboard" };
   const STATUS = { up:{t:"Upcoming",c:"up"}, live:{t:"Live",c:"live"}, done:{t:"Completed",c:"done"} };
 
   const ICONS = {
@@ -2670,7 +2708,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[],     settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[], leaderboard:[],     settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -2862,6 +2900,15 @@
   function seedStandings(){
     return state.teams.map(t=>({id:uid(), team:t.name, game:t.game, wins:t.wins||0, losses:t.losses||0, draws:t.draws||0}));
   }
+  function seedLeaderboard(){
+    return [
+      {id:uid(), player:"GhostX", game:"csgo", team:"Strike Wolves", matches:210, wins:140, points:4520},
+      {id:uid(), player:"BloodHound", game:"bs", team:"Blood Echo", matches:240, wins:150, points:4310},
+      {id:uid(), player:"ShadowReaper", game:"pubg", team:"Skull Squad PK", matches:165, wins:96, points:2890},
+      {id:uid(), player:"NightGhost", game:"cod", team:"Night Ghosts", matches:195, wins:102, points:2740},
+      {id:uid(), player:"ViperKing", game:"csgo", team:"Neon Cartel", matches:130, wins:88, points:2310}
+    ];
+  }
   function load(){
     state.tournaments = getStore(KEYS.tours, null) ?? seedTours();
     state.players     = getStore(KEYS.plrs,  null) ?? seedPlrs();
@@ -2875,6 +2922,7 @@
     state.ranked      = getStore(KEYS.ranked,null) ?? seedRanked();
     state.cheats      = getStore(KEYS.sec,   null) ?? seedCheats();
     state.standings   = getStore(KEYS.stand, null) ?? seedStandings();
+    state.leaderboard = getStore(KEYS.lboard, null) ?? seedLeaderboard();
     state.ach         = getStore(KEYS.ach,   null) ?? seedAch();
     state.vbadges     = getStore(KEYS.gbadges, null) ?? seedVbadges();
     state.premium     = getStore(KEYS.prem, null);
@@ -2914,7 +2962,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -2933,6 +2981,7 @@
     if(v==="warm"){ renderWarmSummary(); renderWarm(); }
     if(v==="ranked"){ renderRankedSummary(); renderRanked(); }
     if(v==="points"){ renderPoints(); }
+    if(v==="leaderboard"){ renderLeaderboard(); }
     if(v==="ach"){ renderAchSummary(); renderAch(); }
     if(v==="vbadges"){ renderVbSummary(); renderVb(); }
     if(v==="themes"){ renderThemes(); }
@@ -3090,7 +3139,7 @@
   /* ===================== TOURNAMENT FORM ===================== */
   function fillSelects(){
     const opts=Object.entries(GAMES).map(([id,g])=>`<option value="${id}">${g.name}</option>`).join("");
-    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame","qfGame","sfGame","afGame","clfGame"].forEach(id=> $(id).innerHTML=opts);
+    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame","qfGame","sfGame","afGame","clfGame","lfGame"].forEach(id=> $(id).innerHTML=opts);
   }
   function openTourForm(t){
     const ed=!!t;
@@ -4204,6 +4253,89 @@
       saveAll();
       renderPoints();
       toast("Entry removed","warn");
+    });
+  }
+
+  /* ===================== LEADERBOARD ===================== */
+  function lbFilterGame(){ return state.lbGame||"all"; }
+  function renderLbChips(){
+    $("lbChips").innerHTML=["all",...Object.keys(GAMES)].map(g=>
+      `<button class="chip ${lbFilterGame()===g?"active":""}" data-lb="${g}">${PT_FILTER[g]||GAMES[g].name}</button>`).join("");
+  }
+  function renderLeaderboard(){
+    const c=$("cntLb"); if(c) c.textContent=state.leaderboard.length;
+    renderLbChips();
+    const f=lbFilterGame(), q=(state.lbSearch||"").toLowerCase().trim();
+    let rows=state.leaderboard.map(p=>({...p, gameName:(GAMES[p.game]||{name:p.game||"—"}).name}));
+    if(f!=="all") rows=rows.filter(p=>p.game===f);
+    if(q) rows=rows.filter(p=>(p.player||"").toLowerCase().includes(q)||(p.team||"").toLowerCase().includes(q));
+    rows=rows.map(p=>{
+      const m=p.matches||0, w=p.wins||0, pts=p.points||0;
+      return {...p, m, w, pts, wr:m?Math.round(w/m*100):0};
+    }).sort((a,b)=> b.pts-a.pts || b.w-a.w || a.m-b.m);
+    const top=rows[0]||null, mostWins=rows.length?Math.max(...rows.map(r=>r.w)):0;
+    $("lbSummary").innerHTML=rows.length? `
+      <div class="stat"><div class="big">${rows.length}</div><div class="lbl">PLAYERS</div></div>
+      <div class="stat"><div class="big">${top?esc(top.player):"—"}</div><div class="lbl">TOP SCORE · ${top?top.pts:0}</div></div>
+      <div class="stat"><div class="big">${mostWins}</div><div class="lbl">MOST WINS</div></div>`:
+      `<div class="stat"><div class="big">0</div><div class="lbl">PLAYERS</div></div>`;
+    const head=`<thead><tr><th>RANK</th><th>PLAYER</th><th>GAME</th><th>TEAM</th><th>P</th><th>W</th><th>PTS</th><th>WR%</th><th>ACTIONS</th></tr></thead>`;
+    if(!rows.length){
+      $("lbTbl").innerHTML=head+`<tbody><tr><td colspan="9" style="text-align:center;color:var(--dim);padding:30px">No entries yet — click <b>+ ADD PLAYER</b> to start the leaderboard.</td></tr></tbody>`;
+      return;
+    }
+    $("lbTbl").innerHTML=head+`<tbody>`+
+      rows.map((p,i)=>{
+        const posCls=i===0?"top":i===1?"two":i===2?"three":"rest";
+        const m=(GAMES[p.game]||{cls:""}).cls;
+        return `<tr>
+          <td><span class="pt-pos ${posCls}">${i+1}</span></td>
+          <td><span class="team"><i class="gicon sm ${m}">${gLogo(p.game)}</i> <b class="lname">${esc(p.player)}</b></span></td>
+          <td>${esc(p.gameName)}</td>
+          <td>${esc(p.team||"—")}</td>
+          <td>${p.m}</td><td>${p.w}</td>
+          <td class="pts">${p.pts}</td>
+          <td><span class="wrbar"><i style="width:${p.wr}%"></i></span> ${p.wr}%</td>
+          <td><button class="tbtn edit" data-ledit="${p.id}">EDIT</button> <button class="tbtn del" data-ldel="${p.id}">DEL</button></td>
+        </tr>`;
+      }).join("")+`</tbody>`;
+  }
+  function openLbForm(p){
+    const ed=!!p;
+    $("lModalTitle").textContent=ed?"EDIT PLAYER":"ADD PLAYER";
+    $("lfId").value=ed?p.id:"";
+    $("lfName").value=ed?p.player:"";
+    $("lfGame").value=ed?p.game:"csgo";
+    $("lfTeam").value=ed?p.team:"";
+    $("lfMatches").value=ed?p.matches:"";
+    $("lfWins").value=ed?p.wins:"";
+    $("lfPoints").value=ed?p.points:"";
+    $("lFormOverlay").classList.add("show");
+    setTimeout(()=>{ try{ $("lfName").focus(); }catch(e){} },120);
+  }
+  function submitLb(e){
+    e.preventDefault();
+    const player=$("lfName").value.trim();
+    if(!player){ toast("Player name required!","warn"); return; }
+    const id=$("lfId").value;
+    const data={ player, game:$("lfGame").value, team:$("lfTeam").value.trim(), matches:+$("lfMatches").value||0, wins:+$("lfWins").value||0, points:+$("lfPoints").value||0 };
+    if(id){
+      const i=state.leaderboard.findIndex(x=>x.id===id);
+      if(i>-1){ state.leaderboard[i]={...state.leaderboard[i],...data, updatedAt:Date.now()}; toast("Player updated"); }
+    }else{
+      state.leaderboard.push({...data, id:uid(), createdAt:Date.now()});
+      toast("Player added to the leaderboard");
+    }
+    saveAll();
+    $("lFormOverlay").classList.remove("show");
+    renderLeaderboard();
+  }
+  function deleteLbEntry(id){
+    openConfirm(`Remove <b>${esc((state.leaderboard.find(x=>x.id===id)||{}).player||"player")}</b> from the leaderboard?`,()=>{
+      state.leaderboard=state.leaderboard.filter(x=>x.id!==id);
+      saveAll();
+      renderLeaderboard();
+      toast("Player removed","warn");
     });
   }
 
@@ -6810,6 +6942,20 @@
       const ed=e.target.closest("[data-sedit]"), dl=e.target.closest("[data-sdel]");
       if(ed){ const s=state.standings.find(x=>x.id===ed.dataset.sedit); if(s) openStandForm(s); }
       if(dl){ deleteStanding(dl.dataset.sdel); }
+    });
+    $("lbChips").addEventListener("click",e=>{
+      const c=e.target.closest(".chip"); if(!c) return;
+      state.lbGame=c.dataset.lb; renderLbChips(); renderLeaderboard();
+    });
+    $("lbSearch").addEventListener("input",e=>{ state.lbSearch=e.target.value; renderLeaderboard(); });
+    $("addLbBtn").addEventListener("click",()=> openLbForm(null));
+    $("lForm").addEventListener("submit",submitLb);
+    $("lCancelBtn").addEventListener("click",()=> $("lFormOverlay").classList.remove("show"));
+    $("lFormOverlay").addEventListener("click",e=>{ if(e.target===$("lFormOverlay")) $("lFormOverlay").classList.remove("show"); });
+    $("lbTbl").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-ledit]"), dl=e.target.closest("[data-ldel]");
+      if(ed){ const p=state.leaderboard.find(x=>x.id===ed.dataset.ledit); if(p) openLbForm(p); }
+      if(dl){ deleteLbEntry(dl.dataset.ldel); }
     });
     $("achSearch").addEventListener("input",()=> renderAch());
     $("addAchBtn").addEventListener("click",()=> openAchForm(null));
