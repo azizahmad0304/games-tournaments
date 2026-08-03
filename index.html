@@ -1147,6 +1147,7 @@
       <a class="nav-item" data-view="themes"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 10-10c0 1.7-1.3 3-3 3h-2.3a2 2 0 0 0-1.5 3.3c.6.7.3 1.7-.6 1.7H12z"/><circle cx="7.5" cy="10.5" r="1.5"/><circle cx="12" cy="7.5" r="1.5"/><circle cx="16.5" cy="10.5" r="1.5"/></svg></span> Panel Themes</a>
       <a class="nav-item" data-view="learn"><span class="ni"><svg viewBox="0 0 24 24"><path d="M22 12V6l-8 6 8 6z"/><path d="M17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg></span> Learn &amp; Tutorials</a>
       <a class="nav-item" data-view="bgm"><span class="ni"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span> BGM Sounds</a>
+      <a class="nav-item" data-view="music"><span class="ni"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/><path d="M18 12V5l-7 1v13"/></svg></span> Music <span class="cnt" id="cntMusic">30</span></a>
       <a class="nav-item" data-view="appearance"><span class="ni"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span> Appearance</a>
       <a class="nav-item" data-view="opt"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z"/><path d="M12 6v6l4 2"/></svg></span> Optimization</a>
       <div class="nav-sep">EXTRA</div>
@@ -1580,6 +1581,19 @@
           <input type="file" id="bgmFolderPick" webkitdirectory directory multiple accept="audio/*" style="display:none" />
         </div>
         <div class="bgmgrid" id="bgmGrid"></div>
+      </section>
+
+      <!-- ============ MUSIC ============ -->
+      <section id="musicView" class="hidden">
+        <div class="page-title">MUSIC</div>
+        <div class="page-sub">Your personal arena playlist — <b id="musicTotal">30</b> original tracks in every mood, from neon nights to cosmic calm. Tap one to play.</div>
+        <div class="setcard" style="margin-bottom:16px">
+          <div class="setrow">
+            <div class="lbl">Music <small>Master switch — turns the selected track on / off</small></div>
+            <button class="switch" id="musicTabSwitch"></button>
+          </div>
+        </div>
+        <div class="bgmgrid" id="musicGrid"></div>
       </section>
 
       <!-- ============ APPEARANCE ============ -->
@@ -2412,7 +2426,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[], settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[], settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -2627,7 +2641,7 @@
     state.bgml        = getStore(KEYS.bgml, null) ?? [];
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.profile.avatarE = normAv(state.profile.avatarE);
-    state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}}, getStore(KEYS.set, {}));
+    state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
     saveAll();
@@ -2656,7 +2670,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",opt:"optView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -2680,6 +2694,7 @@
     if(v==="themes"){ renderThemes(); }
     if(v==="learn"){ renderLearn(); }
     if(v==="bgm"){ renderBgm(); }
+    if(v==="music"){ renderMusic(); }
     if(v==="appearance"){ renderAppearance(); }
     if(v==="opt"){ renderOpt(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
@@ -5642,7 +5657,7 @@
       }
     }catch(e){}
   }
-  function padNote(freq,when,dur,vol,wave,filt){
+  function padNote(freq,when,dur,vol,wave,filt,dest){
     try{
       const o=audioCtx.createOscillator(); o.type=wave||"sine"; o.frequency.value=freq;
       const o2=audioCtx.createOscillator(); o2.type="triangle"; o2.frequency.value=freq*2.01;
@@ -5653,22 +5668,22 @@
       g.gain.setValueAtTime(vol,when+dur-1.2);
       g.gain.linearRampToValueAtTime(0,when+dur);
       const og=audioCtx.createGain(); og.gain.value=0.5;
-      o.connect(lp); o2.connect(og).connect(lp); lp.connect(g); g.connect(bgmGain);
+      o.connect(lp); o2.connect(og).connect(lp); lp.connect(g); g.connect(dest||bgmGain);
       o.start(when); o.stop(when+dur+0.1); o2.start(when); o2.stop(when+dur+0.1);
     }catch(e){}
   }
-  function pluckNote(freq,when,vol,wave){
+  function pluckNote(freq,when,vol,wave,dest){
     try{
       const o=audioCtx.createOscillator(); o.type=wave==="square"?"square":wave==="sawtooth"?"sawtooth":"triangle"; o.frequency.value=freq;
       const g=audioCtx.createGain(); g.gain.value=0;
       g.gain.setValueAtTime(0,when);
       g.gain.linearRampToValueAtTime(vol*3,when+0.02);
       g.gain.exponentialRampToValueAtTime(0.0001,when+0.7);
-      o.connect(g).connect(bgmGain);
+      o.connect(g).connect(dest||bgmGain);
       o.start(when); o.stop(when+0.8);
     }catch(e){}
   }
-  function kickNote(when){
+  function kickNote(when,dest){
     try{
       const o=audioCtx.createOscillator(); o.type="sine";
       o.frequency.setValueAtTime(120,when);
@@ -5676,11 +5691,11 @@
       const g=audioCtx.createGain(); g.gain.value=0;
       g.gain.setValueAtTime(0.55,when);
       g.gain.exponentialRampToValueAtTime(0.001,when+0.25);
-      o.connect(g).connect(bgmGain);
+      o.connect(g).connect(dest||bgmGain);
       o.start(when); o.stop(when+0.3);
     }catch(e){}
   }
-  function hatNote(when,open){
+  function hatNote(when,open,dest){
     try{
       const dur=open?0.16:0.045;
       const buf=audioCtx.createBuffer(1,audioCtx.sampleRate*dur,audioCtx.sampleRate);
@@ -5689,7 +5704,7 @@
       const src=audioCtx.createBufferSource(); src.buffer=buf;
       const hp=audioCtx.createBiquadFilter(); hp.type="highpass"; hp.frequency.value=6000;
       const g=audioCtx.createGain(); g.gain.value=open?0.32:0.2;
-      src.connect(hp).connect(g).connect(bgmGain);
+      src.connect(hp).connect(g).connect(dest||bgmGain);
       src.start(when);
     }catch(e){}
   }
@@ -5757,6 +5772,128 @@
     if(state.settings.bgmTrack>idx){ state.settings.bgmTrack--; }
     saveAll(); renderBgm(); renderSettings();
     toast("Local track removed","warn");
+  }
+
+  /* ===================== MUSIC (30 TRACKS) ===================== */
+  const MUSIC_TRACKS=[
+    {id:"starlight", name:"Starlight Parade", color:"#ffe14a", icon:"🎇", desc:"Bright major arps marching across the night sky", step:0.34, wave:"triangle", freq:2200, pad:.04, arp:.06, arpEvery:1,
+      chords:[[261.63,329.63,392],[293.66,349.23,440],[246.94,311.13,369.99],[220,277.18,329.63]]},
+    {id:"circuit", name:"Midnight Circuit", color:"#00e0ff", icon:"🏎️", desc:"Neon synthwave cruise through the city grid", step:0.46, wave:"sine", freq:700, pad:.05, arp:.045, arpEvery:1,
+      chords:[[110,164.81,220],[98,146.83,196],[87.31,130.81,174.61],[130.81,174.61,220]]},
+    {id:"oasis", name:"Neon Oasis", color:"#3fe0c5", icon:"🌴", desc:"Sun-drenched plucks with a relaxed island beat", step:0.5, wave:"triangle", freq:1800, pad:.04, arp:.055, arpEvery:1, hat:true,
+      chords:[[196,246.94,293.66],[146.83,185,220],[164.81,207.65,261.63],[220,277.18,329.63]]},
+    {id:"dawn", name:"Emerald Dawn", color:"#2bff9e", icon:"🌄", desc:"Soft green morning pads slowly waking up", step:0.62, wave:"sine", freq:850, pad:.06, arp:.035, arpEvery:3,
+      chords:[[220,277.18,329.63],[196,246.94,311.13],[174.61,220,277.18],[146.83,196,246.94]]},
+    {id:"void", name:"Void Walker", color:"#8a2be2", icon:"👁️", desc:"Dark sawtooth suspense crawling through the deep", step:0.45, wave:"sawtooth", freq:420, pad:.05, arp:.03, arpEvery:4, kick:true,
+      chords:[[55,82.41,110],[49,73.42,98],[43.65,65.41,87.31],[61.74,92.5,123.47]]},
+    {id:"golden", name:"Golden Hour", color:"#ffd700", icon:"☀️", desc:"Warm honey-toned chords for late-day chill", step:0.52, wave:"triangle", freq:1600, pad:.05, arp:.05, arpEvery:2,
+      chords:[[196,246.94,293.66],[174.61,220,261.63],[220,277.18,329.63],[146.83,185,220]]},
+    {id:"quest", name:"Pixel Quest", color:"#ff5c8a", icon:"🕹️", desc:"8-bit chiptune hero on a dungeon adventure", step:0.26, wave:"square", freq:2400, pad:.028, arp:.06, arpEvery:1,
+      chords:[[261.63,329.63,392],[293.66,349.23,440],[329.63,415.3,493.88],[220,277.18,329.63]]},
+    {id:"lullaby", name:"Lunar Lullaby", color:"#c9b8ff", icon:"🌙", desc:"Gentle moonlit melody to drift away to", step:0.85, wave:"sine", freq:600, pad:.065, arp:.03, arpEvery:4,
+      chords:[[261.63,329.63,392],[220,277.18,329.63],[196,246.94,311.13],[174.61,220,277.18]]},
+    {id:"bloom", name:"Electric Bloom", color:"#ff7ab5", icon:"🌸", desc:"Sparkling petals of neon light unfurling", step:0.4, wave:"triangle", freq:2000, pad:.04, arp:.06, arpEvery:1,
+      chords:[[220,277.18,329.63],[185,233.08,277.18],[196,246.94,311.13],[164.81,207.65,261.63]]},
+    {id:"mirage", name:"Desert Mirage", color:"#ff9d2f", icon:"🏜️", desc:"Wavering heat-haze pads over sand and stars", step:0.55, wave:"sine", freq:750, pad:.055, arp:.04, arpEvery:2, hat:true,
+      chords:[[164.81,207.65,261.63],[146.83,185,220],[130.81,164.81,196],[174.61,220,261.63]]},
+    {id:"frozen", name:"Frozen Peak", color:"#bfe3ff", icon:"❄️", desc:"Crystal-clear cold arps on a snowy summit", step:0.5, wave:"triangle", freq:2000, pad:.045, arp:.055, arpEvery:1,
+      chords:[[261.63,329.63,392],[246.94,311.13,369.99],[293.66,349.23,440],[220,277.18,329.63]]},
+    {id:"crimson", name:"Crimson Storm", color:"#ff3d6e", icon:"🌋", desc:"Heavy charging beat with volcanic tension", step:0.4, wave:"sawtooth", freq:380, pad:.05, arp:.03, arpEvery:4, kick:true, hat:true,
+      chords:[[65.41,98,130.81],[58.27,87.31,116.54],[55,82.41,110],[73.42,110,146.83]]},
+    {id:"ocean", name:"Ocean Drift", color:"#4dd8ff", icon:"🌊", desc:"Slow underwater tides rolling forever", step:0.95, wave:"sine", freq:500, pad:.065, arp:.028, arpEvery:4,
+      chords:[[174.61,220,261.63],[146.83,196,246.94],[130.81,164.81,196],[164.81,196,246.94]]},
+    {id:"solar", name:"Solar Flare", color:"#ffb020", icon:"☀️", desc:"Explosive EDM drops and euphoric risers", step:0.38, wave:"sawtooth", freq:650, pad:.045, arp:.06, arpEvery:1, kick:true, hat:true,
+      chords:[[82.41,123.47,164.81],[73.42,110,146.83],[69.3,103.83,138.59],[98,147,196]]},
+    {id:"shadow", name:"Shadow Protocol", color:"#7a2bff", icon:"🥷", desc:"Stealthy square-wave espionage in the dark", step:0.36, wave:"square", freq:900, pad:.035, arp:.05, arpEvery:2, kick:true,
+      chords:[[61.74,92.5,123.47],[55,82.41,110],[49,73.42,98],[65.41,98,130.81]]},
+    {id:"velvet", name:"Velvet Sky", color:"#b44dff", icon:"🌌", desc:"Smooth luxurious pads under a purple dusk", step:0.7, wave:"sine", freq:800, pad:.06, arp:.04, arpEvery:3,
+      chords:[[185,233.08,277.18],[155.56,196,246.94],[146.83,185,220],[174.61,220,261.63]]},
+    {id:"turbo", name:"Turbo Rush", color:"#00ffaa", icon:"🚀", desc:"Full-throttle beat for the final lap", step:0.3, wave:"sawtooth", freq:500, pad:.045, arp:.055, arpEvery:1, kick:true, hat:true,
+      chords:[[98,147,196],[87.31,130.81,174.61],[82.41,123.47,164.81],[73.42,110,146.83]]},
+    {id:"crystal", name:"Crystal Cave", color:"#7ef9ff", icon:"💎", desc:"Shimmering gems of melody echoing in stone", step:0.42, wave:"triangle", freq:2100, pad:.045, arp:.06, arpEvery:1,
+      chords:[[220,277.18,329.63],[196,246.94,311.13],[246.94,311.13,369.99],[174.61,220,261.63]]},
+    {id:"train", name:"Night Train", color:"#ff8fbf", icon:"🚂", desc:"Rumbling momentum rolling through the dark", step:0.48, wave:"sine", freq:400, pad:.05, arp:.035, arpEvery:2, kick:true,
+      chords:[[110,164.81,220],[98,146.83,196],[87.31,130.81,174.61],[123.47,185,246.94]]},
+    {id:"garden", name:"Digital Garden", color:"#38e07a", icon:"🌱", desc:"Synthetic sprouts growing to a gentle groove", step:0.3, wave:"square", freq:1800, pad:.032, arp:.06, arpEvery:1, hat:true,
+      chords:[[220,261.63,329.63],[196,246.94,311.13],[174.61,220,277.18],[246.94,293.66,369.99]]},
+    {id:"aurora", name:"Aurora Pulse", color:"#2bffce", icon:"🌠", desc:"Northern lights pulsing in soft rhythm", step:0.52, wave:"sine", freq:1000, pad:.055, arp:.05, arpEvery:2,
+      chords:[[196,246.94,293.66],[174.61,220,277.18],[220,277.18,329.63],[155.56,196,246.94]]},
+    {id:"firefly", name:"Firefly Dance", color:"#d9ff6b", icon:"🪲", desc:"Little glowing dancers waltzing in the grass", step:0.55, wave:"triangle", freq:1900, pad:.045, arp:.055, arpEvery:1, hat:true,
+      chords:[[246.94,311.13,369.99],[220,277.18,329.63],[196,246.94,311.13],[261.63,329.63,392]]},
+    {id:"iron", name:"Iron Arena", color:"#ff5733", icon:"🏟️", desc:"Marching crowds, heavy hits, tournament war", step:0.44, wave:"sawtooth", freq:320, pad:.05, arp:.03, arpEvery:4, kick:true, hat:true,
+      chords:[[73.42,110,146.83],[65.41,98,130.81],[58.27,87.31,116.54],[55,82.41,110]]},
+    {id:"cosmos", name:"Silent Cosmos", color:"#a78bfa", icon:"🪐", desc:"Weightless pads floating through open space", step:1.0, wave:"sine", freq:550, pad:.065, arp:.028, arpEvery:4,
+      chords:[[130.81,196,261.63],[98,146.83,196],[110,164.81,220],[87.31,130.81,174.61]]},
+    {id:"heart", name:"Circuit Heart", color:"#ff4d8d", icon:"💗", desc:"Synth-pop heartbeat with a dancing melody", step:0.33, wave:"square", freq:2000, pad:.035, arp:.055, arpEvery:1, kick:true,
+      chords:[[261.63,329.63,392],[220,277.18,329.63],[246.94,311.13,369.99],[196,246.94,311.13]]},
+    {id:"sapphire", name:"Sapphire Sky", color:"#3d7bff", icon:"💙", desc:"Blue-sky major chords, calm and confident", step:0.5, wave:"triangle", freq:1700, pad:.05, arp:.05, arpEvery:2,
+      chords:[[220,277.18,329.63],[196,246.94,311.13],[174.61,220,277.18],[261.63,329.63,392]]},
+    {id:"thunder", name:"Thunder Run", color:"#ffd54a", icon:"⚡", desc:"Charged bass and lightning-fast hats", step:0.32, wave:"sawtooth", freq:450, pad:.045, arp:.055, arpEvery:1, kick:true, hat:true,
+      chords:[[82.41,123.47,164.81],[73.42,110,146.83],[69.3,103.83,138.59],[61.74,92.5,123.47]]},
+    {id:"lavender", name:"Lavender Dream", color:"#c58bff", icon:"💜", desc:"Soft violet haze melting into sleep", step:0.75, wave:"sine", freq:650, pad:.06, arp:.035, arpEvery:3,
+      chords:[[220,277.18,329.63],[185,233.08,277.18],[174.61,220,261.63],[196,246.94,311.13]]},
+    {id:"phoenix", name:"Rising Phoenix", color:"#ff7a1a", icon:"🐦‍🔥", desc:"Cinematic climb from ashes to glory", step:0.46, wave:"triangle", freq:1400, pad:.05, arp:.055, arpEvery:1, kick:true,
+      chords:[[146.83,185,220],[110,146.83,174.61],[130.81,164.81,196],[174.61,220,261.63]]},
+    {id:"runway", name:"Endless Runway", color:"#00e5ff", icon:"✈️", desc:"Sleek synth-pop drive that never slows down", step:0.35, wave:"sawtooth", freq:700, pad:.04, arp:.06, arpEvery:1, hat:true,
+      chords:[[110,164.81,220],[98,146.83,196],[123.47,185,246.94],[130.81,196,261.63]]}
+  ];
+  let musOn=false, musTimer=null, musGain=null, musNext=0, musStep=0;
+  function musCurrent(){ return MUSIC_TRACKS[(state.settings.musicTrack|0)%MUSIC_TRACKS.length]||MUSIC_TRACKS[0]; }
+  function musStart(){
+    if(musOn||!state.settings.music) return;
+    ensureAudio();
+    if(!audioCtx) return;
+    musOn=true;
+    try{
+      musGain=audioCtx.createGain(); musGain.gain.value=0; musGain.connect(audioCtx.destination);
+      musGain.gain.linearRampToValueAtTime(0.55, audioCtx.currentTime+2.5);
+      musNext=audioCtx.currentTime+0.1; musStep=0;
+      musTimer=setInterval(musTick,150);
+    }catch(e){ musOn=false; }
+    renderMusic(); renderSettings();
+  }
+  function musStop(){
+    if(!musOn) return; musOn=false;
+    if(musTimer){ clearInterval(musTimer); musTimer=null; }
+    if(musGain&&audioCtx){ try{ musGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime+1); }catch(e){} }
+  }
+  function musTick(){
+    if(!musOn||!audioCtx) return;
+    const tr=musCurrent();
+    const t=audioCtx.currentTime;
+    try{
+      while(musNext<t+0.9){
+        const chords=tr.chords, stepDur=tr.step||0.5;
+        const s=musStep%16, ci=Math.floor(musStep/16)%chords.length, ch=chords[ci];
+        if(s===0) ch.forEach((f,i)=> padNote(f*0.5, musNext, stepDur*7.2, i===0?tr.pad*1.25:tr.pad, tr.wave, tr.freq, musGain));
+        if(tr.kick && s%4===0) kickNote(musNext,musGain);
+        if(tr.hat && s%2===0) hatNote(musNext, s%4===2, musGain);
+        if(s%(tr.arpEvery||2)===0){ const f=ch[Math.floor(Math.random()*ch.length)]*2; pluckNote(f, musNext+0.02, tr.arp, tr.wave, musGain); }
+        musStep++; musNext+=stepDur;
+      }
+    }catch(e){}
+  }
+  function setMusicTrack(i){
+    state.settings.musicTrack=i; state.settings.music=true; saveAll(); renderMusic(); renderSettings();
+    if(musOn) musStop();
+    ensureAudio(); musStart();
+    toast("Music playing: "+MUSIC_TRACKS[i].name);
+  }
+  function renderMusic(){
+    const sw=$("musicTabSwitch"); if(sw) sw.classList.toggle("on", state.settings.music);
+    const cur=state.settings.musicTrack|0;
+    const tot=$("musicTotal"); if(tot) tot.textContent=MUSIC_TRACKS.length;
+    const cn=$("cntMusic"); if(cn) cn.textContent=MUSIC_TRACKS.length;
+    $("musicGrid").innerHTML=MUSIC_TRACKS.map((t,i)=>{
+      const sel=i===cur, playing=sel && state.settings.music;
+      return `<div class="bgm-card ${sel?"sel":""} ${playing?"playing":""}" data-music="${i}" style="--cyber:${t.color};--cyber2:${t.color}">
+        <span class="bstate">${playing?"PLAYING":sel?"SELECTED":""}</span>
+        <div class="bwave" style="background:${t.color}22;color:${t.color}">${t.icon}</div>
+        <h4>${t.name}</h4>
+        <p>${t.desc}</p>
+        <div class="bnums"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>`;
+    }).join("");
   }
 
   /* ===================== GAME SHOP ===================== */
@@ -6267,6 +6404,10 @@
     });
     $("bgmFolderBtn").addEventListener("click",pickBgmFolder);
     $("bgmFolderPick").addEventListener("change",handleBgmFolder);
+    $("musicTabSwitch").addEventListener("click",()=>{ state.settings.music=!state.settings.music; saveAll(); renderMusic(); renderSettings(); if(state.settings.music){ ensureAudio(); musStart(); } else musStop(); });
+    $("musicGrid").addEventListener("click",e=>{
+      const c=e.target.closest("[data-music]"); if(c) setMusicTrack(+c.dataset.music);
+    });
     $("accentRow").addEventListener("click",e=>{
       const b=e.target.closest("[data-ac]"); if(!b) return;
       state.settings.accent=+b.dataset.ac; saveAll(); renderSettings(); toast("Accent color changed");
@@ -6451,6 +6592,7 @@
   renderClips();
   renderBgs();
   renderOpt();
+  renderMusic();
   renderAbout();
   applyPremiumShell();
   switchView("home");
@@ -6458,6 +6600,10 @@
   if(state.settings.bgm){
     const bgmBoot=()=>{ bgmStart(); document.removeEventListener("pointerdown", bgmBoot); };
     document.addEventListener("pointerdown", bgmBoot);
+  }
+  if(state.settings.music){
+    const musBoot=()=>{ musStart(); document.removeEventListener("pointerdown", musBoot); };
+    document.addEventListener("pointerdown", musBoot);
   }
 })();
 </script>
