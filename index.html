@@ -690,6 +690,10 @@
   .loginbox .lg-sub{color:var(--dim);font-size:11px;letter-spacing:4px;margin:0 0 22px;text-transform:uppercase}
   .loginbox .lg-hint{color:#5a6394;font-size:12px;margin-top:16px;letter-spacing:1px}
   .loginbox .lg-hint b{color:var(--cyber)}
+  .lg-switch{margin-top:18px;display:flex;flex-direction:column;gap:6px}
+  .lg-switch button{background:none;border:none;color:#7f8bb8;font-size:13px;cursor:pointer;letter-spacing:.5px}
+  .lg-switch button b{color:var(--cyber)}
+  .lg-switch button:hover b{text-decoration:underline}
 
   #toasts{position:fixed;right:18px;bottom:18px;z-index:300;display:flex;flex-direction:column;gap:10px}
   .toast{display:flex;align-items:center;padding:14px 18px;border-radius:14px;background:#0d1430;border:1px solid var(--stroke);
@@ -930,6 +934,78 @@
   .prem-up:hover{box-shadow:0 8px 24px -6px rgba(255,213,74,.7)}
   @media(max-width:760px){.prem-grid{grid-template-columns:1fr}.prem-banner{flex-wrap:wrap}.prem-bstat{margin-left:0;text-align:left}.prem-compare .prow{grid-template-columns:1fr 1fr}}
 
+  /* ============ GAME SHOP ============ */
+  .shop-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+  .shop-bal{display:flex;align-items:center;gap:10px;padding:10px 18px;border-radius:14px;background:#0d1430;border:1px solid var(--stroke)}
+  .shop-bal svg{width:22px;height:22px;color:var(--gold)}
+  .shop-bal b{font-size:20px;color:var(--gold)}
+  .shop-bal span{color:var(--dim);font-size:12px;letter-spacing:1px;text-transform:uppercase}
+  .shopgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .shopcard{display:flex;gap:14px;align-items:center;padding:16px;border-radius:16px;background:#0d1430;border:1px solid var(--stroke);transition:.25s}
+  .shopcard:hover{border-color:var(--cyber);transform:translateY(-3px)}
+  .shopcard .shopico{width:52px;height:52px;flex:none;border-radius:14px;display:grid;place-items:center;font-size:26px;background:linear-gradient(135deg,rgba(61,123,255,.25),rgba(0,224,255,.2))}
+  .shopinfo{flex:1;min-width:0}
+  .shopinfo h4{margin:0 0 2px;font-size:15px}
+  .shopgame{color:var(--cyber);font-size:11px;letter-spacing:1px;text-transform:uppercase}
+  .shopinfo p{color:var(--dim);font-size:12.5px;margin:6px 0 0;line-height:1.45}
+  .shopfoot{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex:none}
+  .shopprice{color:var(--gold);font-size:15px}
+  .shopprice span{color:var(--dim);font-size:11px;font-weight:500}
+  .shopfoot .tbtn{font-size:12px;padding:8px 16px}
+  .shopfoot .tbtn.done{background:rgba(43,255,158,.14);color:#2bff9e;border-color:rgba(43,255,158,.45)}
+  .shopcard .owned{padding:8px 14px;border-radius:10px;background:rgba(43,255,158,.14);color:#2bff9e;font-weight:700;font-size:12px;letter-spacing:1px}
+
+  /* ============ CHAT (WhatsApp/Telegram style) ============ */
+  .chat-layout{display:grid;grid-template-columns:320px 1fr;gap:16px;height:calc(100vh - 210px);min-height:440px}
+  .chat-pane,.chatlist,.chatthread{display:flex;flex-direction:column;background:#0d1430;border:1px solid var(--stroke);border-radius:16px;overflow:hidden}
+  .chat-head{padding:14px 16px;border-bottom:1px solid var(--stroke);display:flex;align-items:center;justify-content:space-between}
+  .chat-head h3{margin:0;font-size:16px}
+  .chat-head small{color:var(--dim)}
+  .chat-list,.chatlist{flex:1;overflow-y:auto;padding:8px}
+  .chatroom{display:flex;gap:12px;align-items:center;padding:11px 12px;border-radius:12px;cursor:pointer;transition:.15s}
+  .chatroom:hover{background:rgba(61,123,255,.08)}
+  .chatroom.active{background:rgba(61,123,255,.16)}
+  .chrav{width:44px;height:44px;flex:none;border-radius:50%;display:grid;place-items:center;font-size:20px;background:linear-gradient(135deg,#3d7bff,#b14bff)}
+  .chrbody{flex:1;min-width:0}
+  .chrtop{display:flex;justify-content:space-between;align-items:center;gap:8px}
+  .chrtop b{font-size:14px}
+  .chrtop span{color:var(--dim);font-size:11px}
+  .chrmsg{color:var(--dim);font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .chrbadge{margin-left:auto;flex:none;background:#ff4d6d;color:#fff;font-size:11px;font-weight:700;min-width:20px;height:20px;border-radius:10px;display:grid;place-items:center;padding:0 6px}
+  .thread-head{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--stroke)}
+  .thread-head .chrav{width:40px;height:40px;font-size:18px}
+  .thrtitle b{font-size:15px}
+  .thrtitle small{color:var(--dim);font-size:11px;display:block}
+  .thread-body{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:8px;background:rgba(0,0,0,.14)}
+  .bubble{max-width:72%;align-self:flex-start;background:#171f45;border:1px solid var(--stroke);border-radius:16px 16px 16px 4px;padding:9px 13px}
+  .bubble.me{align-self:flex-end;background:linear-gradient(135deg,#3d7bff,#4d9bff);border-color:transparent;border-radius:16px 16px 4px 16px}
+  .bubble span{font-size:13.5px;line-height:1.45;display:block}
+  .bubble small{font-size:10px;color:#9aa7cc;display:block;text-align:right;margin-top:3px}
+  .bubble.me small{color:rgba(255,255,255,.75)}
+  .thread-in{display:flex;gap:10px;padding:12px 14px;border-top:1px solid var(--stroke)}
+  .thread-in input{flex:1;background:#0a1026;border:1px solid var(--stroke);border-radius:12px;padding:11px 14px;color:#e8ecff;outline:none}
+  .thread-in input:focus{border-color:var(--cyber)}
+  .thread-in button{width:44px;height:44px;flex:none;border-radius:12px;border:none;background:linear-gradient(135deg,#3d7bff,#00e0ff);color:#0a1026;cursor:pointer;display:grid;place-items:center}
+  .thread-in button svg{width:20px;height:20px;stroke:#0a1026;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .chat-empty{color:var(--dim);font-size:13px;text-align:center;padding:34px 16px}
+  @media(max-width:820px){.chat-layout{grid-template-columns:1fr;height:auto}.chat-pane:first-child{max-height:280px}.chat-pane:nth-child(2){min-height:360px}}
+
+  /* ============ APP ABOUT ============ */
+  .about-card{max-width:640px;margin:0 auto;text-align:center;padding:40px 30px;border-radius:20px;background:linear-gradient(180deg,rgba(13,20,48,.9),rgba(10,16,38,.9));border:1px solid var(--stroke)}
+  .about-logo{width:88px;height:88px;margin:0 auto 18px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(135deg,#3d7bff,#00e0ff 60%,#b14bff);box-shadow:0 0 40px rgba(0,200,255,.5)}
+  .about-logo svg{width:42px;height:42px;color:#0a1026}
+  .about-card h3{margin:0 0 6px;font-size:22px;letter-spacing:1px}
+  .about-tag{color:var(--cyber);font-size:12px;letter-spacing:4px;text-transform:uppercase;margin-bottom:14px}
+  .about-text{color:var(--dim);font-size:14px;line-height:1.65;max-width:460px;margin:0 auto 22px}
+  .about-feats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px}
+  .about-feats span{padding:7px 14px;border-radius:20px;background:rgba(61,123,255,.12);border:1px solid rgba(61,123,255,.35);color:#aec6ff;font-size:12px}
+  .about-info{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:440px;margin:0 auto 26px}
+  .about-info div{background:#0a1026;border:1px solid var(--stroke);border-radius:14px;padding:12px}
+  .about-info small{display:block;color:var(--dim);font-size:10.5px;letter-spacing:2px;text-transform:uppercase}
+  .about-info b{font-size:15px;color:#e8ecff}
+  .about-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+  @media(max-width:520px){.about-info{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -987,11 +1063,15 @@
       <a class="nav-item" data-view="learn"><span class="ni"><svg viewBox="0 0 24 24"><path d="M22 12V6l-8 6 8 6z"/><path d="M17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg></span> Learn &amp; Tutorials</a>
       <a class="nav-item" data-view="bgm"><span class="ni"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span> BGM Sounds</a>
       <a class="nav-item" data-view="appearance"><span class="ni"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span> Appearance</a>
+      <div class="nav-sep">EXTRA</div>
+      <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
+      <a class="nav-item" data-view="chat"><span class="ni"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> Chat <span class="cnt" id="cntChats">0</span></a>
+      <a class="nav-item" data-view="about"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></span> App About</a>
     </nav>
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
       <button id="sbBgmBtn">Music</button>
-      <span>v4.3</span>
+      <span>v4.4</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -1383,7 +1463,7 @@
       <!-- ============ BGM SOUNDS ============ -->
       <section id="bgmView" class="hidden">
         <div class="page-title">BGM SOUNDS</div>
-        <div class="page-sub">Pick your arena soundtrack — 27 background music tracks, 25 synthesized in-app plus the official CS2 &amp; PUBG PC menu themes streamed from YouTube.</div>
+        <div class="page-sub">Pick your arena soundtrack — 27 background music tracks, 25 synthesized in-app plus the official CS2 MVP &amp; PUBG S4 lobby themes streamed from YouTube.</div>
         <div class="setcard" style="margin-bottom:16px">
           <div class="setrow">
             <div class="lbl">Background Music <small>Master switch — turns the selected track on / off</small></div>
@@ -1425,6 +1505,56 @@
             <button data-cor="sharp">SHARP</button>
             <button data-cor="soft">SOFT</button>
             <button data-cor="round">ROUND</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ GAME SHOP ============ -->
+      <section id="shopView" class="hidden">
+        <div class="page-title">GAME SHOP</div>
+        <div class="page-sub">Real gaming loot for your squad — spend coins, grab items, build your arsenal.</div>
+        <div class="setcard" style="margin-bottom:16px">
+          <div class="setrow">
+            <div class="lbl">Your Coins <small>Spend them on the items below — earn more as the arena grows</small></div>
+            <div class="shopcoins" id="shopCoins">0</div>
+          </div>
+        </div>
+        <div class="shopgrid" id="shopGrid"></div>
+      </section>
+
+      <!-- ============ CHAT ============ -->
+      <section id="chatView" class="hidden">
+        <div class="page-title">CHAT</div>
+        <div class="page-sub">WhatsApp / Telegram-style messaging for your squad — pick a room and start talking.</div>
+        <div class="chat-layout">
+          <div class="chatlist" id="chatList"></div>
+          <div class="chatthread" id="chatThread">
+            <div class="chat-empty">Pick a room to start chatting</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ APP ABOUT ============ -->
+      <section id="aboutView" class="hidden">
+        <div class="page-title">APP ABOUT</div>
+        <div class="page-sub">Everything about Games Tournaments — version, features &amp; credits.</div>
+        <div class="about-card">
+          <div class="about-logo"><svg class="fill" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <h2>GAMES TOURNAMENTS</h2>
+          <p class="about-tag">ESPORTS ARENA · PRO EDITION</p>
+          <p class="about-text">A complete esports management hub that runs entirely in your browser — tournaments, players, teams, brackets, records, Anti-Cheat, themes, background music, a game shop and a squad chat. Save your data locally, export backups and go pro anytime.</p>
+          <div class="about-feats">
+            <span>🏆 Tournaments &amp; Cups</span><span>🎯 Players &amp; Verify Badges</span><span>🛡️ Anti-Cheat</span><span>🎨 Themes &amp; Backgrounds</span><span>🎵 BGM Sounds</span><span>🛒 Game Shop</span><span>💬 Chat</span><span>📦 Backup &amp; Restore</span>
+          </div>
+          <div class="about-info">
+            <div><b>Version</b><span id="aboutVer">v4.4</span></div>
+            <div><b>Built With</b><span>Single-file HTML · CSS · JS</span></div>
+            <div><b>Platform</b><span>Web &amp; Windows Desktop</span></div>
+            <div><b>Developer</b><span>azizahmad0304</span></div>
+          </div>
+          <div class="about-actions">
+            <a class="tbtn edit" href="https://github.com/azizahmad0304/games-tournaments" target="_blank" rel="noopener">GITHUB REPO</a>
+            <button class="tbtn edit" id="aboutChatBtn">ASK PINKY</button>
           </div>
         </div>
       </section>
@@ -1700,6 +1830,9 @@
           <div class="field"><label>Live Preview</label><div class="vbprev" id="vbPrev"></div></div>
         </div>
         <div class="field"><label>Description</label><textarea id="vbfDesc" placeholder="What does this badge mean?"></textarea></div>
+        <div class="field"><label>Attach to Player <small>pick a player to show this verify tick next to their name</small></label>
+          <select id="vbfPlayer"><option value="">None — just save the badge</option></select>
+        </div>
         <div class="mbtns">
           <button type="button" class="mbtn cancel" id="vbCancelBtn">CANCEL</button>
           <button type="submit" class="mbtn save">SAVE</button>
@@ -1997,6 +2130,27 @@
           <button type="submit" class="mbtn save" style="width:100%">LOGIN</button>
         </div>
       </form>
+      <form id="signupForm" class="hidden">
+        <div class="field">
+          <label>New Username</label>
+          <input id="suUser" placeholder="Choose a username" autocomplete="username" />
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input id="suPass" type="password" placeholder="Create a password" autocomplete="new-password" />
+        </div>
+        <div class="field">
+          <label>Confirm Password</label>
+          <input id="suPass2" type="password" placeholder="Repeat password" autocomplete="new-password" />
+        </div>
+        <div class="mbtns" style="justify-content:center;margin-top:6px">
+          <button type="submit" class="mbtn save" style="width:100%">CREATE ACCOUNT</button>
+        </div>
+      </form>
+      <div class="lg-switch">
+        <button type="button" id="toSignup">No account? <b>CREATE ACCOUNT</b></button>
+        <button type="button" id="toLogin" class="hidden">Already have an account? <b>LOGIN</b></button>
+      </div>
     </div>
   </div>
 
@@ -2069,8 +2223,8 @@
     {name:"Red Alert", c:"#ff3d6e", c2:"#ff0044"}
   ];
   const STAGES = { qf:{label:"Quarter Finals", short:"QF", n:4}, sf:{label:"Semi Finals", short:"SF", n:2}, f:{label:"Grand Final", short:"FINAL", n:1} };
-  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1", prem:"gt_prem_v1" };
-  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges", prem:"premium" };
+  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1", prem:"gt_prem_v1", shop:"gt_shop_v1", chat:"gt_chat_v1" };
+  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges", prem:"premium", shop:"shop", chat:"chats" };
   const STATUS = { up:{t:"Upcoming",c:"up"}, live:{t:"Live",c:"live"}, done:{t:"Completed",c:"done"} };
 
   const ICONS = {
@@ -2087,7 +2241,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -2203,6 +2357,35 @@
       {id:"emerald",name:"Elite Emerald",color:"#2bff9e",glow:"high",desc:"Elite squad member badge"}
     ];
   }
+  function seedShop(){
+    return { coins:1000, items:[
+      {id:"cs2case", name:"CS2 Prisma Weapon Case", game:"csgo", icon:"🔫", coins:250, desc:"3 knives, 17 covert skins & a chance at a rare gold drop.", owned:false},
+      {id:"pubgberyl", name:"PUBG Beryl M762 Skin", game:"pubg", icon:"🪖", coins:300, desc:"Golden engraved Beryl M762 — flex in every lobby.", owned:false},
+      {id:"codpts", name:"COD Points — 500", game:"cod", icon:"💎", coins:200, desc:"500 COD Points for MW19 bundles & battle pass.", owned:false},
+      {id:"bscrate", name:"Blood Strike Legendary Crate", game:"bs", icon:"📦", coins:220, desc:"Guaranteed epic+ drop from the striker collection.", owned:false},
+      {id:"cs2kit", name:"CS2 Music Kit", game:"csgo", icon:"🎵", coins:180, desc:"Custom round-start, MVP & victory tracks.", owned:false},
+      {id:"pubgpass", name:"PUBG Survivor Pass S4", game:"pubg", icon:"🎖️", coins:350, desc:"Unlocks the Season 4 pass with 100 reward tiers.", owned:false},
+      {id:"codghost", name:"COD Ghost Operator Skin", game:"cod", icon:"👤", coins:320, desc:"Classic Ghost outfit for the tactical grind.", owned:false},
+      {id:"bsknife", name:"BS Nightfang Knife", game:"bs", icon:"🔪", coins:500, desc:"Legendary melee with an animated edge trail.", owned:false},
+      {id:"gift10", name:"$10 Game Gift Card", game:null, icon:"🎁", coins:400, desc:"Redeem anywhere — pick any platform.", owned:false},
+      {id:"boost", name:"Arena XP Boost", game:null, icon:"⚡", coins:150, desc:"Double XP for 7 days across all your events.", owned:false}
+    ]};
+  }
+  function seedChats(){
+    const now=Date.now();
+    return { active:"strike", rooms:[
+      {id:"strike", name:"Team Strike Wolves", icon:"🐺", unread:2, msgs:[
+        {from:"them", text:"Match at 9pm, ready?", t:now-3600e3},
+        {from:"me", text:"Always ready. Bringing the AWP.", t:now-3500e3},
+        {from:"them", text:"Nice. Warm-up 8pm sharp.", t:now-3000e3}]},
+      {id:"pinky", name:"Pinky AI", icon:"💗", unread:0, msgs:[
+        {from:"them", text:"I remember our chats — ask me anything about the arena!", t:now-86400e3}]},
+      {id:"refs", name:"Referees", icon:"🧑‍⚖️", unread:1, msgs:[
+        {from:"them", text:"Anti-cheat sweep tonight — keep it clean.", t:now-7200e3}]},
+      {id:"squad", name:"Gaming Squad", icon:"🎮", unread:0, msgs:[
+        {from:"them", text:"GG all, what a night!", t:now-5000e3}]}
+    ]};
+  }
   function seedCheats(){
     const d=n=> new Date(Date.now()+n*864e5).toISOString().slice(0,10);
     return [
@@ -2244,6 +2427,8 @@
     state.ach         = getStore(KEYS.ach,   null) ?? seedAch();
     state.vbadges     = getStore(KEYS.gbadges, null) ?? seedVbadges();
     state.premium     = getStore(KEYS.prem, null);
+    state.shop        = getStore(KEYS.shop, null) ?? seedShop();
+    state.chats       = getStore(KEYS.chat, null) ?? seedChats();
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.profile.avatarE = normAv(state.profile.avatarE);
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:""}, getStore(KEYS.set, {}));
@@ -2274,7 +2459,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",sec:"secView",premium:"premiumView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",about:"aboutView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -2301,6 +2486,9 @@
     if(v==="appearance"){ renderAppearance(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
     if(v==="premium"){ renderPremium(); }
+    if(v==="shop"){ renderShop(); }
+    if(v==="chat"){ renderChatList(); }
+    if(v==="about"){ renderAbout(); }
     closeSidebar();
     window.scrollTo({top:0,behavior:"smooth"});
   }
@@ -3629,6 +3817,13 @@
     const sel=$("pfVerified"); if(!sel) return;
     sel.innerHTML='<option value="none">None</option>'+state.vbadges.map(b=>`<option value="${b.id}">${esc(b.name)}</option>`).join("");
   }
+  function fillVbPlayer(){
+    const sel=$("vbfPlayer"); if(!sel) return;
+    sel.innerHTML='<option value="">None — just save the badge</option>'+state.players.map(p=>`<option value="${esc(p.name)}">${esc(p.name)} (${esc(gameOf(p.game).short)})</option>`).join("");
+  }
+  function vbPlayerOf(bid){
+    return state.players.filter(p=>p.verified===bid).length===1 ? state.players.find(p=>p.verified===bid).name : "";
+  }
   function filteredVb(){
     let l=[...state.vbadges];
     const q=$("vbSearch")? $("vbSearch").value.trim().toLowerCase():"";
@@ -3671,6 +3866,8 @@
     $("vbfColor").value=ed?b.color:"#1d9bf0";
     $("vbfGlow").value=ed?b.glow:"med";
     $("vbfDesc").value=ed?b.desc:"";
+    fillVbPlayer();
+    $("vbfPlayer").value=ed?vbPlayerOf(b.id):"";
     renderVbPrev();
     $("vbFormOverlay").classList.add("show");
     setTimeout(()=>{ try{ $("vbfName").focus(); }catch(e){} },120);
@@ -3680,17 +3877,23 @@
     const name=$("vbfName").value.trim();
     if(!name){ toast("Badge name required!","warn"); return; }
     const id=$("vbfId").value;
+    const bid=id||uid();
     const data={ name, color:$("vbfColor").value, glow:$("vbfGlow").value, desc:$("vbfDesc").value.trim() };
     if(id){
       const i=state.vbadges.findIndex(x=>x.id===id);
       if(i>-1){ state.vbadges[i]={...state.vbadges[i],...data,updatedAt:Date.now()}; toast("Badge updated"); }
     }else{
-      state.vbadges.push({...data,id:uid(),createdAt:Date.now()});
+      state.vbadges.push({...data,id:bid,createdAt:Date.now()});
       toast("Badge added");
+    }
+    const pname=$("vbfPlayer").value;
+    if(pname){
+      const p=state.players.find(x=>String(x.name||"").trim().toLowerCase()===String(pname).trim().toLowerCase());
+      if(p){ p.verified=bid; toast(pname+" verified with "+name); }
     }
     saveAll();
     $("vbFormOverlay").classList.remove("show");
-    renderVbSummary(); renderVb();
+    renderVbSummary(); renderVb(); renderPlrSummary(); renderPlayers();
   }
   function deleteVb(id){
     openConfirm(`Delete badge <b>${esc((state.vbadges.find(x=>x.id===id)||{}).name||"")}</b>? Players using it will show no tick.`,()=>{
@@ -3986,7 +4189,7 @@
   function chatSay(html, acts){
     const d=document.createElement("div"); d.className="chat-msg chat-bot"; d.innerHTML=html;
     if(acts&&acts.length){ const w=document.createElement("div"); w.className="chat-actions";
-      acts.forEach(a=>{ const b=document.createElement("button"); b.textContent=a.t; b.onclick=()=>a.fn(); w.appendChild(b); });
+      acts.forEach(a=>{ const b=document.createElement("button"); b.textContent=a.t; b.onclick=()=>{ try{ a.fn(); }catch(err){} try{ $("chatInput").focus(); }catch(err2){} }; w.appendChild(b); });
       d.appendChild(w); }
     $("chatBody").appendChild(d);
     $("chatBody").scrollTop=$("chatBody").scrollHeight;
@@ -4004,13 +4207,17 @@
   function chatAsk(text){
     if(!text||!text.trim()) return;
     chatUser(text);
-    const r=botReply(text);
+    let r=null;
+    try{ r=botReply(text); }catch(err){ r=null; }
+    if(!r||!r.html){
+      r={html:maybeProbe("Hmm, "+tagline()+", I didn't catch that. I can help with tournaments, players, badges, the Shop, the Chat tab or security — just tell me what you need."), acts:[{t:"Go Home",fn:()=>switchView("home")},{t:"Open Chat",fn:()=>switchView("chat")},{t:"Give me a tip",fn:()=>chatAsk("Give me a tip")}]};
+    }
     const d=Math.min(1800, 460+r.html.length*0.55+Math.random()*320);
-    botThink(()=>chatSay(r.html, r.acts), d);
+    botThink(()=>{ chatSay(r.html, r.acts); try{ $("chatInput").focus(); }catch(err){} }, d);
   }
   function renderQuick(){
     $("chatQuick").innerHTML=QUICK.map(q=>`<button>${esc(q)}</button>`).join("");
-    $("chatQuick").querySelectorAll("button").forEach(b=> b.addEventListener("click",()=>chatAsk(b.textContent)));
+    $("chatQuick").querySelectorAll("button").forEach(b=> b.addEventListener("click",()=>{ chatAsk(b.textContent); try{ $("chatInput").focus(); }catch(err){} }));
   }
   function maybeOnboard(){
     autoOnboarded=!state.settings.onboarded;
@@ -4162,7 +4369,7 @@
     }
     if(/\b(hello|hi|hey|salam|assalam|yo|good morning|good afternoon|good evening|good night|gm|gn)\b/.test(t)){
       const n=chatMem.name?", <b>"+esc(chatMem.name)+"</b>":"";
-      return {html:greetWord()+"!"+n+" I'm <b>Pinky</b>, your AI arena guide. Ask me anything — tournaments, players, stats, themes — or just chat with me."+maybeProbe("")};
+      return {html:greetWord()+"!"+n+" I'm <b>Pinky</b>, your AI arena guide. Ask me about tournaments, players, badges, the Shop or Chat — or just chat with me."+maybeProbe("")};
     }
     if(has("who are you","your name","what are you","pinky","panther")){
       return {html:maybeProbe("I'm <b>Pinky</b>, the Pink Panther AI mentor of this arena. New or pro — I'll coach you through every tab and feature.")};
@@ -4237,7 +4444,7 @@
     }
     if(has("bgm","music","soundtrack","song","background sound","track")){
       chatMem.lastTopic="bgm";
-      return {html:maybeProbe("Pick your vibe in <b>BGM Sounds</b> — 10 arena soundtracks like Neon Night, Arena Bass, Victory Fanfare and Lofi Study, all synthesized right here. Want me to switch one on?"), acts:[act("Open BGM Sounds","bgm")]};
+      return {html:maybeProbe("Pick your vibe in <b>BGM Sounds</b> — 25 synth tracks like Neon Night, Arena Bass and Victory Fanfare, plus the official <b>CS2 MVP</b> and <b>PUBG S4 Lobby</b> themes streamed from YouTube. Want me to switch one on?"), acts:[act("Open BGM Sounds","bgm")]};
     }
     if(has("background","aurora","matrix","storm","rain")){
       return {html:maybeProbe("<b>Animated Backgrounds</b> offers Thunderstorm, Neon Aurora, Cyber Matrix and Campsite Night — a boy by the bonfire under the stars with lightning. Rain & lightning toggles control the weather."), acts:[act("Open Backgrounds","backgrounds")]};
@@ -4255,8 +4462,20 @@
     if(has("reset","delete all","clear all","wipe")){
       return {html:maybeProbe("Careful, Champion! <b>Reset All Data</b> in Settings wipes everything and restores demo data. It always asks for confirmation first."), acts:[act("Open Settings","settings")]};
     }
-    if(has("new in","whats new","what's new","latest","update","v3.7","v3.8","version")){
-      return {html:"Latest drop <b>v3.8</b>: <b>Points Table</b> standings, <b>BGM Sounds</b> with 10 arena soundtracks, <b>Learn & Tutorials</b>, background music & full-app themes.<br>Plus me, Pinky — I remember your name & game and follow up."};
+    if(has("shop","buy","purchase","store","items","skin","weapon case","crate","bundle","coins")){
+      return {html:"The <b>Game Shop</b> is live with real gaming loot — CS2 weapon cases, PUBG crates, COD points, Blood Strike bundles &amp; gift cards. You get <b>1,000 coins</b> to start, so pick your items and hit BUY.", acts:[act("Open Shop","shop")]};
+    }
+    if(has("chat","message","whatsapp","telegram","talk to","inbox")){
+      return {html:"The <b>Chat</b> tab works like WhatsApp / Telegram — pick a room, read the thread and send messages. Rooms like <b>Team Strike Wolves</b> and <b>Referees</b> keep your squad connected.", acts:[act("Open Chat","chat")]};
+    }
+    if(has("about","about app","version","who made","developer","creator of")){
+      return {html:"<b>App About</b> has everything: version, features, credits and the official GitHub page. Built as a single HTML file — no install needed for the web version.", acts:[act("Open About","about")]};
+    }
+    if(has("create account","signup","sign up","new account","account banao","make account")){
+      return {html:"Tap <b>CREATE ACCOUNT</b> on the login screen — pick a username and password and you're in. Your credentials are saved on this device and used for every login.", acts:[{t:"Go to login",fn:()=>switchView("settings")}]};
+    }
+    if(has("new in","whats new","what's new","latest","update","v4.4","version")){
+      return {html:"Latest drop <b>v4.4</b>:<br>• <b>Game Shop</b> — real gaming items &amp; coins<br>• <b>Chat tab</b> — WhatsApp / Telegram-style rooms<br>• <b>App About</b> — version, credits &amp; links<br>• <b>Create Account</b> on the login screen<br>• <b>CS2 MVP</b> &amp; <b>PUBG S4 Lobby</b> soundtracks<br>• Verify badges now attach straight to a player.<br>Plus me, Pinky — sharper and I remember our talk."};
     }
     if(has("help","guide","how do i start","how to start","begin","learn","walk me through","tour","samjha","help me")){
       chatMem.lastTopic="guide";
@@ -4285,11 +4504,33 @@
       $("loginPass").value="";
     }
   }
+  function toggleLoginPane(signup){
+    $("loginForm").classList.toggle("hidden",!!signup);
+    $("signupForm").classList.toggle("hidden",!signup);
+    $("toSignup").classList.toggle("hidden",!!signup);
+    $("toLogin").classList.toggle("hidden",!signup);
+    setTimeout(()=>{ try{ (signup? $("suUser"):$("loginUser")).focus(); }catch(err){} },80);
+  }
+  function doSignup(e){
+    e.preventDefault();
+    const u=$("suUser").value.trim(), p=$("suPass").value, p2=$("suPass2").value;
+    if(!u){ toast("Choose a username!","warn"); return; }
+    if(u.toLowerCase()===(state.settings.user||"").toLowerCase()){ toast("That username is taken!","warn"); return; }
+    if(p.length<4){ toast("Password must be at least 4 characters","warn"); return; }
+    if(p!==p2){ toast("Passwords do not match!","warn"); return; }
+    state.settings.user=u; state.settings.pass=p; saveAll();
+    try{ localStorage.setItem(AUTH_KEY,"1"); }catch(err){}
+    document.body.classList.add("authed");
+    $("loginOverlay").classList.remove("show");
+    toast("Account created — welcome, "+u+"!");
+    setTimeout(maybeOnboard,350);
+  }
   function logout(){
     try{ localStorage.removeItem(AUTH_KEY); }catch(err){}
     document.body.classList.remove("authed");
     chatClose();
     $("loginUser").value=""; $("loginPass").value="";
+    toggleLoginPane(false);
     $("loginOverlay").classList.add("show");
     toast("You have been logged out","warn");
   }
@@ -4779,20 +5020,45 @@
     }catch(e){}
   }
 
-  /* ---- ambient background music (Web Audio, no files) ---- */
-  let bgmOn=false, bgmGain=null, bgmTimer=null, bgmNext=0, bgmStep=0, bgmYtIframe=null;
+  /* ---- ambient background music (Web Audio + YouTube streams) ---- */
+  let bgmOn=false, bgmGain=null, bgmTimer=null, bgmNext=0, bgmStep=0, bgmYtIframe=null, bgmYtWatch=null, bgmYtOk=false;
+  function bgmYtMsg(e){
+    try{
+      const d=typeof e.data==="string"?JSON.parse(e.data):e.data;
+      if(!d||!d.event) return;
+      if(d.event==="onStateChange" && d.info && d.info.newState===1){ bgmYtOk=true; }
+      if(d.event==="onError"){ bgmYtFail(); }
+    }catch(err){}
+  }
+  function bgmYtFail(){
+    const tr=bgmTrack();
+    if(!tr||!tr.yt||!bgmOn) return;
+    bgmYtStop();
+    bgmOn=false;
+    toast("YouTube stream blocked — switched to a synth track","warn");
+    const next=BGM_TRACKS.findIndex(x=>!x.yt);
+    if(next>-1){ state.settings.bgmTrack=next; saveAll(); renderBgm(); renderSettings(); }
+    ensureAudio(); bgmStart();
+  }
   function bgmYtLoad(tr){
     try{ if(bgmYtIframe){ bgmYtIframe.remove(); bgmYtIframe=null; } }catch(e){}
+    if(bgmYtWatch){ clearTimeout(bgmYtWatch); bgmYtWatch=null; }
+    window.removeEventListener("message", bgmYtMsg);
+    bgmYtOk=false;
     const f=document.createElement("iframe");
-    f.src="https://www.youtube.com/embed/"+tr.yt+"?autoplay=1&loop=1&playlist="+tr.yt+"&rel=0&modestbranding=1";
+    f.src="https://www.youtube-nocookie.com/embed/"+tr.yt+"?autoplay=1&enablejsapi=1&loop=1&playlist="+tr.yt+"&playsinline=1&rel=0";
     f.allow="autoplay; encrypted-media; picture-in-picture";
     f.setAttribute("allowfullscreen","");
     f.style.cssText="position:fixed;width:1px;height:1px;opacity:0;pointer-events:none;border:0;z-index:-1";
     f.title="YouTube soundtrack player";
     document.body.appendChild(f);
     bgmYtIframe=f;
+    window.addEventListener("message", bgmYtMsg);
+    bgmYtWatch=setTimeout(()=>{ if(!bgmYtOk) bgmYtFail(); }, 11000);
   }
   function bgmYtStop(){
+    if(bgmYtWatch){ clearTimeout(bgmYtWatch); bgmYtWatch=null; }
+    window.removeEventListener("message", bgmYtMsg);
     try{ if(bgmYtIframe){ bgmYtIframe.remove(); bgmYtIframe=null; } }catch(e){}
   }
   const BGM_TRACKS=[
@@ -4846,9 +5112,9 @@
       chords:[[82.41,123.47,164.81],[73.42,110,146.83],[69.3,103.83,138.59],[65.41,98,130.81]]},
     {id:"drill",   name:"Street Drill",  color:"#ff2e63", icon:"🔫", desc:"Cold 808 drill bounce, dark and hard", step:0.45, wave:"sawtooth", freq:450, pad:.05, arp:.03, arpEvery:2, kick:true, hat:true,
       chords:[[69.3,103.83,138.59],[61.74,92.5,123.47],[65.41,98,130.81],[55,82.41,110]]},
-    {id:"cs2menu", name:"CS2 Main Menu", color:"#ff7a1a", icon:"🔫", desc:"Counter-Strike 2 official menu soundtrack, streamed from YouTube (needs internet).", yt:"0IMVyzGb_bs", step:0.5, wave:"sine", freq:900, pad:.055, arp:.05, arpEvery:2,
+    {id:"cs2mvp", name:"CS2 MVP Anthem", color:"#ff7a1a", icon:"🏆", desc:"Counter-Strike 2 round MVP anthem, streamed from YouTube (needs internet).", yt:"fdBihip4LtE", step:0.5, wave:"sine", freq:900, pad:.055, arp:.05, arpEvery:2,
       chords:[[220,277.18,329.63],[174.61,220,261.63],[164.81,207.65,246.94],[130.81,196,246.94]]},
-    {id:"pubgmenu", name:"PUBG Lobby Theme", color:"#ffb700", icon:"🪂", desc:"PUBG: Battlegrounds PC main lobby theme, streamed from YouTube (needs internet).", yt:"hlwnXZbZLJs", step:0.5, wave:"sine", freq:900, pad:.055, arp:.05, arpEvery:2,
+    {id:"pubgs4", name:"PUBG S4 Lobby", color:"#ffb700", icon:"🪂", desc:"PUBG: Battlegrounds PC Season 4 lobby theme, streamed from YouTube (needs internet).", yt:"sIcQ6wNXsBU", step:0.5, wave:"sine", freq:900, pad:.055, arp:.05, arpEvery:2,
       chords:[[220,277.18,329.63],[174.61,220,261.63],[164.81,207.65,246.94],[130.81,196,246.94]]}
   ];
   function bgmTrack(){ return BGM_TRACKS[(state.settings.bgmTrack|0)%BGM_TRACKS.length]||BGM_TRACKS[0]; }
@@ -4858,7 +5124,11 @@
     if(!audioCtx) return;
     bgmOn=true;
     const tr=bgmTrack();
-    if(tr.yt){ try{ bgmYtLoad(tr); }catch(e){ bgmOn=false; } return; }
+    if(tr.yt){
+      if(typeof navigator!=="undefined" && navigator.onLine===false){ bgmYtFail(); return; }
+      try{ bgmYtLoad(tr); }catch(e){ bgmYtFail(); }
+      return;
+    }
     try{
       bgmGain=audioCtx.createGain(); bgmGain.gain.value=0; bgmGain.connect(audioCtx.destination);
       bgmGain.gain.linearRampToValueAtTime(0.6, audioCtx.currentTime+2.5);
@@ -4959,6 +5229,105 @@
         <div class="bnums"><i></i><i></i><i></i><i></i><i></i><i></i></div>
       </div>`;
     }).join("");
+  }
+
+  /* ===================== GAME SHOP ===================== */
+  function renderShop(){
+    if(!state.shop) return;
+    $("shopCoins").textContent=state.shop.coins.toLocaleString();
+    const cnt=$("cntShop"); if(cnt) cnt.textContent=state.shop.items.filter(i=>i.owned).length;
+    $("shopGrid").innerHTML=state.shop.items.map(it=>`
+      <div class="shopcard" data-game="${it.game||"all"}">
+        <div class="shopico">${it.icon}</div>
+        <div class="shopinfo">
+          <h4>${esc(it.name)}</h4>
+          <span class="shopgame">${esc(gameOf(it.game).name)}</span>
+          <p>${esc(it.desc)}</p>
+        </div>
+        <div class="shopfoot">
+          <b class="shopprice">${it.coins} <span>coins</span></b>
+          <button class="tbtn ${it.owned?"done":"edit"}" data-buy="${it.id}">${it.owned?"OWNED":"BUY"}</button>
+        </div>
+      </div>`).join("");
+  }
+  function buyShopItem(id){
+    const it=(state.shop.items||[]).find(x=>x.id===id);
+    if(!it||it.owned) return;
+    if(state.shop.coins<it.coins){ toast("Not enough coins!","warn"); return; }
+    state.shop.coins-=it.coins; it.owned=true; saveAll(); renderShop();
+    toast("Purchased "+it.name);
+  }
+
+  /* ===================== CHAT (WhatsApp/Telegram style) ===================== */
+  function fmtChatTime(t){
+    if(!t) return "";
+    const d=new Date(t), now=new Date();
+    if(d.toDateString()===now.toDateString()) return d.toLocaleTimeString("en-GB",{hour:"2-digit",minute:"2-digit"});
+    if(d.getFullYear()===now.getFullYear()) return d.toLocaleDateString("en-GB",{day:"2-digit",month:"short"});
+    return d.toLocaleDateString("en-GB",{day:"2-digit",month:"short",year:"2-digit"});
+  }
+  function chatRoomsSorted(){
+    return state.chats.rooms.slice().sort((a,b)=>{
+      const ta=a.msgs.length?a.msgs[a.msgs.length-1].t:0, tb=b.msgs.length?b.msgs[b.msgs.length-1].t:0;
+      return tb-ta;
+    });
+  }
+  function renderChatList(){
+    if(!state.chats) return;
+    const sorted=chatRoomsSorted();
+    $("chatList").innerHTML=sorted.map(r=>{
+      const last=r.msgs.length?r.msgs[r.msgs.length-1]:"";
+      const active=r.id===state.chats.active;
+      return `<div class="chatroom ${active?"active":""}" data-room="${r.id}">
+        <div class="chrav">${r.icon}</div>
+        <div class="chrbody">
+          <div class="chrtop"><b>${esc(r.name)}</b><span>${last?fmtChatTime(last.t):""}</span></div>
+          <div class="chrmsg">${last?esc((last.from==="me"?"You: ":"")+last.text):"No messages yet"}</div>
+        </div>
+        ${r.unread?`<span class="chrbadge">${r.unread}</span>`:""}
+      </div>`;
+    }).join("");
+    const total=sorted.reduce((s,r)=>s+(r.unread||0),0);
+    const cnt=$("cntChats"); if(cnt) cnt.textContent=total||"";
+    renderChatThread();
+  }
+  function renderChatThread(){
+    if(!state.chats) return;
+    const r=state.chats.rooms.find(x=>x.id===state.chats.active);
+    const wrap=$("chatThread");
+    if(!r){ wrap.innerHTML='<div class="chat-empty">Pick a room to start chatting</div>'; return; }
+    wrap.innerHTML=`
+      <div class="thread-head">
+        <div class="chrav">${r.icon}</div>
+        <div class="thrtitle"><b>${esc(r.name)}</b><small>${r.msgs.length} message${r.msgs.length===1?"":"s"}</small></div>
+      </div>
+      <div class="thread-body">${r.msgs.length? r.msgs.map(m=>`<div class="bubble ${m.from==="me"?"me":""}"><span>${esc(m.text)}</span><small>${fmtChatTime(m.t)}</small></div>`).join("") : '<div class="chat-empty">Say hello to start the thread!</div>'}</div>
+      <div class="thread-in">
+        <input id="threadInput" placeholder="Type a message..." autocomplete="off" />
+        <button id="threadSend" title="Send"><svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>`;
+    const tb=wrap.querySelector(".thread-body"); if(tb) tb.scrollTop=tb.scrollHeight;
+    const inp=wrap.querySelector("#threadInput"); if(inp) inp.focus();
+  }
+  function openChat(id){
+    state.chats.active=id;
+    const r=state.chats.rooms.find(x=>x.id===id);
+    if(r) r.unread=0;
+    saveAll(); renderChatList();
+  }
+  function sendChatMsg(){
+    if(!state.chats) return;
+    const r=state.chats.rooms.find(x=>x.id===state.chats.active);
+    const inp=$("threadInput");
+    if(!r||!inp) return;
+    const v=inp.value.trim(); if(!v) return;
+    r.msgs.push({from:"me",text:v,t:Date.now()});
+    saveAll(); renderChatList();
+  }
+
+  /* ===================== APP ABOUT ===================== */
+  function renderAbout(){
+    const ver=$("aboutVer"); if(ver) ver.textContent="v4.4";
   }
 
   /* ===================== WIRING ===================== */
@@ -5269,13 +5638,34 @@
 
     // login
     $("loginForm").addEventListener("submit",doLogin);
+    $("signupForm").addEventListener("submit",doSignup);
+    $("toSignup").addEventListener("click",()=> toggleLoginPane(true));
+    $("toLogin").addEventListener("click",()=> toggleLoginPane(false));
 
     // pinky chat
     $("chatFab").addEventListener("click",()=>{ const p=$("chatPanel"); if(p.classList.contains("show")) chatClose(); else chatOpen(); });
     $("chatClose").addEventListener("click",chatClose);
     $("chatSend").addEventListener("click",()=>{ const i=$("chatInput"); chatAsk(i.value); i.value=""; i.focus(); });
     $("chatInput").addEventListener("keydown",e=>{ if(e.key==="Enter"){ e.preventDefault(); $("chatSend").click(); } });
+    document.addEventListener("keydown",e=>{
+      const p=$("chatPanel");
+      if(p.classList.contains("show") && e.key && e.key.length===1 && !e.ctrlKey && !e.metaKey && !e.altKey){
+        const a=document.activeElement;
+        if(a && !/INPUT|TEXTAREA|SELECT/.test(a.tagName)) $("chatInput").focus();
+      }
+    });
     renderQuick();
+
+    // shop
+    $("shopGrid").addEventListener("click",e=>{ const b=e.target.closest("[data-buy]"); if(b) buyShopItem(b.dataset.buy); });
+
+    // chat
+    $("chatList").addEventListener("click",e=>{ const r=e.target.closest("[data-room]"); if(r) openChat(r.dataset.room); });
+    $("chatThread").addEventListener("click",e=>{ if(e.target.closest("#threadSend")) sendChatMsg(); });
+    $("chatThread").addEventListener("keydown",e=>{ if(e.target.id==="threadInput" && e.key==="Enter"){ e.preventDefault(); sendChatMsg(); } });
+
+    // about
+    $("aboutChatBtn").addEventListener("click",()=>{ chatOpen(); setTimeout(()=>chatAsk("What's new?"),300); });
 
     // confirm modal
     $("confirmOk").addEventListener("click",()=>{ if(pendingCb){ const cb=pendingCb; pendingCb=null; cb(); } closeConfirm(); });
@@ -5310,6 +5700,9 @@
   chatMem.name=state.settings.chatName||""; chatMem.game=state.settings.chatGame||"";
   wire();
   renderSettings();
+  renderShop();
+  renderChatList();
+  renderAbout();
   applyPremiumShell();
   switchView("home");
   requestAnimationFrame(loop);
