@@ -715,6 +715,15 @@
   .slideup{animation:up .35s cubic-bezier(.2,.8,.2,1)}
   @keyframes up{from{opacity:0;transform:translateY(22px)}}
 
+  /* ============ PERFORMANCE (OPTIMIZATION) ============ */
+  body.perf-motion *{scroll-behavior:auto!important}
+  body.perf-motion .slideup,body.perf-motion .toast{animation:none!important}
+  body.perf-noanim *,body.perf-noanim *::before,body.perf-noanim *::after{animation:none!important;transition:none!important}
+  body.perf-lowres .glass{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  body.perf-lowres .toast,body.perf-lowres .slideup{animation:none!important}
+  body.perf-bgstatic #genCv{display:none!important}
+  body.perf-bgstatic{background:#04060f!important}
+
   .g-csgo{--main:#ffb020;--grad:linear-gradient(135deg,#ffb020,#ff7a00);--fade:rgba(255,176,32,.14)}
   .g-pubg{--main:#ff9d2f;--grad:linear-gradient(135deg,#ff9d2f,#e5484d);--fade:rgba(255,157,47,.14)}
   .g-bs  {--main:#ff2e63;--grad:linear-gradient(135deg,#ff2e63,#7a2bff);--fade:rgba(255,46,99,.14)}
@@ -1130,6 +1139,7 @@
       <a class="nav-item" data-view="learn"><span class="ni"><svg viewBox="0 0 24 24"><path d="M22 12V6l-8 6 8 6z"/><path d="M17 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h13a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z"/></svg></span> Learn &amp; Tutorials</a>
       <a class="nav-item" data-view="bgm"><span class="ni"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></span> BGM Sounds</a>
       <a class="nav-item" data-view="appearance"><span class="ni"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span> Appearance</a>
+      <a class="nav-item" data-view="opt"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z"/><path d="M12 6v6l4 2"/></svg></span> Optimization</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
       <a class="nav-item" data-view="collections"><span class="ni"><svg viewBox="0 0 24 24"><path d="M2 3h20v7H2z"/><path d="M2 10h20v11H2z"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="10" y1="6" x2="10.01" y2="6"/><line x1="6" y1="14" x2="6.01" y2="14"/><line x1="10" y1="14" x2="10.01" y2="14"/></svg></span> Collections &amp; Collabs <span class="cnt" id="cntColl">0</span></a>
@@ -1587,6 +1597,31 @@
             <button data-cor="sharp">SHARP</button>
             <button data-cor="soft">SOFT</button>
             <button data-cor="round">ROUND</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ OPTIMIZATION ============ -->
+      <section id="optView" class="hidden">
+        <div class="page-title">OPTIMIZATION</div>
+        <div class="page-sub">Boost performance on slower PCs — reduce motion, kill heavy animations &amp; lighten the rendering load. Changes apply instantly.</div>
+        <div class="setcard">
+          <h4>PERFORMANCE TOGGLES</h4>
+          <div class="setrow">
+            <div class="lbl">Reduce Motion <small>Disable smooth scrolling &amp; entrance slide-up animations</small></div>
+            <button class="switch" id="tgReduceMotion"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Disable Animations <small>Turn off all CSS animations &amp; transitions app-wide</small></div>
+            <button class="switch" id="tgNoAnim"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Low Resolution Mode <small>Remove glass blur &amp; heavy glow effects for faster rendering</small></div>
+            <button class="switch" id="tgLowRes"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Light Background Mode <small>Use a plain static background — the animated canvas stays off</small></div>
+            <button class="switch" id="tgStaticBg"></button>
           </div>
         </div>
       </section>
@@ -2360,7 +2395,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[], settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare"} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[], settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -2575,7 +2610,7 @@
     state.bgml        = getStore(KEYS.bgml, null) ?? [];
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.profile.avatarE = normAv(state.profile.avatarE);
-    state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare"}, getStore(KEYS.set, {}));
+    state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}}, getStore(KEYS.set, {}));
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
     saveAll();
@@ -2604,7 +2639,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",appearance:"appearanceView",opt:"optView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
@@ -2629,6 +2664,7 @@
     if(v==="learn"){ renderLearn(); }
     if(v==="bgm"){ renderBgm(); }
     if(v==="appearance"){ renderAppearance(); }
+    if(v==="opt"){ renderOpt(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
     if(v==="premium"){ renderPremium(); }
     if(v==="shop"){ renderShop(); }
@@ -4218,6 +4254,24 @@
     applyAppearance();
   }
 
+  /* ===================== OPTIMIZATION ===================== */
+  function applyOpt(){
+    const o=state.settings.opt||{};
+    document.body.classList.toggle("perf-motion", !!o.reduceMotion);
+    document.body.classList.toggle("perf-noanim", !!o.noAnim);
+    document.body.classList.toggle("perf-lowres", !!o.lowRes);
+    document.body.classList.toggle("perf-bgstatic", !!o.staticBg);
+  }
+  function renderOpt(){
+    const o=state.settings.opt||{};
+    const tg=$("tgReduceMotion"), tn=$("tgNoAnim"), tl=$("tgLowRes"), ts=$("tgStaticBg");
+    if(tg) tg.classList.toggle("on", !!o.reduceMotion);
+    if(tn) tn.classList.toggle("on", !!o.noAnim);
+    if(tl) tl.classList.toggle("on", !!o.lowRes);
+    if(ts) ts.classList.toggle("on", !!o.staticBg);
+    applyOpt();
+  }
+
   /* ===================== ANTI-CHEAT & SECURITY ===================== */
   const SECSTATUS={
     open:{t:"OPEN",c:"up"},
@@ -4975,6 +5029,7 @@
     if(state.settings.autoLock && authGet() && t-lastAct>(state.settings.lockMins||5)*60000){
       lastAct=t; logout(); toast("App locked due to inactivity","warn"); return;
     }
+    if(state.settings.opt&&state.settings.opt.staticBg) return;
     if(state.settings.background==="storm"){
       if(state.settings.rain) drawRain();
       if(state.settings.lightning && t-lastBolt>2600+Math.random()*4200 && Math.random()<0.5){
@@ -6230,6 +6285,12 @@
     $("glowRow").addEventListener("click",e=>{ const b=e.target.closest("[data-glow]"); if(!b) return; state.settings.glow=b.dataset.glow; saveAll(); renderAppearance(); });
     $("cornerRow").addEventListener("click",e=>{ const b=e.target.closest("[data-cor]"); if(!b) return; state.settings.corners=b.dataset.cor; saveAll(); renderAppearance(); });
 
+    // optimization
+    $("tgReduceMotion").addEventListener("click",()=>{ state.settings.opt.reduceMotion=!state.settings.opt.reduceMotion; saveAll(); renderOpt(); toast("Reduce Motion "+(state.settings.opt.reduceMotion?"enabled":"disabled")); });
+    $("tgNoAnim").addEventListener("click",()=>{ state.settings.opt.noAnim=!state.settings.opt.noAnim; saveAll(); renderOpt(); toast("Animations "+(state.settings.opt.noAnim?"disabled":"enabled")); });
+    $("tgLowRes").addEventListener("click",()=>{ state.settings.opt.lowRes=!state.settings.opt.lowRes; saveAll(); renderOpt(); toast("Low Resolution Mode "+(state.settings.opt.lowRes?"enabled":"disabled")); });
+    $("tgStaticBg").addEventListener("click",()=>{ state.settings.opt.staticBg=!state.settings.opt.staticBg; saveAll(); renderOpt(); toast("Light Background Mode "+(state.settings.opt.staticBg?"enabled":"disabled")); });
+
     // anti-cheat & security
     $("addCheatBtn").addEventListener("click",()=> openCheatForm(null));
     $("qForm").addEventListener("submit",submitCheat);
@@ -6334,6 +6395,7 @@
   renderCollections();
   renderClips();
   renderBgs();
+  renderOpt();
   renderAbout();
   applyPremiumShell();
   switchView("home");
