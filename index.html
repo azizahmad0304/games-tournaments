@@ -1078,9 +1078,18 @@
   .vbp-tick{width:26px;display:grid;place-items:center;flex:none}
   .vbp-tick .vfy{transform:scale(1.4)}
   .vbp-null{color:#3a4370;font-size:15px}
-  .vbp-name{flex:1;font-weight:600;font-size:14px}
+  .vbp-name{flex:none;font-weight:600;font-size:14px}
+  .vbp-main{flex:1;min-width:0}
+  .vbp-sub{font-size:11px;color:var(--dim);letter-spacing:.5px;margin-top:2px}
   .vbp-game{color:var(--dim);font-size:11px;letter-spacing:1px;text-transform:uppercase;flex:none}
   .vbp-badge{font-size:12px;font-weight:600;flex:none}
+  .vbp-actions{display:flex;gap:6px;flex:none}
+  .vbp-actions .tbtn{flex:none;padding:7px 12px;font-size:11px;font-family:'Orbitron';letter-spacing:1px;border-radius:9px}
+  .optab{display:flex;gap:8px;margin:16px 0 18px;border-bottom:1px solid var(--stroke);padding-bottom:12px;flex-wrap:wrap}
+  .optab-btn{padding:9px 20px;border-radius:100px;border:1px solid var(--stroke);background:rgba(255,255,255,.04);color:var(--dim);font-family:'Orbitron';font-weight:700;font-size:12px;letter-spacing:1.5px;cursor:pointer;transition:.2s}
+  .optab-btn:hover{border-color:var(--cyber);color:var(--cyber)}
+  .optab-btn.sel{background:linear-gradient(120deg,var(--cyber),var(--cyber2));color:#04121f;border-color:transparent;box-shadow:0 0 18px var(--cyber)}
+  .optab-btn .cnt{font-family:'Orbitron';font-size:10px;background:rgba(255,255,255,.14);padding:1px 7px;border-radius:100px;margin-left:6px}
 
 </style>
 </head>
@@ -1516,21 +1525,29 @@
 
       <!-- ============ VERIFY BADGES ============ -->
       <section id="vbView" class="hidden">
-        <div class="page-title">VERIFY BADGES</div>
-        <div class="page-sub">Design the blue &amp; gold ticks shown on player profiles. Add, edit or delete badge styles anytime.</div>
-        <div class="stats" id="vbSummary"></div>
-        <div class="toolbar">
-          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="vbSearch" placeholder="Search badge..." /></div>
-          <button class="addbtn" id="addVbBtn">+ ADD BADGE</button>
+        <div class="page-title">PLAYER VERIFICATION TICKS</div>
+        <div class="page-sub">Design the blue &amp; gold ticks shown on player profiles, and manage verified players live — every tick shown right before the name.</div>
+        <div class="optab">
+          <button class="optab-btn sel" data-vbtab="badges">BADGES</button>
+          <button class="optab-btn" data-vbtab="live">LIVE TICKS <span class="cnt" id="cntLiveTicks">0</span></button>
         </div>
-        <div class="vbgrid" id="vbGrid"></div>
-        <div class="setcard" style="margin-top:22px">
-          <div class="setrow">
-            <div class="lbl">Player Verification Ticks <small>Every player with their verify tick shown before the name</small></div>
+        <div id="vbTabBadges">
+          <div class="stats" id="vbSummary"></div>
+          <div class="toolbar">
+            <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="vbSearch" placeholder="Search badge..." /></div>
+            <button class="addbtn" id="addVbBtn">+ ADD BADGE</button>
+          </div>
+          <div class="vbgrid" id="vbGrid"></div>
+        </div>
+        <div id="vbTabLive" class="hidden">
+          <div class="stats" id="vbLiveSummary"></div>
+          <div class="toolbar">
+            <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="vbLiveSearch" placeholder="Search player..." /></div>
+            <button class="addbtn" id="addLivePlrBtn">+ ADD PLAYER</button>
           </div>
           <div id="vbPlayerList"></div>
         </div>
-        <div class="vb-hint">💡 Attach a badge to any player by typing their name in the badge form — the tick then shows right before their name here.</div>
+        <div class="vb-hint">💡 Attach a badge to any player by typing their name in the badge form — the tick then shows right before their name here. In LIVE TICKS you can add, edit, verify &amp; delete players directly.</div>
       </section>
 
       <!-- ============ PANEL THEMES ============ -->
@@ -2936,7 +2953,7 @@
       headshots:+$("pfHS").value||0, matches:+$("pfMatches").value||0, wins:+$("pfWins").value||0, verified:$("pfVerified").value, updatedAt:Date.now() };
     if(id){ const i=state.players.findIndex(x=>x.id===id); if(i>-1){ state.players[i]={...state.players[i],...data}; toast("Player stats updated"); } }
     else{ data.id=uid(); data.createdAt=Date.now(); state.players.push(data); toast("Player added"); }
-    saveAll(); $("pFormOverlay").classList.remove("show"); renderPlrSummary(); renderPlayers(); renderRegistered();
+    saveAll(); $("pFormOverlay").classList.remove("show"); renderPlrSummary(); renderPlayers(); renderRegistered(); renderVbPlayers();
   }
 
   /* ===================== TEAMS & CAPTAINS ===================== */
@@ -3619,7 +3636,7 @@
       contact:$("rgContact").value.trim(), verified:$("rgVerified").value, kills:0, deaths:0, assists:0, headshots:0, matches:0, wins:0, createdAt:Date.now() };
     state.players.push(data);
     saveAll();
-    $("regForm").reset(); renderRegCard(); renderRegistered(); renderPlrSummary();
+    $("regForm").reset(); renderRegCard(); renderRegistered(); renderPlrSummary(); renderVbPlayers();
     toast(name+" registered!");
   }
 
@@ -4011,16 +4028,36 @@
   }
   function renderVbPlayers(){
     const box=$("vbPlayerList"); if(!box) return;
-    const list=[...state.players].sort((a,b)=>((b.verified&&b.verified!=="none"?1:0)-(a.verified&&a.verified!=="none"?1:0))||String(a.name||"").localeCompare(String(b.name||"")));
+    let list=[...state.players].sort((a,b)=>((b.verified&&b.verified!=="none"?1:0)-(a.verified&&a.verified!=="none"?1:0))||String(a.name||"").localeCompare(String(b.name||"")));
+    const q=$("vbLiveSearch")? $("vbLiveSearch").value.trim().toLowerCase():"";
+    if(q) list=list.filter(p=>(p.name||"").toLowerCase().includes(q)||(p.country||"").toLowerCase().includes(q)||(gameOf(p.game).name.toLowerCase()).includes(q));
+    const verified=state.players.filter(p=>p.verified&&p.verified!=="none").length;
+    const c=$("cntLiveTicks"); if(c) c.textContent=verified;
+    const sum=$("vbLiveSummary");
+    if(sum) sum.innerHTML=`<div class="stat"><b>${state.players.length}</b><span>Total Players</span></div><div class="stat"><b>${verified}</b><span>Verified Ticks</span></div><div class="stat"><b>${state.vbadges.length}</b><span>Badge Designs</span></div>`;
     box.innerHTML=list.length? list.map(p=>{
       const b=p.verified&&p.verified!=="none"? state.vbadges.find(x=>x.id===p.verified):null;
       return `<div class="vbprow">
         <span class="vbp-tick">${b?vbTick({name:b.name,color:b.color,glow:b.glow}):'<span class="vbp-null">—</span>'}</span>
-        <span class="vbp-name">${esc(p.name)}</span>
-        <span class="vbp-game">${esc(gameOf(p.game).short)}</span>
+        <div class="vbp-main">
+          <div class="vbp-name">${esc(p.name)}</div>
+          <div class="vbp-sub">${esc(gameOf(p.game).short)} · ${esc(p.country||"—")} · ${(+p.kills||0).toLocaleString()} kills</div>
+        </div>
         <span class="vbp-badge" style="${b?`color:${b.color}`:""}">${b?esc(b.name):"Not verified"}</span>
+        <div class="vbp-actions">
+          <button class="tbtn edit" data-vbpedit="${p.id}">EDIT</button>
+          <button class="tbtn" data-vbpvfy="${p.id}">VERIFY</button>
+          <button class="tbtn del" data-vbpdel="${p.id}">DEL</button>
+        </div>
       </div>`;
-    }).join("") : `<div class="chat-empty">No players yet — add players in the Players tab.</div>`;
+    }).join("") : `<div class="chat-empty">No players yet — click + ADD PLAYER or add players in the Players tab.</div>`;
+  }
+  function switchVbTab(tab){
+    document.querySelectorAll("[data-vbtab]").forEach(b=> b.classList.toggle("sel", b.dataset.vbtab===tab));
+    const b=$("vbTabBadges"), l=$("vbTabLive");
+    if(b) b.classList.toggle("hidden", tab!=="badges");
+    if(l) l.classList.toggle("hidden", tab!=="live");
+    if(tab==="live") renderVbPlayers();
   }
   function vbPlayerOf(bid){
     return state.players.filter(p=>p.verified===bid).length===1 ? state.players.find(p=>p.verified===bid).name : "";
@@ -6052,11 +6089,11 @@
         const cycle=["none",...state.vbadges.map(b=>b.id)];
         const i=cycle.indexOf(p.verified); p.verified=cycle[(i+1)%cycle.length];
         const nb=vbById(p.verified);
-        saveAll(); renderPlrSummary(); renderPlayers();
+        saveAll(); renderPlrSummary(); renderPlayers(); renderVbPlayers();
         toast("Verification → "+(nb?nb.name:"None"),"ok");
       } }
       if(dl){ const p=state.players.find(x=>x.id===dl.dataset.del);
-        if(p) openConfirm("Delete player <b>"+esc(p.name)+"</b> and all their stats?",()=>{ state.players=state.players.filter(x=>x.id!==p.id); saveAll(); renderPlrSummary(); renderPlayers(); toast("Player deleted","warn"); }); }
+        if(p) openConfirm("Delete player <b>"+esc(p.name)+"</b> and all their stats?",()=>{ state.players=state.players.filter(x=>x.id!==p.id); saveAll(); renderPlrSummary(); renderPlayers(); renderVbPlayers(); toast("Player deleted","warn"); }); }
     });
     $("plrSearch").addEventListener("input",()=> renderPlayers());
     document.querySelectorAll("#playersView thead th[data-key]").forEach(th=>{
@@ -6116,6 +6153,24 @@
     });
     $("vbSearch").addEventListener("input",()=> renderVb());
     $("addVbBtn").addEventListener("click",()=> openVbForm(null));
+    document.querySelectorAll("[data-vbtab]").forEach(btn=> btn.addEventListener("click",()=> switchVbTab(btn.dataset.vbtab)));
+
+    // live ticks player management
+    $("addLivePlrBtn").addEventListener("click",()=> openPlrForm(null));
+    $("vbLiveSearch").addEventListener("input",()=> renderVbPlayers());
+    $("vbPlayerList").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-vbpedit]"), vf=e.target.closest("[data-vbpvfy]"), dl=e.target.closest("[data-vbpdel]");
+      if(ed){ const p=state.players.find(x=>x.id===ed.dataset.vbpedit); if(p) openPlrForm(p); }
+      if(vf){ const p=state.players.find(x=>x.id===vf.dataset.vbpvfy); if(p){
+        const cycle=["none",...state.vbadges.map(b=>b.id)];
+        const i=cycle.indexOf(p.verified); p.verified=cycle[(i+1)%cycle.length];
+        const nb=vbById(p.verified);
+        saveAll(); renderPlrSummary(); renderPlayers(); renderRegistered(); renderVbPlayers();
+        toast("Verification → "+(nb?nb.name:"None"),"ok");
+      } }
+      if(dl){ const p=state.players.find(x=>x.id===dl.dataset.vbpdel);
+        if(p) openConfirm("Delete player <b>"+esc(p.name)+"</b> and all their stats?",()=>{ state.players=state.players.filter(x=>x.id!==p.id); saveAll(); renderPlrSummary(); renderPlayers(); renderRegistered(); renderVbPlayers(); toast("Player deleted","warn"); }); }
+    });
     $("vbForm").addEventListener("submit",submitVb);
     $("vbCancelBtn").addEventListener("click",()=> $("vbFormOverlay").classList.remove("show"));
     $("vbFormOverlay").addEventListener("click",e=>{ if(e.target===$("vbFormOverlay")) $("vbFormOverlay").classList.remove("show"); });
