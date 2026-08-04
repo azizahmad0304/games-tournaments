@@ -1273,7 +1273,7 @@
   .wllcard .wlive i{width:6px;height:6px;border-radius:50%;background:#ff3d6e;animation:wlpulse 1.1s ease-in-out infinite}
   @keyframes wlpulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(255,61,110,.5)}50%{opacity:.5;box-shadow:0 0 0 5px rgba(255,61,110,0)}}
 
-  /* ============ PREMIUM v10.12.12 SHELL ============ */
+  /* ============ PREMIUM v10.13.13 SHELL ============ */
   ::selection{background:rgba(255,213,74,.28)}
   ::-webkit-scrollbar-track{background:var(--bg2)}
   ::-webkit-scrollbar-thumb{background:linear-gradient(#ffd54a,#ff9d2f 45%,#ff3d6e);border-radius:8px;border:2px solid #060812}
@@ -1360,7 +1360,7 @@
   @keyframes bsLoad{0%{transform:translateX(-110%)}100%{transform:translateX(280%)}}
 
   /* ============================================================
-     UI STYLE ENGINE — v10.12.12
+     UI STYLE ENGINE — v10.13.13
      body[data-ui] = aurora | cyber | light | crt
      ============================================================ */
 
@@ -1573,6 +1573,29 @@
   body[data-ui="crt"] .hero .tag svg,body[data-ui="crt"] .hero p b{color:#00ff80}
   body[data-ui="crt"] .page-title{text-shadow:0 0 10px rgba(0,255,128,.4)}
 
+  .gfxstat{font-size:11px;letter-spacing:1.5px;color:#7df9ff;background:rgba(0,224,255,.08);border:1px solid rgba(0,224,255,.22);border-radius:9px;padding:9px 12px;margin-bottom:14px;display:inline-block}
+  .widgetsrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:20px}
+  .wcard{background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:14px}
+  .whead{display:flex;gap:8px;align-items:center;color:#8fa3c8;font-size:11px;letter-spacing:1.2px;margin-bottom:10px}
+  .whead b{font-size:11px}
+  .wclock b{font-size:26px;display:block;background:linear-gradient(90deg,#00e0ff,#b14bff);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .wclock span{color:#8fa3c8;font-size:11px}
+  .wquick{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .wquick button{background:rgba(0,224,255,.1);border:1px solid rgba(0,224,255,.25);color:#dffaff;border-radius:9px;padding:8px 6px;font-size:11px;cursor:pointer}
+  .wquick button:hover{background:rgba(0,224,255,.2)}
+  .wstats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .wstats span{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:8px;text-align:center;font-size:9px;color:#8fa3c8;letter-spacing:1px}
+  .wstats b{display:block;font-size:17px;color:#fff;margin-bottom:2px}
+  .wempty{color:#8fa3c8;font-size:12px;padding:8px 0}
+  .wcount b{font-size:22px;color:#ffd54a;display:block}
+  .wcount span{color:#8fa3c8;font-size:11px}
+  .wpotd{display:flex;gap:12px;align-items:center}
+  .wpotd .avemo{font-size:30px;line-height:1}
+  .wpotd b{font-size:13px;color:#fff;display:block}
+  .wpotd span{font-size:11px;color:#8fa3c8}
+  .wthr b{font-size:22px;color:#2bff9e;display:block}
+  .wthr span{color:#8fa3c8;font-size:11px}
+
 </style>
 </head>
 <body>
@@ -1581,7 +1604,7 @@
   <div id="bootScreen" aria-hidden="true">
     <div class="bs-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ledT" x1="8" y1="3" x2="56" y2="61" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00e0ff"/><stop offset=".5" stop-color="#b14bff"/><stop offset="1" stop-color="#ff3d6e"/></linearGradient><filter id="ledG" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M32 3 56 17.5v29L32 61 8 46.5v-29z" stroke="url(#ledT)" stroke-width="3.4" stroke-linejoin="round" filter="url(#ledG)"/><circle cx="32" cy="3" r="2.3" fill="#7df9ff" filter="url(#ledG)"/><circle cx="56" cy="17.5" r="2.3" fill="#b14bff" filter="url(#ledG)"/><circle cx="56" cy="46.5" r="2.3" fill="#ff3d6e" filter="url(#ledG)"/><circle cx="32" cy="61" r="2.3" fill="#ffd54a" filter="url(#ledG)"/><circle cx="8" cy="46.5" r="2.3" fill="#00e0ff" filter="url(#ledG)"/><circle cx="8" cy="17.5" r="2.3" fill="#2bff9e" filter="url(#ledG)"/><path d="M22 26.5h20a6.5 6.5 0 0 1 6.5 6.5v3a6.5 6.5 0 0 1-10.7 4.9L34.4 37h-4.8l-3.4 2.9A6.5 6.5 0 0 1 15.5 36v-3a6.5 6.5 0 0 1 6.5-6.5z" stroke="#7df9ff" stroke-width="2" stroke-linejoin="round" fill="rgba(125,249,255,.07)" filter="url(#ledG)"/><path d="M18.5 32h7M22 28.5v7" stroke="#7df9ff" stroke-width="2.2" stroke-linecap="round" filter="url(#ledG)"/><circle cx="45" cy="30.5" r="1.7" fill="#fff" filter="url(#ledG)"/><circle cx="41" cy="36" r="1.7" fill="#ffd54a" filter="url(#ledG)"/><circle cx="47.5" cy="36.5" r="1.7" fill="#ff3d6e" filter="url(#ledG)"/></svg></div>
     <div class="bs-title">GAMES TOURNAMENTS</div>
-    <div class="bs-sub">Esports Arena · v10.12.12</div>
+    <div class="bs-sub">Esports Arena · v10.13.13</div>
     <div class="bs-bar"><i></i></div>
   </div>
 
@@ -1665,6 +1688,7 @@
       <a class="nav-item" data-view="power"><span class="ni"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></span> Power Mode</a>
       <a class="nav-item" data-view="fps"><span class="ni"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></span> FPS</a>
       <a class="nav-item" data-view="network"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></span> Network &amp; Ping</a>
+      <a class="nav-item" data-view="widgets"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span> Widgets</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
       <a class="nav-item" data-view="passes"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="7.5" cy="10" r="1.5"/><line x1="11" y1="9" x2="20" y2="9"/><line x1="11" y1="13" x2="20" y2="13"/><path d="M5 18h14v1.5H5z"/><circle cx="7.5" cy="15" r="1.5"/><path d="M4 2v2M8 2v2M12 2v2M16 2v2M20 2v2"/></svg></span> Game Passes <span class="cnt" id="cntPasses">0</span></a>
@@ -1680,7 +1704,7 @@
     <div class="sb-foot">
       <button id="sbSoundBtn">Sound</button>
       <button id="sbBgmBtn">Music</button>
-      <span>v10.12.12</span>
+      <span>v10.13.13</span>
     </div>
   </aside>
   <div class="sidebar-overlay" id="sbOverlay"></div>
@@ -1729,6 +1753,7 @@
         </div>
         <div class="stats" id="statsRow"></div>
         <div class="games" id="gamesRow"></div>
+        <div class="widgetsrow" id="widgetRow"></div>
 
         <div class="section-head" style="margin-top:44px">
           <h3>RECENT TOURNAMENTS</h3>
@@ -2310,6 +2335,7 @@
         </div>
         <div class="setcard">
           <h4>DISPLAY OUTPUT</h4>
+          <div class="gfxstat" id="gfxStatus"></div>
           <div class="setrow">
             <div class="lbl">Resolution <small>Render resolution of the arena</small></div>
             <div class="optic" id="gResRow">
@@ -2404,8 +2430,12 @@
         <div class="setcard">
           <h4>DISPLAY</h4>
           <div class="setrow">
-            <div class="lbl">Network Monitor <small>Show live ping, upload &amp; download on the dashboard</small></div>
+            <div class="lbl">Network Monitor <small>Show live upload &amp; download on the dashboard</small></div>
             <button class="switch" id="tgNetMon"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Ping Monitor <small>Show live ping on the dashboard — independent of the network monitor</small></div>
+            <button class="switch" id="tgNetPing"></button>
           </div>
           <div class="setrow">
             <div class="lbl">Test Mode <small>Real ping test when online, simulated values when offline</small></div>
@@ -2414,6 +2444,43 @@
               <button data-nmode="sim">SIMULATED</button>
             </div>
           </div>
+        </div>
+      </section>
+
+      <!-- ============ WIDGETS ============ -->
+      <section id="widgetsView" class="hidden">
+        <div class="page-title">WIDGETS</div>
+        <div class="page-sub">Turn dashboard widgets on or off — live clock, weather, quick actions, match countdown, player of the day &amp; arena stats. Changes apply instantly.</div>
+        <div class="setcard">
+          <h4>DASHBOARD WIDGETS</h4>
+          <div class="setrow">
+            <div class="lbl">Live Clock <small>Digital clock widget on the dashboard</small></div>
+            <button class="switch" id="tgWClock"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Weather <small>Simulated arena weather card</small></div>
+            <button class="switch" id="tgWWeather"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Quick Actions <small>Shortcuts to add tournaments, register, chat &amp; shop</small></div>
+            <button class="switch" id="tgWQuick"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Next Match Countdown <small>Live countdown to the next upcoming tournament</small></div>
+            <button class="switch" id="tgWCount"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Player of the Day <small>Featured player card</small></div>
+            <button class="switch" id="tgWPotd"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Arena Stats <small>Mini strip — tournaments, players, members &amp; teams</small></div>
+            <button class="switch" id="tgWStats"></button>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>LIVE PREVIEW</h4>
+          <div class="widgetsrow" id="widgetPrev"></div>
         </div>
       </section>
 
@@ -2570,7 +2637,7 @@
         <div class="about-card">
           <div class="about-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ledT" x1="8" y1="3" x2="56" y2="61" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00e0ff"/><stop offset=".5" stop-color="#b14bff"/><stop offset="1" stop-color="#ff3d6e"/></linearGradient><filter id="ledG" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M32 3 56 17.5v29L32 61 8 46.5v-29z" stroke="url(#ledT)" stroke-width="3.4" stroke-linejoin="round" filter="url(#ledG)"/><circle cx="32" cy="3" r="2.3" fill="#7df9ff" filter="url(#ledG)"/><circle cx="56" cy="17.5" r="2.3" fill="#b14bff" filter="url(#ledG)"/><circle cx="56" cy="46.5" r="2.3" fill="#ff3d6e" filter="url(#ledG)"/><circle cx="32" cy="61" r="2.3" fill="#ffd54a" filter="url(#ledG)"/><circle cx="8" cy="46.5" r="2.3" fill="#00e0ff" filter="url(#ledG)"/><circle cx="8" cy="17.5" r="2.3" fill="#2bff9e" filter="url(#ledG)"/><path d="M22 26.5h20a6.5 6.5 0 0 1 6.5 6.5v3a6.5 6.5 0 0 1-10.7 4.9L34.4 37h-4.8l-3.4 2.9A6.5 6.5 0 0 1 15.5 36v-3a6.5 6.5 0 0 1 6.5-6.5z" stroke="#7df9ff" stroke-width="2" stroke-linejoin="round" fill="rgba(125,249,255,.07)" filter="url(#ledG)"/><path d="M18.5 32h7M22 28.5v7" stroke="#7df9ff" stroke-width="2.2" stroke-linecap="round" filter="url(#ledG)"/><circle cx="45" cy="30.5" r="1.7" fill="#fff" filter="url(#ledG)"/><circle cx="41" cy="36" r="1.7" fill="#ffd54a" filter="url(#ledG)"/><circle cx="47.5" cy="36.5" r="1.7" fill="#ff3d6e" filter="url(#ledG)"/></svg></div>
           <h3>GAMES TOURNAMENTS</h3>
-          <div class="about-ver-wrap"><span>APP VERSION</span><b id="aboutVer">v10.12.12</b></div>
+          <div class="about-ver-wrap"><span>APP VERSION</span><b id="aboutVer">v10.13.13</b></div>
         </div>
       </section>
 
@@ -3242,7 +3309,7 @@
       <div class="lg-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ledT" x1="8" y1="3" x2="56" y2="61" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00e0ff"/><stop offset=".5" stop-color="#b14bff"/><stop offset="1" stop-color="#ff3d6e"/></linearGradient><filter id="ledG" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M32 3 56 17.5v29L32 61 8 46.5v-29z" stroke="url(#ledT)" stroke-width="3.4" stroke-linejoin="round" filter="url(#ledG)"/><circle cx="32" cy="3" r="2.3" fill="#7df9ff" filter="url(#ledG)"/><circle cx="56" cy="17.5" r="2.3" fill="#b14bff" filter="url(#ledG)"/><circle cx="56" cy="46.5" r="2.3" fill="#ff3d6e" filter="url(#ledG)"/><circle cx="32" cy="61" r="2.3" fill="#ffd54a" filter="url(#ledG)"/><circle cx="8" cy="46.5" r="2.3" fill="#00e0ff" filter="url(#ledG)"/><circle cx="8" cy="17.5" r="2.3" fill="#2bff9e" filter="url(#ledG)"/><path d="M22 26.5h20a6.5 6.5 0 0 1 6.5 6.5v3a6.5 6.5 0 0 1-10.7 4.9L34.4 37h-4.8l-3.4 2.9A6.5 6.5 0 0 1 15.5 36v-3a6.5 6.5 0 0 1 6.5-6.5z" stroke="#7df9ff" stroke-width="2" stroke-linejoin="round" fill="rgba(125,249,255,.07)" filter="url(#ledG)"/><path d="M18.5 32h7M22 28.5v7" stroke="#7df9ff" stroke-width="2.2" stroke-linecap="round" filter="url(#ledG)"/><circle cx="45" cy="30.5" r="1.7" fill="#fff" filter="url(#ledG)"/><circle cx="41" cy="36" r="1.7" fill="#ffd54a" filter="url(#ledG)"/><circle cx="47.5" cy="36.5" r="1.7" fill="#ff3d6e" filter="url(#ledG)"/></svg></div>
       <h3>GAMES TOURNAMENTS</h3>
       <p class="lg-sub">Esports Arena · Member Access</p>
-      <div class="lg-ver">v10.12.12 PREMIUM</div>
+      <div class="lg-ver">v10.13.13 PREMIUM</div>
       <form id="loginForm">
         <div class="field">
           <label>Username</label>
@@ -3641,7 +3708,8 @@
 true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     state.settings.power = Object.assign({plan:"power",battery:false,perf:true,auto:true}, state.settings.power||{});
     state.settings.fps = Object.assign({counter:true,hud:"dash"}, state.settings.fps||{});
-    state.settings.net = Object.assign({monitor:true,mode:"auto",ping:24,down:245,up:32}, state.settings.net||{});
+    state.settings.net = Object.assign({monitor:true,pingOn:true,mode:"auto",ping:24,down:245,up:32}, state.settings.net||{});
+    state.settings.widgets = Object.assign({clock:true,weather:true,quick:true,countdown:true,potd:false,stats:true}, state.settings.widgets||{});
     if(!["aurora","cyber","light","crt"].includes(state.settings.uiStyle)) state.settings.uiStyle="aurora";
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
@@ -3671,7 +3739,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -3680,7 +3748,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     document.querySelectorAll(".nav-item").forEach(n=> n.classList.toggle("active", n.dataset.view===v));
     const vEl=$(VIEWMAP[v]);
     if(vEl){ vEl.classList.remove("vt-in"); void vEl.offsetWidth; vEl.classList.add("vt-in"); }
-    if(v==="home"){ renderStats(); renderGames(); renderRecent(); renderAds(); renderHub(); renderTop3(); renderModeStatus(); }
+    if(v==="home"){ renderStats(); renderGames(); renderRecent(); renderAds(); renderHub(); renderTop3(); renderModeStatus(); renderWidgets(); }
     if(v==="players"){ renderPlrSummary(); renderPlayers(); }
     if(v==="teams"){ renderTeamSummary(); renderTeams(); }
     if(v==="matches"){ renderMatchSummary(); renderMatches(); }
@@ -3711,6 +3779,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     if(v==="power"){ renderPower(); }
     if(v==="fps"){ renderFps(); }
     if(v==="network"){ renderNet(); }
+    if(v==="widgets"){ renderWidgets("widgetPrev"); }
     if(v==="rgb"){ renderRgb(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
     if(v==="premium"){ renderPremium(); }
@@ -5721,6 +5790,11 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     document.body.classList.toggle("gfx-low", g.preset==="low");
     document.body.classList.toggle("gfx-vsync", !!g.vsync);
     document.body.classList.toggle("gfx-motion", !!g.motion);
+    ["gfx-res-720","gfx-res-1080","gfx-res-1440","gfx-res-2160"].forEach(x=>document.body.classList.remove(x));
+    if(g.res) document.body.classList.add("gfx-res-"+g.res);
+    ["gfx-hz-60","gfx-hz-75","gfx-hz-120","gfx-hz-144","gfx-hz-165","gfx-hz-240"].forEach(x=>document.body.classList.remove(x));
+    if(g.hz) document.body.classList.add("gfx-hz-"+g.hz);
+    document.documentElement.style.zoom=String({720:0.85,1080:1,1440:1.15,2160:1.3}[g.res]||1);
     renderModeStatus();
   }
   function renderGraphics(){
@@ -5734,6 +5808,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     document.querySelectorAll("#gHzRow [data-ghz]").forEach(b=> b.classList.toggle("sel", (+b.dataset.ghz)===g.hz));
     const tv=$("tgVsync"); if(tv) tv.classList.toggle("on", !!g.vsync);
     const tm=$("tgMotion"); if(tm) tm.classList.toggle("on", !!g.motion);
+    const st=$("gfxStatus"); if(st) st.textContent="RENDERING AT "+(g.res||1080)+"P · "+(g.hz||144)+"HZ"+(g.vsync?" · V-SYNC":"")+(g.motion?" · MOTION BLUR":"");
     applyGraphics();
   }
 
@@ -5791,20 +5866,24 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   /* ===================== NETWORK ===================== */
   function updateNetHud(){
     const n=state.settings.net||{};
-    if(n.monitor===false) return;
-    const pv=$("heroPingV"); if(pv) pv.textContent=Math.round(n.ping);
-    const dv=$("heroDownV"); if(dv) dv.textContent=Math.round(n.down);
-    const uv=$("heroUpV"); if(uv) uv.textContent=Math.round(n.up);
-    const pg=$("netPing"); if(pg) pg.textContent=Math.round(n.ping);
-    const dg=$("netDown"); if(dg) dg.textContent=Math.round(n.down);
-    const ug=$("netUp"); if(ug) ug.textContent=Math.round(n.up);
-    const pb=$("netPingBar"); if(pb) pb.style.width=Math.min(100,(n.ping/120)*100)+"%";
-    const db=$("netDownBar"); if(db) db.style.width=Math.min(100,(n.down/1000)*100)+"%";
-    const ub=$("netUpBar"); if(ub) ub.style.width=Math.min(100,(n.up/100)*100)+"%";
+    const pingOn=n.pingOn!==false, monOn=n.monitor!==false;
+    if(pingOn){
+      const pv=$("heroPingV"); if(pv) pv.textContent=Math.round(n.ping);
+      const pg=$("netPing"); if(pg) pg.textContent=Math.round(n.ping);
+      const pb=$("netPingBar"); if(pb) pb.style.width=Math.min(100,(n.ping/120)*100)+"%";
+    }
+    if(monOn){
+      const dv=$("heroDownV"); if(dv) dv.textContent=Math.round(n.down);
+      const uv=$("heroUpV"); if(uv) uv.textContent=Math.round(n.up);
+      const dg=$("netDown"); if(dg) dg.textContent=Math.round(n.down);
+      const ug=$("netUp"); if(ug) ug.textContent=Math.round(n.up);
+      const db=$("netDownBar"); if(db) db.style.width=Math.min(100,(n.down/1000)*100)+"%";
+      const ub=$("netUpBar"); if(ub) ub.style.width=Math.min(100,(n.up/100)*100)+"%";
+    }
   }
   function netTick(){
     const n=state.settings.net||{};
-    if(n.monitor===false) return;
+    if(n.monitor===false && n.pingOn===false) return;
     const now=Date.now();
     if(!_netLast || now-_netLast>2500){
       _netLast=now;
@@ -5834,6 +5913,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   function renderNet(){
     const n=state.settings.net||{};
     const tm=$("tgNetMon"); if(tm) tm.classList.toggle("on", n.monitor!==false);
+    const tp=$("tgNetPing"); if(tp) tp.classList.toggle("on", n.pingOn!==false);
     document.querySelectorAll("#nModeRow [data-nmode]").forEach(b=> b.classList.toggle("sel", b.dataset.nmode===n.mode));
     applyNet();
   }
@@ -5847,8 +5927,58 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const gmap={ultra:"ULTRA",high:"HIGH",low:"LOW"};
     const pmap={pc:"PC MODE",laptop:"LAPTOP MODE",power:"POWER MODE",battery:"BATTERY MODE"};
     const el=$("heroModes"); if(!el) return;
-    el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>'+(f.counter?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></b> FPS <b class="hmd-v" id="heroFpsV">--</b></span>':'')+(n.monitor!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></b> NET <b class="hmd-v" id="heroPingV">--</b>MS <span class="hmd-mini">↓<b id="heroDownV">--</b> ↑<b id="heroUpV">--</b></span></span>':'');
+    el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.res?' · '+g.res+'P':'')+(g.hz?' · '+g.hz+'HZ':'')+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>'+(f.counter?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></b> FPS <b class="hmd-v" id="heroFpsV">--</b></span>':'')+(n.pingOn!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></b> PING <b class="hmd-v" id="heroPingV">--</b>MS</span>':'')+(n.monitor!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></b> NET <span class="hmd-mini">↓<b id="heroDownV">--</b> ↑<b id="heroUpV">--</b></span></span>':'');
     updateNetHud(); updateFpsHud();
+  }
+
+  /* ===================== WIDGETS ===================== */
+  const WT_KEYS={tgWClock:"clock",tgWWeather:"weather",tgWQuick:"quick",tgWCount:"countdown",tgWPotd:"potd",tgWStats:"stats"};
+  function wicon(e){ return '<span style="font-size:15px">'+e+'</span>'; }
+  function wthCard(){
+    const cities=["LAHORE","KARACHI","ISLAMABAD","DUBAI","LONDON"];
+    const conds=[["☀️","CLEAR","#ffd54a"],["⛅","PARTLY CLOUDY","#7df9ff"],["🌧️","RAINY","#00e0ff"],["⚡","STORMY","#b14bff"],["❄️","COLD","#8fa3c8"]];
+    const c=cities[Math.floor((Date.now()/3600000)%cities.length)];
+    const cd=conds[Math.floor((Date.now()/3600000)%conds.length)];
+    const t=28+Math.round(Math.sin(Date.now()/100000)*6);
+    return '<div class="wthr"><b>'+cd[0]+' '+t+'°C</b><span>'+c+' · '+cd[1]+'</span></div>';
+  }
+  function nextTour(){
+    const now=Date.now();
+    return state.tournaments.filter(t=>t.start&&new Date(t.start).getTime()>now).sort((a,b)=>new Date(a.start)-new Date(b.start))[0]||null;
+  }
+  function cdnText(t){
+    let ms=Math.max(0,new Date(t.start).getTime()-Date.now());
+    const d=Math.floor(ms/86400000); ms-=d*86400000;
+    const h=Math.floor(ms/3600000); ms-=h*3600000;
+    const m=Math.floor(ms/60000); ms-=m*60000;
+    const s=Math.floor(ms/1000);
+    return (d?d+"d ":"")+(h?h+"h ":"")+m+"m "+s+"s";
+  }
+  function cdnCard(t){ return '<div class="wcount"><b data-cd="1">'+cdnText(t)+'</b><span>'+esc(t.team||"NEXT TOURNAMENT")+' · '+esc((gameOf(t.game)||{}).name||"")+'</span></div>'; }
+  function potdCard(){
+    const p=state.players[Math.floor(Math.random()*state.players.length)]||null;
+    if(!p) return '<div class="wempty">No players registered yet</div>';
+    const av=avatarById(normAv(p.avatarE));
+    return '<div class="wpotd"><span class="avemo">'+avArt(av)+'</span><div><b>'+esc(p.name)+'</b><span>'+(p.game?esc(p.game).toUpperCase()+" · ":"")+'CHALLENGER</span></div></div>';
+  }
+  function renderWidgets(target){
+    const w=state.settings.widgets||{};
+    Object.keys(WT_KEYS).forEach(id=>{ const t=$(id); if(t) t.classList.toggle("on", !!w[WT_KEYS[id]]); });
+    const el=$(target||"widgetRow"); if(!el) return;
+    const parts=[];
+    if(w.clock){ const d=new Date(); parts.push('<div class="wcard w-clock"><div class="whead">'+wicon("🕒")+'<b>LIVE CLOCK</b></div><div class="wclock"><b>'+d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"})+'</b><span>'+d.toLocaleDateString([],{weekday:"long",day:"numeric",month:"short"})+'</span></div></div>'); }
+    if(w.weather){ parts.push('<div class="wcard w-weather"><div class="whead">'+wicon("⛅")+'<b>WEATHER</b></div>'+wthCard()+'</div>'); }
+    if(w.quick){ parts.push('<div class="wcard w-quick"><div class="whead">'+wicon("⚡")+'<b>QUICK ACTIONS</b></div><div class="wquick"><button data-wq="tour">+ TOURNAMENT</button><button data-wq="reg">REGISTER</button><button data-wq="chat">CHAT</button><button data-wq="shop">SHOP</button></div></div>'); }
+    if(w.countdown){ const nx=nextTour(); parts.push('<div class="wcard w-count"><div class="whead">'+wicon("🏁")+'<b>NEXT MATCH</b></div>'+(nx?cdnCard(nx):'<div class="wempty">No upcoming tournaments</div>')+'</div>'); }
+    if(w.potd){ parts.push('<div class="wcard w-potd"><div class="whead">'+wicon("👑")+'<b>PLAYER OF THE DAY</b></div>'+potdCard()+'</div>'); }
+    if(w.stats){ parts.push('<div class="wcard w-stats"><div class="whead">'+wicon("📊")+'<b>ARENA STATS</b></div><div class="wstats"><span><b>'+state.tournaments.length+'</b>TOURNAMENTS</span><span><b>'+state.players.length+'</b>PLAYERS</span><span><b>'+state.members.length+'</b>MEMBERS</span><span><b>'+state.teams.length+'</b>TEAMS</span></div></div>'); }
+    el.innerHTML=parts.join("");
+  }
+  function updateWidgetLive(){
+    const w=state.settings.widgets||{};
+    const el=$("widgetRow"); if(!el) return;
+    if(w.clock){ const h=el.querySelector('.wclock b'); if(h){ const d=new Date(); h.textContent=d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"}); const s=el.querySelector('.wclock span'); if(s) s.textContent=d.toLocaleDateString([],{weekday:"long",day:"numeric",month:"short"}); } }
+    if(w.countdown){ const h=el.querySelector('[data-cd]'); const nx=nextTour(); if(h) h.textContent=nx?cdnText(nx):"—"; }
   }
 
   /* ===================== RGB LIGHTING ===================== */
@@ -6418,8 +6548,8 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     if(has("create account","signup","sign up","new account","account banao","make account")){
       return {html:"Tap <b>CREATE ACCOUNT</b> on the login screen — pick a username and password and you're in. Your credentials are saved on this device and used for every login.", acts:[{t:"Go to login",fn:()=>switchView("settings")}]};
     }
-    if(has("new in","whats new","what's new","latest","update","v10.12.12","version")){
-      return {html:"Latest drop <b>v10.12.12</b>:<br>• <b>Original game logos</b> — real CS2, PUBG, Blood Strike, COD MW19, Rainbow Six Siege &amp; COD Mobile icons<br>• <b>Premium shell</b> — glass, gold &amp; glow across the whole arena<br>• <b>Branded loading screen</b> &amp; premium login<br>• <b>Dashboard hero &amp; stat cards</b> upgraded<br>• <b>Tables, modals &amp; forms</b> — premium restyle<br>Plus me, Pinky — sharper and I remember our talk."};
+    if(has("new in","whats new","what's new","latest","update","v10.13.13","version")){
+      return {html:"Latest drop <b>v10.13.13</b>:<br>• <b>Original game logos</b> — real CS2, PUBG, Blood Strike, COD MW19, Rainbow Six Siege &amp; COD Mobile icons<br>• <b>Premium shell</b> — glass, gold &amp; glow across the whole arena<br>• <b>Branded loading screen</b> &amp; premium login<br>• <b>Dashboard hero &amp; stat cards</b> upgraded<br>• <b>Tables, modals &amp; forms</b> — premium restyle<br>Plus me, Pinky — sharper and I remember our talk."};
     }
     if(has("help","guide","how do i start","how to start","begin","learn","walk me through","tour","samjha","help me")){
       chatMem.lastTopic="guide";
@@ -8001,7 +8131,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
 
   /* ===================== APP ABOUT ===================== */
   function renderAbout(){
-    const ver=$("aboutVer"); if(ver) ver.textContent="v10.12.12";
+    const ver=$("aboutVer"); if(ver) ver.textContent="v10.13.13";
   }
 
   /* ===================== COLLECTIONS & COLLABS ===================== */
@@ -8519,6 +8649,16 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
 
     // network
     $("tgNetMon").addEventListener("click",()=>{ state.settings.net.monitor=state.settings.net.monitor===false?true:false; saveAll(); renderNet(); toast("Network Monitor "+(state.settings.net.monitor===false?"disabled":"enabled")); });
+    $("tgNetPing").addEventListener("click",()=>{ state.settings.net.pingOn=state.settings.net.pingOn===false?true:false; saveAll(); renderNet(); toast("Ping Monitor "+(state.settings.net.pingOn===false?"disabled":"enabled")); });
+
+    // widgets
+    $("tgWClock").addEventListener("click",()=>{ state.settings.widgets.clock=!state.settings.widgets.clock; saveAll(); renderWidgets(); renderWidgets("widgetPrev"); toast("Live Clock "+(state.settings.widgets.clock?"enabled":"disabled")); });
+    $("tgWWeather").addEventListener("click",()=>{ state.settings.widgets.weather=!state.settings.widgets.weather; saveAll(); renderWidgets(); renderWidgets("widgetPrev"); toast("Weather "+(state.settings.widgets.weather?"enabled":"disabled")); });
+    $("tgWQuick").addEventListener("click",()=>{ state.settings.widgets.quick=!state.settings.widgets.quick; saveAll(); renderWidgets(); renderWidgets("widgetPrev"); toast("Quick Actions "+(state.settings.widgets.quick?"enabled":"disabled")); });
+    $("tgWCount").addEventListener("click",()=>{ state.settings.widgets.countdown=!state.settings.widgets.countdown; saveAll(); renderWidgets(); renderWidgets("widgetPrev"); toast("Next Match Countdown "+(state.settings.widgets.countdown?"enabled":"disabled")); });
+    $("tgWPotd").addEventListener("click",()=>{ state.settings.widgets.potd=!state.settings.widgets.potd; saveAll(); renderWidgets(); renderWidgets("widgetPrev"); toast("Player of the Day "+(state.settings.widgets.potd?"enabled":"disabled")); });
+    $("tgWStats").addEventListener("click",()=>{ state.settings.widgets.stats=!state.settings.widgets.stats; saveAll(); renderWidgets(); renderWidgets("widgetPrev"); toast("Arena Stats "+(state.settings.widgets.stats?"enabled":"disabled")); });
+    $("widgetRow").addEventListener("click",e=>{ const b=e.target.closest("[data-wq]"); if(!b) return; if(b.dataset.wq==="tour") openTourForm(null); else if(b.dataset.wq==="reg") switchView("register"); else if(b.dataset.wq==="chat") switchView("chat"); else if(b.dataset.wq==="shop") switchView("shop"); });
     $("nModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-nmode]"); if(!b) return; state.settings.net.mode=b.dataset.nmode; saveAll(); renderNet(); toast("Network test: "+b.dataset.nmode.toUpperCase()); });
 
     // rgb lighting
@@ -8648,6 +8788,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   renderPower();
   renderFps();
   renderNet();
+  renderWidgets();
   if(window.gtPower && window.gtPower.onAuto){ window.gtPower.onAuto(mode=> autoSetPower(mode)); }
   renderRgb();
   renderMusic();
@@ -8659,7 +8800,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   applyPremiumShell();
   initUiStyle();
   initTilt();
-  setInterval(function(){ const hc=$("heroClock"); if(hc){ const d=new Date(); hc.textContent=d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"}); const hd=$("heroDay"); if(hd) hd.textContent=d.toLocaleDateString([],{weekday:"long"}); const hdt=$("heroDate"); if(hdt) hdt.textContent=d.toLocaleDateString([],{day:"numeric",month:"short",year:"numeric"}); } },1000);
+  setInterval(function(){ const hc=$("heroClock"); if(hc){ const d=new Date(); hc.textContent=d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"}); const hd=$("heroDay"); if(hd) hd.textContent=d.toLocaleDateString([],{weekday:"long"}); const hdt=$("heroDate"); if(hdt) hdt.textContent=d.toLocaleDateString([],{day:"numeric",month:"short",year:"numeric"}); } updateWidgetLive(); },1000);
   switchView("home");
   requestAnimationFrame(loop);
   const bootEl=$("bootScreen");
