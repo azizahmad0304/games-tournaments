@@ -188,6 +188,66 @@
   .stat .num{font-family:'Orbitron';font-size:clamp(20px,3vw,29px);font-weight:800}
   .stat .lbl{color:var(--dim);font-size:11px;letter-spacing:2px;text-transform:uppercase;margin-top:4px}
 
+  .hubgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:8px}  .hub{border:1px solid var(--stroke);border-radius:14px;padding:16px 14px;background:var(--panel);cursor:pointer;text-align:left;
+    transition:.2s;position:relative;overflow:hidden;font-family:'Rajdhani'}
+  .hub::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--cyber);opacity:.7}
+  .hub:hover{border-color:var(--cyber);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+  .hub b{display:block;font-family:'Orbitron';font-size:22px;font-weight:800;color:var(--cyber)}
+  .hub span{color:var(--dim);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
+  .podium{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:8px}
+  .pod{border:1px solid var(--stroke);border-radius:16px;padding:18px;background:var(--panel);position:relative;overflow:hidden;text-align:center}
+  .pod.gold{border-color:rgba(255,213,74,.55);box-shadow:0 0 26px rgba(255,213,74,.18)}
+  .pod.silver{border-color:rgba(200,214,229,.4)}
+  .pod.bronze{border-color:rgba(255,140,66,.45)}
+  .pod .med{font-size:26px}
+  .pod .nm{font-family:'Orbitron';font-weight:800;font-size:16px;color:var(--txt);margin-top:6px}
+  .pod .gn{color:var(--dim);font-size:12px}
+  .pod .pt{color:var(--cyber);font-family:'Orbitron';font-size:18px;font-weight:800;margin-top:6px}
+  .pod .pt small{font-size:10px;color:var(--dim);letter-spacing:1px}
+
+  .storygrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+  .storycard{border:1px solid var(--stroke);border-radius:16px;padding:18px;background:var(--panel);position:relative;overflow:hidden;transition:.2s}
+  .storycard.live{border-color:rgba(255,61,110,.5)}
+  .storycard.done{border-color:rgba(43,255,158,.4)}
+  .storycard .stop{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+  .storycard .sicon{font-size:30px;line-height:1}
+  .storycard h4{margin:0 0 4px;font-size:17px;color:var(--txt)}
+  .storycard .sgame{color:var(--cyber);font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700}
+  .storycard .schap{color:var(--dim);font-size:12px;margin-top:3px}
+  .storycard p{color:var(--dim);font-size:13px;margin:10px 0 14px;line-height:1.5}
+  .storycard .sfoot{display:flex;gap:8px}
+
+  .pddgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .pddcard{border:1px solid var(--stroke);border-radius:16px;padding:18px;background:var(--panel);position:relative;overflow:hidden;transition:.2s}
+  .pddcard:hover{transform:translateY(-2px);border-color:var(--cyber)}
+  .pddcard .phead{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+  .pddcard .pinit{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;font-family:'Orbitron';font-weight:800;font-size:18px;
+    background:linear-gradient(135deg,#3d7bff,#00e0ff);color:#061224}
+  .pddcard .phead h4{margin:0;font-size:17px;color:var(--txt)}
+  .pddcard .ptier{color:var(--cyber);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700}
+  .pddcard .pgicon{width:44px;height:44px;margin-left:auto}
+  .pddcard .pgicon .glogo{padding:2px}
+  .pddcard .pmeta{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;margin-bottom:12px}
+  .pddcard .pmeta div{border-bottom:1px solid rgba(255,255,255,.06);padding-bottom:6px}
+  .pddcard .pmeta span{display:block;color:var(--dim);font-size:10px;letter-spacing:1.5px;text-transform:uppercase}
+  .pddcard .pmeta b{font-size:13px;color:var(--txt);font-weight:600}
+  .pddcard .pbio{color:var(--dim);font-size:13px;margin:0 0 12px;line-height:1.5}
+  .pddcard .pfoot{display:flex;gap:8px}
+
+  .adgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:14px}
+  .adcard{border:1px solid rgba(255,255,255,.14);border-radius:18px;padding:18px;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;gap:10px;transition:.2s}
+  .adcard:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.4)}
+  .adcardtop{display:flex;justify-content:space-between;align-items:center}
+  .adcard .adlogo2{font-family:'Orbitron';font-weight:800;font-size:15px;letter-spacing:1px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+  .adcard .adic2{font-size:24px}
+  .adcard h3{margin:0;font-size:16px;font-family:'Orbitron';letter-spacing:.5px}
+  .adcard p{margin:0;font-size:13px;line-height:1.45;opacity:.92}
+  .adcard .adplats{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto}
+  .adcard .adplats span{background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.25);padding:2px 8px;border-radius:20px;font-size:10px;letter-spacing:1px}
+  .adcard .adplats .adsite{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4)}
+  .adcard .adcta2{margin-top:4px;text-align:center;padding:10px;border-radius:10px;background:#fff;color:#10131f;font-weight:800;font-family:'Rajdhani';letter-spacing:1.5px;font-size:14px;transition:.2s}
+  .adcard .adcta2:hover{transform:scale(1.03)}
+
   /* ============ VIEW HEAD / TOOLBAR ============ */
   .viewhead{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:20px}
   .back{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:12px;border:1px solid var(--stroke);
@@ -1308,9 +1368,14 @@
       <a class="nav-item" data-view="ranked"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="22" y1="12" x2="18" y2="12"/><line x1="6" y1="12" x2="2" y2="12"/><line x1="12" y1="6" x2="12" y2="2"/><line x1="12" y1="22" x2="12" y2="18"/></svg></span> Ranked &amp; Normal <span class="cnt" id="cntRanked">0</span></a>
       <a class="nav-item" data-view="points"><span class="ni"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><rect x="7" y="12" width="3" height="6"/><rect x="12" y="8" width="3" height="10"/><rect x="17" y="5" width="3" height="13"/></svg></span> Points Table</a>
       <a class="nav-item" data-view="leaderboard"><span class="ni"><svg viewBox="0 0 24 24"><path d="M3 18h18"/><path d="M4 9l3 3 5-6 5 6 3-3v9H4z"/></svg></span> Leaderboard <span class="cnt" id="cntLb">0</span></a>
+      <a class="nav-item" data-view="story"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4z"/></svg></span> Story Mode <span class="cnt" id="cntStory">0</span></a>
+      <a class="nav-item" data-view="players2"><span class="ni"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/><path d="M12 3l1 2 2 1-2 1-1 2-1-2-2-1 2-1z"/></svg></span> Player Details <span class="cnt" id="cntPdd">0</span></a>
+      <div class="nav-sep">ARENA</div>
+      <a class="nav-item" data-view="ads"><span class="ni"><svg viewBox="0 0 24 24"><path d="M2 7h20l-4 12a3 3 0 0 1-2.8 2H8.8a3 3 0 0 1-2.8-2z"/><path d="M12 3 9.5 7h5L12 3z"/></svg></span> Ads <span class="cnt" id="cntAds">0</span></a>
       <a class="nav-item" data-view="ach"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></span> Achievements &amp; Medals <span class="cnt" id="cntAch">0</span></a>
       <a class="nav-item" data-view="vbadges"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span> Verify Badges <span class="cnt" id="cntVb">0</span></a>
       <a class="nav-item" data-view="members"><span class="ni"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span> Members <span class="cnt" id="cntMems">0</span></a>
+      <a class="nav-item" data-view="personal"><span class="ni"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8.5" cy="10" r="2"/><path d="M5.5 15c.7-1.4 1.7-2 3-2s2.3.6 3 2"/><line x1="14" y1="9" x2="19" y2="9"/><line x1="14" y1="12" x2="19" y2="12"/><line x1="14" y1="15" x2="17" y2="15"/></svg></span> Personal Players <span class="cnt" id="cntPers">0</span></a>
       <div class="nav-sep">PROTECTION</div>
       <a class="nav-item" data-view="sec"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span> Anti-Cheat &amp; Security <span class="cnt" id="cntCheats">0</span></a>
       <div class="nav-sep">ACCOUNT</div>
@@ -1392,6 +1457,18 @@
           <span class="sub">latest 6</span>
         </div>
         <div class="grid" id="recentGrid"></div>
+
+        <div class="section-head" style="margin-top:44px">
+          <h3>ARENA OVERVIEW</h3>
+          <span class="sub">live counts from every tab</span>
+        </div>
+        <div class="hubgrid" id="dashHub"></div>
+
+        <div class="section-head" style="margin-top:44px">
+          <h3>LEADERBOARD TOP 3</h3>
+          <span class="sub">ranked champions</span>
+        </div>
+        <div class="podium" id="dashTop3"></div>
       </section>
 
       <!-- ============ GAME VIEW ============ -->
@@ -1706,6 +1783,38 @@
         <div class="table-wrap"><table class="ptable" id="lbTbl"></table></div>
       </section>
 
+      <!-- ============ STORY MODE ============ -->
+      <section id="storyView" class="hidden">
+        <div class="page-title">STORY MODE</div>
+        <div class="page-sub">Your single-player campaign — write chapters, track progress &amp; relive every mission. Add, edit or delete anytime.</div>
+        <div class="stats" id="storySummary"></div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="storySearch" placeholder="Search story / game..." /></div>
+          <button class="addbtn" id="addStoryBtn">+ ADD CHAPTER</button>
+        </div>
+        <div class="storygrid" id="storyGrid"></div>
+      </section>
+
+      <!-- ============ PERSONAL PLAYERS DETAILS ============ -->
+      <section id="pddView" class="hidden">
+        <div class="page-title">PLAYER DETAILS</div>
+        <div class="page-sub">Personal player profiles — role, team, country, tier, hours &amp; bio. Add, edit or delete anytime.</div>
+        <div class="stats" id="pddSummary"></div>
+        <div class="toolbar">
+          <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="pddSearch" placeholder="Search player / team / game..." /></div>
+          <button class="addbtn" id="addPddBtn">+ ADD PLAYER</button>
+        </div>
+        <div class="pddgrid" id="pddGrid"></div>
+      </section>
+
+      <!-- ============ ADS ============ -->
+      <section id="adsView" class="hidden">
+        <div class="page-title">REAL GAMING ADS</div>
+        <div class="page-sub">Hand-picked ads from the biggest games &amp; studios — tap any to visit the official site.</div>
+        <div class="stats" id="adsSummary"></div>
+        <div class="adgrid" id="adGrid"></div>
+      </section>
+
       <!-- ============ ACHIEVEMENTS & MEDALS ============ -->
       <section id="achView" class="hidden">
         <div class="page-title">ACHIEVEMENTS &amp; MEDALS</div>
@@ -1957,7 +2066,7 @@
       <!-- ============ LIVE WALLPAPERS ============ -->
       <section id="wallpapersView" class="hidden">
         <div class="page-title">LIVE WALLPAPERS</div>
-        <div class="page-sub">A hand-picked collection of <b id="wllTotal">100</b> living wallpapers — funny, sad, love, space, horror &amp; more. Tap to apply instantly.</div>
+        <div class="page-sub">A hand-picked collection of <b id="wllTotal">456</b> living wallpapers — funny, sad, love, space, horror, magic &amp; more. Tap to apply instantly.</div>
         <div class="wllcats" id="wllCats"></div>
         <div class="wllgrid" id="wllGrid"></div>
       </section>
@@ -2089,6 +2198,7 @@
           <div class="field"><label>Country</label><input id="fCountry" list="countryList" placeholder="e.g. Pakistan" required /></div>
           <div class="field"><label>Prize Pool (USD)</label><input id="fPrize" type="number" min="0" placeholder="e.g. 5000" /></div>
         </div>
+        <div class="field"><label>Enter Cup (optional)</label><select id="fCup"><option value="">— No Cup —</option></select></div>
         <div class="row2">
           <div class="field"><label>Start Date</label><input id="fStart" type="date" required /></div>
           <div class="field"><label>End Date</label><input id="fEnd" type="date" required /></div>
@@ -2219,6 +2329,65 @@
         <div class="field"><label>Points</label><input id="lfPoints" type="number" min="0" placeholder="0" /></div>
         <div class="mbtns">
           <button type="button" class="mbtn cancel" id="lCancelBtn">CANCEL</button>
+          <button type="submit" class="mbtn save">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ STORY MODE FORM MODAL ============ -->
+  <div class="overlay" id="storyFormOverlay">
+    <div class="modal">
+      <h3><span class="mi" id="storyModalTitle">ADD CHAPTER</span></h3>
+      <form id="storyForm">
+        <input type="hidden" id="stfId" />
+        <div class="row2">
+          <div class="field"><label>Icon (emoji)</label><input id="stfIcon" placeholder="e.g. 🌆" required /></div>
+          <div class="field"><label>Chapter Title</label><input id="stfTitle" placeholder="e.g. Dust Alley Dawn" required /></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Game</label><select id="stfGame"></select></div>
+          <div class="field"><label>Chapter / Mission</label><input id="stfChapter" placeholder="e.g. Chapter 1 · Awakening" /></div>
+        </div>
+        <div class="field">
+          <label>Status</label>
+          <select id="stfStatus">
+            <option value="pending">Pending</option><option value="active">Active</option><option value="cleared">Cleared</option>
+          </select>
+        </div>
+        <div class="field"><label>Story Description</label><textarea id="stfDesc" placeholder="What happens in this chapter?"></textarea></div>
+        <div class="mbtns">
+          <button type="button" class="mbtn cancel" id="storyCancelBtn">CANCEL</button>
+          <button type="submit" class="mbtn save">SAVE</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ PERSONAL PLAYERS DETAILS FORM MODAL ============ -->
+  <div class="overlay" id="pddFormOverlay">
+    <div class="modal">
+      <h3><span class="mi" id="pddModalTitle">ADD PLAYER</span></h3>
+      <form id="pddForm">
+        <input type="hidden" id="pdfId" />
+        <div class="row2">
+          <div class="field"><label>Player Name</label><input id="pdfName" placeholder="e.g. GhostX" required /></div>
+          <div class="field"><label>Game</label><select id="pdfGame"></select></div>
+        </div>
+        <div class="row3">
+          <div class="field"><label>Role</label><input id="pdfRole" placeholder="e.g. AWPer" /></div>
+          <div class="field"><label>Team</label><input id="pdfTeam" placeholder="e.g. Strike Wolves" /></div>
+          <div class="field"><label>Country</label><input id="pdfCountry" list="countryList" placeholder="e.g. Pakistan" /></div>
+        </div>
+        <div class="row3">
+          <div class="field"><label>Age</label><input id="pdfAge" type="number" min="10" max="60" placeholder="e.g. 22" /></div>
+          <div class="field"><label>Tier / Rank</label><input id="pdfTier" placeholder="e.g. Radiant" /></div>
+          <div class="field"><label>Hours Played</label><input id="pdfHours" type="number" min="0" placeholder="e.g. 1840" /></div>
+        </div>
+        <div class="field"><label>Contact</label><input id="pdfContact" placeholder="e.g. GhostX#1234" /></div>
+        <div class="field"><label>Bio</label><textarea id="pdfBio" placeholder="A few words about this player..."></textarea></div>
+        <div class="mbtns">
+          <button type="button" class="mbtn cancel" id="pddCancelBtn">CANCEL</button>
           <button type="submit" class="mbtn save">SAVE</button>
         </div>
       </form>
@@ -2690,8 +2859,8 @@
     {name:"Red Alert", c:"#ff3d6e", c2:"#ff0044"}
   ];
   const STAGES = { qf:{label:"Quarter Finals", short:"QF", n:4}, sf:{label:"Semi Finals", short:"SF", n:2}, f:{label:"Grand Final", short:"FINAL", n:1} };
-  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1", prem:"gt_prem_v1", shop:"gt_shop_v1", chat:"gt_chat_v1", coll:"gt_coll_v1", clips:"gt_clips_v1", bgml:"gt_bgml_v1", lboard:"gt_lboard_v1" };
-  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges", prem:"premium", shop:"shop", chat:"chats", coll:"collections", clips:"clips", bgml:"bgml", lboard:"leaderboard" };
+  const KEYS = { tours:"gt_tournaments_v2", plrs:"gt_players_v1", mems:"gt_members_v1", teams:"gt_teams_v1", brk:"gt_brackets_v1", prof:"gt_profile_v1", set:"gt_settings_v1", mat:"gt_matches_v1", rec:"gt_records_v1", cups:"gt_cups_v1", warm:"gt_warm_v1", ranked:"gt_rn_v1", sec:"gt_sec_v1", stand:"gt_stand_v1", ach:"gt_ach_v1", gbadges:"gt_vbadges_v1", prem:"gt_prem_v1", shop:"gt_shop_v1", chat:"gt_chat_v1", coll:"gt_coll_v1", clips:"gt_clips_v1", bgml:"gt_bgml_v1", lboard:"gt_lboard_v1", story:"gt_story_v1", pdd:"gt_pdd_v1" };
+  const STATE_MAP = { tours:"tournaments", plrs:"players", mems:"members", teams:"teams", brk:"brackets", prof:"profile", set:"settings", mat:"matches", rec:"records", cups:"cups", warm:"warm", ranked:"ranked", sec:"cheats", stand:"standings", ach:"ach", gbadges:"vbadges", prem:"premium", shop:"shop", chat:"chats", coll:"collections", clips:"clips", bgml:"bgml", lboard:"leaderboard", story:"stories", pdd:"pdd" };
   const STATUS = { up:{t:"Upcoming",c:"up"}, live:{t:"Live",c:"live"}, done:{t:"Completed",c:"done"} };
 
   const ICONS = {
@@ -2708,7 +2877,7 @@
 
   const $ = id => document.getElementById(id);
   const state = { game:"all", format:"all", search:"", stage:"qf", ptGame:"all", sort:"", dir:1,
-    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[], leaderboard:[],     settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}} };
+    tournaments:[], players:[], members:[], teams:[], brackets:[], matches:[], records:[], cups:[], warm:[], ranked:[], cheats:[], standings:[], ach:[], vbadges:[], premium:null, profile:null, shop:null, chats:null, collections:null, clips:null, bgml:[], leaderboard:[], stories:[], pdd:[],     settings:{sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}} };
 
   /* ===================== DATA / STORAGE ===================== */
   function uid(){ return Date.now().toString(36)+Math.random().toString(36).slice(2,8); }
@@ -2909,6 +3078,22 @@
       {id:uid(), player:"ViperKing", game:"csgo", team:"Neon Cartel", matches:130, wins:88, points:2310}
     ];
   }
+  function seedStories(){
+    return [
+      {id:uid(), icon:"🌆", title:"Dust Alley Dawn", game:"csgo", chapter:"Chapter 1 · Awakening", status:"cleared", desc:"You wake in a war-torn alley. First contact — win your opening duel to earn the Ghost tag."},
+      {id:uid(), icon:"🏙️", title:"Neon Lockdown", game:"bs", chapter:"Chapter 2 · City Grid", status:"active", desc:"The grid is sealed. Survive 5 ranked rounds while the city burns around you."},
+      {id:uid(), icon:"🪂", title:"Drop into Erangel", game:"pubg", chapter:"Chapter 3 · Royale", status:"pending", desc:"Airdrop into Erangel, loot up and place in the top 10 to clear the chapter."},
+      {id:uid(), icon:"🎯", title:"Verdansk Gambit", game:"cod", chapter:"Chapter 4 · Gambit", status:"pending", desc:"Plant, defuse and clutch your way through the Verdansk facility."}
+    ];
+  }
+  function seedPdd(){
+    return [
+      {id:uid(), name:"GhostX", game:"csgo", role:"AWPer", team:"Strike Wolves", country:"Pakistan", age:22, tier:"Radiant", hours:1840, contact:"GhostX#1234", bio:"Clutch machine. Loves late-night Mirage, hates pistol rounds."},
+      {id:uid(), name:"BloodHound", game:"bs", role:"Entry", team:"Blood Echo", country:"Vietnam", age:20, tier:"Master", hours:2210, contact:"Bloo#9901", bio:"All speed, zero fear. First in, last alive."},
+      {id:uid(), name:"ShadowReaper", game:"pubg", role:"Sniper", team:"Skull Squad PK", country:"Pakistan", age:24, tier:"Diamond", hours:1475, contact:"Shadow#4455", bio:"400m headshots while sipping chai."},
+      {id:uid(), name:"NightGhost", game:"cod", role:"Fragger", team:"Night Ghosts", country:"Ukraine", age:19, tier:"Gold", hours:980, contact:"NG#7788", bio:"Entry fragger grinding to ranked Immortal."}
+    ];
+  }
   function load(){
     state.tournaments = getStore(KEYS.tours, null) ?? seedTours();
     state.players     = getStore(KEYS.plrs,  null) ?? seedPlrs();
@@ -2923,6 +3108,8 @@
     state.cheats      = getStore(KEYS.sec,   null) ?? seedCheats();
     state.standings   = getStore(KEYS.stand, null) ?? seedStandings();
     state.leaderboard = getStore(KEYS.lboard, null) ?? seedLeaderboard();
+    state.stories     = getStore(KEYS.story,  null) ?? seedStories();
+    state.pdd         = getStore(KEYS.pdd,    null) ?? seedPdd();
     state.ach         = getStore(KEYS.ach,   null) ?? seedAch();
     state.vbadges     = getStore(KEYS.gbadges, null) ?? seedVbadges();
     state.premium     = getStore(KEYS.prem, null);
@@ -2962,12 +3149,12 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     VIEWS.forEach(x=> $(VIEWMAP[x]).classList.toggle("hidden", x!==v));
     document.querySelectorAll(".nav-item").forEach(n=> n.classList.toggle("active", n.dataset.view===v));
-    if(v==="home"){ renderStats(); renderGames(); renderRecent(); renderAds(); }
+    if(v==="home"){ renderStats(); renderGames(); renderRecent(); renderAds(); renderHub(); renderTop3(); }
     if(v==="players"){ renderPlrSummary(); renderPlayers(); }
     if(v==="teams"){ renderTeamSummary(); renderTeams(); }
     if(v==="matches"){ renderMatchSummary(); renderMatches(); }
@@ -2982,6 +3169,9 @@
     if(v==="ranked"){ renderRankedSummary(); renderRanked(); }
     if(v==="points"){ renderPoints(); }
     if(v==="leaderboard"){ renderLeaderboard(); }
+    if(v==="story"){ renderStories(); }
+    if(v==="players2"){ renderPdd(); }
+    if(v==="ads"){ renderAdsView(); }
     if(v==="ach"){ renderAchSummary(); renderAch(); }
     if(v==="vbadges"){ renderVbSummary(); renderVb(); }
     if(v==="themes"){ renderThemes(); }
@@ -3036,6 +3226,7 @@
       <div class="body">
         <div class="row"><span class="ico">START</span> <b>${fmtDate(t.start)}</b></div>
         <div class="row"><span class="ico">END</span> &nbsp;<b>${fmtDate(t.end)}</b></div>
+        ${t.cup?`<div class="row"><span class="ico">🏆</span> <b class="cupname">${esc((state.cups.find(c=>c.id===t.cup)||{}).name||"Cup")}</b></div>`:""}
         <div class="prize">${prize(t)}</div>
         ${t.desc?`<div class="desc">${esc(t.desc)}</div>`:""}
       </div>
@@ -3068,6 +3259,32 @@
     const r=[...state.tournaments].sort((a,b)=>new Date(b.start)-new Date(a.start)).slice(0,6);
     $("recentGrid").innerHTML=r.length? r.map(cardHTML).join("") : emptyHTML("gamepad","No tournaments yet","Add your first tournament from any game.");
   }
+  function renderHub(){
+    const items=[
+      {v:"players",n:state.players.length,l:"Players"},
+      {v:"teams",n:state.teams.length,l:"Teams"},
+      {v:"matches",n:state.matches.length,l:"Matches"},
+      {v:"brackets",n:state.brackets.length,l:"Brackets"},
+      {v:"records",n:state.records.length,l:"Records"},
+      {v:"cups",n:state.cups.length,l:"Cups"},
+      {v:"warm",n:state.warm.length,l:"Warm Ups"},
+      {v:"ranked",n:state.ranked.length,l:"Ranked"},
+      {v:"points",n:state.standings.length,l:"Points Table"},
+      {v:"leaderboard",n:state.leaderboard.length,l:"Leaderboard"},
+      {v:"story",n:state.stories.length,l:"Story Mode"},
+      {v:"players2",n:state.pdd.length,l:"Player Details"}
+    ];
+    $("dashHub").innerHTML=items.map(i=>`<button class="hub" data-v="${i.v}"><b>${i.n}</b><span>${i.l}</span></button>`).join("");
+  }
+  function renderTop3(){
+    const top=[...state.leaderboard].sort((a,b)=>(b.points||0)-(a.points||0)).slice(0,3);
+    const meds=["🥇","🥈","🥉"], cls=["gold","silver","bronze"];
+    $("dashTop3").innerHTML=top.length? top.map((p,i)=>`
+      <div class="pod ${cls[i]}"><div class="med">${meds[i]}</div>
+      <div class="nm">${esc(p.player)}</div><div class="gn">${esc((GAMES[p.game]||{name:"—"}).name)}${p.team?" · "+esc(p.team):""}</div>
+      <div class="pt">${p.points||0} <small>PTS</small></div></div>`).join("")
+      : `<div class="empty" style="grid-column:1/-1"><h4>No ranked players yet</h4><p>Add entries in the Leaderboard tab to crown your champions.</p></div>`;
+  }
   /* ===================== DASHBOARD GAMING ADS ===================== */
   const ADS=[
     {id:"cs2",game:"csgo",logo:"CS2",icon:"🔫",title:"COUNTER-STRIKE 2 — SEASON 2026",line:"New operation, refreshed ranked & the $250K Major. Queue up now.",btn:"PLAY FREE",url:"https://www.counter-strike.net/",plats:["PC"],c1:"#ff7a1a",c2:"#ffd54a"},
@@ -3079,7 +3296,10 @@
     {id:"gta",game:null,logo:"GTA ONLINE",icon:"🚗",title:"GTA ONLINE — BONUS WEEK",line:"Double GTA$ and RP across heists, races and deathmatches.",btn:"PLAY NOW",url:"https://www.rockstargames.com/GTAOnline",plats:["PC","Console"],c1:"#00b8ff",c2:"#9b4dff"},
     {id:"fc",game:null,logo:"EA FC 26",icon:"⚽",title:"EA SPORTS FC 26 — ULTIMATE TEAM",line:"Build your dream squad, weekend league & pack drops are live.",btn:"GET IT",url:"https://www.ea.com/games/ea-sports-fc",plats:["ALL"],c1:"#2bff9e",c2:"#00c8a0"},
     {id:"dota",game:null,logo:"DOTA 2",icon:"⚔️",title:"DOTA 2 — TI ROAD",line:"Crownfall act, DPC season & the biggest prize pool in esports.",btn:"PLAY FREE",url:"https://www.dota2.com/",plats:["PC"],c1:"#ff2e63",c2:"#7a2bff"},
-    {id:"genshin",game:null,logo:"GENSHIN",icon:"✨",title:"GENSHIN IMPACT — NEW UPDATE",line:"A new region, fresh characters & an open world to explore.",btn:"DOWNLOAD",url:"https://genshin.hoyoverse.com/",plats:["ALL"],c1:"#ffd54a",c2:"#ff6b9d"}
+    {id:"genshin",game:null,logo:"GENSHIN",icon:"✨",title:"GENSHIN IMPACT — NEW UPDATE",line:"A new region, fresh characters & an open world to explore.",btn:"DOWNLOAD",url:"https://genshin.hoyoverse.com/",plats:["ALL"],c1:"#ffd54a",c2:"#ff6b9d"},
+    {id:"apex",game:null,logo:"APEX",icon:"🏹",title:"APEX LEGENDS — FRACTURE",line:"New legend, ranked split & the battle royale that never stops.",btn:"PLAY FREE",url:"https://www.ea.com/games/apex-legends",plats:["PC","Console"],c1:"#ff3d6e",c2:"#7a2bff"},
+    {id:"minecraft",game:null,logo:"MINECRAFT",icon:"⛏️",title:"MINECRAFT — NEW DROP",line:"Mine, craft & survive in endless worlds with friends.",btn:"PLAY NOW",url:"https://www.minecraft.net/",plats:["ALL"],c1:"#2bff9e",c2:"#00c8a0"},
+    {id:"roblox",game:null,logo:"ROBLOX",icon:"🎮",title:"ROBLOX — CREATE & PLAY",line:"Millions of worlds, games & experiences — jump in free.",btn:"PLAY FREE",url:"https://www.roblox.com/",plats:["ALL"],c1:"#ffd700",c2:"#ff2d7a"}
   ];
   let adIdx=0, adTimer=null;
   function renderAds(){
@@ -3139,7 +3359,7 @@
   /* ===================== TOURNAMENT FORM ===================== */
   function fillSelects(){
     const opts=Object.entries(GAMES).map(([id,g])=>`<option value="${id}">${g.name}</option>`).join("");
-    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame","qfGame","sfGame","afGame","clfGame","lfGame"].forEach(id=> $(id).innerHTML=opts);
+    ["fGame","pfGame","mfGame","pGame","tfGame","mtfGame","rfGame","rgGame","cfGame","wfGame","nfGame","qfGame","sfGame","afGame","clfGame","lfGame","stfGame","pdfGame"].forEach(id=> $(id).innerHTML=opts);
   }
   function openTourForm(t){
     const ed=!!t;
@@ -3154,6 +3374,9 @@
     $("fStart").value=ed?t.start:new Date().toISOString().slice(0,10);
     $("fEnd").value=ed?t.end:"";
     $("fDesc").value=ed?(t.desc||""):"";
+    const cups=['<option value="">— No Cup —</option>'].concat(state.cups.map(c=>`<option value="${esc(c.id)}">${esc(c.name)}</option>`)).join("");
+    $("fCup").innerHTML=cups;
+    $("fCup").value=ed?(t.cup||""):"";
     $("formOverlay").classList.add("show");
     setTimeout(()=>$("fTeam").focus(),120);
   }
@@ -3164,7 +3387,7 @@
     if(!team||!country||!start||!end){ toast("Please fill all required fields!","warn"); return; }
     if(new Date(end)<new Date(start)){ toast("End date cannot be before start date!","warn"); return; }
     const data={ game:$("fGame").value, format:$("fFormat").value, status:$("fStatus").value, team, country,
-      prize:$("fPrize").value, start, end, desc:$("fDesc").value.trim(), updatedAt:Date.now() };
+      prize:$("fPrize").value, start, end, desc:$("fDesc").value.trim(), cup:$("fCup").value, updatedAt:Date.now() };
     if(id){ const i=state.tournaments.findIndex(t=>t.id===id); if(i>-1){ state.tournaments[i]={...state.tournaments[i],...data}; toast("Tournament updated"); } }
     else{ data.id=uid(); data.createdAt=Date.now(); state.tournaments.unshift(data); toast("Tournament added"); }
     saveAll(); $("formOverlay").classList.remove("show"); refresh();
@@ -4339,6 +4562,192 @@
     });
   }
 
+  /* ===================== STORY MODE ===================== */
+  function filteredStories(){
+    let l=[...state.stories];
+    const q=$("storySearch")? $("storySearch").value.trim().toLowerCase():"";
+    if(q) l=l.filter(s=>(s.title||"").toLowerCase().includes(q)||(s.chapter||"").toLowerCase().includes(q)||(gameOf(s.game).name.toLowerCase()).includes(q));
+    return l;
+  }
+  function renderStorySummary(){
+    const total=state.stories.length;
+    const act=state.stories.filter(s=>s.status==="active").length;
+    const done=state.stories.filter(s=>s.status==="cleared").length;
+    $("storySummary").innerHTML=[
+      {n:total,l:"Chapters",m:"#00e0ff"},{n:act,l:"In Progress",m:"#ffd54a"},{n:done,l:"Cleared",m:"#2bff9e"},{n:total-done-act,l:"Locked",m:"#ff3d6e"}
+    ].map(i=>`<div class="stat" style="--main:${i.m}"><div class="num" style="color:${i.m}">${i.n}</div><div class="lbl">${i.l}</div></div>`).join("");
+    const c=$("cntStory"); if(c) c.textContent=total;
+  }
+  function renderStories(){
+    renderStorySummary();
+    const l=filteredStories();
+    const order={cleared:0,active:1,pending:2};
+    l.sort((a,b)=>(order[a.status]??3)-(order[b.status]??3)||((a.chapter||"").localeCompare(b.chapter||"")));
+    const stc={cleared:"done",active:"live",pending:"up"};
+    $("storyGrid").innerHTML=l.length? l.map(s=>`
+      <div class="storycard ${stc[s.status]}">
+        <div class="stop">
+          <div class="sicon">${esc(s.icon||"📖")}</div>
+          <span class="badge ${stc[s.status]}">${s.status.toUpperCase()}</span>
+        </div>
+        <h4>${esc(s.title)}</h4>
+        <div class="sgame">${esc(gameOf(s.game).name)}</div>
+        ${s.chapter?`<div class="schap">${esc(s.chapter)}</div>`:""}
+        ${s.desc?`<p>${esc(s.desc)}</p>`:""}
+        <div class="sfoot">
+          <button class="tbtn edit" data-sedit2="${s.id}">EDIT</button>
+          <button class="tbtn del" data-sdel2="${s.id}">DEL</button>
+        </div>
+      </div>`).join("") : emptyHTML("trophy","No chapters yet","Start your campaign — click <b>+ ADD CHAPTER</b>.");
+  }
+  function openStoryForm(s){
+    const ed=!!s;
+    $("storyModalTitle").textContent=ed?"EDIT CHAPTER":"ADD CHAPTER";
+    $("stfId").value=ed?s.id:"";
+    $("stfIcon").value=ed?s.icon:"📖";
+    $("stfTitle").value=ed?s.title:"";
+    $("stfGame").value=ed?s.game:"csgo";
+    $("stfChapter").value=ed?s.chapter:"";
+    $("stfStatus").value=ed?s.status:"pending";
+    $("stfDesc").value=ed?(s.desc||""):"";
+    $("storyFormOverlay").classList.add("show");
+    setTimeout(()=>{ try{ $("stfTitle").focus(); }catch(e){} },120);
+  }
+  function submitStory(e){
+    e.preventDefault();
+    const title=$("stfTitle").value.trim();
+    if(!title){ toast("Chapter title required!","warn"); return; }
+    const id=$("stfId").value;
+    const data={ icon:$("stfIcon").value.trim()||"📖", title, game:$("stfGame").value, chapter:$("stfChapter").value.trim(), status:$("stfStatus").value, desc:$("stfDesc").value.trim() };
+    if(id){
+      const i=state.stories.findIndex(x=>x.id===id);
+      if(i>-1){ state.stories[i]={...state.stories[i],...data, updatedAt:Date.now()}; toast("Chapter updated"); }
+    }else{
+      state.stories.push({...data, id:uid(), createdAt:Date.now()});
+      toast("Chapter added to Story Mode");
+    }
+    saveAll();
+    $("storyFormOverlay").classList.remove("show");
+    renderStories();
+  }
+  function deleteStory(id){
+    openConfirm(`Delete chapter <b>${esc((state.stories.find(x=>x.id===id)||{}).title||"story")}</b>?`,()=>{
+      state.stories=state.stories.filter(x=>x.id!==id);
+      saveAll();
+      renderStories();
+      toast("Chapter removed","warn");
+    });
+  }
+
+  /* ===================== PERSONAL PLAYERS DETAILS ===================== */
+  function filteredPdd(){
+    let l=[...state.pdd];
+    const q=$("pddSearch")? $("pddSearch").value.trim().toLowerCase():"";
+    if(q) l=l.filter(p=>(p.name||"").toLowerCase().includes(q)||(p.team||"").toLowerCase().includes(q)||(gameOf(p.game).name.toLowerCase()).includes(q));
+    return l;
+  }
+  function renderPddSummary(){
+    const total=state.pdd.length;
+    const teams=new Set(state.pdd.map(p=>p.team).filter(Boolean)).size;
+    const hrs=state.pdd.reduce((a,p)=>a+(+p.hours||0),0);
+    $("pddSummary").innerHTML=[
+      {n:total,l:"Players",m:"#00e0ff"},{n:teams,l:"Teams",m:"#ffd54a"},{n:hrs,l:"Total Hours",m:"#2bff9e"},{n:state.pdd.filter(p=>p.tier).length,l:"Ranked Tier",m:"#b44dff"}
+    ].map(i=>`<div class="stat" style="--main:${i.m}"><div class="num" style="color:${i.m}">${i.n}</div><div class="lbl">${i.l}</div></div>`).join("");
+    const c=$("cntPdd"); if(c) c.textContent=total;
+  }
+  function renderPdd(){
+    renderPddSummary();
+    const l=filteredPdd();
+    $("pddGrid").innerHTML=l.length? l.map(p=>{
+      const gm=(GAMES[p.game]||{cls:""}).cls;
+      return `
+      <div class="pddcard ${gm}">
+        <div class="phead">
+          <span class="pinit">${initial(p.name)}</span>
+          <div>
+            <h4>${esc(p.name)}</h4>
+            <div class="ptier">${esc(p.tier||"Unranked")}</div>
+          </div>
+          <div class="pgicon">${gLogo(p.game)}</div>
+        </div>
+        <div class="pmeta">
+          <div><span>ROLE</span><b>${esc(p.role||"—")}</b></div>
+          <div><span>TEAM</span><b>${esc(p.team||"—")}</b></div>
+          <div><span>COUNTRY</span><b>${esc(p.country||"—")}</b></div>
+          <div><span>AGE</span><b>${p.age||"—"}</b></div>
+          <div><span>HOURS</span><b>${(p.hours||0).toLocaleString()}</b></div>
+          <div><span>CONTACT</span><b>${esc(p.contact||"—")}</b></div>
+        </div>
+        ${p.bio?`<p class="pbio">${esc(p.bio)}</p>`:""}
+        <div class="pfoot">
+          <button class="tbtn edit" data-pedit="${p.id}">EDIT</button>
+          <button class="tbtn del" data-pdel="${p.id}">DEL</button>
+        </div>
+      </div>`;}).join("") : emptyHTML("users","No players yet","Add your first player profile — click <b>+ ADD PLAYER</b>.");
+  }
+  function openPddForm(p){
+    const ed=!!p;
+    $("pddModalTitle").textContent=ed?"EDIT PLAYER":"ADD PLAYER";
+    $("pdfId").value=ed?p.id:"";
+    $("pdfName").value=ed?p.name:"";
+    $("pdfGame").value=ed?p.game:"csgo";
+    $("pdfRole").value=ed?p.role:"";
+    $("pdfTeam").value=ed?p.team:"";
+    $("pdfCountry").value=ed?p.country:"";
+    $("pdfAge").value=ed?p.age:"";
+    $("pdfTier").value=ed?p.tier:"";
+    $("pdfHours").value=ed?p.hours:"";
+    $("pdfContact").value=ed?p.contact:"";
+    $("pdfBio").value=ed?(p.bio||""):"";
+    $("pddFormOverlay").classList.add("show");
+    setTimeout(()=>{ try{ $("pdfName").focus(); }catch(e){} },120);
+  }
+  function submitPdd(e){
+    e.preventDefault();
+    const name=$("pdfName").value.trim();
+    if(!name){ toast("Player name required!","warn"); return; }
+    const id=$("pdfId").value;
+    const data={ name, game:$("pdfGame").value, role:$("pdfRole").value.trim(), team:$("pdfTeam").value.trim(), country:$("pdfCountry").value.trim(), age:+$("pdfAge").value||0, tier:$("pdfTier").value.trim(), hours:+$("pdfHours").value||0, contact:$("pdfContact").value.trim(), bio:$("pdfBio").value.trim() };
+    if(id){
+      const i=state.pdd.findIndex(x=>x.id===id);
+      if(i>-1){ state.pdd[i]={...state.pdd[i],...data, updatedAt:Date.now()}; toast("Player updated"); }
+    }else{
+      state.pdd.push({...data, id:uid(), createdAt:Date.now()});
+      toast("Player profile added");
+    }
+    saveAll();
+    $("pddFormOverlay").classList.remove("show");
+    renderPdd();
+  }
+  function deletePdd(id){
+    openConfirm(`Delete profile of <b>${esc((state.pdd.find(x=>x.id===id)||{}).name||"player")}</b>?`,()=>{
+      state.pdd=state.pdd.filter(x=>x.id!==id);
+      saveAll();
+      renderPdd();
+      toast("Player profile removed","warn");
+    });
+  }
+
+  /* ===================== ADS GALLERY ===================== */
+  function renderAdsView(){
+    const c=$("cntAds"); if(c) c.textContent=ADS.length;
+    const games=new Set(ADS.map(a=>a.game).filter(Boolean)).size;
+    $("adsSummary").innerHTML=[
+      {n:ADS.length,l:"Real Ads",m:"#ffd700"},{n:games,l:"Featured Games",m:"#00e0ff"},{n:new Set(ADS.map(a=>a.url)).size,l:"Official Links",m:"#2bff9e"}
+    ].map(i=>`<div class="stat" style="--main:${i.m}"><div class="num" style="color:${i.m}">${i.n}</div><div class="lbl">${i.l}</div></div>`).join("");
+    $("adGrid").innerHTML=ADS.map(a=>`
+      <div class="adcard" style="background:linear-gradient(140deg,${a.c1},${a.c2})">
+        <div class="adcardtop">
+          <span class="adlogo2">${a.logo}</span>
+          <span class="adic2">${a.icon}</span>
+        </div>
+        <h3>${esc(a.title)}</h3>
+        <p>${esc(a.line)}</p>
+        <div class="adplats">${a.plats.map(p=>`<span>${p}</span>`).join("")}<span class="adsite">OFFICIAL ↗</span></div>
+        <a class="adcta2" href="${esc(a.url)}" target="_blank" rel="noopener">${esc(a.btn)}</a>
+      </div>`).join("");
+  }
+
   /* ===================== ACHIEVEMENTS & MEDALS ===================== */
   const ACH_RARITY_CSS={bronze:"#cd7f32",silver:"#c0c0c0",gold:"#ffd700",platinum:"#7ff5ff",diamond:"#b44dff"};
   function filteredAch(){
@@ -4789,7 +5198,7 @@
   }
 
   /* ===================== LIVE WALLPAPERS ===================== */
-  const WLL_CATS=["funny","sad","love","cool","nature","space","party","sports","horror","calm"];
+  const WLL_CATS=["funny","sad","love","cool","nature","space","party","sports","horror","calm","magic"];
   const WLL_PALS={
     funny:[["#ffd54a","#ff3d6e","#00e0ff"],["#ff5c6e","#ffb700","#9be564"],["#ff9d2f","#ffd54a","#ff3d6e"]],
     sad:[["#7f9bd9","#9aa7c7","#5c6f9e"],["#8aa2c4","#b9c7e0","#6478a8"],["#6b7ea6","#8f9fc0","#4f5f8a"]],
@@ -4800,7 +5209,8 @@
     party:[["#ffd700","#ff3d6e","#00e0ff"],["#ff2fd6","#ffd700","#2bff9e"],["#ff5c8a","#ffd54a","#00e0ff"]],
     sports:[["#ffb700","#ff5c2a","#00e0ff"],["#2bff9e","#ffd54a","#ff3d6e"],["#00e0ff","#ffb700","#9b4dff"]],
     horror:[["#5cff8a","#ff3d3d","#0a6e3a"],["#c02020","#ff5c5c","#7a0f0f"],["#8a0f0f","#5cff8a","#2b6e2b"]],
-    calm:[["#7df9ff","#bfe3ff","#eaf6ff"],["#9ae6ff","#7df9ff","#d9f6ff"],["#8fd8ff","#bff0ff","#6bc7ff"]]
+    calm:[["#7df9ff","#bfe3ff","#eaf6ff"],["#9ae6ff","#7df9ff","#d9f6ff"],["#8fd8ff","#bff0ff","#6bc7ff"]],
+    magic:[["#ffb347","#ff5c2a","#ffd54a"],["#ffd700","#ff8a3d","#ff4d6d"],["#ff9d2f","#ffd54a","#7a2bff"]]
   };
   const WLL_CSS={
     funny:"linear-gradient(180deg,#1a0f0f 0%,#33121c 100%)",
@@ -4812,7 +5222,8 @@
     party:"linear-gradient(180deg,#0b0515 0%,#1d0b33 100%)",
     sports:"linear-gradient(180deg,#0a1408 0%,#142b12 100%)",
     horror:"linear-gradient(180deg,#0a0202 0%,#1f0707 100%)",
-    calm:"linear-gradient(180deg,#030a14 0%,#0a2036 100%)"
+    calm:"linear-gradient(180deg,#030a14 0%,#0a2036 100%)",
+    magic:"linear-gradient(180deg,#1a0a08 0%,#3a1508 100%)"
   };
   const WLL_NAMES={
     funny:["Laughing Rain","Clown Car Confetti","Banana Slide","Duck Dash","Frog Hop","Goofy Grin","Tickle Feathers","Silly Socks","Chuckle Storm","Giggle Bubbles"],
@@ -4824,20 +5235,28 @@
     party:["Party Confetti","Disco Pulse","Balloon Float","Neon Dance","Firework Burst","Champagne Bubbles","Dance Floor Grid","Birthday Stars","Rave Hearts","Karaoke Beat"],
     sports:["Victory Confetti","Champion Stars","Goal Rain","Touchdown Dust","Ace Orbs","Slam Dunk Fireflies","Podium Glow","MVP Pulse","Training Rain","Trophy Grid"],
     horror:["Blood Rain","Haunted Mist","Skeleton Dance","Ghost Fireflies","Dark Fog","Cursed Orbs","Spider Web","Midnight Howl","Graveyard Dust","Shadow Pulse"],
-    calm:["Gentle Rain","Soft Snow","Quiet Stars","Lavender Bubbles","Peaceful Fireflies","Still Lake","Morning Mist","Zen Garden","Sleepy Cloud","Silent Waves"]
+    calm:["Gentle Rain","Soft Snow","Quiet Stars","Lavender Bubbles","Peaceful Fireflies","Still Lake","Morning Mist","Zen Garden","Sleepy Cloud","Silent Waves"],
+    magic:["Sky Lanterns","Lantern Glow","Festival Sparks","Golden Hour","Ember Wish","Candlelight Drift","Wishing Stars","Cozy Firelight","Autumn Lanterns","Warm Festival"]
   };
   const WALLPAPERS=(function(){
-    const out=[], modes=["rain","confetti","bubbles","firefly","petals","stars","dust","orbs","pulse","grid"];
+    const out=[], modes=["rain","confetti","bubbles","firefly","petals","stars","dust","orbs","pulse","grid","lantern"];
     WLL_CATS.forEach(cat=> WLL_NAMES[cat].forEach((n,i)=>{
       out.push({n,c:cat,mode:modes[i%modes.length],colors:WLL_PALS[cat][i%WLL_PALS[cat].length],css:WLL_CSS[cat],size:2,density:45+(i%3)*18});
     }));
+    const PAD=["Arena Dawn","Neon Alley","Midnight Rooftop","Pixel Rain","Frost Mist","Ember Trail","Arcade Glow","Stadium Lights","Victory Sky","Focus Flow","Clutch Point","GG Confetti","Spawn Dust","Lobby Lights","Rank Grind","Team Spirit","Headshot Haze","Quick Scope","Sniper Calm","Battle Charge"];
+    let e=0;
+    while(out.length<456){ const cat=WLL_CATS[e%WLL_CATS.length];
+      out.push({n:PAD[e%PAD.length]+" "+(Math.floor(e/WLL_CATS.length)+1),c:cat,mode:modes[(out.length+e)%modes.length],colors:WLL_PALS[cat][out.length%WLL_PALS[cat].length],css:WLL_CSS[cat],size:2,density:45+((out.length+e)%3)*18});
+      e++;
+    }
+    const sky=out.find(w=>w.n==="Sky Lanterns"); if(sky) sky.mode="lantern";
     return out;
   })();
   const WALL_BY_KEY=Object.fromEntries(WALLPAPERS.map((w,i)=>["wall_"+i,w]));
   let wllCat="all";
   function renderWllCats(){
     $("wllCats").innerHTML=['<button class="wllchip '+(wllCat==="all"?"sel":"")+'" data-wcat="all">ALL <span class="cnt">'+WALLPAPERS.length+'</span></button>']
-      .concat(WLL_CATS.map(c=>'<button class="wllchip '+(wllCat===c?"sel":"")+'" data-wcat="'+c+'">'+c.toUpperCase()+' <span class="cnt">10</span></button>')).join("");
+      .concat(WLL_CATS.map(c=>{ const n=WALLPAPERS.filter(w=>w.c===c).length; return '<button class="wllchip '+(wllCat===c?"sel":"")+'" data-wcat="'+c+'">'+c.toUpperCase()+' <span class="cnt">'+n+'</span></button>'; })).join("");
   }
   function renderWalls(){
     const l=wllCat==="all"?WALLPAPERS:WALLPAPERS.filter(w=>w.c===wllCat);
@@ -5793,6 +6212,7 @@
       else if(conf.mode==="orbs"){ p.sp=0.3+Math.random()*0.9; p.sw=0.6+Math.random()*1.2; p.r=4+Math.random()*conf.size; p.f=0.01+Math.random()*0.03; }
       else if(conf.mode==="grid"){ p.sp=2+Math.random()*4; p.y=Math.random()*H; }
       else if(conf.mode==="pulse"){ p.r=20+Math.random()*60; p.sp=0.008+Math.random()*0.012; p.l=0; }
+      else if(conf.mode==="lantern"){ p.sp=0.3+Math.random()*0.7; p.sw=0.6+Math.random()*1.4; p.r=9+Math.random()*10; p.f=0.01+Math.random()*0.02; }
       GP.push(p);
     }
     if(conf.mode==="code"){
@@ -5907,6 +6327,22 @@
         gctx.globalAlpha=a; gctx.fillStyle=p.c;
         gctx.beginPath(); gctx.arc(p.x,p.y,p.r,0,Math.PI*2); gctx.fill();
         gctx.globalAlpha=a*0.35; gctx.beginPath(); gctx.arc(p.x,p.y,p.r*2.2,0,Math.PI*2); gctx.fill();
+      }
+      else if(mode==="lantern"){
+        p.y-=p.sp; p.x+=Math.sin(t*0.0005+p.ph)*p.sw*0.5;
+        if(p.y<-40){ p.y=H+40; p.x=Math.random()*W; }
+        const fl=0.55+0.45*Math.sin(t*0.015+p.ph*3);
+        const ly=p.y-p.r*0.3;
+        const glow=gctx.createRadialGradient(p.x,ly,2,p.x,ly,p.r*4.5);
+        glow.addColorStop(0,p.c); glow.addColorStop(1,"rgba(255,140,40,0)");
+        gctx.globalAlpha=fl*0.45; gctx.fillStyle=glow;
+        gctx.beginPath(); gctx.arc(p.x,ly,p.r*4.5,0,Math.PI*2); gctx.fill();
+        gctx.globalAlpha=0.92; gctx.fillStyle=p.c;
+        gctx.beginPath(); gctx.arc(p.x,ly,p.r,0,Math.PI*2); gctx.fill();
+        gctx.globalAlpha=0.95; gctx.fillStyle="#fff3c4";
+        gctx.beginPath(); gctx.arc(p.x,p.y-p.r*0.45,p.r*0.42,0,Math.PI*2); gctx.fill();
+        gctx.strokeStyle="rgba(120,60,10,.55)"; gctx.lineWidth=1; gctx.globalAlpha=fl*0.75;
+        gctx.beginPath(); gctx.moveTo(p.x,ly+p.r); gctx.lineTo(p.x,ly+p.r*1.7); gctx.stroke();
       }
     }
     gctx.globalAlpha=1;
@@ -6833,6 +7269,7 @@
   function wire(){
     // nav / sidebar
     document.querySelectorAll(".nav-item").forEach(n=> n.addEventListener("click",()=> switchView(n.dataset.view)));
+    $("dashHub").addEventListener("click",e=>{ const b=e.target.closest("[data-v]"); if(b) switchView(b.dataset.v); });
     $("menuBtn").addEventListener("click",toggleSidebar);
     $("sbOverlay").addEventListener("click",closeSidebar);
     $("homeBtn").addEventListener("click",()=> switchView("home"));
@@ -6956,6 +7393,26 @@
       const ed=e.target.closest("[data-ledit]"), dl=e.target.closest("[data-ldel]");
       if(ed){ const p=state.leaderboard.find(x=>x.id===ed.dataset.ledit); if(p) openLbForm(p); }
       if(dl){ deleteLbEntry(dl.dataset.ldel); }
+    });
+    $("storySearch").addEventListener("input",()=> renderStories());
+    $("addStoryBtn").addEventListener("click",()=> openStoryForm(null));
+    $("storyForm").addEventListener("submit",submitStory);
+    $("storyCancelBtn").addEventListener("click",()=> $("storyFormOverlay").classList.remove("show"));
+    $("storyFormOverlay").addEventListener("click",e=>{ if(e.target===$("storyFormOverlay")) $("storyFormOverlay").classList.remove("show"); });
+    $("storyGrid").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-sedit2]"), dl=e.target.closest("[data-sdel2]");
+      if(ed){ const s=state.stories.find(x=>x.id===ed.dataset.sedit2); if(s) openStoryForm(s); }
+      if(dl){ deleteStory(dl.dataset.sdel2); }
+    });
+    $("pddSearch").addEventListener("input",()=> renderPdd());
+    $("addPddBtn").addEventListener("click",()=> openPddForm(null));
+    $("pddForm").addEventListener("submit",submitPdd);
+    $("pddCancelBtn").addEventListener("click",()=> $("pddFormOverlay").classList.remove("show"));
+    $("pddFormOverlay").addEventListener("click",e=>{ if(e.target===$("pddFormOverlay")) $("pddFormOverlay").classList.remove("show"); });
+    $("pddGrid").addEventListener("click",e=>{
+      const ed=e.target.closest("[data-pedit]"), dl=e.target.closest("[data-pdel]");
+      if(ed){ const p=state.pdd.find(x=>x.id===ed.dataset.pedit); if(p) openPddForm(p); }
+      if(dl){ deletePdd(dl.dataset.pdel); }
     });
     $("achSearch").addEventListener("input",()=> renderAch());
     $("addAchBtn").addEventListener("click",()=> openAchForm(null));
