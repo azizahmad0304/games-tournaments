@@ -95,7 +95,7 @@
   .sb-logo .bolt{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:none;
     background:linear-gradient(135deg,#3d7bff,#00e0ff 60%,#b14bff);
     box-shadow:0 0 22px rgba(0,200,255,.55),inset 0 0 10px rgba(255,255,255,.4);animation:pulse 2.4s ease-in-out infinite}
-  .sb-logo .bolt svg{width:22px;height:22px;color:#0a1026}
+  .sb-logo .bolt svg{width:32px;height:32px}
   @keyframes pulse{0%,100%{box-shadow:0 0 18px rgba(0,200,255,.4)}50%{box-shadow:0 0 34px rgba(0,200,255,.85)}}
   .sb-logo h1{font-family:'Orbitron';font-size:14px;letter-spacing:2px;line-height:1.1;
     background:linear-gradient(90deg,#fff,#7dd8ff 40%,#9b7bff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
@@ -127,7 +127,7 @@
   .logo{display:flex;align-items:center;gap:12px;cursor:pointer;margin-right:auto}
   .logo .bolt{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
     background:linear-gradient(135deg,#3d7bff,#00e0ff 60%,#b14bff);box-shadow:0 0 20px rgba(0,200,255,.5)}
-  .logo .bolt svg{width:20px;height:20px;color:#0a1026}
+  .logo .bolt svg{width:29px;height:29px}
   .logo h1{font-family:'Orbitron';font-size:clamp(14px,2.2vw,19px);letter-spacing:3px;
     background:linear-gradient(90deg,#fff,#7dd8ff 40%,#9b7bff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
   .logo small{display:block;font-size:9px;letter-spacing:6px;color:var(--dim);font-weight:600}
@@ -763,7 +763,7 @@
   .lg-logo{width:76px;height:76px;margin:0 auto 18px;border-radius:22px;display:grid;place-items:center;
     background:linear-gradient(135deg,#3d7bff,#00e0ff 60%,#b14bff);box-shadow:0 0 34px rgba(0,200,255,.55);
     animation:pulse 2.4s ease-in-out infinite}
-  .lg-logo svg{width:38px;height:38px;color:#0a1026}
+  .lg-logo svg{width:44px;height:44px}
   .loginbox h3{justify-content:center;margin-bottom:6px}
   .loginbox .lg-sub{color:var(--dim);font-size:11px;letter-spacing:4px;margin:0 0 22px;text-transform:uppercase}
   .loginbox .lg-hint{color:#5a6394;font-size:12px;margin-top:16px;letter-spacing:1px}
@@ -1139,7 +1139,7 @@
   /* ============ APP ABOUT ============ */
   .about-card{max-width:640px;margin:0 auto;text-align:center;padding:40px 30px;border-radius:20px;background:linear-gradient(180deg,rgba(13,20,48,.9),rgba(10,16,38,.9));border:1px solid var(--stroke)}
   .about-logo{width:88px;height:88px;margin:0 auto 18px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(135deg,#3d7bff,#00e0ff 60%,#b14bff);box-shadow:0 0 40px rgba(0,200,255,.5)}
-  .about-logo svg{width:42px;height:42px;color:#0a1026}
+  .about-logo svg{width:50px;height:50px}
   .about-card h3{margin:0 0 24px;font-size:22px;letter-spacing:1px}
   .about-ver-wrap{display:inline-block;padding:20px 42px;border-radius:18px;background:var(--panel2);border:1px solid var(--stroke)}
   .about-ver-wrap span{display:block;color:var(--dim);font-size:11px;letter-spacing:4px;text-transform:uppercase;margin-bottom:6px}
@@ -1348,7 +1348,7 @@
     background:linear-gradient(135deg,#3d7bff,#00e0ff 55%,#b14bff);box-shadow:0 0 60px rgba(0,200,255,.45);
     animation:bsPulse 1.8s ease-in-out infinite}
   .bs-logo::before{content:"";position:absolute;inset:-8px;border-radius:30px;border:2px solid rgba(0,255,255,.35);animation:bsRing 1.6s ease-out infinite}
-  .bs-logo svg{width:42px;height:42px;color:#0a1026}
+  .bs-logo svg{width:52px;height:52px}
   @keyframes bsPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
   @keyframes bsRing{0%{transform:scale(.85);opacity:1}100%{transform:scale(1.35);opacity:0}}
   .bs-title{font-family:'Orbitron';font-weight:900;letter-spacing:3px;font-size:clamp(15px,2.6vw,21px);
@@ -1557,7 +1557,7 @@
 
   <!-- ============ BOOT / LOADING SCREEN ============ -->
   <div id="bootScreen" aria-hidden="true">
-    <div class="bs-logo"><svg class="fill" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+    <div class="bs-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ledT" x1="8" y1="3" x2="56" y2="61" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00e0ff"/><stop offset=".5" stop-color="#b14bff"/><stop offset="1" stop-color="#ff3d6e"/></linearGradient><filter id="ledG" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M32 3 56 17.5v29L32 61 8 46.5v-29z" stroke="url(#ledT)" stroke-width="3.4" stroke-linejoin="round" filter="url(#ledG)"/><circle cx="32" cy="3" r="2.3" fill="#7df9ff" filter="url(#ledG)"/><circle cx="56" cy="17.5" r="2.3" fill="#b14bff" filter="url(#ledG)"/><circle cx="56" cy="46.5" r="2.3" fill="#ff3d6e" filter="url(#ledG)"/><circle cx="32" cy="61" r="2.3" fill="#ffd54a" filter="url(#ledG)"/><circle cx="8" cy="46.5" r="2.3" fill="#00e0ff" filter="url(#ledG)"/><circle cx="8" cy="17.5" r="2.3" fill="#2bff9e" filter="url(#ledG)"/><path d="M22 26.5h20a6.5 6.5 0 0 1 6.5 6.5v3a6.5 6.5 0 0 1-10.7 4.9L34.4 37h-4.8l-3.4 2.9A6.5 6.5 0 0 1 15.5 36v-3a6.5 6.5 0 0 1 6.5-6.5z" stroke="#7df9ff" stroke-width="2" stroke-linejoin="round" fill="rgba(125,249,255,.07)" filter="url(#ledG)"/><path d="M18.5 32h7M22 28.5v7" stroke="#7df9ff" stroke-width="2.2" stroke-linecap="round" filter="url(#ledG)"/><circle cx="45" cy="30.5" r="1.7" fill="#fff" filter="url(#ledG)"/><circle cx="41" cy="36" r="1.7" fill="#ffd54a" filter="url(#ledG)"/><circle cx="47.5" cy="36.5" r="1.7" fill="#ff3d6e" filter="url(#ledG)"/></svg></div>
     <div class="bs-title">GAMES TOURNAMENTS</div>
     <div class="bs-sub">Esports Arena · v15.76</div>
     <div class="bs-bar"><i></i></div>
@@ -1595,7 +1595,7 @@
   <!-- ============ SIDEBAR ============ -->
   <aside id="sidebar">
     <div class="sb-logo">
-      <div class="bolt"><svg class="fill" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="bolt"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ledT" x1="8" y1="3" x2="56" y2="61" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00e0ff"/><stop offset=".5" stop-color="#b14bff"/><stop offset="1" stop-color="#ff3d6e"/></linearGradient><filter id="ledG" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M32 3 56 17.5v29L32 61 8 46.5v-29z" stroke="url(#ledT)" stroke-width="3.4" stroke-linejoin="round" filter="url(#ledG)"/><circle cx="32" cy="3" r="2.3" fill="#7df9ff" filter="url(#ledG)"/><circle cx="56" cy="17.5" r="2.3" fill="#b14bff" filter="url(#ledG)"/><circle cx="56" cy="46.5" r="2.3" fill="#ff3d6e" filter="url(#ledG)"/><circle cx="32" cy="61" r="2.3" fill="#ffd54a" filter="url(#ledG)"/><circle cx="8" cy="46.5" r="2.3" fill="#00e0ff" filter="url(#ledG)"/><circle cx="8" cy="17.5" r="2.3" fill="#2bff9e" filter="url(#ledG)"/><path d="M22 26.5h20a6.5 6.5 0 0 1 6.5 6.5v3a6.5 6.5 0 0 1-10.7 4.9L34.4 37h-4.8l-3.4 2.9A6.5 6.5 0 0 1 15.5 36v-3a6.5 6.5 0 0 1 6.5-6.5z" stroke="#7df9ff" stroke-width="2" stroke-linejoin="round" fill="rgba(125,249,255,.07)" filter="url(#ledG)"/><path d="M18.5 32h7M22 28.5v7" stroke="#7df9ff" stroke-width="2.2" stroke-linecap="round" filter="url(#ledG)"/><circle cx="45" cy="30.5" r="1.7" fill="#fff" filter="url(#ledG)"/><circle cx="41" cy="36" r="1.7" fill="#ffd54a" filter="url(#ledG)"/><circle cx="47.5" cy="36.5" r="1.7" fill="#ff3d6e" filter="url(#ledG)"/></svg></div>
       <div>
         <h1>GAMES<br>TOURNAMENTS</h1>
         <small>ESPORTS ARENA</small>
@@ -1664,7 +1664,7 @@
     <header>
       <button class="hamburger" id="menuBtn"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
       <div class="logo" id="homeBtn">
-        <div class="bolt"><svg class="fill" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+        <div class="bolt"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ledT" x1="8" y1="3" x2="56" y2="61" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00e0ff"/><stop offset=".5" stop-color="#b14bff"/><stop offset="1" stop-color="#ff3d6e"/></linearGradient><filter id="ledG" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M32 3 56 17.5v29L32 61 8 46.5v-29z" stroke="url(#ledT)" stroke-width="3.4" stroke-linejoin="round" filter="url(#ledG)"/><circle cx="32" cy="3" r="2.3" fill="#7df9ff" filter="url(#ledG)"/><circle cx="56" cy="17.5" r="2.3" fill="#b14bff" filter="url(#ledG)"/><circle cx="56" cy="46.5" r="2.3" fill="#ff3d6e" filter="url(#ledG)"/><circle cx="32" cy="61" r="2.3" fill="#ffd54a" filter="url(#ledG)"/><circle cx="8" cy="46.5" r="2.3" fill="#00e0ff" filter="url(#ledG)"/><circle cx="8" cy="17.5" r="2.3" fill="#2bff9e" filter="url(#ledG)"/><path d="M22 26.5h20a6.5 6.5 0 0 1 6.5 6.5v3a6.5 6.5 0 0 1-10.7 4.9L34.4 37h-4.8l-3.4 2.9A6.5 6.5 0 0 1 15.5 36v-3a6.5 6.5 0 0 1 6.5-6.5z" stroke="#7df9ff" stroke-width="2" stroke-linejoin="round" fill="rgba(125,249,255,.07)" filter="url(#ledG)"/><path d="M18.5 32h7M22 28.5v7" stroke="#7df9ff" stroke-width="2.2" stroke-linecap="round" filter="url(#ledG)"/><circle cx="45" cy="30.5" r="1.7" fill="#fff" filter="url(#ledG)"/><circle cx="41" cy="36" r="1.7" fill="#ffd54a" filter="url(#ledG)"/><circle cx="47.5" cy="36.5" r="1.7" fill="#ff3d6e" filter="url(#ledG)"/></svg></div>
         <div>
           <h1>GAMES TOURNAMENTS</h1>
           <small>ESPORTS ARENA</small>
@@ -2370,7 +2370,7 @@
         <div class="page-title">APP ABOUT</div>
         <div class="page-sub">Games Tournaments — your esports arena.</div>
         <div class="about-card">
-          <div class="about-logo"><svg class="fill" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+          <div class="about-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ledT" x1="8" y1="3" x2="56" y2="61" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00e0ff"/><stop offset=".5" stop-color="#b14bff"/><stop offset="1" stop-color="#ff3d6e"/></linearGradient><filter id="ledG" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M32 3 56 17.5v29L32 61 8 46.5v-29z" stroke="url(#ledT)" stroke-width="3.4" stroke-linejoin="round" filter="url(#ledG)"/><circle cx="32" cy="3" r="2.3" fill="#7df9ff" filter="url(#ledG)"/><circle cx="56" cy="17.5" r="2.3" fill="#b14bff" filter="url(#ledG)"/><circle cx="56" cy="46.5" r="2.3" fill="#ff3d6e" filter="url(#ledG)"/><circle cx="32" cy="61" r="2.3" fill="#ffd54a" filter="url(#ledG)"/><circle cx="8" cy="46.5" r="2.3" fill="#00e0ff" filter="url(#ledG)"/><circle cx="8" cy="17.5" r="2.3" fill="#2bff9e" filter="url(#ledG)"/><path d="M22 26.5h20a6.5 6.5 0 0 1 6.5 6.5v3a6.5 6.5 0 0 1-10.7 4.9L34.4 37h-4.8l-3.4 2.9A6.5 6.5 0 0 1 15.5 36v-3a6.5 6.5 0 0 1 6.5-6.5z" stroke="#7df9ff" stroke-width="2" stroke-linejoin="round" fill="rgba(125,249,255,.07)" filter="url(#ledG)"/><path d="M18.5 32h7M22 28.5v7" stroke="#7df9ff" stroke-width="2.2" stroke-linecap="round" filter="url(#ledG)"/><circle cx="45" cy="30.5" r="1.7" fill="#fff" filter="url(#ledG)"/><circle cx="41" cy="36" r="1.7" fill="#ffd54a" filter="url(#ledG)"/><circle cx="47.5" cy="36.5" r="1.7" fill="#ff3d6e" filter="url(#ledG)"/></svg></div>
           <h3>GAMES TOURNAMENTS</h3>
           <div class="about-ver-wrap"><span>APP VERSION</span><b id="aboutVer">v15.76</b></div>
         </div>
@@ -3041,7 +3041,7 @@
   <!-- ============ LOGIN ============ -->
   <div class="overlay show" id="loginOverlay">
     <div class="modal loginbox">
-      <div class="lg-logo"><svg class="fill" viewBox="0 0 24 24"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+      <div class="lg-logo"><svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="ledT" x1="8" y1="3" x2="56" y2="61" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#00e0ff"/><stop offset=".5" stop-color="#b14bff"/><stop offset="1" stop-color="#ff3d6e"/></linearGradient><filter id="ledG" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="2.6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><path d="M32 3 56 17.5v29L32 61 8 46.5v-29z" stroke="url(#ledT)" stroke-width="3.4" stroke-linejoin="round" filter="url(#ledG)"/><circle cx="32" cy="3" r="2.3" fill="#7df9ff" filter="url(#ledG)"/><circle cx="56" cy="17.5" r="2.3" fill="#b14bff" filter="url(#ledG)"/><circle cx="56" cy="46.5" r="2.3" fill="#ff3d6e" filter="url(#ledG)"/><circle cx="32" cy="61" r="2.3" fill="#ffd54a" filter="url(#ledG)"/><circle cx="8" cy="46.5" r="2.3" fill="#00e0ff" filter="url(#ledG)"/><circle cx="8" cy="17.5" r="2.3" fill="#2bff9e" filter="url(#ledG)"/><path d="M22 26.5h20a6.5 6.5 0 0 1 6.5 6.5v3a6.5 6.5 0 0 1-10.7 4.9L34.4 37h-4.8l-3.4 2.9A6.5 6.5 0 0 1 15.5 36v-3a6.5 6.5 0 0 1 6.5-6.5z" stroke="#7df9ff" stroke-width="2" stroke-linejoin="round" fill="rgba(125,249,255,.07)" filter="url(#ledG)"/><path d="M18.5 32h7M22 28.5v7" stroke="#7df9ff" stroke-width="2.2" stroke-linecap="round" filter="url(#ledG)"/><circle cx="45" cy="30.5" r="1.7" fill="#fff" filter="url(#ledG)"/><circle cx="41" cy="36" r="1.7" fill="#ffd54a" filter="url(#ledG)"/><circle cx="47.5" cy="36.5" r="1.7" fill="#ff3d6e" filter="url(#ledG)"/></svg></div>
       <h3>GAMES TOURNAMENTS</h3>
       <p class="lg-sub">Esports Arena · Member Access</p>
       <div class="lg-ver">v15.76 PREMIUM</div>
