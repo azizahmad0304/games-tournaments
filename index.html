@@ -1596,6 +1596,55 @@
   .wthr b{font-size:22px;color:#2bff9e;display:block}
   .wthr span{color:#8fa3c8;font-size:11px}
 
+  /* health & heartbeat */
+  .hbeatmon{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
+  .hb-heart{position:relative;width:78px;height:78px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,61,110,.08);border:1px solid rgba(255,61,110,.32)}
+  .hb-heart svg{width:42px;height:42px;fill:#ff2d7a;filter:drop-shadow(0 0 12px rgba(255,61,110,.75))}
+  .hb-heart.pulse{animation:hbPulse .7s ease}
+  @keyframes hbPulse{0%{transform:scale(1)}30%{transform:scale(1.22)}60%{transform:scale(.95)}100%{transform:scale(1)}}
+  .hb-meta b{font-size:34px;background:linear-gradient(90deg,#ff2d7a,#ffd54a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1}
+  .hb-meta span{color:#8fa3c8;font-size:10px;letter-spacing:1.5px}
+  .hb-status{margin-top:6px;font-size:10px;letter-spacing:1px;padding:3px 10px;border-radius:20px;display:inline-block}
+  .hb-status.rest{background:rgba(0,224,255,.12);color:#00e0ff;border:1px solid rgba(0,224,255,.3)}
+  .hb-status.ok{background:rgba(43,255,158,.12);color:#2bff9e;border:1px solid rgba(43,255,158,.3)}
+  .hb-status.hot{background:rgba(255,61,110,.14);color:#ff3d6e;border:1px solid rgba(255,61,110,.4)}
+  .hb-spark{display:flex;align-items:flex-end;gap:3px;height:46px;flex:1;min-width:180px}
+  .hb-spark i{width:7px;border-radius:2px;background:linear-gradient(180deg,#ff2d7a,#ffd54a);opacity:.85;transition:height .4s}
+  .vitgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+  .vitbox{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:11px;padding:11px}
+  .vit-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+  .vit-top span{font-size:9px;color:#8fa3c8;letter-spacing:1px}
+  .vit-top b{font-size:16px;color:#fff}
+  .meter{height:6px;background:rgba(255,255,255,.07);border-radius:4px;overflow:hidden}
+  .meter i{display:block;height:100%;width:0;border-radius:4px;background:linear-gradient(90deg,#00e0ff,#2bff9e);transition:width .6s}
+  .meter.hot i{background:linear-gradient(90deg,#ffd54a,#ff3d6e)}
+  .wheart{display:flex;gap:12px;align-items:center}
+  .wheart .hpulse{font-size:30px;color:#ff3d6e;animation:heartBeat 1.2s infinite}
+  @keyframes heartBeat{0%,100%{transform:scale(1)}25%{transform:scale(1.18)}45%{transform:scale(.92)}70%{transform:scale(1.12)}}
+  .wheart b{font-size:26px;color:#ff3d6e;display:block;line-height:1}
+  .wheart span{font-size:10px;color:#8fa3c8;letter-spacing:1px}
+  .cwrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:11px 4px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .cw-info b{display:block;font-size:13px;color:#fff}
+  .cw-info span{font-size:9px;color:#8fa3c8;letter-spacing:1px}
+  .cw-acts{display:flex;gap:8px}
+  .cw-edit,.cw-del{font-size:10px;letter-spacing:1px;padding:6px 12px;border-radius:8px;cursor:pointer;border:1px solid}
+  .cw-edit{background:rgba(0,224,255,.1);border-color:rgba(0,224,255,.3);color:#7df9ff}
+  .cw-del{background:rgba(255,61,110,.1);border-color:rgba(255,61,110,.35);color:#ff6b92}
+  .cw-add{width:100%;margin-top:10px;background:linear-gradient(90deg,rgba(0,224,255,.18),rgba(177,75,255,.18));border:1px dashed rgba(0,224,255,.4);color:#dffaff;border-radius:10px;padding:11px;font-size:12px;letter-spacing:1px;cursor:pointer}
+  .cnote{color:#cfe3ff;font-size:14px}
+  .ccount b{font-size:19px;color:#fff;display:block}
+  .ctimer b{font-size:19px;color:#ffd54a;display:block}
+  .ctimer span{font-size:10px;color:#8fa3c8;letter-spacing:1px}
+  .curls a{display:block;text-align:center;background:rgba(0,224,255,.12);border:1px solid rgba(0,224,255,.3);color:#7df9ff;border-radius:9px;padding:9px;font-size:12px;letter-spacing:1px;text-decoration:none}
+  .wfield{margin-bottom:10px}
+  .wfield label{display:block;font-size:9px;color:#8fa3c8;letter-spacing:1px;margin-bottom:5px}
+  .wfield input,.wfield select{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;border-radius:9px;padding:9px 10px;font-size:13px;outline:none}
+  .wfield input:focus,.wfield select:focus{border-color:rgba(0,224,255,.5)}
+  .wformbtns{display:flex;gap:10px;justify-content:flex-end}
+  .wformbtns button{font-size:11px;letter-spacing:1px;padding:9px 16px;border-radius:9px;cursor:pointer;border:1px solid}
+  .wformbtns .w-save{background:linear-gradient(90deg,rgba(0,224,255,.25),rgba(177,75,255,.25));border-color:rgba(0,224,255,.45);color:#fff}
+  .wformbtns .w-cancel{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.15);color:#8fa3c8}
+
 </style>
 </head>
 <body>
@@ -1688,6 +1737,7 @@
       <a class="nav-item" data-view="power"><span class="ni"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></span> Power Mode</a>
       <a class="nav-item" data-view="fps"><span class="ni"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></span> FPS</a>
       <a class="nav-item" data-view="network"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></span> Network &amp; Ping</a>
+      <a class="nav-item" data-view="health"><span class="ni"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><path d="M9 12h6M12 9v6"/></svg></span> Health &amp; Heartbeat</a>
       <a class="nav-item" data-view="widgets"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span> Widgets</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
@@ -2447,6 +2497,43 @@
         </div>
       </section>
 
+      <!-- ============ HEALTH & HEARTBEAT ============ -->
+      <section id="healthView" class="hidden">
+        <div class="page-title">HEALTH &amp; HEARTBEAT</div>
+        <div class="page-sub">System vitals in real time — heartbeat pulse, temperature, load and memory. Simulated live values while offline.</div>
+        <div class="setcard">
+          <h4>HEARTBEAT MONITOR</h4>
+          <div class="hbeatmon">
+            <div class="hb-heart" id="hbHeart"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+            <div class="hb-meta">
+              <b id="hbBpm">--</b>
+              <span>BPM · HEARTBEAT</span>
+              <div class="hb-status" id="hbStatus">WARMING UP</div>
+            </div>
+            <div class="hb-spark" id="hbSpark"></div>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>VITALS</h4>
+          <div class="vitgrid">
+            <div class="vitbox"><div class="vit-top"><span>CPU TEMP</span><b id="vitCpuT">--</b></div><div class="meter" id="vitCpuTBarW"><i id="vitCpuTBar"></i></div></div>
+            <div class="vitbox"><div class="vit-top"><span>CPU LOAD</span><b id="vitCpuL">--</b></div><div class="meter" id="vitCpuLBarW"><i id="vitCpuLBar"></i></div></div>
+            <div class="vitbox"><div class="vit-top"><span>RAM USED</span><b id="vitRam">--</b></div><div class="meter" id="vitRamBarW"><i id="vitRamBar"></i></div></div>
+            <div class="vitbox"><div class="vit-top"><span>GPU TEMP</span><b id="vitGpuT">--</b></div><div class="meter" id="vitGpuTBarW"><i id="vitGpuTBar"></i></div></div>
+            <div class="vitbox"><div class="vit-top"><span>GPU LOAD</span><b id="vitGpuL">--</b></div><div class="meter" id="vitGpuLBarW"><i id="vitGpuLBar"></i></div></div>
+            <div class="vitbox"><div class="vit-top"><span>STORAGE</span><b id="vitStor">--</b></div><div class="meter" id="vitStorBarW"><i id="vitStorBar"></i></div></div>
+            <div class="vitbox"><div class="vit-top"><span>BATTERY</span><b id="vitBat">--</b></div><div class="meter" id="vitBatBarW"><i id="vitBatBar"></i></div></div>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>DISPLAY</h4>
+          <div class="setrow">
+            <div class="lbl">Heartbeat Widget <small>Show the live heartbeat card on the dashboard widgets</small></div>
+            <button class="switch" id="tgWHeart"></button>
+          </div>
+        </div>
+      </section>
+
       <!-- ============ WIDGETS ============ -->
       <section id="widgetsView" class="hidden">
         <div class="page-title">WIDGETS</div>
@@ -2477,6 +2564,25 @@
             <div class="lbl">Arena Stats <small>Mini strip — tournaments, players, members &amp; teams</small></div>
             <button class="switch" id="tgWStats"></button>
           </div>
+          <div class="setrow">
+            <div class="lbl">Health &amp; Heartbeat <small>Live heartbeat card with BPM on the dashboard</small></div>
+            <button class="switch" id="tgWHeart"></button>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>MY WIDGETS</h4>
+          <div class="page-sub" style="margin:0 0 6px">Create your own widgets — notes, counters, countdown timers or links. Edit or delete them anytime.</div>
+          <div id="wCustomList"></div>
+          <button class="cw-add" id="wAddBtn">+ ADD WIDGET</button>
+        </div>
+        <div class="setcard hidden" id="wEditCard">
+          <h4 id="weHeading">ADD WIDGET</h4>
+          <div class="wfield"><label>TITLE</label><input id="weTitle" maxlength="24" placeholder="e.g. My Score"></div>
+          <div class="wfield"><label>TYPE</label><select id="weType"><option value="note">Note</option><option value="counter">Counter</option><option value="timer">Countdown Timer</option><option value="url">Link</option></select></div>
+          <div class="wfield" id="weValueRow"><label>CONTENT</label><input id="weValue" placeholder="Text for the widget"></div>
+          <div class="wfield hidden" id="weSecRow"><label>SECONDS</label><input id="weSec" type="number" min="1" value="60"></div>
+          <div class="wfield"><label>ICON (EMOJI)</label><input id="weIcon" maxlength="4" placeholder="e.g. 🎯"></div>
+          <div class="wformbtns"><button class="w-cancel" id="weCancel">CANCEL</button><button class="w-save" id="weSave">SAVE WIDGET</button></div>
         </div>
         <div class="setcard">
           <h4>LIVE PREVIEW</h4>
@@ -3709,7 +3815,8 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     state.settings.power = Object.assign({plan:"power",battery:false,perf:true,auto:true}, state.settings.power||{});
     state.settings.fps = Object.assign({counter:true,hud:"dash"}, state.settings.fps||{});
     state.settings.net = Object.assign({monitor:true,pingOn:true,mode:"auto",ping:24,down:245,up:32}, state.settings.net||{});
-    state.settings.widgets = Object.assign({clock:true,weather:true,quick:true,countdown:true,potd:false,stats:true}, state.settings.widgets||{});
+    state.settings.widgets = Object.assign({clock:true,weather:true,quick:true,countdown:true,potd:false,stats:true,heart:true,custom:[]}, state.settings.widgets||{});
+    if(!Array.isArray(state.settings.widgets.custom)) state.settings.widgets.custom=[];
     if(!["aurora","cyber","light","crt"].includes(state.settings.uiStyle)) state.settings.uiStyle="aurora";
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
@@ -3739,7 +3846,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -5932,7 +6039,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   }
 
   /* ===================== WIDGETS ===================== */
-  const WT_KEYS={tgWClock:"clock",tgWWeather:"weather",tgWQuick:"quick",tgWCount:"countdown",tgWPotd:"potd",tgWStats:"stats"};
+  const WT_KEYS={tgWClock:"clock",tgWWeather:"weather",tgWQuick:"quick",tgWCount:"countdown",tgWPotd:"potd",tgWStats:"stats",tgWHeart:"heart"};
   function wicon(e){ return '<span style="font-size:15px">'+e+'</span>'; }
   function wthCard(){
     const cities=["LAHORE","KARACHI","ISLAMABAD","DUBAI","LONDON"];
@@ -5961,6 +6068,13 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const av=avatarById(normAv(p.avatarE));
     return '<div class="wpotd"><span class="avemo">'+avArt(av)+'</span><div><b>'+esc(p.name)+'</b><span>'+(p.game?esc(p.game).toUpperCase()+" · ":"")+'CHALLENGER</span></div></div>';
   }
+  function customCard(c){
+    if(c.type==="note") return '<div class="wcard"><div class="whead">'+wicon(c.icon||"📝")+'<b>'+esc(c.title)+'</b></div><div class="cnote">'+esc(c.value)+'</div></div>';
+    if(c.type==="counter") return '<div class="wcard"><div class="whead">'+wicon(c.icon||"🔢")+'<b>'+esc(c.title)+'</b></div><div class="ccount"><b>'+esc(c.value)+'</b></div></div>';
+    if(c.type==="timer") return '<div class="wcard"><div class="whead">'+wicon(c.icon||"⏱️")+'<b>'+esc(c.title)+'</b></div><div class="ctimer"><b data-ct="'+c.id+'">'+(c.sec||0)+'</b><span>SECONDS LEFT</span></div></div>';
+    if(c.type==="url") return '<div class="wcard"><div class="whead">'+wicon(c.icon||"🔗")+'<b>'+esc(c.title)+'</b></div><div class="curls"><a href="'+esc(c.value)+'" target="_blank" rel="noopener">OPEN LINK</a></div></div>';
+    return '<div class="wcard"><div class="whead">'+wicon(c.icon||"📝")+'<b>'+esc(c.title)+'</b></div><div class="cnote">'+esc(c.value)+'</div></div>';
+  }
   function renderWidgets(target){
     const w=state.settings.widgets||{};
     Object.keys(WT_KEYS).forEach(id=>{ const t=$(id); if(t) t.classList.toggle("on", !!w[WT_KEYS[id]]); });
@@ -5972,6 +6086,8 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     if(w.countdown){ const nx=nextTour(); parts.push('<div class="wcard w-count"><div class="whead">'+wicon("🏁")+'<b>NEXT MATCH</b></div>'+(nx?cdnCard(nx):'<div class="wempty">No upcoming tournaments</div>')+'</div>'); }
     if(w.potd){ parts.push('<div class="wcard w-potd"><div class="whead">'+wicon("👑")+'<b>PLAYER OF THE DAY</b></div>'+potdCard()+'</div>'); }
     if(w.stats){ parts.push('<div class="wcard w-stats"><div class="whead">'+wicon("📊")+'<b>ARENA STATS</b></div><div class="wstats"><span><b>'+state.tournaments.length+'</b>TOURNAMENTS</span><span><b>'+state.players.length+'</b>PLAYERS</span><span><b>'+state.members.length+'</b>MEMBERS</span><span><b>'+state.teams.length+'</b>TEAMS</span></div></div>'); }
+    if(w.heart){ parts.push('<div class="wcard w-heart"><div class="whead">'+wicon("❤️")+'<b>HEARTBEAT</b></div><div class="wheart"><span class="hpulse">❤</span><div><b id="wHeartBpm">'+(HB.bpm||"--")+'</b><span>BPM · SYSTEM LIVE</span></div></div></div>'); }
+    (w.custom||[]).forEach(c=> parts.push(customCard(c)));
     el.innerHTML=parts.join("");
   }
   function updateWidgetLive(){
@@ -5979,6 +6095,86 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const el=$("widgetRow"); if(!el) return;
     if(w.clock){ const h=el.querySelector('.wclock b'); if(h){ const d=new Date(); h.textContent=d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"}); const s=el.querySelector('.wclock span'); if(s) s.textContent=d.toLocaleDateString([],{weekday:"long",day:"numeric",month:"short"}); } }
     if(w.countdown){ const h=el.querySelector('[data-cd]'); const nx=nextTour(); if(h) h.textContent=nx?cdnText(nx):"—"; }
+    if(w.heart){ const h=$("wHeartBpm"); if(h) h.textContent=HB.bpm||"--"; }
+    (w.custom||[]).forEach(c=>{
+      if(c.type==="timer"&&el){ const t=el.querySelector('[data-ct="'+c.id+'"]'); if(t){ if((c.sec||0)>0){ c.sec=(c.sec||0)-1; } t.textContent=c.sec||0; } }
+    });
+  }
+
+  /* ===================== HEALTH & HEARTBEAT ===================== */
+  const HB={bpm:72,hist:[],v:{cpuT:48,cpuL:32,ram:55,gpuT:52,gpuL:40,stor:63,bat:81}};
+  function hbSpark(){
+    const el=$("hbSpark"); if(!el) return;
+    el.innerHTML=HB.hist.map(v=>{ const h=Math.max(6,Math.min(46,Math.round((v-40)/120*46))); return '<i style="height:'+h+'px"></i>'; }).join("");
+  }
+  function hbTick(){
+    HB.bpm=Math.max(48,Math.min(165,HB.bpm+Math.round((Math.random()*2-1)*4)));
+    HB.hist.push(HB.bpm); if(HB.hist.length>40) HB.hist.shift();
+    hbSpark();
+    const bp=$("hbBpm"); if(bp) bp.textContent=HB.bpm;
+    const st=$("hbStatus"); if(st){ const s=HB.bpm<60?"RESTING":HB.bpm<100?"ACTIVE":"INTENSE"; st.textContent=s; st.className="hb-status "+(HB.bpm<60?"rest":HB.bpm<100?"ok":"hot"); }
+    const hr=$("hbHeart"); if(hr){ hr.classList.remove("pulse"); void hr.offsetWidth; hr.classList.add("pulse"); }
+    const V=HB.v;
+    V.cpuT=Math.max(34,Math.min(99,V.cpuT+(Math.random()*2-1)*1.6)); V.cpuL=Math.max(4,Math.min(100,V.cpuL+(Math.random()*2-1)*7));
+    V.ram=Math.max(12,Math.min(98,V.ram+(Math.random()*2-1)*2.2)); V.gpuT=Math.max(36,Math.min(99,V.gpuT+(Math.random()*2-1)*1.4));
+    V.gpuL=Math.max(3,Math.min(100,V.gpuL+(Math.random()*2-1)*9)); V.stor=Math.max(20,Math.min(96,V.stor+(Math.random()*2-1)*.3)); V.bat=Math.max(5,Math.min(100,V.bat+(Math.random()*2-1)*.8));
+    const set=(valEl,barEl,mEl,val,hot)=> { const a=$("vit"+valEl),b=$("vit"+barEl),m=$("vit"+mEl+"BarW"); if(a) a.textContent=Math.round(val)+(mEl==="CpuT"||mEl==="GpuT"?"°C":"%"); if(b) b.style.width=Math.round(val)+"%"; if(m) m.classList.toggle("hot", hot(val)); };
+    set("CpuT","CpuTBar","CpuT",V.cpuT, v=>v>80);
+    set("CpuL","CpuLBar","CpuL",V.cpuL, v=>v>85);
+    set("Ram","RamBar","Ram",V.ram, v=>v>90);
+    set("GpuT","GpuTBar","GpuT",V.gpuT, v=>v>80);
+    set("GpuL","GpuLBar","GpuL",V.gpuL, v=>v>85);
+    set("Stor","StorBar","Stor",V.stor, v=>v>90);
+    set("Bat","BatBar","Bat",V.bat, v=>v<20);
+  }
+
+  /* ===================== CUSTOM WIDGETS ===================== */
+  let wEditId=null;
+  function renderCustomWidgets(){
+    const list=$("wCustomList"); if(!list) return;
+    const cw=(state.settings.widgets||{}).custom||[];
+    if(!cw.length){ list.innerHTML='<div class="wempty">No custom widgets yet — hit "+ ADD WIDGET" to create one.</div>'; return; }
+    list.innerHTML=cw.map(c=>'<div class="cwrow"><div class="cw-info"><b>'+esc(c.title)+'</b><span>'+esc(c.type).toUpperCase()+'</span></div><div class="cw-acts"><button class="cw-edit" data-wedit="'+c.id+'">EDIT</button><button class="cw-del" data-wdel="'+c.id+'">DELETE</button></div></div>').join("");
+  }
+  function openWidgetEdit(id){
+    wEditId=id||null;
+    const cw=(state.settings.widgets||{}).custom||[];
+    const c=id?cw.find(x=>x.id===id):null;
+    $("weTitle").value=c?c.title:"";
+    $("weType").value=c?c.type:"note";
+    $("weValue").value=c?c.value:"";
+    $("weIcon").value=c?c.icon:"";
+    $("weSec").value=c?c.sec:"";
+    $("weHeading").textContent=id?"EDIT WIDGET":"ADD WIDGET";
+    const t=id?c.type:$("weType").value;
+    $("weSecRow").classList.toggle("hidden", t!=="timer");
+    $("weValueRow").classList.toggle("hidden", t==="timer");
+    $("wEditCard").classList.remove("hidden");
+  }
+  function closeWidgetEdit(){ wEditId=null; $("wEditCard").classList.add("hidden"); }
+  function saveWidgetEdit(){
+    const w=state.settings.widgets||{};
+    const cw=w.custom||[];
+    const title=$("weTitle").value.trim()||"My Widget";
+    const type=$("weType").value;
+    const value=$("weValue").value.trim();
+    const icon=$("weIcon").value.trim();
+    const sec=Math.max(1,parseInt($("weSec").value,10)||60);
+    if(wEditId){
+      const c=cw.find(x=>x.id===wEditId);
+      if(c){ c.title=title; c.type=type; c.value=value; c.icon=icon; c.sec=sec; }
+    } else {
+      cw.push({id:"cw"+Date.now(),title:title,type:type,value:value,icon:icon,sec:sec});
+    }
+    w.custom=cw;
+    saveAll(); renderWidgets(); renderWidgets("widgetPrev"); renderCustomWidgets(); closeWidgetEdit();
+    toast(wEditId?"Widget updated":"Widget added");
+  }
+  function delWidget(id){
+    const w=state.settings.widgets||{};
+    w.custom=(w.custom||[]).filter(x=>x.id!==id);
+    saveAll(); renderWidgets(); renderWidgets("widgetPrev"); renderCustomWidgets();
+    toast("Widget deleted");
   }
 
   /* ===================== RGB LIGHTING ===================== */
@@ -8659,6 +8855,13 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     $("tgWPotd").addEventListener("click",()=>{ state.settings.widgets.potd=!state.settings.widgets.potd; saveAll(); renderWidgets(); renderWidgets("widgetPrev"); toast("Player of the Day "+(state.settings.widgets.potd?"enabled":"disabled")); });
     $("tgWStats").addEventListener("click",()=>{ state.settings.widgets.stats=!state.settings.widgets.stats; saveAll(); renderWidgets(); renderWidgets("widgetPrev"); toast("Arena Stats "+(state.settings.widgets.stats?"enabled":"disabled")); });
     $("widgetRow").addEventListener("click",e=>{ const b=e.target.closest("[data-wq]"); if(!b) return; if(b.dataset.wq==="tour") openTourForm(null); else if(b.dataset.wq==="reg") switchView("register"); else if(b.dataset.wq==="chat") switchView("chat"); else if(b.dataset.wq==="shop") switchView("shop"); });
+    $("tgWHeart").addEventListener("click",()=>{ state.settings.widgets.heart=!state.settings.widgets.heart; saveAll(); renderWidgets(); renderWidgets("widgetPrev"); toast("Heartbeat Widget "+(state.settings.widgets.heart?"enabled":"disabled")); });
+    $("wAddBtn").addEventListener("click",()=>openWidgetEdit(null));
+    $("weCancel").addEventListener("click",closeWidgetEdit);
+    $("weSave").addEventListener("click",saveWidgetEdit);
+    $("weType").addEventListener("change",()=>{ const t=$("weType").value; $("weSecRow").classList.toggle("hidden",t!=="timer"); $("weValueRow").classList.toggle("hidden",t==="timer"); });
+    $("wCustomList").addEventListener("click",e=>{ const ed=e.target.closest("[data-wedit]"); const del=e.target.closest("[data-wdel]"); if(ed) openWidgetEdit(ed.dataset.wedit); else if(del) delWidget(del.dataset.wdel); });
+    renderCustomWidgets();
     $("nModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-nmode]"); if(!b) return; state.settings.net.mode=b.dataset.nmode; saveAll(); renderNet(); toast("Network test: "+b.dataset.nmode.toUpperCase()); });
 
     // rgb lighting
@@ -8789,6 +8992,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   renderFps();
   renderNet();
   renderWidgets();
+  hbTick();
   if(window.gtPower && window.gtPower.onAuto){ window.gtPower.onAuto(mode=> autoSetPower(mode)); }
   renderRgb();
   renderMusic();
@@ -8800,7 +9004,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   applyPremiumShell();
   initUiStyle();
   initTilt();
-  setInterval(function(){ const hc=$("heroClock"); if(hc){ const d=new Date(); hc.textContent=d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"}); const hd=$("heroDay"); if(hd) hd.textContent=d.toLocaleDateString([],{weekday:"long"}); const hdt=$("heroDate"); if(hdt) hdt.textContent=d.toLocaleDateString([],{day:"numeric",month:"short",year:"numeric"}); } updateWidgetLive(); },1000);
+  setInterval(function(){ const hc=$("heroClock"); if(hc){ const d=new Date(); hc.textContent=d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"}); const hd=$("heroDay"); if(hd) hd.textContent=d.toLocaleDateString([],{weekday:"long"}); const hdt=$("heroDate"); if(hdt) hdt.textContent=d.toLocaleDateString([],{day:"numeric",month:"short",year:"numeric"}); } updateWidgetLive(); hbTick(); },1000);
   switchView("home");
   requestAnimationFrame(loop);
   const bootEl=$("bootScreen");
