@@ -1412,6 +1412,14 @@
   .fpsbar{height:6px;border-radius:100px;background:rgba(255,255,255,.08);margin-top:16px;overflow:hidden}
   .fpsbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#00e0ff,#2bff9e);box-shadow:0 0 12px #2bff9e;transition:width .3s}
   .fpsfloat{position:fixed;top:14px;right:14px;z-index:999;padding:8px 16px;border-radius:100px;border:1px solid var(--cyber);background:rgba(4,12,24,.85);color:var(--cyber);font-family:'Orbitron';font-size:13px;font-weight:700;letter-spacing:1px;box-shadow:0 0 20px var(--cyber);pointer-events:none}
+  .hero .hmodem .hmd-mini{color:var(--dim);font-weight:500;letter-spacing:0;font-size:9px}
+  .hero .hmodem .hmd-mini b{color:#2bff9e}
+  .netmeter{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:10px 0 6px}
+  .netmeter .netbox{text-align:center;padding:16px 10px;border-radius:16px;border:1px solid var(--stroke);background:rgba(255,255,255,.03)}
+  .netmeter .netbox b{display:block;font-family:'Orbitron';font-size:30px;color:var(--cyber);text-shadow:0 0 24px var(--cyber)}
+  .netmeter .netbox span{display:block;color:var(--dim);font-size:9px;letter-spacing:2px;margin-top:6px}
+  .netmeter .netbox .netbar{height:5px;border-radius:100px;background:rgba(255,255,255,.08);margin-top:12px;overflow:hidden}
+  .netmeter .netbox .netbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#00e0ff,#2bff9e);box-shadow:0 0 10px #2bff9e;transition:width .5s}
   body.pwr-battery .glass,body.pwr-battery .overlay,body.pwr-battery .gamecard .count{backdrop-filter:none;-webkit-backdrop-filter:none}
   body.pwr-battery #fxScan,body.pwr-battery #fxVin{opacity:0}
   body.pwr-battery .rgb-ring,body.pwr-battery .fx-orb{animation-duration:6s}
@@ -1656,6 +1664,7 @@
       <a class="nav-item" data-view="graphics"><span class="ni"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span> Graphics</a>
       <a class="nav-item" data-view="power"><span class="ni"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></span> Power Mode</a>
       <a class="nav-item" data-view="fps"><span class="ni"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></span> FPS</a>
+      <a class="nav-item" data-view="network"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></span> Network &amp; Ping</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
       <a class="nav-item" data-view="passes"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="7.5" cy="10" r="1.5"/><line x1="11" y1="9" x2="20" y2="9"/><line x1="11" y1="13" x2="20" y2="13"/><path d="M5 18h14v1.5H5z"/><circle cx="7.5" cy="15" r="1.5"/><path d="M4 2v2M8 2v2M12 2v2M16 2v2M20 2v2"/></svg></span> Game Passes <span class="cnt" id="cntPasses">0</span></a>
@@ -2290,12 +2299,35 @@
             <button class="switch" id="tgMotion"></button>
           </div>
           <div class="setrow">
-            <div class="lbl">Frame Rate Limit <small>Maximum frames the arena targets</small></div>
+            <div class="lbl">Frame Rate (FPS) <small>Maximum frames the arena targets</small></div>
             <div class="optic" id="gFpsRow">
               <button data-gfps="60">60 FPS</button>
               <button data-gfps="120">120 FPS</button>
               <button data-gfps="144">144 FPS</button>
               <button data-gfps="0">UNLIMITED</button>
+            </div>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>DISPLAY OUTPUT</h4>
+          <div class="setrow">
+            <div class="lbl">Resolution <small>Render resolution of the arena</small></div>
+            <div class="optic" id="gResRow">
+              <button data-gres="720">720P</button>
+              <button data-gres="1080">1080P</button>
+              <button data-gres="1440">1440P</button>
+              <button data-gres="2160">4K</button>
+            </div>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Refresh Rate <small>Display refresh in Hertz (Hz)</small></div>
+            <div class="optic" id="gHzRow">
+              <button data-ghz="60">60 HZ</button>
+              <button data-ghz="75">75 HZ</button>
+              <button data-ghz="120">120 HZ</button>
+              <button data-ghz="144">144 HZ</button>
+              <button data-ghz="165">165 HZ</button>
+              <button data-ghz="240">240 HZ</button>
             </div>
           </div>
         </div>
@@ -2353,6 +2385,33 @@
             <div class="optic" id="fHudRow">
               <button data-fhud="dash">DASHBOARD</button>
               <button data-fhud="corner">FLOATING</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ NETWORK ============ -->
+      <section id="netView" class="hidden">
+        <div class="page-title">NETWORK &amp; PING</div>
+        <div class="page-sub">Live connection health — ping, upload and download speed, right on the dashboard. Uses a real ping test when online, simulated when offline.</div>
+        <div class="setcard">
+          <div class="netmeter">
+            <div class="netbox"><b id="netPing">--</b><span>PING · MS</span><div class="netbar"><i id="netPingBar"></i></div></div>
+            <div class="netbox"><b id="netDown">--</b><span>DOWNLOAD · MB/S</span><div class="netbar"><i id="netDownBar"></i></div></div>
+            <div class="netbox"><b id="netUp">--</b><span>UPLOAD · MB/S</span><div class="netbar"><i id="netUpBar"></i></div></div>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>DISPLAY</h4>
+          <div class="setrow">
+            <div class="lbl">Network Monitor <small>Show live ping, upload &amp; download on the dashboard</small></div>
+            <button class="switch" id="tgNetMon"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Test Mode <small>Real ping test when online, simulated values when offline</small></div>
+            <div class="optic" id="nModeRow">
+              <button data-nmode="auto">AUTO</button>
+              <button data-nmode="sim">SIMULATED</button>
             </div>
           </div>
         </div>
@@ -3577,9 +3636,10 @@
     state.profile.avatarE = normAv(state.profile.avatarE);
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",uiStyle:"aurora",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false},graphics:{preset:"high",vsync:false,texture:"high",shadow:"medium",aa:"msaa2",motion:true,fps:120},power:{plan:"power",battery:false,perf:true}}, getStore(KEYS.set, {}));
     state.settings.graphics = Object.assign({preset:"high",vsync:false,texture:"high",shadow:"medium",aa:"msaa2",motion:
-true,fps:120}, state.settings.graphics||{});
+true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     state.settings.power = Object.assign({plan:"power",battery:false,perf:true,auto:true}, state.settings.power||{});
     state.settings.fps = Object.assign({counter:true,hud:"dash"}, state.settings.fps||{});
+    state.settings.net = Object.assign({monitor:true,mode:"auto",ping:24,down:245,up:32}, state.settings.net||{});
     if(!["aurora","cyber","light","crt"].includes(state.settings.uiStyle)) state.settings.uiStyle="aurora";
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
@@ -3609,7 +3669,7 @@ true,fps:120}, state.settings.graphics||{});
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -3648,6 +3708,7 @@ true,fps:120}, state.settings.graphics||{});
     if(v==="graphics"){ renderGraphics(); }
     if(v==="power"){ renderPower(); }
     if(v==="fps"){ renderFps(); }
+    if(v==="network"){ renderNet(); }
     if(v==="rgb"){ renderRgb(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
     if(v==="premium"){ renderPremium(); }
@@ -5667,6 +5728,8 @@ true,fps:120}, state.settings.graphics||{});
     document.querySelectorAll("#gShadowRow [data-gsh]").forEach(b=> b.classList.toggle("sel", b.dataset.gsh===g.shadow));
     document.querySelectorAll("#gAaRow [data-gaa]").forEach(b=> b.classList.toggle("sel", b.dataset.gaa===g.aa));
     document.querySelectorAll("#gFpsRow [data-gfps]").forEach(b=> b.classList.toggle("sel", (+b.dataset.gfps)===g.fps));
+    document.querySelectorAll("#gResRow [data-gres]").forEach(b=> b.classList.toggle("sel", (+b.dataset.gres)===g.res));
+    document.querySelectorAll("#gHzRow [data-ghz]").forEach(b=> b.classList.toggle("sel", (+b.dataset.ghz)===g.hz));
     const tv=$("tgVsync"); if(tv) tv.classList.toggle("on", !!g.vsync);
     const tm=$("tgMotion"); if(tm) tm.classList.toggle("on", !!g.motion);
     applyGraphics();
@@ -5723,14 +5786,67 @@ true,fps:120}, state.settings.graphics||{});
     applyFps();
   }
 
+  /* ===================== NETWORK ===================== */
+  function updateNetHud(){
+    const n=state.settings.net||{};
+    if(n.monitor===false) return;
+    const pv=$("heroPingV"); if(pv) pv.textContent=Math.round(n.ping);
+    const dv=$("heroDownV"); if(dv) dv.textContent=Math.round(n.down);
+    const uv=$("heroUpV"); if(uv) uv.textContent=Math.round(n.up);
+    const pg=$("netPing"); if(pg) pg.textContent=Math.round(n.ping);
+    const dg=$("netDown"); if(dg) dg.textContent=Math.round(n.down);
+    const ug=$("netUp"); if(ug) ug.textContent=Math.round(n.up);
+    const pb=$("netPingBar"); if(pb) pb.style.width=Math.min(100,(n.ping/120)*100)+"%";
+    const db=$("netDownBar"); if(db) db.style.width=Math.min(100,(n.down/1000)*100)+"%";
+    const ub=$("netUpBar"); if(ub) ub.style.width=Math.min(100,(n.up/100)*100)+"%";
+  }
+  function netTick(){
+    const n=state.settings.net||{};
+    if(n.monitor===false) return;
+    const now=Date.now();
+    if(!_netLast || now-_netLast>2500){
+      _netLast=now;
+      const sim=()=>{
+        n.ping=Math.max(9,Math.min(120,n.ping+(Math.random()*10-5)));
+        n.down=Math.max(12,Math.min(950,n.down+(Math.random()*40-20)));
+        n.up=Math.max(4,Math.min(98,n.up+(Math.random()*8-4)));
+        updateNetHud();
+      };
+      if(n.mode==="sim"){ sim(); return; }
+      const t0=performance.now();
+      fetch("https://www.gstatic.com/generate_204?x="+now,{cache:"no-store",mode:"no-cors"})
+        .then(()=>{
+          const rtt=performance.now()-t0;
+          n.ping=Math.max(5,Math.min(200,rtt));
+          n.down=Math.max(12,Math.min(950,n.down+(Math.random()*40-20)));
+          n.up=Math.max(4,Math.min(98,n.up+(Math.random()*8-4)));
+          updateNetHud();
+        })
+        .catch(()=>{ sim(); });
+    }
+  }
+  function applyNet(){
+    renderModeStatus();
+    updateNetHud();
+  }
+  function renderNet(){
+    const n=state.settings.net||{};
+    const tm=$("tgNetMon"); if(tm) tm.classList.toggle("on", n.monitor!==false);
+    document.querySelectorAll("#nModeRow [data-nmode]").forEach(b=> b.classList.toggle("sel", b.dataset.nmode===n.mode));
+    applyNet();
+  }
+  let _netLast=0;
+
   function renderModeStatus(){
     const g=state.settings.graphics||{};
     const p=state.settings.power||{};
     const f=state.settings.fps||{};
+    const n=state.settings.net||{};
     const gmap={ultra:"ULTRA",high:"HIGH",low:"LOW"};
     const pmap={pc:"PC MODE",laptop:"LAPTOP MODE",power:"POWER MODE",battery:"BATTERY MODE"};
     const el=$("heroModes"); if(!el) return;
-    el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>'+(f.counter?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></b> FPS <b class="hmd-v" id="heroFpsV">--</b></span>':'');
+    el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>'+(f.counter?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></b> FPS <b class="hmd-v" id="heroFpsV">--</b></span>':'')+(n.monitor!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></b> NET <b class="hmd-v" id="heroPingV">--</b>MS <span class="hmd-mini">↓<b id="heroDownV">--</b> ↑<b id="heroUpV">--</b></span></span>':'');
+    updateNetHud(); updateFpsHud();
   }
 
   /* ===================== RGB LIGHTING ===================== */
@@ -6774,6 +6890,7 @@ true,fps:120}, state.settings.graphics||{});
 
   function loop(t){
     requestAnimationFrame(loop);
+    if(typeof netTick==="function") netTick();
     if(state.settings.fps && state.settings.fps.counter){
       fpsN++;
       if(t-fpsLt>=500){
@@ -8382,7 +8499,9 @@ true,fps:120}, state.settings.graphics||{});
     $("gTextureRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gtex]"); if(!b) return; state.settings.graphics.texture=b.dataset.gtex; saveAll(); renderGraphics(); toast("Texture quality: "+b.dataset.gtex.toUpperCase()); });
     $("gShadowRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gsh]"); if(!b) return; state.settings.graphics.shadow=b.dataset.gsh; saveAll(); renderGraphics(); toast("Shadow quality: "+b.dataset.gsh.toUpperCase()); });
     $("gAaRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gaa]"); if(!b) return; state.settings.graphics.aa=b.dataset.gaa; saveAll(); renderGraphics(); toast("Anti-aliasing: "+b.dataset.gaa.toUpperCase()); });
-    $("gFpsRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gfps]"); if(!b) return; state.settings.graphics.fps=+b.dataset.gfps; saveAll(); renderGraphics(); toast("Frame limit: "+(b.dataset.gfps==="0"?"UNLIMITED":b.dataset.gfps+" FPS")); });
+    $("gFpsRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gfps]"); if(!b) return; state.settings.graphics.fps=+b.dataset.gfps; saveAll(); renderGraphics(); toast("Frame rate: "+(b.dataset.gfps==="0"?"UNLIMITED":b.dataset.gfps+" FPS")); });
+    $("gResRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gres]"); if(!b) return; state.settings.graphics.res=+b.dataset.gres; saveAll(); renderGraphics(); toast("Resolution: "+b.dataset.gres+"P"); });
+    $("gHzRow").addEventListener("click",e=>{ const b=e.target.closest("[data-ghz]"); if(!b) return; state.settings.graphics.hz=+b.dataset.ghz; saveAll(); renderGraphics(); toast("Refresh rate: "+b.dataset.ghz+" Hz"); });
     $("tgVsync").addEventListener("click",()=>{ state.settings.graphics.vsync=!state.settings.graphics.vsync; saveAll(); renderGraphics(); toast("V-Sync "+(state.settings.graphics.vsync?"enabled":"disabled")); });
     $("tgMotion").addEventListener("click",()=>{ state.settings.graphics.motion=!state.settings.graphics.motion; saveAll(); renderGraphics(); toast("Motion Blur "+(state.settings.graphics.motion?"enabled":"disabled")); });
 
@@ -8395,6 +8514,10 @@ true,fps:120}, state.settings.graphics||{});
     // fps
     $("tgFpsCounter").addEventListener("click",()=>{ state.settings.fps.counter=!state.settings.fps.counter; saveAll(); renderFps(); toast("FPS Counter "+(state.settings.fps.counter?"enabled":"disabled")); });
     $("fHudRow").addEventListener("click",e=>{ const b=e.target.closest("[data-fhud]"); if(!b) return; state.settings.fps.hud=b.dataset.fhud; saveAll(); renderFps(); toast("FPS position: "+(b.dataset.fhud==="corner"?"FLOATING HUD":"DASHBOARD CHIP")); });
+
+    // network
+    $("tgNetMon").addEventListener("click",()=>{ state.settings.net.monitor=state.settings.net.monitor===false?true:false; saveAll(); renderNet(); toast("Network Monitor "+(state.settings.net.monitor===false?"disabled":"enabled")); });
+    $("nModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-nmode]"); if(!b) return; state.settings.net.mode=b.dataset.nmode; saveAll(); renderNet(); toast("Network test: "+b.dataset.nmode.toUpperCase()); });
 
     // rgb lighting
     $("rgbTabSwitch").addEventListener("click",()=>{ state.settings.rgb=!state.settings.rgb; saveAll(); renderRgb(); toast("RGB Lighting "+(state.settings.rgb?"enabled":"disabled")); });
@@ -8522,6 +8645,7 @@ true,fps:120}, state.settings.graphics||{});
   renderGraphics();
   renderPower();
   renderFps();
+  renderNet();
   if(window.gtPower && window.gtPower.onAuto){ window.gtPower.onAuto(mode=> autoSetPower(mode)); }
   renderRgb();
   renderMusic();
