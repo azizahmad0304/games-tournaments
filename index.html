@@ -1412,6 +1412,9 @@
   .fpsbar{height:6px;border-radius:100px;background:rgba(255,255,255,.08);margin-top:16px;overflow:hidden}
   .fpsbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#00e0ff,#2bff9e);box-shadow:0 0 12px #2bff9e;transition:width .3s}
   .fpsfloat{position:fixed;top:14px;right:14px;z-index:999;padding:8px 16px;border-radius:100px;border:1px solid var(--cyber);background:rgba(4,12,24,.85);color:var(--cyber);font-family:'Orbitron';font-size:13px;font-weight:700;letter-spacing:1px;box-shadow:0 0 20px var(--cyber);pointer-events:none}
+  body.pwr-battery .glass,body.pwr-battery .overlay,body.pwr-battery .gamecard .count{backdrop-filter:none;-webkit-backdrop-filter:none}
+  body.pwr-battery #fxScan,body.pwr-battery #fxVin{opacity:0}
+  body.pwr-battery .rgb-ring,body.pwr-battery .fx-orb{animation-duration:6s}
 
   section.vt-in{animation:uiViewIn .5s cubic-bezier(.22,.68,.35,1) both}
   @keyframes uiViewIn{from{opacity:0;transform:translateY(16px) scale(.995)}to{opacity:1;transform:none}}
@@ -2320,6 +2323,10 @@
           <div class="setrow">
             <div class="lbl">Maximum Performance <small>Push the CPU/GPU to the limit for peak fps</small></div>
             <button class="switch" id="tgPerf"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Auto Mode <small>Switch plan automatically — PC mode on desktops, Laptop mode the moment the charger is unplugged</small></div>
+            <button class="switch" id="tgAutoPower"></button>
           </div>
         </div>
       </section>
@@ -3571,7 +3578,7 @@
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",uiStyle:"aurora",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false},graphics:{preset:"high",vsync:false,texture:"high",shadow:"medium",aa:"msaa2",motion:true,fps:120},power:{plan:"power",battery:false,perf:true}}, getStore(KEYS.set, {}));
     state.settings.graphics = Object.assign({preset:"high",vsync:false,texture:"high",shadow:"medium",aa:"msaa2",motion:
 true,fps:120}, state.settings.graphics||{});
-    state.settings.power = Object.assign({plan:"power",battery:false,perf:true}, state.settings.power||{});
+    state.settings.power = Object.assign({plan:"power",battery:false,perf:true,auto:true}, state.settings.power||{});
     state.settings.fps = Object.assign({counter:true,hud:"dash"}, state.settings.fps||{});
     if(!["aurora","cyber","light","crt"].includes(state.settings.uiStyle)) state.settings.uiStyle="aurora";
     state.profile.avatar = normIdx(state.profile.avatar);
@@ -5671,17 +5678,26 @@ true,fps:120}, state.settings.graphics||{});
     document.body.classList.toggle("pwr-battery", p.plan==="battery"||p.battery);
     document.body.classList.toggle("pwr-power", p.plan==="power"||p.perf);
     renderModeStatus();
+    if(typeof size==="function") size();
   }
   function renderPower(){
     const p=state.settings.power||{};
     document.querySelectorAll("#pPlanRow [data-pplan]").forEach(b=> b.classList.toggle("sel", b.dataset.pplan===p.plan));
     const tb=$("tgBattery"); if(tb) tb.classList.toggle("on", !!p.battery);
     const tp=$("tgPerf"); if(tp) tp.classList.toggle("on", !!p.perf);
+    const ta=$("tgAutoPower"); if(ta) ta.classList.toggle("on", p.auto!==false);
     applyPower();
+  }
+  function autoSetPower(mode){
+    const p=state.settings.power||{};
+    if(p.auto===false || !mode || mode===p.plan) return;
+    p.plan=mode; saveAll(); renderPower();
+    toast("Auto power: "+({pc:"PC MODE",laptop:"LAPTOP MODE",power:"POWER MODE"})[mode]||mode,"ok");
   }
 
   /* ===================== FPS ===================== */
   let fpsN=0, fpsLt=0, fpsVal=0;
+  let _fxTick=0;
   function updateFpsHud(){
     const f=state.settings.fps||{};
     if(f.counter){
@@ -6441,7 +6457,9 @@ true,fps:120}, state.settings.graphics||{});
     }
   }
   function size(){
-    dpr=Math.min(window.devicePixelRatio||1,2); W=innerWidth; H=innerHeight;
+    const _p=state.settings.power||{};
+    const _batt=_p.plan==="battery"||_p.battery;
+    dpr=Math.min(window.devicePixelRatio||1, _batt?1:1.5); W=innerWidth; H=innerHeight;
     cv.width=W*dpr; cv.height=H*dpr; cv.style.width=W+"px"; cv.style.height=H+"px";
     cctx.setTransform(dpr,0,0,dpr,0,0);
     sizeMatrix();
@@ -6771,6 +6789,9 @@ true,fps:120}, state.settings.graphics||{});
     if(state.settings.autoLock && authGet() && t-lastAct>(state.settings.lockMins||5)*60000){
       lastAct=t; logout(); toast("App locked due to inactivity","warn"); return;
     }
+    const pBatt = state.settings.power && (state.settings.power.plan==="battery"||state.settings.power.battery);
+    _fxTick++;
+    if(_fxTick % (pBatt?4:2) !== 0) return;
     if(state.settings.opt&&state.settings.opt.staticBg) return;
     if(state.settings.background==="storm"){
       if(state.settings.rain) drawRain();
@@ -8369,6 +8390,7 @@ true,fps:120}, state.settings.graphics||{});
     $("pPlanRow").addEventListener("click",e=>{ const b=e.target.closest("[data-pplan]"); if(!b) return; state.settings.power.plan=b.dataset.pplan; saveAll(); renderPower(); toast("Power plan: "+({pc:"PC MODE",laptop:"LAPTOP MODE",power:"POWER MODE",battery:"BATTERY MODE"})[b.dataset.pplan]); });
     $("tgBattery").addEventListener("click",()=>{ state.settings.power.battery=!state.settings.power.battery; saveAll(); renderPower(); toast("Battery Saver "+(state.settings.power.battery?"enabled":"disabled")); });
     $("tgPerf").addEventListener("click",()=>{ state.settings.power.perf=!state.settings.power.perf; saveAll(); renderPower(); toast("Maximum Performance "+(state.settings.power.perf?"enabled":"disabled")); });
+    $("tgAutoPower").addEventListener("click",()=>{ state.settings.power.auto=state.settings.power.auto===false?true:false; saveAll(); renderPower(); toast("Auto Mode "+(state.settings.power.auto===false?"disabled":"enabled")); });
 
     // fps
     $("tgFpsCounter").addEventListener("click",()=>{ state.settings.fps.counter=!state.settings.fps.counter; saveAll(); renderFps(); toast("FPS Counter "+(state.settings.fps.counter?"enabled":"disabled")); });
@@ -8500,6 +8522,7 @@ true,fps:120}, state.settings.graphics||{});
   renderGraphics();
   renderPower();
   renderFps();
+  if(window.gtPower && window.gtPower.onAuto){ window.gtPower.onAuto(mode=> autoSetPower(mode)); }
   renderRgb();
   renderMusic();
   renderAbout();
