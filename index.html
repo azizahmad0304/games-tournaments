@@ -1406,6 +1406,12 @@
   .hero .hmodem .hmd-ico{width:15px;height:15px;display:grid;place-items:center}
   .hero .hmodem .hmd-ico svg{width:15px;height:15px;fill:none;stroke:var(--cyber);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
   .hero .hmodem .hmd-v{color:var(--cyber);font-weight:700;letter-spacing:1px}
+  .fpsmeter{text-align:center;padding:18px 0 10px}
+  .fpsmeter b{font-family:'Orbitron';font-size:52px;color:var(--cyber);text-shadow:0 0 30px var(--cyber)}
+  .fpsmeter span{display:block;color:var(--dim);font-size:11px;letter-spacing:3px;margin-top:4px}
+  .fpsbar{height:6px;border-radius:100px;background:rgba(255,255,255,.08);margin-top:16px;overflow:hidden}
+  .fpsbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#00e0ff,#2bff9e);box-shadow:0 0 12px #2bff9e;transition:width .3s}
+  .fpsfloat{position:fixed;top:14px;right:14px;z-index:999;padding:8px 16px;border-radius:100px;border:1px solid var(--cyber);background:rgba(4,12,24,.85);color:var(--cyber);font-family:'Orbitron';font-size:13px;font-weight:700;letter-spacing:1px;box-shadow:0 0 20px var(--cyber);pointer-events:none}
 
   section.vt-in{animation:uiViewIn .5s cubic-bezier(.22,.68,.35,1) both}
   @keyframes uiViewIn{from{opacity:0;transform:translateY(16px) scale(.995)}to{opacity:1;transform:none}}
@@ -1646,6 +1652,7 @@
       <a class="nav-item" data-view="rgb"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><path d="M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span> RGB Lighting</a>
       <a class="nav-item" data-view="graphics"><span class="ni"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span> Graphics</a>
       <a class="nav-item" data-view="power"><span class="ni"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></span> Power Mode</a>
+      <a class="nav-item" data-view="fps"><span class="ni"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></span> FPS</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
       <a class="nav-item" data-view="passes"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="7.5" cy="10" r="1.5"/><line x1="11" y1="9" x2="20" y2="9"/><line x1="11" y1="13" x2="20" y2="13"/><path d="M5 18h14v1.5H5z"/><circle cx="7.5" cy="15" r="1.5"/><path d="M4 2v2M8 2v2M12 2v2M16 2v2M20 2v2"/></svg></span> Game Passes <span class="cnt" id="cntPasses">0</span></a>
@@ -1693,6 +1700,7 @@
           <p>Pick your battlefield. <b>CS GO 2</b> · <b>PUBG PC</b> · <b>Blood Strike</b> · <b>COD MW19</b></p>
           <div class="hclock"><svg viewBox="0 0 24 24" width="13" height="13"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><b id="heroClock">--:--:--</b> <span id="heroDay">---</span> · <span id="heroDate">---</span></div>
           <div class="hmode" id="heroModes"></div>
+          <div class="fpsfloat" id="fpsFloat" style="display:none">-- FPS</div>
         </div>
 
         <div class="adwrap" id="adWrap">
@@ -2312,6 +2320,33 @@
           <div class="setrow">
             <div class="lbl">Maximum Performance <small>Push the CPU/GPU to the limit for peak fps</small></div>
             <button class="switch" id="tgPerf"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ FPS ============ -->
+      <section id="fpsView" class="hidden">
+        <div class="page-title">FPS</div>
+        <div class="page-sub">Watch your real-time frame rate — show a live FPS counter on the dashboard or as a floating HUD. Target frame rate is set in the Graphics tab.</div>
+        <div class="setcard">
+          <div class="fpsmeter">
+            <b id="fpsGauge">--</b>
+            <span>LIVE FPS</span>
+            <div class="fpsbar"><i id="fpsBar"></i></div>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>DISPLAY</h4>
+          <div class="setrow">
+            <div class="lbl">FPS Counter <small>Show live frame rate on the dashboard</small></div>
+            <button class="switch" id="tgFpsCounter"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Position <small>Dashboard chip or floating HUD</small></div>
+            <div class="optic" id="fHudRow">
+              <button data-fhud="dash">DASHBOARD</button>
+              <button data-fhud="corner">FLOATING</button>
+            </div>
           </div>
         </div>
       </section>
@@ -3534,8 +3569,10 @@
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.profile.avatarE = normAv(state.profile.avatarE);
     state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",uiStyle:"aurora",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false},graphics:{preset:"high",vsync:false,texture:"high",shadow:"medium",aa:"msaa2",motion:true,fps:120},power:{plan:"power",battery:false,perf:true}}, getStore(KEYS.set, {}));
-    state.settings.graphics = Object.assign({preset:"high",vsync:false,texture:"high",shadow:"medium",aa:"msaa2",motion:true,fps:120}, state.settings.graphics||{});
+    state.settings.graphics = Object.assign({preset:"high",vsync:false,texture:"high",shadow:"medium",aa:"msaa2",motion:
+true,fps:120}, state.settings.graphics||{});
     state.settings.power = Object.assign({plan:"power",battery:false,perf:true}, state.settings.power||{});
+    state.settings.fps = Object.assign({counter:true,hud:"dash"}, state.settings.fps||{});
     if(!["aurora","cyber","light","crt"].includes(state.settings.uiStyle)) state.settings.uiStyle="aurora";
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
@@ -3565,7 +3602,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -3603,6 +3640,7 @@
     if(v==="opt"){ renderOpt(); }
     if(v==="graphics"){ renderGraphics(); }
     if(v==="power"){ renderPower(); }
+    if(v==="fps"){ renderFps(); }
     if(v==="rgb"){ renderRgb(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
     if(v==="premium"){ renderPremium(); }
@@ -5641,13 +5679,42 @@
     const tp=$("tgPerf"); if(tp) tp.classList.toggle("on", !!p.perf);
     applyPower();
   }
+
+  /* ===================== FPS ===================== */
+  let fpsN=0, fpsLt=0, fpsVal=0;
+  function updateFpsHud(){
+    const f=state.settings.fps||{};
+    if(f.counter){
+      const v=$("heroFpsV"); if(v) v.textContent=fpsVal;
+      const fg=$("fpsGauge"); if(fg) fg.textContent=fpsVal;
+      const fb=$("fpsBar"); if(fb) fb.style.width=Math.min(100,(fpsVal/240)*100)+"%";
+      const ff=$("fpsFloat"); if(ff) ff.textContent=fpsVal+" FPS";
+    }
+  }
+  function renderFpsHud(){
+    const f=state.settings.fps||{};
+    const ff=$("fpsFloat");
+    if(ff) ff.style.display = (f.counter && f.hud==="corner") ? "" : "none";
+  }
+  function applyFps(){
+    renderModeStatus();
+    renderFpsHud();
+  }
+  function renderFps(){
+    const f=state.settings.fps||{};
+    const tc=$("tgFpsCounter"); if(tc) tc.classList.toggle("on", !!f.counter);
+    document.querySelectorAll("#fHudRow [data-fhud]").forEach(b=> b.classList.toggle("sel", b.dataset.fhud===f.hud));
+    applyFps();
+  }
+
   function renderModeStatus(){
     const g=state.settings.graphics||{};
     const p=state.settings.power||{};
+    const f=state.settings.fps||{};
     const gmap={ultra:"ULTRA",high:"HIGH",low:"LOW"};
     const pmap={pc:"PC MODE",laptop:"LAPTOP MODE",power:"POWER MODE",battery:"BATTERY MODE"};
     const el=$("heroModes"); if(!el) return;
-    el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>';
+    el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>'+(f.counter?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></b> FPS <b class="hmd-v" id="heroFpsV">--</b></span>':'');
   }
 
   /* ===================== RGB LIGHTING ===================== */
@@ -6689,6 +6756,14 @@
 
   function loop(t){
     requestAnimationFrame(loop);
+    if(state.settings.fps && state.settings.fps.counter){
+      fpsN++;
+      if(t-fpsLt>=500){
+        fpsVal=Math.round(fpsN*1000/(t-fpsLt));
+        fpsN=0; fpsLt=t;
+        updateFpsHud();
+      }
+    }
     if(_cgOn && _cgEl){
       _cgX+=(_cgTX-_cgX)*0.18; _cgY+=(_cgTY-_cgY)*0.18;
       _cgEl.style.transform="translate3d("+Math.round(_cgX-190)+"px,"+Math.round(_cgY-190)+"px,0)";
@@ -8295,6 +8370,10 @@
     $("tgBattery").addEventListener("click",()=>{ state.settings.power.battery=!state.settings.power.battery; saveAll(); renderPower(); toast("Battery Saver "+(state.settings.power.battery?"enabled":"disabled")); });
     $("tgPerf").addEventListener("click",()=>{ state.settings.power.perf=!state.settings.power.perf; saveAll(); renderPower(); toast("Maximum Performance "+(state.settings.power.perf?"enabled":"disabled")); });
 
+    // fps
+    $("tgFpsCounter").addEventListener("click",()=>{ state.settings.fps.counter=!state.settings.fps.counter; saveAll(); renderFps(); toast("FPS Counter "+(state.settings.fps.counter?"enabled":"disabled")); });
+    $("fHudRow").addEventListener("click",e=>{ const b=e.target.closest("[data-fhud]"); if(!b) return; state.settings.fps.hud=b.dataset.fhud; saveAll(); renderFps(); toast("FPS position: "+(b.dataset.fhud==="corner"?"FLOATING HUD":"DASHBOARD CHIP")); });
+
     // rgb lighting
     $("rgbTabSwitch").addEventListener("click",()=>{ state.settings.rgb=!state.settings.rgb; saveAll(); renderRgb(); toast("RGB Lighting "+(state.settings.rgb?"enabled":"disabled")); });
     $("rgbModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-rgbmode]"); if(!b) return; state.settings.rgbMode=b.dataset.rgbmode; saveAll(); renderRgb(); toast("RGB effect: "+b.dataset.rgbmode.toUpperCase()); });
@@ -8420,6 +8499,7 @@
   renderOpt();
   renderGraphics();
   renderPower();
+  renderFps();
   renderRgb();
   renderMusic();
   renderAbout();
