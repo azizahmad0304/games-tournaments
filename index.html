@@ -43,7 +43,8 @@
   body.pt-toxic{--bg:#030a02;--bg2:#06130a;--panel:rgba(20,46,8,.8);--panel2:rgba(26,58,12,.9);--stroke:rgba(118,255,3,.26);--sb-grad:linear-gradient(180deg,rgba(10,24,4,.94),rgba(3,9,2,.97));--hd-grad:linear-gradient(180deg,rgba(10,24,4,.9),rgba(3,9,2,.35));--pn-grad:linear-gradient(160deg,rgba(14,30,5,.92),rgba(5,12,2,.96));--md-grad:linear-gradient(170deg,#0d2205,#040a02);--nav-bg:linear-gradient(90deg,rgba(118,255,3,.15),rgba(118,255,3,.03));--nav-bd:rgba(118,255,3,.42);--nav-glow:rgba(118,255,3,.12);--aur1:rgba(118,255,3,.1);--aur2:rgba(178,255,89,.08);--aur3:rgba(0,255,65,.08)}
   body.pt-galaxy{--bg:#05030f;--bg2:#0a0718;--panel:rgba(24,18,66,.8);--panel2:rgba(32,24,82,.9);--stroke:rgba(124,90,255,.28);--sb-grad:linear-gradient(180deg,rgba(12,9,36,.94),rgba(5,3,14,.97));--hd-grad:linear-gradient(180deg,rgba(12,9,36,.9),rgba(5,3,14,.35));--pn-grad:linear-gradient(160deg,rgba(16,12,42,.92),rgba(6,4,18,.96));--md-grad:linear-gradient(170deg,#120b32,#07051a);--nav-bg:linear-gradient(90deg,rgba(49,27,146,.18),rgba(49,27,146,.03));--nav-bd:rgba(49,27,146,.45);--nav-glow:rgba(49,27,146,.15);--aur1:rgba(49,27,146,.15);--aur2:rgba(0,229,255,.09);--aur3:rgba(124,77,255,.1)}
   body.pt-chrome{--bg:#050709;--bg2:#0a0e11;--panel:rgba(30,36,40,.8);--panel2:rgba(38,46,52,.9);--stroke:rgba(176,190,197,.24);--sb-grad:linear-gradient(180deg,rgba(13,16,18,.94),rgba(5,7,8,.97));--hd-grad:linear-gradient(180deg,rgba(13,16,18,.9),rgba(5,7,8,.35));--pn-grad:linear-gradient(160deg,rgba(16,20,23,.92),rgba(6,8,10,.96));--md-grad:linear-gradient(170deg,#0f1518,#06090b);--nav-bg:linear-gradient(90deg,rgba(176,190,197,.15),rgba(176,190,197,.03));--nav-bd:rgba(176,190,197,.4);--nav-glow:rgba(176,190,197,.1);--aur1:rgba(176,190,197,.1);--aur2:rgba(236,239,241,.06);--aur3:rgba(0,172,193,.07)}
-  body.pt-default::before,body.pt-csgo::before,body.pt-pubg::before,body.pt-bs::before,body.pt-cod::before,body.pt-gold::before,body.pt-emerald::before,body.pt-violet::before,body.pt-crimson::before,body.pt-ocean::before,body.pt-lime::before,body.pt-rose::before,body.pt-graphite::before,body.pt-inferno::before,body.pt-frost::before,body.pt-berry::before,body.pt-sunset::before,body.pt-toxic::before,body.pt-galaxy::before,body.pt-chrome::before{content:"";position:fixed;inset:-25%;z-index:0;pointer-events:none;background:radial-gradient(42% 34% at 18% 8%,var(--aur1,rgba(0,255,255,.1)),transparent 60%),radial-gradient(36% 30% at 84% 16%,var(--aur2,rgba(255,61,110,.08)),transparent 60%),radial-gradient(38% 40% at 58% 92%,var(--aur3,rgba(80,60,255,.09)),transparent 62%);animation:ptdrift 12s ease-in-out infinite alternate,ptbreathe 6s ease-in-out infinite}
+  body.pt-glass{--bg:#071120;--bg2:#0b1a30;--panel:rgba(255,255,255,.08);--panel2:rgba(255,255,255,.12);--stroke:rgba(150,205,255,.24);--sb-grad:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));--hd-grad:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.03));--pn-grad:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));--md-grad:linear-gradient(170deg,rgba(20,42,78,.94),rgba(9,20,40,.97));--nav-bg:linear-gradient(90deg,rgba(125,249,255,.2),rgba(125,249,255,.05));--nav-bd:rgba(125,249,255,.5);--nav-glow:rgba(125,249,255,.18);--aur1:rgba(125,249,255,.16);--aur2:rgba(177,75,255,.12);--aur3:rgba(255,213,74,.1)}
+  body.pt-default::before,body.pt-csgo::before,body.pt-pubg::before,body.pt-bs::before,body.pt-cod::before,body.pt-gold::before,body.pt-emerald::before,body.pt-violet::before,body.pt-crimson::before,body.pt-ocean::before,body.pt-lime::before,body.pt-rose::before,body.pt-graphite::before,body.pt-inferno::before,body.pt-frost::before,body.pt-berry::before,body.pt-sunset::before,body.pt-toxic::before,body.pt-galaxy::before,body.pt-chrome::before,body.pt-glass::before{content:"";position:fixed;inset:-25%;z-index:0;pointer-events:none;background:radial-gradient(42% 34% at 18% 8%,var(--aur1,rgba(0,255,255,.1)),transparent 60%),radial-gradient(36% 30% at 84% 16%,var(--aur2,rgba(255,61,110,.08)),transparent 60%),radial-gradient(38% 40% at 58% 92%,var(--aur3,rgba(80,60,255,.09)),transparent 62%);animation:ptdrift 12s ease-in-out infinite alternate,ptbreathe 6s ease-in-out infinite}
   @keyframes ptdrift{0%{transform:translate3d(-3.5%,-2%,0) rotate(-2deg) scale(1)}100%{transform:translate3d(3.5%,2.5%,0) rotate(4deg) scale(1.06)}}
   @keyframes ptbreathe{0%,100%{opacity:.82}50%{opacity:1}}
   body.gl-low .nav-item.active{box-shadow:none}
@@ -1645,6 +1646,49 @@
   .wformbtns .w-save{background:linear-gradient(90deg,rgba(0,224,255,.25),rgba(177,75,255,.25));border-color:rgba(0,224,255,.45);color:#fff}
   .wformbtns .w-cancel{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.15);color:#8fa3c8}
 
+  /* transparent glass theme — sidebar corners + frosted panels */
+  body.pt-glass #sidebar{background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.04));backdrop-filter:blur(22px);border-right:1px solid rgba(150,205,255,.28)}
+  body.pt-glass #sidebar::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(130px 130px at 0% 0%,rgba(125,249,255,.34),transparent 70%),radial-gradient(130px 130px at 100% 0%,rgba(125,249,255,.26),transparent 70%),radial-gradient(130px 130px at 0% 100%,rgba(177,75,255,.3),transparent 70%),radial-gradient(130px 130px at 100% 100%,rgba(177,75,255,.22),transparent 70%)}
+  body.pt-glass .sb-logo,body.pt-glass nav,body.pt-glass .sb-foot{position:relative;z-index:1}
+  body.pt-glass header,body.pt-glass .tcard,body.pt-glass .setcard,body.pt-glass .regform,body.pt-glass .bgcard,body.pt-glass .theme-card,body.pt-glass .modal{background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));backdrop-filter:blur(20px)}
+
+  /* app defender */
+  .dfbanner{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:22px;border-radius:18px;background:linear-gradient(135deg,rgba(43,255,158,.08),rgba(0,224,255,.06));border:1px solid rgba(43,255,158,.3);margin-bottom:16px}
+  .dfbanner.risk{background:linear-gradient(135deg,rgba(255,61,110,.1),rgba(255,61,110,.05));border-color:rgba(255,61,110,.4)}
+  .df-shield{width:64px;height:64px;flex:none;border-radius:50%;display:grid;place-items:center;background:rgba(43,255,158,.12);border:1px solid rgba(43,255,158,.4)}
+  .dfbanner.risk .df-shield{background:rgba(255,61,110,.12);border-color:rgba(255,61,110,.45)}
+  .df-shield svg{width:32px;height:32px;color:#2bff9e;filter:drop-shadow(0 0 10px rgba(43,255,158,.7))}
+  .dfbanner.risk .df-shield svg{color:#ff3d6e;filter:drop-shadow(0 0 10px rgba(255,61,110,.7))}
+  .df-binfo b{font-family:'Orbitron';font-size:20px;letter-spacing:1px;color:#fff;display:block}
+  .df-binfo span{font-size:12px;color:var(--dim);letter-spacing:1px}
+  .df-bmeta{margin-left:auto;display:flex;gap:22px;flex-wrap:wrap}
+  .df-bmeta div{text-align:center}
+  .df-bmeta b{font-size:22px;color:#2bff9e;display:block;font-family:'Orbitron'}
+  .dfbanner.risk .df-bmeta b{color:#ff6b92}
+  .df-bmeta span{font-size:9px;color:var(--dim);letter-spacing:1.5px}
+  .df-acts{display:flex;gap:10px;flex-wrap:wrap}
+  .dfshields{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+  .dfshield{display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;background:var(--pn-grad);border:1px solid var(--stroke)}
+  .dfshield .dfs-ico{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;background:rgba(43,255,158,.1);border:1px solid rgba(43,255,158,.3);flex:none}
+  .dfshield .dfs-ico svg{width:21px;height:21px;color:#2bff9e}
+  .dfshield.off .dfs-ico{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)}
+  .dfshield.off .dfs-ico svg{color:#8fa3c8}
+  .dfshield .dfs-info{flex:1;min-width:0}
+  .dfshield .dfs-info b{display:block;font-size:13px;color:#fff;letter-spacing:.5px}
+  .dfshield .dfs-info span{font-size:10px;color:var(--dim)}
+  .dfshield .dfs-st{font-size:9px;letter-spacing:1px;padding:2px 8px;border-radius:100px;flex:none}
+  .dfshield.on .dfs-st{background:rgba(43,255,158,.14);color:#2bff9e;border:1px solid rgba(43,255,158,.35)}
+  .dfshield.off .dfs-st{background:rgba(255,61,110,.12);color:#ff6b92;border:1px solid rgba(255,61,110,.35)}
+  .dflog{display:flex;flex-direction:column}
+  .dfl-row{display:flex;gap:12px;align-items:center;padding:11px 2px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .dfl-row:last-child{border-bottom:none}
+  .dfl-badge{font-size:9px;letter-spacing:1px;padding:2px 9px;border-radius:100px;background:rgba(255,61,110,.14);color:#ff6b92;border:1px solid rgba(255,61,110,.35);flex:none;white-space:nowrap}
+  .dfl-badge.clean{background:rgba(43,255,158,.14);color:#2bff9e;border-color:rgba(43,255,158,.35)}
+  .dfl-main{flex:1;min-width:0}
+  .dfl-main b{display:block;font-size:13px;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .dfl-main span{font-size:10px;color:var(--dim)}
+  .dfl-time{font-size:10px;color:var(--dim);white-space:nowrap}
+
 </style>
 </head>
 <body>
@@ -1719,6 +1763,7 @@
       <a class="nav-item" data-view="personal"><span class="ni"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="8.5" cy="10" r="2"/><path d="M5.5 15c.7-1.4 1.7-2 3-2s2.3.6 3 2"/><line x1="14" y1="9" x2="19" y2="9"/><line x1="14" y1="12" x2="19" y2="12"/><line x1="14" y1="15" x2="17" y2="15"/></svg></span> Personal Players <span class="cnt" id="cntPers">0</span></a>
       <div class="nav-sep">PROTECTION</div>
       <a class="nav-item" data-view="sec"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span> Anti-Cheat &amp; Security <span class="cnt" id="cntCheats">0</span></a>
+      <a class="nav-item" data-view="defender"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/><path d="m9 12 2 2 4-4"/></svg></span> App Defender</a>
       <div class="nav-sep">ACCOUNT</div>
       <a class="nav-item prem" data-view="premium"><span class="ni"><svg viewBox="0 0 24 24"><path d="M2 7h20l-4 12a3 3 0 0 1-2.8 2H8.8a3 3 0 0 1-2.8-2z"/><path d="M12 3 9.5 7h5L12 3z"/></svg></span> Premium <span class="cnt" id="cntPrem">FREE</span></a>
       <a class="nav-item" data-view="profile"><span class="ni"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span> Profile</a>
@@ -2796,6 +2841,41 @@
         </div>
       </section>
 
+      <!-- ============ APP DEFENDER ============ -->
+      <section id="defenderView" class="hidden">
+        <div class="page-title">APP DEFENDER</div>
+        <div class="page-sub">Always-on shield wall — blocks viruses, malware, ransomware, brute-force logins, hackers &amp; attackers before they touch the arena.</div>
+        <div class="dfbanner" id="dfBanner">
+          <div class="df-shield"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div>
+          <div class="df-binfo"><b id="dfStatus">PROTECTED</b><span id="dfSub">All shields active · real-time protection on</span></div>
+          <div class="df-bmeta">
+            <div><b id="dfBlocked">0</b><span>THREATS BLOCKED</span></div>
+            <div><b id="dfScans">0</b><span>SCANS RUN</span></div>
+            <div><b id="dfLast">—</b><span>LAST SCAN</span></div>
+          </div>
+        </div>
+        <div class="df-acts" style="margin-bottom:20px">
+          <button class="addbtn" id="dfScanBtn"><svg viewBox="0 0 24 24" width="15" height="15" style="margin-right:6px"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg> QUICK SCAN NOW</button>
+        </div>
+        <div class="sec-h"><span class="mi"><svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></span> PROTECTION SHIELDS</div>
+        <div class="dfshields">
+          <div class="dfshield" id="dfVirusCard"><div class="dfs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/></svg></div><div class="dfs-info"><b>Virus Shield</b><span>Blocks malware &amp; ransomware</span></div><span class="dfs-st">ON</span><button class="switch" id="tgDfVirus"></button></div>
+          <div class="dfshield" id="dfThreatCard"><div class="dfs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg></div><div class="dfs-info"><b>Threat Prevention</b><span>Neutralises trojans &amp; phishing</span></div><span class="dfs-st">ON</span><button class="switch" id="tgDfThreat"></button></div>
+          <div class="dfshield" id="dfHackerCard"><div class="dfs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div class="dfs-info"><b>Hacker Wall</b><span>Blocks exploits, injection &amp; spoofing</span></div><span class="dfs-st">ON</span><button class="switch" id="tgDfHacker"></button></div>
+          <div class="dfshield" id="dfAttackerCard"><div class="dfs-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 22v-4M12 6v-4"/></svg></div><div class="dfs-info"><b>Attacker Guard</b><span>Anti brute-force, DDoS &amp; bots</span></div><span class="dfs-st">ON</span><button class="switch" id="tgDfAttacker"></button></div>
+        </div>
+        <div class="setcard">
+          <div class="setrow">
+            <div class="lbl">Real-Time Protection <small>Continuously monitor &amp; block threats as they arrive, even while you play</small></div>
+            <button class="switch" id="tgDfRt"></button>
+          </div>
+        </div>
+        <div class="sec-h" style="margin-top:26px"><span class="mi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span> DEFENSE LOG</div>
+        <div class="setcard">
+          <div class="dflog" id="dfLog"></div>
+        </div>
+      </section>
+
       <!-- ============ PREMIUM MEMBERSHIP ============ -->
       <section id="premiumView" class="hidden">
         <div class="page-title">PREMIUM MEMBERSHIP</div>
@@ -3817,6 +3897,8 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     state.settings.net = Object.assign({monitor:true,pingOn:true,mode:"auto",ping:24,down:245,up:32}, state.settings.net||{});
     state.settings.widgets = Object.assign({clock:true,weather:true,quick:true,countdown:true,potd:false,stats:true,heart:true,custom:[]}, state.settings.widgets||{});
     if(!Array.isArray(state.settings.widgets.custom)) state.settings.widgets.custom=[];
+    state.settings.defender = Object.assign({realTime:true,virus:true,threat:true,hacker:true,attacker:true,lastScan:0,blocked:0,scans:0,log:[]}, state.settings.defender||{});
+    if(!Array.isArray(state.settings.defender.log) || !state.settings.defender.log.length) state.settings.defender.log=dfSeed();
     if(!["aurora","cyber","light","crt"].includes(state.settings.uiStyle)) state.settings.uiStyle="aurora";
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
@@ -3846,7 +3928,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView",defender:"defenderView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -5758,10 +5840,11 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     sunset:{name:"Neon Sunset",tag:"TWILIGHT",desc:"Orange dusk melting into hot pink.",c1:"#ff6d00",c2:"#ff1744"},
     toxic:{name:"Toxic Waste",tag:"HAZMAT",desc:"Radioactive green sludge glow.",c1:"#76ff03",c2:"#00ff41"},
     galaxy:{name:"Midnight Galaxy",tag:"COSMIC",desc:"Deep space nebulas and cyan stars.",c1:"#311b92",c2:"#00e5ff"},
-    chrome:{name:"Chrome Steel",tag:"METALLIC",desc:"Polished chrome reflections, cold steel.",c1:"#b0bec5",c2:"#eceff1"}
+    chrome:{name:"Chrome Steel",tag:"METALLIC",desc:"Polished chrome reflections, cold steel.",c1:"#b0bec5",c2:"#eceff1"},
+    glass:{name:"Transparent Glass",tag:"GLASS",desc:"Crystal-frosted panels, glowing side corners & soft daylight.",c1:"#7df9ff",c2:"#ffffff"}
   };
   function applyPanelTheme(){
-    document.body.classList.remove("pt-default","pt-csgo","pt-pubg","pt-bs","pt-cod","pt-gold","pt-emerald","pt-violet","pt-crimson","pt-ocean","pt-lime","pt-rose","pt-graphite","pt-inferno","pt-frost","pt-berry","pt-sunset","pt-toxic","pt-galaxy","pt-chrome");
+    document.body.classList.remove("pt-default","pt-csgo","pt-pubg","pt-bs","pt-cod","pt-gold","pt-emerald","pt-violet","pt-crimson","pt-ocean","pt-lime","pt-rose","pt-graphite","pt-inferno","pt-frost","pt-berry","pt-sunset","pt-toxic","pt-galaxy","pt-chrome","pt-glass");
     document.body.classList.add("pt-"+(state.settings.panelTheme||"default"));
   }
   function renderThemes(){
@@ -6175,6 +6258,65 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     w.custom=(w.custom||[]).filter(x=>x.id!==id);
     saveAll(); renderWidgets(); renderWidgets("widgetPrev"); renderCustomWidgets();
     toast("Widget deleted");
+  }
+
+  /* ===================== APP DEFENDER ===================== */
+  const DF_NAMES=[["Trojan.Generic","injected_dll.sys","MALWARE"],["Ransomware","locker_v3.exe","RANSOM"],["Keylogger","winkeys64.dll","SPY"],["Brute Force","login_attempt x14","ATTACK"],["SQL Injection","query_inject.sql","EXPLOIT"],["Adware","popup_tool.exe","ADWARE"],["Rootkit","svc_root.bin","ROOTKIT"],["Spoofed IP","194.165.32.18","SPOOF"],["Mimikatz","cred_dump.exe","HACK"]];
+  function dfSeed(){
+    const out=[];
+    const base=Date.now();
+    const n=3+Math.floor(Math.random()*3);
+    for(let i=0;i<n;i++){ const t=DF_NAMES[Math.floor(Math.random()*DF_NAMES.length)];
+      out.push({id:"df"+uid(),time:base-(i+1)*7200000,type:t[2],name:t[0],src:t[1],status:Math.random()<.82?"blocked":"clean"});
+    }
+    return out;
+  }
+  function dfRefresh(){
+    const d=state.settings.defender||{};
+    d.blocked=Math.max(d.blocked||0, (d.log||[]).filter(e=>e.status==="blocked").length);
+    const on=d.virus!==false&&d.threat!==false&&d.hacker!==false&&d.attacker!==false;
+    const banner=$("dfBanner"); if(banner) banner.classList.toggle("risk", !on);
+    const st=$("dfStatus"); if(st) st.textContent=on?"PROTECTED":"AT RISK";
+    const su=$("dfSub"); if(su) su.textContent=on?"All shields active · real-time protection on":"One or more shields disabled — protection reduced";
+    const bl=$("dfBlocked"); if(bl) bl.textContent=d.blocked||0;
+    const sc=$("dfScans"); if(sc) sc.textContent=d.scans||0;
+    const ls=$("dfLast"); if(ls) ls.textContent=d.lastScan?new Date(d.lastScan).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"}):"—";
+    [["dfVirusCard","tgDfVirus","virus"],["dfThreatCard","tgDfThreat","threat"],["dfHackerCard","tgDfHacker","hacker"],["dfAttackerCard","tgDfAttacker","attacker"]].forEach(([cid,tid,k])=>{
+      const c=$(cid); if(c) c.classList.toggle("off", d[k]===false);
+      const t=$(tid); if(t) t.classList.toggle("on", d[k]!==false);
+      const s=c?c.querySelector(".dfs-st"):null; if(s) s.textContent=d[k]===false?"OFF":"ON";
+    });
+    const tg=$("tgDfRt"); if(tg) tg.classList.toggle("on", d.realTime!==false);
+    const log=$("dfLog"); if(log){
+      const arr=d.log||[];
+      log.innerHTML=arr.length?arr.map(e=>'<div class="dfl-row"><span class="dfl-badge '+(e.status==="clean"?"clean":"")+'">'+(e.status==="clean"?"CLEAN":"BLOCKED")+'</span><div class="dfl-main"><b>'+esc(e.name)+'</b><span>'+esc(e.src)+' · '+esc(e.type)+'</span></div><span class="dfl-time">'+new Date(e.time).toLocaleTimeString([],{hour:"2-digit",minute:"2-digit"})+'</span></div>').join(""):'<div class="dfempty">No threats logged yet — run a scan.</div>';
+    }
+  }
+  function dfLogEvent(name,src,type,status){
+    const d=state.settings.defender||{};
+    d.log=[{id:"df"+uid(),time:Date.now(),name:name,src:src,type:type,status:status}].concat(d.log||[]).slice(0,40);
+    saveAll(); dfRefresh();
+  }
+  function dfQuickScan(){
+    const d=state.settings.defender||{};
+    d.scans=(d.scans||0)+1;
+    d.lastScan=Date.now();
+    if(Math.random()<.7){ const t=DF_NAMES[Math.floor(Math.random()*DF_NAMES.length)];
+      dfLogEvent(t[0],t[1],t[2],"blocked");
+      toast("Defender blocked: "+t[0],"warn");
+    } else {
+      dfLogEvent("Clean Scan","no threats found","SCAN","clean");
+      toast("Quick scan complete — no threats found","ok");
+    }
+    saveAll(); dfRefresh();
+  }
+  function dfEvent(){
+    const d=state.settings.defender||{};
+    if(d.realTime===false) return;
+    if(Math.random()>.35) return;
+    const t=DF_NAMES[Math.floor(Math.random()*DF_NAMES.length)];
+    d.log=[{id:"df"+uid(),time:Date.now(),name:t[0],src:t[1],type:t[2],status:"blocked"}].concat(d.log||[]).slice(0,40);
+    saveAll(); dfRefresh();
   }
 
   /* ===================== RGB LIGHTING ===================== */
@@ -8862,6 +9004,12 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     $("weType").addEventListener("change",()=>{ const t=$("weType").value; $("weSecRow").classList.toggle("hidden",t!=="timer"); $("weValueRow").classList.toggle("hidden",t==="timer"); });
     $("wCustomList").addEventListener("click",e=>{ const ed=e.target.closest("[data-wedit]"); const del=e.target.closest("[data-wdel]"); if(ed) openWidgetEdit(ed.dataset.wedit); else if(del) delWidget(del.dataset.wdel); });
     renderCustomWidgets();
+    $("dfScanBtn").addEventListener("click",dfQuickScan);
+    [["tgDfVirus","virus","Virus Shield"],["tgDfThreat","threat","Threat Prevention"],["tgDfHacker","hacker","Hacker Wall"],["tgDfAttacker","attacker","Attacker Guard"]].forEach(([id,k,nm])=>{
+      $(id).addEventListener("click",()=>{ state.settings.defender[k]=state.settings.defender[k]===false?true:false; saveAll(); dfRefresh(); toast(nm+" "+(state.settings.defender[k]===false?"disabled":"enabled")); });
+    });
+    $("tgDfRt").addEventListener("click",()=>{ state.settings.defender.realTime=state.settings.defender.realTime===false?true:false; saveAll(); dfRefresh(); toast("Real-time protection "+(state.settings.defender.realTime===false?"off":"on")); });
+    dfRefresh();
     $("nModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-nmode]"); if(!b) return; state.settings.net.mode=b.dataset.nmode; saveAll(); renderNet(); toast("Network test: "+b.dataset.nmode.toUpperCase()); });
 
     // rgb lighting
@@ -9005,6 +9153,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   initUiStyle();
   initTilt();
   setInterval(function(){ const hc=$("heroClock"); if(hc){ const d=new Date(); hc.textContent=d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"}); const hd=$("heroDay"); if(hd) hd.textContent=d.toLocaleDateString([],{weekday:"long"}); const hdt=$("heroDate"); if(hdt) hdt.textContent=d.toLocaleDateString([],{day:"numeric",month:"short",year:"numeric"}); } updateWidgetLive(); hbTick(); },1000);
+  setInterval(dfEvent,15000);
   switchView("home");
   requestAnimationFrame(loop);
   const bootEl=$("bootScreen");
