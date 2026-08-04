@@ -1401,6 +1401,11 @@
     background:rgba(255,255,255,.04);color:var(--dim);font-family:'Orbitron';font-size:11px;letter-spacing:2px;text-transform:uppercase}
   .hero .hclock b{color:var(--cyber);font-weight:700;letter-spacing:1px}
   .hero .hclock svg{width:13px;height:13px;fill:none;stroke:var(--cyber);stroke-width:2;flex:none}
+  .hero .hmode{display:flex;flex-wrap:wrap;gap:9px;margin-top:14px}
+  .hero .hmodem{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:100px;border:1px solid var(--stroke);background:rgba(255,255,255,.04);color:var(--dim);font-family:'Orbitron';font-size:10px;letter-spacing:2px}
+  .hero .hmodem .hmd-ico{width:15px;height:15px;display:grid;place-items:center}
+  .hero .hmodem .hmd-ico svg{width:15px;height:15px;fill:none;stroke:var(--cyber);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+  .hero .hmodem .hmd-v{color:var(--cyber);font-weight:700;letter-spacing:1px}
 
   section.vt-in{animation:uiViewIn .5s cubic-bezier(.22,.68,.35,1) both}
   @keyframes uiViewIn{from{opacity:0;transform:translateY(16px) scale(.995)}to{opacity:1;transform:none}}
@@ -1639,6 +1644,8 @@
       <a class="nav-item" data-view="appearance"><span class="ni"><svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg></span> Appearance</a>
       <a class="nav-item" data-view="opt"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20z"/><path d="M12 6v6l4 2"/></svg></span> Optimization</a>
       <a class="nav-item" data-view="rgb"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><path d="M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></svg></span> RGB Lighting</a>
+      <a class="nav-item" data-view="graphics"><span class="ni"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span> Graphics</a>
+      <a class="nav-item" data-view="power"><span class="ni"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></span> Power Mode</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
       <a class="nav-item" data-view="passes"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="7.5" cy="10" r="1.5"/><line x1="11" y1="9" x2="20" y2="9"/><line x1="11" y1="13" x2="20" y2="13"/><path d="M5 18h14v1.5H5z"/><circle cx="7.5" cy="15" r="1.5"/><path d="M4 2v2M8 2v2M12 2v2M16 2v2M20 2v2"/></svg></span> Game Passes <span class="cnt" id="cntPasses">0</span></a>
@@ -1685,6 +1692,7 @@
           <h2>TOURNAMENTS<br>ARENA</h2>
           <p>Pick your battlefield. <b>CS GO 2</b> · <b>PUBG PC</b> · <b>Blood Strike</b> · <b>COD MW19</b></p>
           <div class="hclock"><svg viewBox="0 0 24 24" width="13" height="13"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><b id="heroClock">--:--:--</b> <span id="heroDay">---</span> · <span id="heroDate">---</span></div>
+          <div class="hmode" id="heroModes"></div>
         </div>
 
         <div class="adwrap" id="adWrap">
@@ -2215,6 +2223,95 @@
           <div class="setrow">
             <div class="lbl">Light Background Mode <small>Use a plain static background — the animated canvas stays off</small></div>
             <button class="switch" id="tgStaticBg"></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ GRAPHICS ============ -->
+      <section id="graphicsView" class="hidden">
+        <div class="page-title">GRAPHICS</div>
+        <div class="page-sub">Tune the arena's visual quality — presets, V-Sync, textures, shadows &amp; effects. Your current setup shows on the dashboard.</div>
+        <div class="setcard">
+          <h4>QUALITY PRESET</h4>
+          <div class="optic" id="gPresetRow">
+            <button data-gpreset="ultra">ULTRA</button>
+            <button data-gpreset="high">HIGH</button>
+            <button data-gpreset="low">LOW</button>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>DETAIL LEVELS</h4>
+          <div class="setrow">
+            <div class="lbl">Texture Quality <small>Sharpness of surfaces &amp; skins</small></div>
+            <div class="optic" id="gTextureRow">
+              <button data-gtex="ultra">ULTRA</button>
+              <button data-gtex="high">HIGH</button>
+              <button data-gtex="medium">MED</button>
+              <button data-gtex="low">LOW</button>
+            </div>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Shadow Quality <small>Lighting detail &amp; shadow resolution</small></div>
+            <div class="optic" id="gShadowRow">
+              <button data-gsh="ultra">ULTRA</button>
+              <button data-gsh="high">HIGH</button>
+              <button data-gsh="medium">MED</button>
+              <button data-gsh="low">LOW</button>
+            </div>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Anti-Aliasing <small>Smooths jagged edges</small></div>
+            <div class="optic" id="gAaRow">
+              <button data-gaa="off">OFF</button>
+              <button data-gaa="msaa2">MSAA x2</button>
+              <button data-gaa="msaa4">MSAA x4</button>
+            </div>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>SYNC &amp; FRAME RATE</h4>
+          <div class="setrow">
+            <div class="lbl">V-Sync <small>Syncs frame output to the display refresh</small></div>
+            <button class="switch" id="tgVsync"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Motion Blur <small>Cinematic blur during fast movement</small></div>
+            <button class="switch" id="tgMotion"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Frame Rate Limit <small>Maximum frames the arena targets</small></div>
+            <div class="optic" id="gFpsRow">
+              <button data-gfps="60">60 FPS</button>
+              <button data-gfps="120">120 FPS</button>
+              <button data-gfps="144">144 FPS</button>
+              <button data-gfps="0">UNLIMITED</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ POWER MODE ============ -->
+      <section id="powerView" class="hidden">
+        <div class="page-title">POWER MODE</div>
+        <div class="page-sub">Choose how the arena uses your machine's power — PC, laptop, performance or battery saving. The current plan shows on the dashboard.</div>
+        <div class="setcard">
+          <h4>POWER PLAN</h4>
+          <div class="optic" id="pPlanRow">
+            <button data-pplan="pc">PC MODE</button>
+            <button data-pplan="laptop">LAPTOP MODE</button>
+            <button data-pplan="power">POWER MODE</button>
+            <button data-pplan="battery">BATTERY MODE</button>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>ENERGY OPTIONS</h4>
+          <div class="setrow">
+            <div class="lbl">Battery Saver <small>Low power consumption — dims effects &amp; caps frame rate</small></div>
+            <button class="switch" id="tgBattery"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Maximum Performance <small>Push the CPU/GPU to the limit for peak fps</small></div>
+            <button class="switch" id="tgPerf"></button>
           </div>
         </div>
       </section>
@@ -3436,7 +3533,9 @@
     state.bgml        = getStore(KEYS.bgml, null) ?? [];
     state.profile     = Object.assign(defaultProfile(), getStore(KEYS.prof, {}));
     state.profile.avatarE = normAv(state.profile.avatarE);
-    state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",uiStyle:"aurora",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false}}, getStore(KEYS.set, {}));
+    state.settings    = Object.assign({sound:false,rain:true,lightning:true,bgm:false,bgmTrack:0,music:false,musicTrack:0,rgb:false,rgbMode:"cycle",rgbSpeed:"med",rgbColor:0,accent:0,background:"storm",panelTheme:"default",glass:false,glow:"med",compact:false,corners:"soft",uiStyle:"aurora",user:"ROG",pass:"ROG141",secAlerts:false,autoLock:false,lockMins:5,onboarded:false,chatName:"",chatGame:"",bubbleStyle:"rare",opt:{reduceMotion:false,noAnim:false,lowRes:false,staticBg:false},graphics:{preset:"high",vsync:false,texture:"high",shadow:"medium",aa:"msaa2",motion:true,fps:120},power:{plan:"power",battery:false,perf:true}}, getStore(KEYS.set, {}));
+    state.settings.graphics = Object.assign({preset:"high",vsync:false,texture:"high",shadow:"medium",aa:"msaa2",motion:true,fps:120}, state.settings.graphics||{});
+    state.settings.power = Object.assign({plan:"power",battery:false,perf:true}, state.settings.power||{});
     if(!["aurora","cyber","light","crt"].includes(state.settings.uiStyle)) state.settings.uiStyle="aurora";
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
@@ -3466,7 +3565,7 @@
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -3475,7 +3574,7 @@
     document.querySelectorAll(".nav-item").forEach(n=> n.classList.toggle("active", n.dataset.view===v));
     const vEl=$(VIEWMAP[v]);
     if(vEl){ vEl.classList.remove("vt-in"); void vEl.offsetWidth; vEl.classList.add("vt-in"); }
-    if(v==="home"){ renderStats(); renderGames(); renderRecent(); renderAds(); renderHub(); renderTop3(); }
+    if(v==="home"){ renderStats(); renderGames(); renderRecent(); renderAds(); renderHub(); renderTop3(); renderModeStatus(); }
     if(v==="players"){ renderPlrSummary(); renderPlayers(); }
     if(v==="teams"){ renderTeamSummary(); renderTeams(); }
     if(v==="matches"){ renderMatchSummary(); renderMatches(); }
@@ -3502,6 +3601,8 @@
     if(v==="music"){ renderMusic(); }
     if(v==="appearance"){ renderAppearance(); }
     if(v==="opt"){ renderOpt(); }
+    if(v==="graphics"){ renderGraphics(); }
+    if(v==="power"){ renderPower(); }
     if(v==="rgb"){ renderRgb(); }
     if(v==="sec"){ renderCheatSummary(); renderCheats(); renderSecurity(); }
     if(v==="premium"){ renderPremium(); }
@@ -5503,6 +5604,50 @@
     if(tl) tl.classList.toggle("on", !!o.lowRes);
     if(ts) ts.classList.toggle("on", !!o.staticBg);
     applyOpt();
+  }
+
+  /* ===================== GRAPHICS ===================== */
+  function applyGraphics(){
+    const g=state.settings.graphics||{};
+    document.body.classList.toggle("gfx-ultra", g.preset==="ultra");
+    document.body.classList.toggle("gfx-low", g.preset==="low");
+    document.body.classList.toggle("gfx-vsync", !!g.vsync);
+    document.body.classList.toggle("gfx-motion", !!g.motion);
+    renderModeStatus();
+  }
+  function renderGraphics(){
+    const g=state.settings.graphics||{};
+    document.querySelectorAll("#gPresetRow [data-gpreset]").forEach(b=> b.classList.toggle("sel", b.dataset.gpreset===g.preset));
+    document.querySelectorAll("#gTextureRow [data-gtex]").forEach(b=> b.classList.toggle("sel", b.dataset.gtex===g.texture));
+    document.querySelectorAll("#gShadowRow [data-gsh]").forEach(b=> b.classList.toggle("sel", b.dataset.gsh===g.shadow));
+    document.querySelectorAll("#gAaRow [data-gaa]").forEach(b=> b.classList.toggle("sel", b.dataset.gaa===g.aa));
+    document.querySelectorAll("#gFpsRow [data-gfps]").forEach(b=> b.classList.toggle("sel", (+b.dataset.gfps)===g.fps));
+    const tv=$("tgVsync"); if(tv) tv.classList.toggle("on", !!g.vsync);
+    const tm=$("tgMotion"); if(tm) tm.classList.toggle("on", !!g.motion);
+    applyGraphics();
+  }
+
+  /* ===================== POWER MODE ===================== */
+  function applyPower(){
+    const p=state.settings.power||{};
+    document.body.classList.toggle("pwr-battery", p.plan==="battery"||p.battery);
+    document.body.classList.toggle("pwr-power", p.plan==="power"||p.perf);
+    renderModeStatus();
+  }
+  function renderPower(){
+    const p=state.settings.power||{};
+    document.querySelectorAll("#pPlanRow [data-pplan]").forEach(b=> b.classList.toggle("sel", b.dataset.pplan===p.plan));
+    const tb=$("tgBattery"); if(tb) tb.classList.toggle("on", !!p.battery);
+    const tp=$("tgPerf"); if(tp) tp.classList.toggle("on", !!p.perf);
+    applyPower();
+  }
+  function renderModeStatus(){
+    const g=state.settings.graphics||{};
+    const p=state.settings.power||{};
+    const gmap={ultra:"ULTRA",high:"HIGH",low:"LOW"};
+    const pmap={pc:"PC MODE",laptop:"LAPTOP MODE",power:"POWER MODE",battery:"BATTERY MODE"};
+    const el=$("heroModes"); if(!el) return;
+    el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>';
   }
 
   /* ===================== RGB LIGHTING ===================== */
@@ -8136,6 +8281,20 @@
     $("tgLowRes").addEventListener("click",()=>{ state.settings.opt.lowRes=!state.settings.opt.lowRes; saveAll(); renderOpt(); toast("Low Resolution Mode "+(state.settings.opt.lowRes?"enabled":"disabled")); });
     $("tgStaticBg").addEventListener("click",()=>{ state.settings.opt.staticBg=!state.settings.opt.staticBg; saveAll(); renderOpt(); toast("Light Background Mode "+(state.settings.opt.staticBg?"enabled":"disabled")); });
 
+    // graphics
+    $("gPresetRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gpreset]"); if(!b) return; state.settings.graphics.preset=b.dataset.gpreset; saveAll(); renderGraphics(); toast("Graphics preset: "+b.dataset.gpreset.toUpperCase()); });
+    $("gTextureRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gtex]"); if(!b) return; state.settings.graphics.texture=b.dataset.gtex; saveAll(); renderGraphics(); toast("Texture quality: "+b.dataset.gtex.toUpperCase()); });
+    $("gShadowRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gsh]"); if(!b) return; state.settings.graphics.shadow=b.dataset.gsh; saveAll(); renderGraphics(); toast("Shadow quality: "+b.dataset.gsh.toUpperCase()); });
+    $("gAaRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gaa]"); if(!b) return; state.settings.graphics.aa=b.dataset.gaa; saveAll(); renderGraphics(); toast("Anti-aliasing: "+b.dataset.gaa.toUpperCase()); });
+    $("gFpsRow").addEventListener("click",e=>{ const b=e.target.closest("[data-gfps]"); if(!b) return; state.settings.graphics.fps=+b.dataset.gfps; saveAll(); renderGraphics(); toast("Frame limit: "+(b.dataset.gfps==="0"?"UNLIMITED":b.dataset.gfps+" FPS")); });
+    $("tgVsync").addEventListener("click",()=>{ state.settings.graphics.vsync=!state.settings.graphics.vsync; saveAll(); renderGraphics(); toast("V-Sync "+(state.settings.graphics.vsync?"enabled":"disabled")); });
+    $("tgMotion").addEventListener("click",()=>{ state.settings.graphics.motion=!state.settings.graphics.motion; saveAll(); renderGraphics(); toast("Motion Blur "+(state.settings.graphics.motion?"enabled":"disabled")); });
+
+    // power mode
+    $("pPlanRow").addEventListener("click",e=>{ const b=e.target.closest("[data-pplan]"); if(!b) return; state.settings.power.plan=b.dataset.pplan; saveAll(); renderPower(); toast("Power plan: "+({pc:"PC MODE",laptop:"LAPTOP MODE",power:"POWER MODE",battery:"BATTERY MODE"})[b.dataset.pplan]); });
+    $("tgBattery").addEventListener("click",()=>{ state.settings.power.battery=!state.settings.power.battery; saveAll(); renderPower(); toast("Battery Saver "+(state.settings.power.battery?"enabled":"disabled")); });
+    $("tgPerf").addEventListener("click",()=>{ state.settings.power.perf=!state.settings.power.perf; saveAll(); renderPower(); toast("Maximum Performance "+(state.settings.power.perf?"enabled":"disabled")); });
+
     // rgb lighting
     $("rgbTabSwitch").addEventListener("click",()=>{ state.settings.rgb=!state.settings.rgb; saveAll(); renderRgb(); toast("RGB Lighting "+(state.settings.rgb?"enabled":"disabled")); });
     $("rgbModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-rgbmode]"); if(!b) return; state.settings.rgbMode=b.dataset.rgbmode; saveAll(); renderRgb(); toast("RGB effect: "+b.dataset.rgbmode.toUpperCase()); });
@@ -8259,6 +8418,8 @@
   renderClips();
   renderBgs();
   renderOpt();
+  renderGraphics();
+  renderPower();
   renderRgb();
   renderMusic();
   renderAbout();
