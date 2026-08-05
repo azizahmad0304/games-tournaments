@@ -3969,7 +3969,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     if(!Array.isArray(state.settings.widgets.custom)) state.settings.widgets.custom=[];
     state.settings.defender = Object.assign({realTime:true,virus:true,threat:true,hacker:true,attacker:true,lastScan:0,blocked:0,scans:0,log:[]}, state.settings.defender||{});
     if(!Array.isArray(state.settings.defender.log) || !state.settings.defender.log.length) state.settings.defender.log=dfSeed();
-    state.settings.wifi = Object.assign({show:true,connected:"GT-Arena-5G",link:866,band:"5GHz",chan:36,sec:"WPA3",ip:"192.168.1.24",networks:[]}, state.settings.wifi||{});
+    state.settings.wifi = Object.assign({show:true,connected:"GT-Arena-5G",link:866,band:"5GHz",chan:36,sec:"WPA3",ip:"192.168.1.24",dbm:null,real:false,networks:[]}, state.settings.wifi||{});
     if(!Array.isArray(state.settings.wifi.networks) || !state.settings.wifi.networks.length) state.settings.wifi.networks=WIFI_NETS.slice();
     if(!["aurora","cyber","light","crt"].includes(state.settings.uiStyle)) state.settings.uiStyle="aurora";
     state.profile.avatar = normIdx(state.profile.avatar);
@@ -6401,31 +6401,62 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const tg=$("tgWifiDash"); if(tg) tg.classList.toggle("on", w.show!==false);
     const cnt=$("wfCount"); if(cnt) cnt.textContent=(w.networks||[]).length+" NETWORKS";
     const name=$("wfName"); if(name) name.textContent=w.connected||"—";
-    const curNet=(w.networks||[]).find(n=>n[0]===w.connected)||["","","-45","",0];
-    const bars=$("wfBars"); if(bars) bars.innerHTML=wfBarsHtml(parseInt(curNet[2]));
+    const tag=$("wfSsidTag"); if(tag) tag.textContent=(w.real?"LIVE · DETECTED FROM WINDOWS":"CONNECTED NETWORK");
+    const curNet=(w.networks||[]).find(n=>n[0]===w.connected);
+    const dbm=curNet?parseInt(curNet[2]):(typeof w.dbm==="number"?w.dbm:-45);
+    const bars=$("wfBars"); if(bars) bars.innerHTML=wfBarsHtml(dbm);
     const band=$("wfBand"); if(band) band.textContent=w.band||"—";
     const link=$("wfLink"); if(link) link.textContent=w.link||"—";
     const sec=$("wfSec"); if(sec) sec.textContent=w.sec||"—";
     const chan=$("wfChan"); if(chan) chan.textContent=w.chan||"—";
     const list=$("wfNets"); if(list){
       list.innerHTML=(w.networks||[]).map(n=>{
-        const dbm=parseInt(n[2]);
+        const ndbm=parseInt(n[2]);
         const cur=n[0]===w.connected;
-        return '<div class="wfn-row'+(cur?" cur":"")+'" data-net="'+esc(n[0])+'"><div class="wfn-ico"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div><div class="wfn-main"><b>'+esc(n[0])+(cur?'  ·  <span style="color:#7df9ff;font-size:10px">CONNECTED</span>':'')+'</b><span>'+n[1]+' · '+n[3]+' · CH '+n[4]+'</span></div><div class="wfn-side"><span class="wfn-lock'+(n[3]==="OPEN"?" open":"")+'">'+(n[3]==="OPEN"?"OPEN":"SECURE")+'</span><div class="wfn-bars">'+wfBarsHtml(dbm)+'</div></div></div>';
+        return '<div class="wfn-row'+(cur?" cur":"")+'" data-net="'+esc(n[0])+'"><div class="wfn-ico"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div><div class="wfn-main"><b>'+esc(n[0])+(cur?'  ·  <span style="color:#7df9ff;font-size:10px">CONNECTED</span>':'')+'</b><span>'+n[1]+' · '+n[3]+' · CH '+n[4]+'</span></div><div class="wfn-side"><span class="wfn-lock'+(n[3]==="OPEN"?" open":"")+'">'+(n[3]==="OPEN"?"OPEN":"SECURE")+'</span><div class="wfn-bars">'+wfBarsHtml(ndbm)+'</div></div></div>';
       }).join("");
     }
-    const chip=$("heroWifiV"); if(chip) chip.textContent=w.connected||"—";
     renderModeStatus();
+    const chip=$("heroWifiV"); if(chip) chip.textContent=w.connected||"—";
+  }
+  function wfReal(){
+    if(!window.gtWifi || !window.gtWifi.get) return Promise.resolve();
+    return window.gtWifi.get().then(info=>{
+      const w=state.settings.wifi||{};
+      if(info && info.connected){
+        w.connected=info.name;
+        w.band=info.band; w.chan=info.channel||w.chan; w.sec=info.auth||w.sec;
+        if(info.link) w.link=info.link;
+        w.sig=info.signal; w.dbm=Math.round(2*info.signal-100);
+        w.real=true;
+        const nets=w.networks||[];
+        const idx=nets.findIndex(n=>n[0]===info.name);
+        const entry=[info.name, info.band, String(w.dbm), info.auth||"SECURE", info.channel||1];
+        if(idx>=0) nets[idx]=entry; else nets.unshift(entry);
+      } else if(info){
+        w.real=true; w.connected="WiFi Off"; w.dbm=-100; w.sig=0;
+      } else {
+        w.real=false;
+      }
+      saveAll(); wfRender();
+    }).catch(()=>{});
   }
   function wfRescan(){
     const w=state.settings.wifi||{};
     w.networks=WIFI_NETS.map(n=>[n[0],n[1],String(-(20+Math.floor(Math.random()*70))),n[3],n[4]]).sort((a,b)=>parseInt(a[2])-parseInt(b[2]));
-    if(!w.networks.some(n=>n[0]===w.connected)) w.connected=w.networks[0][0];
-    saveAll(); wfRender();
+    if(w.real){
+      const entry=[w.connected, w.band, String(typeof w.dbm==="number"?w.dbm:-45), w.sec||"SECURE", w.chan||1];
+      const i=w.networks.findIndex(n=>n[0]===w.connected);
+      if(i>=0) w.networks[i]=entry; else w.networks.unshift(entry);
+    } else {
+      if(!w.networks.some(n=>n[0]===w.connected)) w.connected=w.networks[0][0];
+    }
+    saveAll(); wfRender(); wfReal();
     toast("Network scan complete — "+w.networks.length+" networks found","ok");
   }
   function wfConnect(name){
     const w=state.settings.wifi||{};
+    if(w.real){ toast("Live mode — "+name+" detected. Connect through Windows Settings to switch","warn"); return; }
     const n=(w.networks||[]).find(x=>x[0]===name); if(!n) return;
     w.connected=name; w.band=n[1]; w.sec=n[3]; w.chan=n[4];
     const dbm=parseInt(n[2]); w.link=Math.max(130,Math.round((Math.abs(dbm)-30)*14));
@@ -9129,6 +9160,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     $("wfRescanBtn").addEventListener("click",wfRescan);
     $("wfNets").addEventListener("click",e=>{ const r=e.target.closest("[data-net]"); if(!r) return; wfConnect(r.dataset.net); });
     wfRender();
+    wfReal();
     $("nModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-nmode]"); if(!b) return; state.settings.net.mode=b.dataset.nmode; saveAll(); renderNet(); toast("Network test: "+b.dataset.nmode.toUpperCase()); });
 
     // rgb lighting
@@ -9275,11 +9307,13 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   setInterval(dfEvent,15000);
   setInterval(function(){
     const w=state.settings.wifi||{}; if(!w.connected) return;
+    if(w.real) return;
     const nets=w.networks||[];
     const own=nets.find(n=>n[0]===w.connected);
     if(own && Math.random()<.3){ own[2]=String(Math.max(-95,Math.min(-25,parseInt(own[2])+(Math.random()<.5?-1:1)*2))); saveAll(); wfRender(); }
     const chip=$("heroWifiV"); if(chip) chip.textContent=w.connected||"—";
   },5000);
+  setInterval(function(){ wfReal(); },20000);
   switchView("home");
   requestAnimationFrame(loop);
   const bootEl=$("bootScreen");
