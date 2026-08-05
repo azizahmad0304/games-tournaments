@@ -1182,6 +1182,7 @@
   /* ============ HIGHLIGHTS & CLIPS ============ */
   .clipcard{display:flex;gap:14px;align-items:center}
   .clip-thumb{width:108px;height:64px;flex:none;border-radius:12px;background:linear-gradient(135deg,#3d7bff,#b14bff);display:grid;place-items:center;font-size:26px;position:relative;overflow:hidden}
+  .clip-thumb video{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
   .clip-thumb i{position:absolute;right:6px;bottom:5px;font-size:10px;font-style:normal;background:rgba(0,0,0,.6);color:#fff;padding:1px 7px;border-radius:8px}
   .clipinfo{flex:1;min-width:0}
   .clip-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
@@ -1730,6 +1731,32 @@
   .wfn-bars i{width:4px;border-radius:2px;background:rgba(0,224,255,.25)}
   .wfn-bars i.lit{background:#00e0ff}
 
+  /* special features */
+  .feats{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+  .feat-card{display:flex;flex-direction:column;gap:10px;padding:16px;border-radius:16px;background:var(--pn-grad);border:1px solid var(--stroke);cursor:pointer;transition:.2s;text-align:left}
+  .feat-card:hover{transform:translateY(-4px);border-color:var(--cyber);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+  .feat-ico{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(125,249,255,.15),rgba(177,75,255,.12));border:1px solid rgba(125,249,255,.25);flex:none}
+  .feat-ico svg{width:24px;height:24px;color:#7df9ff}
+  .feat-card b{font-size:13px;color:#fff;letter-spacing:.5px}
+  .feat-card span{font-size:11px;color:var(--dim);line-height:1.5}
+
+  /* media (screenshots / gallery / highlights) */
+  .medgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px}
+  .med-card{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--stroke);background:var(--pn-grad);cursor:pointer;aspect-ratio:1/1}
+  .med-card img,.med-card video{width:100%;height:100%;object-fit:cover;display:block}
+  .med-card:hover{border-color:var(--cyber)}
+  .med-del{position:absolute;top:8px;right:8px;width:26px;height:26px;border-radius:50%;border:none;background:rgba(10,16,30,.8);color:#ff6b92;font-size:13px;cursor:pointer;z-index:2;display:none}
+  .med-card:hover .med-del{display:block}
+  .med-card .med-name{position:absolute;left:0;right:0;bottom:0;padding:18px 8px 6px;font-size:10px;color:#fff;background:linear-gradient(transparent,rgba(5,10,22,.85));white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .med-empty{grid-column:1/-1;text-align:center;padding:40px;color:var(--dim)}
+  .med-empty .big{font-size:40px;margin-bottom:8px}
+  .md-media img,.md-media video{max-width:100%;max-height:62vh;border-radius:12px;display:block;margin:0 auto}
+  .md-acts{display:flex;justify-content:flex-end;gap:10px;padding:14px;border-top:1px solid rgba(255,255,255,.08)}
+  .md-meta{font-size:11px;color:var(--dim);margin-top:10px;text-align:center;word-break:break-all}
+  .md-media .top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);font-family:'Orbitron';font-size:13px;letter-spacing:1px;color:#fff}
+  .modal-x{background:none;border:none;color:var(--dim);font-size:16px;cursor:pointer;padding:4px 8px;border-radius:8px}
+  .modal-x:hover{color:#fff;background:rgba(255,255,255,.06)}
+
 </style>
 </head>
 <body>
@@ -1825,6 +1852,10 @@
       <a class="nav-item" data-view="network"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></span> Network &amp; Ping</a>
       <a class="nav-item" data-view="health"><span class="ni"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><path d="M9 12h6M12 9v6"/></svg></span> Health &amp; Heartbeat</a>
       <a class="nav-item" data-view="wifi"><span class="ni"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></span> WiFi</a>
+      <a class="nav-item" data-view="features"><span class="ni"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span> Special Features</a>
+      <div class="nav-sep">MY MEDIA</div>
+      <a class="nav-item" data-view="screens"><span class="ni"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span> Screenshots <span class="cnt" id="cntScreens">0</span></a>
+      <a class="nav-item" data-view="gallery"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></span> Gallery <span class="cnt" id="cntGallery">0</span></a>
       <a class="nav-item" data-view="widgets"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span> Widgets</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
@@ -2658,6 +2689,35 @@
         </div>
       </section>
 
+      <!-- ============ SPECIAL FEATURES ============ -->
+      <section id="featuresView" class="hidden">
+        <div class="page-title">SPECIAL FEATURES</div>
+        <div class="page-sub">Every power tool in Games Tournaments Pro — one tap to jump straight into it.</div>
+        <div class="feats" id="featGrid"></div>
+      </section>
+
+      <!-- ============ SCREENSHOTS ============ -->
+      <section id="screensView" class="hidden">
+        <div class="page-title">SCREENSHOTS</div>
+        <div class="page-sub">Your own captures from your computer — add screenshots, browse them in the grid and open any in full view.</div>
+        <div class="toolbar">
+          <button class="addbtn" id="addScreenBtn"><svg viewBox="0 0 24 24" width="15" height="15" style="margin-right:6px"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg> ADD SCREENSHOTS</button>
+          <button class="tbtn edit" id="scClearBtn">CLEAR ALL</button>
+        </div>
+        <div class="medgrid" id="screenGrid"></div>
+      </section>
+
+      <!-- ============ GALLERY ============ -->
+      <section id="galleryView" class="hidden">
+        <div class="page-title">GALLERY</div>
+        <div class="page-sub">Your personal picture collection from your computer — add pictures and view them in full size.</div>
+        <div class="toolbar">
+          <button class="addbtn" id="addGalBtn"><svg viewBox="0 0 24 24" width="15" height="15" style="margin-right:6px"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg> ADD PICTURES</button>
+          <button class="tbtn edit" id="galClearBtn">CLEAR ALL</button>
+        </div>
+        <div class="medgrid" id="galGrid"></div>
+      </section>
+
       <!-- ============ WIDGETS ============ -->
       <section id="widgetsView" class="hidden">
         <div class="page-title">WIDGETS</div>
@@ -2819,6 +2879,7 @@
         <div class="toolbar">
           <div class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><input id="clipSearch" placeholder="Search clips..." /></div>
           <button class="addbtn" id="addClipBtn">+ ADD CLIP</button>
+          <button class="addbtn" id="upClipBtn" style="background:linear-gradient(135deg,#7df9ff,#4da6ff)">⬆ UPLOAD FROM PC</button>
           <button class="addbtn" id="recBtn" style="background:linear-gradient(135deg,#ff4d6d,#ff7a5c)">● RECORD CLIP</button>
         </div>
         <div class="rec-status" id="recStatus" style="display:none">● Recording… <b id="recTimer">0:00</b> <button class="tbtn del" id="recStopBtn">STOP &amp; SAVE</button></div>
@@ -3295,6 +3356,17 @@
           <button type="submit" class="mbtn save">SAVE CLIP</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- ============ MEDIA VIEWER MODAL ============ -->
+  <div class="overlay" id="mediaModal">
+    <div class="modal md-media">
+      <div class="top"><span id="mmTitle">MEDIA</span><button class="modal-x" id="mmClose">✕</button></div>
+      <div class="body" id="mmBody"></div>
+      <div class="md-acts">
+        <button class="tbtn del" id="mmDel">DELETE</button>
+      </div>
     </div>
   </div>
 
@@ -4009,7 +4081,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView",defender:"defenderView",wifi:"wifiView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView",defender:"defenderView",wifi:"wifiView",features:"featuresView",screens:"screensView",gallery:"galleryView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -4063,6 +4135,9 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     if(v==="about"){ renderAbout(); }
     if(v==="collections"){ renderCollections(); }
     if(v==="clips"){ renderClips(); }
+    if(v==="features"){ renderFeatures(); }
+    if(v==="screens"){ mediaRender("screens"); }
+    if(v==="gallery"){ mediaRender("gallery"); }
     closeSidebar();
     window.scrollTo({top:0,behavior:"smooth"});
   }
@@ -6475,6 +6550,81 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     toast("Connected to "+name,"ok");
   }
 
+  /* ===================== SPECIAL FEATURES ===================== */
+  const FEATURES=[
+    {v:"themes",n:"Panel Themes",d:"22 pro skins — glass, gold, cyber & more for the whole arena.",i:'<svg viewBox="0 0 24 24"><path d="M12 22a10 10 0 1 1 10-10c0 1.7-1.3 3-3 3h-2.3a2 2 0 0 0-1.5 3.3c.6.7.3 1.7-.6 1.7H12z"/><circle cx="7.5" cy="10.5" r="1.5"/><circle cx="12" cy="7.5" r="1.5"/><circle cx="16.5" cy="10.5" r="1.5"/></svg>'},
+    {v:"defender",n:"App Defender",d:"Virus, threat, hacker & attacker shields with a live defense log.",i:'<svg viewBox="0 0 24 24"><path d="M12 1 3 5v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V5z"/><path d="m9 12 2 2 4-4"/></svg>'},
+    {v:"wifi",n:"Live WiFi",d:"Sees the network your PC is on — SSID, signal, band & speed.",i:'<svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg>'},
+    {v:"health",n:"Health & Heartbeat",d:"Heartbeat pulse, CPU/GPU temp, load & RAM vitals live.",i:'<svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><path d="M9 12h6M12 9v6"/></svg>'},
+    {v:"network",n:"Network & Ping",d:"Live ping, download & upload meters right on the dashboard.",i:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg>'},
+    {v:"rgb",n:"RGB Lighting",d:"Cycle, wave & pulse RGB borders across every panel.",i:'<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>'},
+    {v:"graphics",n:"Graphics",d:"Presets, resolution, refresh rate & V-Sync — tuned for fps.",i:'<svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>'},
+    {v:"power",n:"Power Mode",d:"PC, laptop, power & battery plans with auto switching.",i:'<svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg>'},
+    {v:"fps",n:"FPS",d:"Live frame rate counter on the dashboard or floating HUD.",i:'<svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg>'},
+    {v:"clips",n:"Highlights & Clips",d:"Upload clips from your PC, add links or record your screen live.",i:'<svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>'},
+    {v:"widgets",n:"Widgets",d:"Live clock, weather, countdown, heartbeat & custom widgets.",i:'<svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>'}
+  ];
+  function renderFeatures(){ $("featGrid").innerHTML=FEATURES.map(f=>'<button class="feat-card" data-fv="'+f.v+'"><div class="feat-ico">'+f.i+'</div><b>'+f.n+'</b><span>'+f.d+'</span></button>').join(""); }
+
+  /* ===================== MEDIA (SCREENSHOTS / GALLERY / CLIPS) ===================== */
+  const MEDIA_DB="gt_media_v1";
+  const MM_OBJ=Object.create(null);
+  function mdbOpen(){ return new Promise((res,rej)=>{ const r=indexedDB.open(MEDIA_DB,1); r.onupgradeneeded=()=>{ const d=r.result; if(!d.objectStoreNames.contains("media")) d.createObjectStore("media",{keyPath:"id"}); }; r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }); }
+  function mdbPut(rec){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("media","readwrite").objectStore("media"); const r=t.put(rec); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
+  function mdbAll(){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("media","readonly").objectStore("media"); const r=t.getAll(); r.onsuccess=()=>res(r.result||[]); r.onerror=()=>rej(r.error); })); }
+  function mdbDel(id){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("media","readwrite").objectStore("media"); const r=t.delete(id); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
+  function mdbClear(){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("media","readwrite").objectStore("media"); const r=t.clear(); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
+  function mmUrl(rec){ if(!MM_OBJ[rec.id]) MM_OBJ[rec.id]=URL.createObjectURL(rec.blob||rec.data); return MM_OBJ[rec.id]; }
+  function mmIsVideo(rec){ return /video\/|\.(mp4|webm|mkv|mov|m4v|avi|mpeg|wmv)$/i.test((rec.type||"")+" "+rec.name); }
+  function fmtSize(n){ if(!n) return ""; if(n<1024) return n+" B"; if(n<1048576) return (n/1024).toFixed(1)+" KB"; return (n/1048576).toFixed(1)+" MB"; }
+  function pickFiles(accept,multiple){
+    return new Promise(res=>{
+      const inp=document.createElement("input");
+      inp.type="file"; inp.accept=accept; inp.multiple=!!multiple;
+      inp.style.display="none";
+      document.body.appendChild(inp);
+      inp.addEventListener("change",()=>{ const files=Array.from(inp.files||[]); inp.remove(); res(files); });
+      inp.click();
+    });
+  }
+  async function mediaAdd(cat, files){
+    let added=0;
+    for(const f of files){ if(!f) continue; await mdbPut({id:uid(),cat:cat,name:f.name,type:f.type,size:f.size,blob:f,time:Date.now()}); added++; }
+    if(added){ const label=cat==="screens"?"screenshot"+(added>1?"s":""):cat==="gallery"?"picture"+(added>1?"s":""):"clip"+(added>1?"s":""); toast(added+" "+label+" added","ok"); }
+    if(cat==="hl") renderClips(); else mediaRender(cat);
+  }
+  function mediaCard(rec){
+    const url=mmUrl(rec);
+    const inner=mmIsVideo(rec)?'<video src="'+url+'" preload="metadata" muted></video>':'<img src="'+url+'" alt=""/>';
+    return '<div class="med-card" data-mmid="'+rec.id+'"><button class="med-del" data-mmdel="'+rec.id+'">✕</button><span class="med-name">'+esc(rec.name)+'</span>'+inner+'</div>';
+  }
+  async function mediaRender(cat){
+    const map={screens:"screenGrid",gallery:"galGrid"};
+    const grid=$(map[cat]); if(!grid) return;
+    const list=(await mdbAll()).filter(r=>r.cat===cat).sort((a,b)=>b.time-a.time);
+    const cnt=$("cnt"+(cat==="screens"?"Screens":"Gallery")); if(cnt) cnt.textContent=list.length;
+    grid.innerHTML=list.length? list.map(mediaCard).join("") : '<div class="med-empty"><div class="big">🖼️</div><h4>'+(cat==="screens"?"No screenshots yet":"Gallery is empty")+'</h4><p>Click <b>ADD</b> to pick images from your computer.</p></div>';
+  }
+  function openMedia(id){
+    mdbAll().then(list=>{
+      const rec=list.find(r=>r.id===id); if(!rec) return;
+      $("mmTitle").textContent=mmIsVideo(rec)?"CLIP":"MEDIA";
+      $("mmBody").innerHTML=(mmIsVideo(rec)?'<video src="'+mmUrl(rec)+'" controls autoplay></video>':'<img src="'+mmUrl(rec)+'" alt=""/>')+'<div class="md-meta">'+esc(rec.name)+' · '+fmtSize(rec.size)+'</div>';
+      $("mmDel").dataset.mmid=id;
+      $("mediaModal").classList.add("show");
+    });
+  }
+  function closeMedia(){ $("mediaModal").classList.remove("show"); }
+  function mmDelete(id){
+    mdbDel(id).then(()=>{
+      if(MM_OBJ[id]){ try{ URL.revokeObjectURL(MM_OBJ[id]); }catch(e){} delete MM_OBJ[id]; }
+      closeMedia();
+      const up=document.querySelector('[data-mmupdel="'+id+'"]');
+      if(up){ renderClips(); } else { mediaRender("screens"); mediaRender("gallery"); }
+      toast("Deleted","warn");
+    });
+  }
+
   /* ===================== RGB LIGHTING ===================== */
   function applyRgb(){
     const r=state.settings.rgb||false;
@@ -8674,20 +8824,36 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   }
   function renderClips(){
     if(!state.clips) return;
-    const cnt=$("cntClips"); if(cnt) cnt.textContent=state.clips.length;
     const l=filteredClips();
-    $("clipGrid").innerHTML=l.length? l.map(c=>`
-      <div class="tcard clipcard">
-        <div class="clip-thumb"><span>${c.icon||"🎬"}</span><i>${esc(c.dur||"")}</i></div>
-        <div class="clipinfo">
-          <div class="clip-top"><h4>${esc(c.title)}</h4><span class="badge" style="background:${gameColor(c.game)}22;color:${gameColor(c.game)};border-color:${gameColor(c.game)}44">${esc(gameOf(c.game).short)}</span></div>
-          <p>${c.date||""}</p>
-        </div>
-        <div class="clipacts">
-          ${c.url?`<a class="tbtn edit" href="${esc(c.url)}" target="_blank" rel="noopener">WATCH</a>`:""}
-          <button class="tbtn del" data-cldel="${c.id}">DEL</button>
-        </div>
-      </div>`).join("") : `<div class="empty" style="grid-column:1/-1"><div class="big">🎬</div><h4>No clips yet</h4><p>Record your screen or add your best highlights.</p></div>`;
+    mdbAll().then(list=>{
+      const ups=list.filter(r=>r.cat==="hl").sort((a,b)=>b.time-a.time);
+      const cnt=$("cntClips"); if(cnt) cnt.textContent=state.clips.length+ups.length;
+      const upHTML=ups.map(rec=>`
+        <div class="tcard clipcard">
+          <div class="clip-thumb"><video src="${mmUrl(rec)}" preload="metadata" muted></video><i>${mmIsVideo(rec)?"🎬":"🖼️"}</i></div>
+          <div class="clipinfo">
+            <div class="clip-top"><h4>${esc(rec.name)}</h4></div>
+            <p>Uploaded from PC · ${fmtSize(rec.size)}</p>
+          </div>
+          <div class="clipacts">
+            <button class="tbtn edit" data-mmplay="${rec.id}">PLAY</button>
+            <button class="tbtn del" data-mmupdel="${rec.id}">DEL</button>
+          </div>
+        </div>`).join("");
+      const metaHTML=l.map(c=>`
+        <div class="tcard clipcard">
+          <div class="clip-thumb"><span>${c.icon||"🎬"}</span><i>${esc(c.dur||"")}</i></div>
+          <div class="clipinfo">
+            <div class="clip-top"><h4>${esc(c.title)}</h4><span class="badge" style="background:${gameColor(c.game)}22;color:${gameColor(c.game)};border-color:${gameColor(c.game)}44">${esc(gameOf(c.game).short)}</span></div>
+            <p>${c.date||""}</p>
+          </div>
+          <div class="clipacts">
+            ${c.url?`<a class="tbtn edit" href="${esc(c.url)}" target="_blank" rel="noopener">WATCH</a>`:""}
+            <button class="tbtn del" data-cldel="${c.id}">DEL</button>
+          </div>
+        </div>`).join("");
+      $("clipGrid").innerHTML=(ups.length||l.length)? upHTML+metaHTML : `<div class="empty" style="grid-column:1/-1"><div class="big">🎬</div><h4>No clips yet</h4><p>Upload a clip from your PC, record your screen or add your best highlights.</p></div>`;
+    });
   }
   function openClipForm(c){
     const ed=!!c;
@@ -9171,6 +9337,32 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     $("wfNets").addEventListener("click",e=>{ const r=e.target.closest("[data-net]"); if(!r) return; wfConnect(r.dataset.net); });
     wfRender();
     wfReal();
+
+    // special features + media
+    renderFeatures();
+    $("featGrid").addEventListener("click",e=>{ const c=e.target.closest("[data-fv]"); if(c) switchView(c.dataset.fv); });
+    $("addScreenBtn").addEventListener("click",()=> pickFiles("image/*",true).then(files=>{ if(files.length) mediaAdd("screens",files); }));
+    $("addGalBtn").addEventListener("click",()=> pickFiles("image/*",true).then(files=>{ if(files.length) mediaAdd("gallery",files); }));
+    $("upClipBtn").addEventListener("click",()=> pickFiles("video/*,image/*",true).then(files=>{ if(files.length) mediaAdd("hl",files); }));
+    $("screenGrid").addEventListener("click",e=>{
+      const d=e.target.closest("[data-mmdel]"); if(d){ mmDelete(d.dataset.mmdel); return; }
+      const c=e.target.closest("[data-mmid]"); if(c) openMedia(c.dataset.mmid);
+    });
+    $("galGrid").addEventListener("click",e=>{
+      const d=e.target.closest("[data-mmdel]"); if(d){ mmDelete(d.dataset.mmdel); return; }
+      const c=e.target.closest("[data-mmid]"); if(c) openMedia(c.dataset.mmid);
+    });
+    $("clipGrid").addEventListener("click",e=>{
+      const p=e.target.closest("[data-mmplay]"); if(p){ openMedia(p.dataset.mmplay); return; }
+      const d=e.target.closest("[data-mmupdel]"); if(d){ mmDelete(d.dataset.mmupdel); return; }
+      const b=e.target.closest("[data-cldel]"); if(b) deleteClip(b.dataset.cldel);
+    });
+    $("scClearBtn").addEventListener("click",()=> openConfirm("Delete all your screenshots?",()=>{ mdbAll().then(l=>{ const ids=l.filter(r=>r.cat==="screens").map(r=>r.id); return Promise.all(ids.map(id=>mdbDel(id))); }).then(()=>{ mediaRender("screens"); toast("All screenshots cleared","warn"); }); }));
+    $("galClearBtn").addEventListener("click",()=> openConfirm("Delete all your gallery pictures?",()=>{ mdbAll().then(l=>{ const ids=l.filter(r=>r.cat==="gallery").map(r=>r.id); return Promise.all(ids.map(id=>mdbDel(id))); }).then(()=>{ mediaRender("gallery"); toast("All pictures cleared","warn"); }); }));
+    $("mmClose").addEventListener("click",closeMedia);
+    $("mmDel").addEventListener("click",()=>{ const id=$("mmDel").dataset.mmid; if(id) mmDelete(id); });
+    $("mediaModal").addEventListener("click",e=>{ if(e.target===$("mediaModal")) closeMedia(); });
+    mediaRender("screens"); mediaRender("gallery");
     $("nModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-nmode]"); if(!b) return; state.settings.net.mode=b.dataset.nmode; saveAll(); renderNet(); toast("Network test: "+b.dataset.nmode.toUpperCase()); });
 
     // rgb lighting
