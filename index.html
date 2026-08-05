@@ -43,7 +43,7 @@
   body.pt-toxic{--bg:#030a02;--bg2:#06130a;--panel:rgba(20,46,8,.8);--panel2:rgba(26,58,12,.9);--stroke:rgba(118,255,3,.26);--sb-grad:linear-gradient(180deg,rgba(10,24,4,.94),rgba(3,9,2,.97));--hd-grad:linear-gradient(180deg,rgba(10,24,4,.9),rgba(3,9,2,.35));--pn-grad:linear-gradient(160deg,rgba(14,30,5,.92),rgba(5,12,2,.96));--md-grad:linear-gradient(170deg,#0d2205,#040a02);--nav-bg:linear-gradient(90deg,rgba(118,255,3,.15),rgba(118,255,3,.03));--nav-bd:rgba(118,255,3,.42);--nav-glow:rgba(118,255,3,.12);--aur1:rgba(118,255,3,.1);--aur2:rgba(178,255,89,.08);--aur3:rgba(0,255,65,.08)}
   body.pt-galaxy{--bg:#05030f;--bg2:#0a0718;--panel:rgba(24,18,66,.8);--panel2:rgba(32,24,82,.9);--stroke:rgba(124,90,255,.28);--sb-grad:linear-gradient(180deg,rgba(12,9,36,.94),rgba(5,3,14,.97));--hd-grad:linear-gradient(180deg,rgba(12,9,36,.9),rgba(5,3,14,.35));--pn-grad:linear-gradient(160deg,rgba(16,12,42,.92),rgba(6,4,18,.96));--md-grad:linear-gradient(170deg,#120b32,#07051a);--nav-bg:linear-gradient(90deg,rgba(49,27,146,.18),rgba(49,27,146,.03));--nav-bd:rgba(49,27,146,.45);--nav-glow:rgba(49,27,146,.15);--aur1:rgba(49,27,146,.15);--aur2:rgba(0,229,255,.09);--aur3:rgba(124,77,255,.1)}
   body.pt-chrome{--bg:#050709;--bg2:#0a0e11;--panel:rgba(30,36,40,.8);--panel2:rgba(38,46,52,.9);--stroke:rgba(176,190,197,.24);--sb-grad:linear-gradient(180deg,rgba(13,16,18,.94),rgba(5,7,8,.97));--hd-grad:linear-gradient(180deg,rgba(13,16,18,.9),rgba(5,7,8,.35));--pn-grad:linear-gradient(160deg,rgba(16,20,23,.92),rgba(6,8,10,.96));--md-grad:linear-gradient(170deg,#0f1518,#06090b);--nav-bg:linear-gradient(90deg,rgba(176,190,197,.15),rgba(176,190,197,.03));--nav-bd:rgba(176,190,197,.4);--nav-glow:rgba(176,190,197,.1);--aur1:rgba(176,190,197,.1);--aur2:rgba(236,239,241,.06);--aur3:rgba(0,172,193,.07)}
-  body.pt-glass{--bg:#071120;--bg2:#0b1a30;--panel:rgba(255,255,255,.08);--panel2:rgba(255,255,255,.12);--stroke:rgba(150,205,255,.24);--sb-grad:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,.04));--hd-grad:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.03));--pn-grad:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));--md-grad:linear-gradient(170deg,rgba(20,42,78,.94),rgba(9,20,40,.97));--nav-bg:linear-gradient(90deg,rgba(125,249,255,.2),rgba(125,249,255,.05));--nav-bd:rgba(125,249,255,.5);--nav-glow:rgba(125,249,255,.18);--aur1:rgba(125,249,255,.16);--aur2:rgba(177,75,255,.12);--aur3:rgba(255,213,74,.1)}
+  body.pt-glass{--bg:#081224;--bg2:#0c1b33;--panel:rgba(255,255,255,.06);--panel2:rgba(255,255,255,.1);--stroke:rgba(150,205,255,.18);--sb-grad:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.02));--hd-grad:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));--pn-grad:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));--md-grad:linear-gradient(170deg,rgba(20,42,78,.92),rgba(9,20,40,.97));--nav-bg:linear-gradient(90deg,rgba(125,249,255,.18),rgba(125,249,255,.04));--nav-bd:rgba(125,249,255,.45);--nav-glow:rgba(125,249,255,.16);--aur1:rgba(125,249,255,.14);--aur2:rgba(177,75,255,.1);--aur3:rgba(255,213,74,.08)}
   body.pt-default::before,body.pt-csgo::before,body.pt-pubg::before,body.pt-bs::before,body.pt-cod::before,body.pt-gold::before,body.pt-emerald::before,body.pt-violet::before,body.pt-crimson::before,body.pt-ocean::before,body.pt-lime::before,body.pt-rose::before,body.pt-graphite::before,body.pt-inferno::before,body.pt-frost::before,body.pt-berry::before,body.pt-sunset::before,body.pt-toxic::before,body.pt-galaxy::before,body.pt-chrome::before,body.pt-glass::before{content:"";position:fixed;inset:-25%;z-index:0;pointer-events:none;background:radial-gradient(42% 34% at 18% 8%,var(--aur1,rgba(0,255,255,.1)),transparent 60%),radial-gradient(36% 30% at 84% 16%,var(--aur2,rgba(255,61,110,.08)),transparent 60%),radial-gradient(38% 40% at 58% 92%,var(--aur3,rgba(80,60,255,.09)),transparent 62%);animation:ptdrift 12s ease-in-out infinite alternate,ptbreathe 6s ease-in-out infinite}
   @keyframes ptdrift{0%{transform:translate3d(-3.5%,-2%,0) rotate(-2deg) scale(1)}100%{transform:translate3d(3.5%,2.5%,0) rotate(4deg) scale(1.06)}}
   @keyframes ptbreathe{0%,100%{opacity:.82}50%{opacity:1}}
@@ -1646,11 +1646,13 @@
   .wformbtns .w-save{background:linear-gradient(90deg,rgba(0,224,255,.25),rgba(177,75,255,.25));border-color:rgba(0,224,255,.45);color:#fff}
   .wformbtns .w-cancel{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.15);color:#8fa3c8}
 
-  /* transparent glass theme — sidebar corners + frosted panels */
-  body.pt-glass #sidebar{background:linear-gradient(180deg,rgba(255,255,255,.13),rgba(255,255,255,.04));backdrop-filter:blur(22px);border-right:1px solid rgba(150,205,255,.28)}
-  body.pt-glass #sidebar::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(130px 130px at 0% 0%,rgba(125,249,255,.34),transparent 70%),radial-gradient(130px 130px at 100% 0%,rgba(125,249,255,.26),transparent 70%),radial-gradient(130px 130px at 0% 100%,rgba(177,75,255,.3),transparent 70%),radial-gradient(130px 130px at 100% 100%,rgba(177,75,255,.22),transparent 70%)}
+  /* clean transparent glass theme — glowing side corners + frosted header */
+  body.pt-glass #sidebar{background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.02));backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);border-right:1px solid rgba(150,205,255,.16)}
+  body.pt-glass #sidebar::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(110px 110px at 0% 0%,rgba(125,249,255,.28),transparent 70%),radial-gradient(110px 110px at 100% 0%,rgba(125,249,255,.2),transparent 70%),radial-gradient(110px 110px at 0% 100%,rgba(177,75,255,.24),transparent 70%),radial-gradient(110px 110px at 100% 100%,rgba(177,75,255,.18),transparent 70%)}
+  body.pt-glass #sidebar::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,255,255,.06),transparent 40%),linear-gradient(0deg,rgba(255,255,255,.05),transparent 40%)}
   body.pt-glass .sb-logo,body.pt-glass nav,body.pt-glass .sb-foot{position:relative;z-index:1}
-  body.pt-glass header,body.pt-glass .tcard,body.pt-glass .setcard,body.pt-glass .regform,body.pt-glass .bgcard,body.pt-glass .theme-card,body.pt-glass .modal{background:linear-gradient(160deg,rgba(255,255,255,.1),rgba(255,255,255,.03));backdrop-filter:blur(20px)}
+  body.pt-glass header{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid rgba(150,205,255,.16)}
+  body.pt-glass .tcard,body.pt-glass .setcard,body.pt-glass .regform,body.pt-glass .bgcard,body.pt-glass .theme-card,body.pt-glass .modal{background:linear-gradient(160deg,rgba(255,255,255,.07),rgba(255,255,255,.02));backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
 
   /* app defender */
   .dfbanner{display:flex;gap:18px;align-items:center;flex-wrap:wrap;padding:22px;border-radius:18px;background:linear-gradient(135deg,rgba(43,255,158,.08),rgba(0,224,255,.06));border:1px solid rgba(43,255,158,.3);margin-bottom:16px}
@@ -1688,6 +1690,36 @@
   .dfl-main b{display:block;font-size:13px;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .dfl-main span{font-size:10px;color:var(--dim)}
   .dfl-time{font-size:10px;color:var(--dim);white-space:nowrap}
+
+  /* wifi */
+  .wfmon{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .wf-ico{width:70px;height:70px;flex:none;border-radius:50%;display:grid;place-items:center;background:rgba(0,224,255,.1);border:1px solid rgba(0,224,255,.35)}
+  .wf-ico svg{width:36px;height:36px;color:#7df9ff;filter:drop-shadow(0 0 10px rgba(0,224,255,.6))}
+  .wf-info{flex:1;min-width:160px}
+  .wf-info b{font-family:'Orbitron';font-size:20px;letter-spacing:.5px;color:#fff;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .wf-info span{font-size:11px;color:var(--dim);letter-spacing:1px}
+  .wf-meta{display:flex;gap:22px;flex-wrap:wrap}
+  .wf-meta div{text-align:center}
+  .wf-meta b{font-size:18px;color:#7df9ff;display:block;font-family:'Orbitron'}
+  .wf-meta span{font-size:9px;color:var(--dim);letter-spacing:1.5px}
+  .wfbars{display:flex;align-items:flex-end;gap:4px;height:30px}
+  .wfbars i{width:6px;border-radius:2px;background:rgba(0,224,255,.25)}
+  .wfbars i.lit{background:#00e0ff;box-shadow:0 0 8px rgba(0,224,255,.7)}
+  .wfnets{display:flex;flex-direction:column}
+  .wfn-row{display:flex;align-items:center;gap:14px;padding:12px 4px;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;border-radius:10px;transition:.15s}
+  .wfn-row:hover{background:rgba(255,255,255,.04)}
+  .wfn-row.cur{background:rgba(0,224,255,.07);border:1px solid rgba(0,224,255,.3);margin:2px 0;padding:11px 4px}
+  .wfn-ico{width:38px;height:38px;flex:none;border-radius:10px;display:grid;place-items:center;background:rgba(0,224,255,.1);border:1px solid rgba(0,224,255,.25)}
+  .wfn-ico svg{width:20px;height:20px;color:#7df9ff}
+  .wfn-main{flex:1;min-width:0}
+  .wfn-main b{display:block;font-size:14px;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .wfn-main span{font-size:10px;color:var(--dim)}
+  .wfn-side{display:flex;align-items:center;gap:12px}
+  .wfn-lock{font-size:10px;letter-spacing:1px;padding:2px 8px;border-radius:100px;background:rgba(255,213,74,.12);color:#ffd54a;border:1px solid rgba(255,213,74,.3)}
+  .wfn-lock.open{background:rgba(255,255,255,.08);color:#8fa3c8;border-color:rgba(255,255,255,.15)}
+  .wfn-bars{display:flex;align-items:flex-end;gap:2px;height:16px}
+  .wfn-bars i{width:4px;border-radius:2px;background:rgba(0,224,255,.25)}
+  .wfn-bars i.lit{background:#00e0ff}
 
 </style>
 </head>
@@ -1783,6 +1815,7 @@
       <a class="nav-item" data-view="fps"><span class="ni"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></span> FPS</a>
       <a class="nav-item" data-view="network"><span class="ni"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></span> Network &amp; Ping</a>
       <a class="nav-item" data-view="health"><span class="ni"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/><path d="M9 12h6M12 9v6"/></svg></span> Health &amp; Heartbeat</a>
+      <a class="nav-item" data-view="wifi"><span class="ni"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></span> WiFi</a>
       <a class="nav-item" data-view="widgets"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span> Widgets</a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
@@ -2576,6 +2609,43 @@
             <div class="lbl">Heartbeat Widget <small>Show the live heartbeat card on the dashboard widgets</small></div>
             <button class="switch" id="tgWHeart"></button>
           </div>
+        </div>
+      </section>
+
+      <!-- ============ WIFI ============ -->
+      <section id="wifiView" class="hidden">
+        <div class="page-title">WIFI</div>
+        <div class="page-sub">Connected network at a glance — signal strength, band, speed &amp; security. Click any nearby network to switch to it.</div>
+        <div class="setcard">
+          <div class="wfmon">
+            <div class="wf-ico"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div>
+            <div class="wf-info">
+              <b id="wfName">--</b>
+              <span id="wfSsidTag">CONNECTED NETWORK</span>
+            </div>
+            <div class="wfbars" id="wfBars"></div>
+            <div class="wf-meta">
+              <div><b id="wfBand">--</b><span>BAND</span></div>
+              <div><b id="wfLink">--</b><span>LINK · MB/S</span></div>
+              <div><b id="wfSec">--</b><span>SECURITY</span></div>
+              <div><b id="wfChan">--</b><span>CHANNEL</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>DISPLAY</h4>
+          <div class="setrow">
+            <div class="lbl">WiFi on Dashboard <small>Show the connected network name &amp; signal on the dashboard</small></div>
+            <button class="switch" id="tgWifiDash"></button>
+          </div>
+          <div class="setrow">
+            <div class="lbl">Rescan Networks <small>Refresh the nearby network list</small></div>
+            <button class="dfscan-btn" id="wfRescanBtn" style="padding:10px 16px;font-size:11px">⟳ RESCAN</button>
+          </div>
+        </div>
+        <div class="setcard">
+          <h4>NEARBY NETWORKS <span style="float:right;font-size:10px;color:var(--dim);letter-spacing:1px" id="wfCount"></span></h4>
+          <div class="wfnets" id="wfNets"></div>
         </div>
       </section>
 
@@ -3899,6 +3969,8 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     if(!Array.isArray(state.settings.widgets.custom)) state.settings.widgets.custom=[];
     state.settings.defender = Object.assign({realTime:true,virus:true,threat:true,hacker:true,attacker:true,lastScan:0,blocked:0,scans:0,log:[]}, state.settings.defender||{});
     if(!Array.isArray(state.settings.defender.log) || !state.settings.defender.log.length) state.settings.defender.log=dfSeed();
+    state.settings.wifi = Object.assign({show:true,connected:"GT-Arena-5G",link:866,band:"5GHz",chan:36,sec:"WPA3",ip:"192.168.1.24",networks:[]}, state.settings.wifi||{});
+    if(!Array.isArray(state.settings.wifi.networks) || !state.settings.wifi.networks.length) state.settings.wifi.networks=WIFI_NETS.slice();
     if(!["aurora","cyber","light","crt"].includes(state.settings.uiStyle)) state.settings.uiStyle="aurora";
     state.profile.avatar = normIdx(state.profile.avatar);
     state.teams.forEach(t => { t.emblem = normIdx(t.emblem); });
@@ -3928,7 +4000,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView",defender:"defenderView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView",defender:"defenderView",wifi:"wifiView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -5841,7 +5913,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     toxic:{name:"Toxic Waste",tag:"HAZMAT",desc:"Radioactive green sludge glow.",c1:"#76ff03",c2:"#00ff41"},
     galaxy:{name:"Midnight Galaxy",tag:"COSMIC",desc:"Deep space nebulas and cyan stars.",c1:"#311b92",c2:"#00e5ff"},
     chrome:{name:"Chrome Steel",tag:"METALLIC",desc:"Polished chrome reflections, cold steel.",c1:"#b0bec5",c2:"#eceff1"},
-    glass:{name:"Transparent Glass",tag:"GLASS",desc:"Crystal-frosted panels, glowing side corners & soft daylight.",c1:"#7df9ff",c2:"#ffffff"}
+    glass:{name:"Transparent Glass",tag:"GLASS",desc:"Clean frosted glass — glowing sidebar corners, frosted header & crystal panels.",c1:"#7df9ff",c2:"#ffffff"}
   };
   function applyPanelTheme(){
     document.body.classList.remove("pt-default","pt-csgo","pt-pubg","pt-bs","pt-cod","pt-gold","pt-emerald","pt-violet","pt-crimson","pt-ocean","pt-lime","pt-rose","pt-graphite","pt-inferno","pt-frost","pt-berry","pt-sunset","pt-toxic","pt-galaxy","pt-chrome","pt-glass");
@@ -6114,10 +6186,11 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const p=state.settings.power||{};
     const f=state.settings.fps||{};
     const n=state.settings.net||{};
+    const w=state.settings.wifi||{};
     const gmap={ultra:"ULTRA",high:"HIGH",low:"LOW"};
     const pmap={pc:"PC MODE",laptop:"LAPTOP MODE",power:"POWER MODE",battery:"BATTERY MODE"};
     const el=$("heroModes"); if(!el) return;
-    el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.res?' · '+g.res+'P':'')+(g.hz?' · '+g.hz+'HZ':'')+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>'+(f.counter?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></b> FPS <b class="hmd-v" id="heroFpsV">--</b></span>':'')+(n.pingOn!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></b> PING <b class="hmd-v" id="heroPingV">--</b>MS</span>':'')+(n.monitor!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></b> NET <span class="hmd-mini">↓<b id="heroDownV">--</b> ↑<b id="heroUpV">--</b></span></span>':'');
+    el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.res?' · '+g.res+'P':'')+(g.hz?' · '+g.hz+'HZ':'')+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>'+(f.counter?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></b> FPS <b class="hmd-v" id="heroFpsV">--</b></span>':'')+(n.pingOn!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></b> PING <b class="hmd-v" id="heroPingV">--</b>MS</span>':'')+(n.monitor!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></b> NET <span class="hmd-mini">↓<b id="heroDownV">--</b> ↑<b id="heroUpV">--</b></span></span>':'')+(w.show!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></b> WIFI <b class="hmd-v" id="heroWifiV">--</b></span>':'');
     updateNetHud(); updateFpsHud();
   }
 
@@ -6317,6 +6390,48 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const t=DF_NAMES[Math.floor(Math.random()*DF_NAMES.length)];
     d.log=[{id:"df"+uid(),time:Date.now(),name:t[0],src:t[1],type:t[2],status:"blocked"}].concat(d.log||[]).slice(0,40);
     saveAll(); dfRefresh();
+  }
+
+  /* ===================== WIFI ===================== */
+  const WIFI_NETS=[["GT-Arena-5G","5GHz","-35","WPA3",36],["GT-Arena-2.4G","2.4GHz","-42","WPA2",6],["Neighbor-Zone","5GHz","-68","WPA2",44],["COFFEE_HUB","2.4GHz","-82","OPEN",11],["HOME_WIFI_9","5GHz","-74","WPA2",149],["TELECOM-GIGA","2.4GHz","-88","WPA2",1]];
+  function wfSig(dbm){ if(dbm>=-50) return 4; if(dbm>=-60) return 3; if(dbm>=-70) return 2; return 1; }
+  function wfBarsHtml(dbm){ let s=wfSig(dbm); let h=""; for(let i=1;i<=4;i++) h+='<i class="'+(i<=s?"lit":"")+'" style="height:'+(4+i*5)+'px"></i>'; return h; }
+  function wfRender(){
+    const w=state.settings.wifi||{};
+    const tg=$("tgWifiDash"); if(tg) tg.classList.toggle("on", w.show!==false);
+    const cnt=$("wfCount"); if(cnt) cnt.textContent=(w.networks||[]).length+" NETWORKS";
+    const name=$("wfName"); if(name) name.textContent=w.connected||"—";
+    const curNet=(w.networks||[]).find(n=>n[0]===w.connected)||["","","-45","",0];
+    const bars=$("wfBars"); if(bars) bars.innerHTML=wfBarsHtml(parseInt(curNet[2]));
+    const band=$("wfBand"); if(band) band.textContent=w.band||"—";
+    const link=$("wfLink"); if(link) link.textContent=w.link||"—";
+    const sec=$("wfSec"); if(sec) sec.textContent=w.sec||"—";
+    const chan=$("wfChan"); if(chan) chan.textContent=w.chan||"—";
+    const list=$("wfNets"); if(list){
+      list.innerHTML=(w.networks||[]).map(n=>{
+        const dbm=parseInt(n[2]);
+        const cur=n[0]===w.connected;
+        return '<div class="wfn-row'+(cur?" cur":"")+'" data-net="'+esc(n[0])+'"><div class="wfn-ico"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></div><div class="wfn-main"><b>'+esc(n[0])+(cur?'  ·  <span style="color:#7df9ff;font-size:10px">CONNECTED</span>':'')+'</b><span>'+n[1]+' · '+n[3]+' · CH '+n[4]+'</span></div><div class="wfn-side"><span class="wfn-lock'+(n[3]==="OPEN"?" open":"")+'">'+(n[3]==="OPEN"?"OPEN":"SECURE")+'</span><div class="wfn-bars">'+wfBarsHtml(dbm)+'</div></div></div>';
+      }).join("");
+    }
+    const chip=$("heroWifiV"); if(chip) chip.textContent=w.connected||"—";
+    renderModeStatus();
+  }
+  function wfRescan(){
+    const w=state.settings.wifi||{};
+    w.networks=WIFI_NETS.map(n=>[n[0],n[1],String(-(20+Math.floor(Math.random()*70))),n[3],n[4]]).sort((a,b)=>parseInt(a[2])-parseInt(b[2]));
+    if(!w.networks.some(n=>n[0]===w.connected)) w.connected=w.networks[0][0];
+    saveAll(); wfRender();
+    toast("Network scan complete — "+w.networks.length+" networks found","ok");
+  }
+  function wfConnect(name){
+    const w=state.settings.wifi||{};
+    const n=(w.networks||[]).find(x=>x[0]===name); if(!n) return;
+    w.connected=name; w.band=n[1]; w.sec=n[3]; w.chan=n[4];
+    const dbm=parseInt(n[2]); w.link=Math.max(130,Math.round((Math.abs(dbm)-30)*14));
+    w.ip="192.168.1."+(10+Math.floor(Math.random()*90));
+    saveAll(); wfRender();
+    toast("Connected to "+name,"ok");
   }
 
   /* ===================== RGB LIGHTING ===================== */
@@ -9010,6 +9125,10 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     });
     $("tgDfRt").addEventListener("click",()=>{ state.settings.defender.realTime=state.settings.defender.realTime===false?true:false; saveAll(); dfRefresh(); toast("Real-time protection "+(state.settings.defender.realTime===false?"off":"on")); });
     dfRefresh();
+    $("tgWifiDash").addEventListener("click",()=>{ state.settings.wifi.show=state.settings.wifi.show===false?true:false; saveAll(); wfRender(); toast("WiFi on dashboard "+(state.settings.wifi.show===false?"off":"on")); });
+    $("wfRescanBtn").addEventListener("click",wfRescan);
+    $("wfNets").addEventListener("click",e=>{ const r=e.target.closest("[data-net]"); if(!r) return; wfConnect(r.dataset.net); });
+    wfRender();
     $("nModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-nmode]"); if(!b) return; state.settings.net.mode=b.dataset.nmode; saveAll(); renderNet(); toast("Network test: "+b.dataset.nmode.toUpperCase()); });
 
     // rgb lighting
@@ -9154,6 +9273,13 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   initTilt();
   setInterval(function(){ const hc=$("heroClock"); if(hc){ const d=new Date(); hc.textContent=d.toLocaleTimeString([],{hour:"2-digit",minute:"2-digit",second:"2-digit"}); const hd=$("heroDay"); if(hd) hd.textContent=d.toLocaleDateString([],{weekday:"long"}); const hdt=$("heroDate"); if(hdt) hdt.textContent=d.toLocaleDateString([],{day:"numeric",month:"short",year:"numeric"}); } updateWidgetLive(); hbTick(); },1000);
   setInterval(dfEvent,15000);
+  setInterval(function(){
+    const w=state.settings.wifi||{}; if(!w.connected) return;
+    const nets=w.networks||[];
+    const own=nets.find(n=>n[0]===w.connected);
+    if(own && Math.random()<.3){ own[2]=String(Math.max(-95,Math.min(-25,parseInt(own[2])+(Math.random()<.5?-1:1)*2))); saveAll(); wfRender(); }
+    const chip=$("heroWifiV"); if(chip) chip.textContent=w.connected||"—";
+  },5000);
   switchView("home");
   requestAnimationFrame(loop);
   const bootEl=$("bootScreen");
