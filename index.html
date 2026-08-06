@@ -1757,6 +1757,66 @@
   .modal-x{background:none;border:none;color:var(--dim);font-size:16px;cursor:pointer;padding:4px 8px;border-radius:8px}
   .modal-x:hover{color:#fff;background:rgba(255,255,255,.06)}
 
+  /* file manager */
+  .fm-toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin:20px 0}
+  .fm-toolbar .search{flex:1;min-width:200px}
+  .fm-filters{display:flex;gap:8px;flex-wrap:wrap}
+  .fm-filters .chip{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--dim);padding:8px 14px;border-radius:100px;font-size:11px;letter-spacing:1px;cursor:pointer;transition:.15s}
+  .fm-filters .chip:hover{color:#fff}
+  .fm-filters .chip.sel{background:linear-gradient(135deg,rgba(0,224,255,.18),rgba(177,75,255,.18));border-color:rgba(0,224,255,.5);color:#fff}
+  .fm-stats{display:flex;gap:18px;font-size:10px;color:var(--dim);letter-spacing:1px;margin-bottom:14px;padding:0 4px}
+  .filelist{display:flex;flex-direction:column;gap:10px}
+  .file-row{display:flex;align-items:center;gap:14px;padding:10px;border-radius:14px;border:1px solid var(--stroke);background:var(--pn-grad);transition:.15s}
+  .file-row:hover{border-color:var(--cyber)}
+  .file-thumb{width:64px;height:46px;flex:none;border-radius:10px;overflow:hidden;background:rgba(0,0,0,.4);display:grid;place-items:center}
+  .file-thumb img,.file-thumb video{width:100%;height:100%;object-fit:cover;display:block}
+  .file-info{flex:1;min-width:0}
+  .file-info b{display:block;font-size:13px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .file-info span{font-size:10px;color:var(--dim);letter-spacing:.5px}
+  .file-acts{display:flex;gap:8px}
+
+  /* storage */
+  .st-drives{display:flex;flex-direction:column;gap:18px}
+  .st-drive{border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px;background:rgba(0,0,0,.18)}
+  .st-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+  .st-head b{font-size:14px;color:#fff;letter-spacing:1px}
+  .st-head span{font-size:11px;color:var(--dim)}
+  .st-bar{height:10px;border-radius:100px;background:rgba(255,255,255,.07);overflow:hidden}
+  .st-bar.sm{height:7px}
+  .st-bar i{display:block;height:100%;border-radius:100px;background:linear-gradient(90deg,#00e0ff,#b14bff);transition:width .6s}
+  .st-foot{display:flex;justify-content:space-between;font-size:10px;color:var(--dim);letter-spacing:1px;margin-top:8px}
+  .st-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+  .st-grid div{text-align:center;border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:14px 8px;background:rgba(0,0,0,.18)}
+  .st-grid b{display:block;font-size:17px;color:#7df9ff;margin-bottom:4px}
+  .st-grid span{font-size:9px;color:var(--dim);letter-spacing:1px}
+  .st-break-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .st-break-row:last-child{border-bottom:none}
+  .sb-lbl{flex:1;min-width:0}
+  .sb-lbl b{font-size:12px;color:#fff}
+  .sb-lbl span{display:block;font-size:10px;color:var(--dim);margin-top:3px}
+  .sb-pct{font-size:11px;color:#7df9ff;letter-spacing:1px;min-width:44px;text-align:right}
+
+  /* notifications pro */
+  .nf-tabs{display:flex;gap:8px}
+  .nf-tab{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--dim);padding:9px 16px;border-radius:12px;font-size:11px;letter-spacing:1px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.15s}
+  .nf-tab:hover{color:#fff}
+  .nf-tab.sel{background:linear-gradient(135deg,rgba(0,224,255,.16),rgba(177,75,255,.16));border-color:rgba(0,224,255,.5);color:#fff}
+  .nf-tab .cnt{background:rgba(255,255,255,.1);border-radius:100px;padding:1px 8px;font-size:10px}
+  .nf-acts{display:flex;gap:8px}
+  .nf-list{display:flex;flex-direction:column;gap:10px}
+  .nf-item{display:flex;align-items:center;gap:14px;padding:13px 14px;border-radius:14px;border:1px solid var(--stroke);background:var(--pn-grad);transition:.15s}
+  .nf-item:hover{border-color:rgba(0,224,255,.4)}
+  .nf-item.read{opacity:.55}
+  .nf-ico{width:42px;height:42px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:18px;background:linear-gradient(135deg,rgba(125,249,255,.12),rgba(177,75,255,.12));border:1px solid rgba(125,249,255,.22)}
+  .nf-main{flex:1;min-width:0}
+  .nf-main b{display:block;font-size:13px;color:#fff;letter-spacing:.3px}
+  .nf-main span{display:block;font-size:11px;color:var(--dim);margin-top:3px;line-height:1.5}
+  .nf-main i{display:block;font-style:normal;font-size:9px;color:#5b6b8c;margin-top:4px;letter-spacing:1px;text-transform:uppercase}
+  .nf-btn{width:30px;height:30px;border-radius:9px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.05);color:var(--dim);cursor:pointer;font-size:13px;transition:.15s}
+  .nf-btn:hover{border-color:rgba(0,224,255,.5);color:#fff}
+  .nf-btn.kill:hover{border-color:rgba(255,80,120,.6);color:#ff6b92}
+  .nf-btn.res:hover{border-color:rgba(43,255,158,.5);color:#2bff9e}
+
 </style>
 </head>
 <body>
@@ -1857,6 +1917,10 @@
       <a class="nav-item" data-view="screens"><span class="ni"><svg viewBox="0 0 24 24"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></span> Screenshots <span class="cnt" id="cntScreens">0</span></a>
       <a class="nav-item" data-view="gallery"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="M21 15l-5-5L5 21"/></svg></span> Gallery <span class="cnt" id="cntGallery">0</span></a>
       <a class="nav-item" data-view="widgets"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span> Widgets</a>
+      <div class="nav-sep">SYSTEM</div>
+      <a class="nav-item" data-view="files"><span class="ni"><svg viewBox="0 0 24 24"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg></span> File Manager</a>
+      <a class="nav-item" data-view="storage"><span class="ni"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span> Storage</a>
+      <a class="nav-item" data-view="notifications"><span class="ni"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span> Notifications Pro <span class="cnt" id="cntNotifs">0</span></a>
       <div class="nav-sep">EXTRA</div>
       <a class="nav-item" data-view="shop"><span class="ni"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span> Game Shop <span class="cnt" id="cntShop">0</span></a>
       <a class="nav-item" data-view="passes"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="7.5" cy="10" r="1.5"/><line x1="11" y1="9" x2="20" y2="9"/><line x1="11" y1="13" x2="20" y2="13"/><path d="M5 18h14v1.5H5z"/><circle cx="7.5" cy="15" r="1.5"/><path d="M4 2v2M8 2v2M12 2v2M16 2v2M20 2v2"/></svg></span> Game Passes <span class="cnt" id="cntPasses">0</span></a>
@@ -2716,6 +2780,59 @@
           <button class="tbtn edit" id="galClearBtn">CLEAR ALL</button>
         </div>
         <div class="medgrid" id="galGrid"></div>
+      </section>
+
+      <!-- ============ FILE MANAGER ============ -->
+      <section id="filesView" class="hidden">
+        <div class="page-title">FILE MANAGER</div>
+        <div class="page-sub">Every file stored in the app — your screenshots, gallery pictures &amp; highlight clips. Search, open or delete them.</div>
+        <div class="fm-toolbar">
+          <input class="search" id="fmSearch" placeholder="Search your files..." />
+          <div class="fm-filters" id="fmFilters">
+            <button class="chip sel" data-fm="all">ALL</button>
+            <button class="chip" data-fm="screens">SCREENSHOTS</button>
+            <button class="chip" data-fm="gallery">GALLERY</button>
+            <button class="chip" data-fm="hl">CLIPS</button>
+          </div>
+        </div>
+        <div class="fm-stats" id="fmStats"></div>
+        <div class="filelist" id="fileList"></div>
+      </section>
+
+      <!-- ============ STORAGE ============ -->
+      <section id="storageView" class="hidden">
+        <div class="page-title">STORAGE</div>
+        <div class="page-sub">How much space the app uses on your PC — system drives &amp; app data at a glance.</div>
+        <div class="setcard">
+          <h4>SYSTEM DRIVES <span style="float:right;font-size:10px;color:var(--dim);letter-spacing:1px" id="stTag"></span></h4>
+          <div class="st-drives" id="stDrives"></div>
+        </div>
+        <div class="setcard">
+          <h4>APP STORAGE</h4>
+          <div class="st-usage" id="stUsage"></div>
+        </div>
+        <div class="setcard">
+          <h4>STORAGE BY CATEGORY</h4>
+          <div class="st-break" id="stBreak"></div>
+        </div>
+      </section>
+
+      <!-- ============ NOTIFICATIONS PRO ============ -->
+      <section id="notifsView" class="hidden">
+        <div class="page-title">NOTIFICATIONS PRO</div>
+        <div class="page-sub">Every action you take in the app is recorded here — adds, uploads &amp; updates. Trashed items go to the Bin.</div>
+        <div class="toolbar">
+          <div class="nf-tabs" id="nfTabs">
+            <button class="nf-tab sel" data-nf="main">NOTIFICATIONS <span class="cnt" id="cntNotifsMain">0</span></button>
+            <button class="nf-tab" data-nf="bin">BIN <span class="cnt" id="cntBin">0</span></button>
+          </div>
+          <div class="nf-acts">
+            <button class="tbtn edit" id="nfReadBtn">MARK ALL READ</button>
+            <button class="tbtn del" id="nfClearBtn">CLEAR ALL</button>
+            <button class="tbtn del" id="nfBinBtn">EMPTY BIN</button>
+          </div>
+        </div>
+        <div class="nf-list" id="nfList"></div>
       </section>
 
       <!-- ============ WIDGETS ============ -->
@@ -4081,7 +4198,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView",defender:"defenderView",wifi:"wifiView",features:"featuresView",screens:"screensView",gallery:"galleryView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView",defender:"defenderView",wifi:"wifiView",features:"featuresView",screens:"screensView",gallery:"galleryView",files:"filesView",storage:"storageView",notifications:"notifsView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -4138,6 +4255,9 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     if(v==="features"){ renderFeatures(); }
     if(v==="screens"){ mediaRender("screens"); }
     if(v==="gallery"){ mediaRender("gallery"); }
+    if(v==="files"){ fmLoad(); }
+    if(v==="storage"){ stRender(); }
+    if(v==="notifications"){ renderNotifs(); }
     closeSidebar();
     window.scrollTo({top:0,behavior:"smooth"});
   }
@@ -4453,7 +4573,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
       kills:+$("pfKills").value||0, deaths:+$("pfDeaths").value||0, assists:+$("pfAssists").value||0,
       headshots:+$("pfHS").value||0, matches:+$("pfMatches").value||0, wins:+$("pfWins").value||0, damage:+$("pfDmg").value||0, verified:$("pfVerified").value, updatedAt:Date.now() };
     if(id){ const i=state.players.findIndex(x=>x.id===id); if(i>-1){ state.players[i]={...state.players[i],...data}; toast("Player stats updated"); } }
-    else{ data.id=uid(); data.createdAt=Date.now(); state.players.push(data); toast("Player added"); }
+    else{ data.id=uid(); data.createdAt=Date.now(); state.players.push(data); toast("Player added"); notify("You added a player", name+" has been added to the player roster","🎮"); }
     saveAll(); $("pFormOverlay").classList.remove("show"); renderPlrSummary(); renderPlayers(); renderRegistered(); renderVbPlayers();
   }
 
@@ -4540,7 +4660,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
       wins:+$("tfWins").value||0, losses:+$("tfLosses").value||0, draws:+$("tfDraws").value||0,
       emblem: sel? +sel.dataset.em : 0, updatedAt:Date.now() };
     if(id){ const i=state.teams.findIndex(x=>x.id===id); if(i>-1){ state.teams[i]={...state.teams[i],...data}; toast("Team updated"); } }
-    else{ data.id=uid(); data.createdAt=Date.now(); state.teams.push(data); toast("Team added"); }
+    else{ data.id=uid(); data.createdAt=Date.now(); state.teams.push(data); toast("Team added"); notify("You added a team", name+" is now in the team roster"+(captain?" · Captain: "+captain:""),"🛡️"); }
     saveAll(); $("tFormOverlay").classList.remove("show"); renderTeamSummary(); renderTeams();
     $("teamList").innerHTML = state.teams.map(x=>`<option value="${esc(x.name)}">`).join("");
   }
@@ -4770,7 +4890,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
       format:$("mtfFormat").value, status:$("mtfStatus").value, date, time:$("mtfTime").value,
       venue:$("mtfVenue").value.trim(), link:$("mtfLink").value.trim(), notes:$("mtfNotes").value.trim(), updatedAt:Date.now() };
     if(id){ const i=state.matches.findIndex(x=>x.id===id); if(i>-1){ state.matches[i]={...state.matches[i],...data}; toast("Match updated"); } }
-    else{ data.id=uid(); data.createdAt=Date.now(); state.matches.unshift(data); toast("Match added"); }
+    else{ data.id=uid(); data.createdAt=Date.now(); state.matches.unshift(data); toast("Match added"); notify("You added a match", (data.teamA||"?")+" vs "+(data.teamB||"?")+" scheduled for "+fmtDate(data.date),"⚔️"); }
     saveAll(); $("mtFormOverlay").classList.remove("show"); renderMatchSummary(); renderMatches();
   }
 
@@ -5140,6 +5260,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     saveAll();
     $("regForm").reset(); renderRegCard(); renderRegistered(); renderPlrSummary(); renderVbPlayers();
     toast(name+" registered!");
+    notify("Player registered", name+" has been registered"+(country?" from "+country:""),"📝");
   }
 
   /* ===================== TOURNAMENT CUPS ===================== */
@@ -5496,6 +5617,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     }else{
       state.leaderboard.push({...data, id:uid(), createdAt:Date.now()});
       toast("Player added to the leaderboard");
+      notify("You added a leaderboard entry", player+" joined the "+gameOf(data.game).name+" leaderboard with "+data.points+" points","🏆");
     }
     saveAll();
     $("lFormOverlay").classList.remove("show");
@@ -5573,6 +5695,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     }else{
       state.stories.push({...data, id:uid(), createdAt:Date.now()});
       toast("Chapter added to Player Story Mode");
+      notify("You added a story chapter", title+" added to Player Story Mode","📖");
     }
     saveAll();
     $("storyFormOverlay").classList.remove("show");
@@ -5663,6 +5786,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     }else{
       state.pdd.push({...data, id:uid(), createdAt:Date.now()});
       toast("Player profile added");
+      notify("You added a player profile", name+"'s profile added to Personal Players","🎮");
     }
     saveAll();
     $("pddFormOverlay").classList.remove("show");
@@ -6410,6 +6534,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     w.custom=cw;
     saveAll(); renderWidgets(); renderWidgets("widgetPrev"); renderCustomWidgets(); closeWidgetEdit();
     toast(wEditId?"Widget updated":"Widget added");
+    if(!wEditId) notify("You added a widget", "\""+title+"\" added to your dashboard","📦");
   }
   function delWidget(id){
     const w=state.settings.widgets||{};
@@ -6590,7 +6715,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   async function mediaAdd(cat, files){
     let added=0;
     for(const f of files){ if(!f) continue; await mdbPut({id:uid(),cat:cat,name:f.name,type:f.type,size:f.size,blob:f,time:Date.now()}); added++; }
-    if(added){ const label=cat==="screens"?"screenshot"+(added>1?"s":""):cat==="gallery"?"picture"+(added>1?"s":""):"clip"+(added>1?"s":""); toast(added+" "+label+" added","ok"); }
+    if(added){ const label=cat==="screens"?"screenshot"+(added>1?"s":""):cat==="gallery"?"picture"+(added>1?"s":""):"clip"+(added>1?"s":""); toast(added+" "+label+" added","ok"); notify("You added "+added+" "+label, cat==="screens"?"New screenshots saved to your media library.":cat==="gallery"?"New pictures added to your gallery.":"New highlight clips uploaded from your PC.", cat==="screens"?"🖼️":cat==="gallery"?"🖼️":"🎬"); }
     if(cat==="hl") renderClips(); else mediaRender(cat);
   }
   function mediaCard(rec){
@@ -6621,8 +6746,126 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
       closeMedia();
       const up=document.querySelector('[data-mmupdel="'+id+'"]');
       if(up){ renderClips(); } else { mediaRender("screens"); mediaRender("gallery"); }
+      if($("filesView")&&!$("filesView").classList.contains("hidden")) fmLoad();
       toast("Deleted","warn");
     });
+  }
+
+  /* ===================== NOTIFICATIONS PRO ===================== */
+  const NOTIF_KEY="gt_notifs_v1", NOTIF_BIN_KEY="gt_notifbin_v1";
+  function loadNotifs(){ try{ const v=JSON.parse(localStorage.getItem(NOTIF_KEY)); return Array.isArray(v)?v:[]; }catch(e){ return []; } }
+  function saveNotifs(l){ localStorage.setItem(NOTIF_KEY,JSON.stringify(l)); updateNotifBadges(); }
+  function loadBin(){ try{ const v=JSON.parse(localStorage.getItem(NOTIF_BIN_KEY)); return Array.isArray(v)?v:[]; }catch(e){ return []; } }
+  function saveBin(l){ localStorage.setItem(NOTIF_BIN_KEY,JSON.stringify(l)); updateNotifBadges(); }
+  function notify(title,desc,icon){
+    const l=loadNotifs();
+    l.unshift({id:uid(),title:String(title||"Notification"),desc:String(desc||""),icon:icon||"🔔",time:Date.now(),read:false});
+    if(l.length>100) l.length=100;
+    saveNotifs(l);
+    toast(title,"ok");
+    if($("notifsView")&&!$("notifsView").classList.contains("hidden")) renderNotifs();
+  }
+  function nfTime(t){ const s=Math.max(0,Math.round((Date.now()-t)/1000)); if(s<60) return s+"s ago"; if(s<3600) return Math.round(s/60)+"m ago"; if(s<86400) return Math.round(s/3600)+"h ago"; return Math.round(s/86400)+"d ago"; }
+  function updateNotifBadges(){
+    const c=loadNotifs().filter(n=>!n.read).length;
+    const cnt=$("cntNotifs"); if(cnt) cnt.textContent=c;
+    const cm=$("cntNotifsMain"); if(cm) cm.textContent=loadNotifs().length;
+    const cb=$("cntBin"); if(cb) cb.textContent=loadBin().length;
+  }
+  function renderNotifs(){
+    const mode=document.querySelector(".nf-tab.sel")? document.querySelector(".nf-tab.sel").dataset.nf : "main";
+    const l = mode==="bin"? loadBin() : loadNotifs();
+    const list=$("nfList"); if(!list) return;
+    list.innerHTML = l.length? l.map(n=>'<div class="nf-item'+(n.read?" read":"")+'" data-nfid="'+n.id+'"><div class="nf-ico">'+(n.icon||"🔔")+'</div><div class="nf-main"><b>'+esc(n.title)+'</b><span>'+esc(n.desc)+'</span><i>'+nfTime(n.time)+'</i></div><div class="nf-acts">'+(mode==="bin"?'<button class="nf-btn res" data-nfres="'+n.id+'" title="Restore">↩</button><button class="nf-btn kill" data-nfkill="'+n.id+'" title="Delete forever">✕</button>':'<button class="nf-btn" data-nfdel="'+n.id+'" title="Move to bin">🗑</button>')+'</div></div>').join("")
+      : '<div class="med-empty" style="grid-column:1/-1"><div class="big">'+(mode==="bin"?"🗑️":"🔕")+'</div><h4>'+(mode==="bin"?"Bin is empty":"No notifications yet")+'</h4><p>'+(mode==="bin"?"Deleted notifications land here — restore or remove them forever.":"Add, upload or save something in any section and you will get a notification here.")+'</p></div>';
+  }
+  function nfDel(id){
+    const l=loadNotifs(), i=l.findIndex(n=>n.id===id); if(i<0) return;
+    const n=l.splice(i,1)[0]; saveNotifs(l);
+    const b=loadBin(); b.unshift({...n,binnedAt:Date.now()}); if(b.length>100) b.length=100; saveBin(b);
+    renderNotifs(); toast("Moved to bin","warn");
+  }
+  function nfRestore(id){
+    const b=loadBin(), i=b.findIndex(n=>n.id===id); if(i<0) return;
+    const n=b.splice(i,1)[0]; saveBin(b);
+    const l=loadNotifs(); l.unshift(n); saveNotifs(l);
+    renderNotifs(); toast("Notification restored");
+  }
+  function nfKill(id){
+    const b=loadBin(); saveBin(b.filter(n=>n.id!==id));
+    renderNotifs(); toast("Deleted forever","warn");
+  }
+  function nfMarkReadAll(){
+    const l=loadNotifs(); if(!l.length){ toast("Nothing to mark","warn"); return; }
+    l.forEach(n=>n.read=true); saveNotifs(l); renderNotifs(); toast("All notifications marked as read");
+  }
+  function nfClearAll(){
+    const l=loadNotifs(); if(!l.length){ toast("Nothing to clear","warn"); return; }
+    openConfirm("Clear all notifications? They move to the bin.",()=>{
+      const b=loadBin(); l.forEach(n=>b.unshift({...n,binnedAt:Date.now()})); if(b.length>100) b.length=100;
+      saveBin(b); saveNotifs([]); renderNotifs(); toast("All notifications cleared","warn");
+    });
+  }
+  function nfEmptyBin(){
+    if(!loadBin().length){ toast("Bin is already empty","warn"); return; }
+    openConfirm("Permanently delete everything in the bin?",()=>{ saveBin([]); renderNotifs(); toast("Bin emptied","warn"); });
+  }
+
+  /* ===================== FILE MANAGER ===================== */
+  let fmCat="all";
+  async function fmLoad(){
+    const list=(await mdbAll()).filter(r=>r.cat);
+    const q=$("fmSearch")? $("fmSearch").value.trim().toLowerCase():"";
+    const files=list.filter(r=>(fmCat==="all"||r.cat===fmCat)&&(!q||(r.name||"").toLowerCase().includes(q))).sort((a,b)=>b.time-a.time);
+    const st=$("fmStats"); if(st) st.innerHTML='<span>'+files.length+' FILE'+(files.length===1?"":"S")+'</span><span>'+fmtSize(files.reduce((s,r)=>s+(r.size||0),0))+'</span>';
+    const grid=$("fileList"); if(!grid) return;
+    grid.innerHTML=files.length? files.map(r=>{
+      const url=mmUrl(r);
+      const thumb=mmIsVideo(r)?'<video src="'+url+'" preload="metadata" muted></video>':'<img src="'+url+'" alt=""/>';
+      const cl={screens:"Screenshot",gallery:"Gallery",hl:"Clip"}[r.cat]||"File";
+      return '<div class="file-row"><div class="file-thumb">'+thumb+'</div><div class="file-info"><b>'+esc(r.name)+'</b><span>'+cl+' · '+fmtSize(r.size)+' · '+fmtDate(r.time)+'</span></div><div class="file-acts"><button class="nf-btn res" data-fmopen="'+r.id+'" title="Open">👁</button><button class="nf-btn kill" data-fmdel="'+r.id+'" title="Delete">🗑</button></div></div>';
+    }).join("") : '<div class="med-empty" style="grid-column:1/-1"><div class="big">📁</div><h4>No files here</h4><p>Add screenshots, gallery pictures or clips and they will appear in the file manager.</p></div>';
+  }
+
+  /* ===================== STORAGE ===================== */
+  function fmtBytes(n){
+    if(!n||n<=0) return "0 B";
+    const u=["B","KB","MB","GB","TB"], i=Math.min(u.length-1,Math.floor(Math.log(n)/Math.log(1024)));
+    return (n/Math.pow(1024,i)).toFixed(i>=3?1:0)+" "+u[i];
+  }
+  async function stRender(){
+    const tag=$("stTag");
+    if(tag) tag.textContent = (window.gtStorage&&window.gtStorage.get)? "LIVE · FROM WINDOWS" : "DESKTOP APP ONLY";
+    const drivesEl=$("stDrives");
+    let drives=[];
+    if(window.gtStorage&&window.gtStorage.get){ try{ drives=await window.gtStorage.get(); }catch(e){ drives=[]; } }
+    if(!drives||!drives.length) drives=[{drive:"C:",total:256*1024*1024*1024,free:93*1024*1024*1024}];
+    if(drivesEl) drivesEl.innerHTML=drives.map(d=>{
+      const used=Math.max(0,(d.total||0)-(d.free||0));
+      const pct=(d.total)? Math.round(used/d.total*100):0;
+      return '<div class="st-drive"><div class="st-head"><b>'+esc(d.drive)+'</b><span>'+fmtBytes(used)+' used · '+fmtBytes(d.free)+' free of '+fmtBytes(d.total)+'</span></div><div class="st-bar"><i style="width:'+pct+'%"></i></div><div class="st-foot"><span>'+pct+'% USED</span><span>'+fmtBytes(d.free)+' FREE</span></div></div>';
+    }).join("");
+    let usage=0, quota=0;
+    try{ const est=await navigator.storage.estimate(); usage=est.usage||0; quota=est.quota||0; }catch(e){}
+    let ls=0; try{ for(const k in localStorage){ ls+=(localStorage[k]||"").length*2; } }catch(e){}
+    const total=usage+ls;
+    const useEl=$("stUsage");
+    if(useEl) useEl.innerHTML='<div class="st-grid"><div><b>'+fmtBytes(total)+'</b><span>APP DATA USED</span></div><div><b>'+fmtBytes(Math.max(0,quota-total))+'</b><span>AVAILABLE</span></div><div><b>'+fmtBytes(quota)+'</b><span>APP QUOTA</span></div></div><div class="st-bar"><i style="width:'+(quota?Math.min(100,Math.round(total/quota*100)):0)+'%"></i></div>';
+    const list=await mdbAll();
+    const br=$("stBreak");
+    if(br){
+      const med=list.reduce((s,r)=>s+(r.size||0),0);
+      const cats=[["screens","🖼️ Screenshots"],["gallery","🖼️ Gallery"],["hl","🎬 Highlight Clips"]];
+      const rows=cats.map(([c,label])=>{
+        const fs=list.filter(r=>r.cat===c);
+        const sz=fs.reduce((s,r)=>s+(r.size||0),0);
+        const pct=total? Math.round(sz/total*100):0;
+        return '<div class="st-break-row"><div class="sb-lbl"><b>'+label+'</b><span>'+fs.length+' file'+(fs.length===1?"":"s")+' · '+fmtBytes(sz)+'</span></div><div class="st-bar sm"><i style="width:'+pct+'%"></i></div><span class="sb-pct">'+pct+'%</span></div>';
+      });
+      const ap=total? Math.round(Math.max(0,total-med)/total*100):0;
+      rows.push('<div class="st-break-row"><div class="sb-lbl"><b>⚙️ App Data</b><span>settings, players, tournaments &amp; more</span></div><div class="st-bar sm"><i style="width:'+ap+'%"></i></div><span class="sb-pct">'+ap+'%</span></div>');
+      br.innerHTML=rows.join("");
+    }
   }
 
   /* ===================== RGB LIGHTING ===================== */
@@ -8381,6 +8624,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const added=LOCAL_TRACKS.length-prevLocal;
     saveAll(); renderBgm(); renderSettings();
     toast(added+" track"+(added===1?"":"s")+" loaded from folder — saved permanently");
+    notify("You added "+added+" track"+(added===1?"":"s"), "Loaded from your folder and saved permanently to BGM Sounds","🎵");
     if(state.settings.bgm){ bgmStart(); }
   }
   function removeLocalTrack(id){
@@ -8878,6 +9122,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     }else{
       state.clips.unshift({...data,id:uid(),date:new Date().toISOString().slice(0,10),icon:["🎯","🏆","🔥","🎬"][state.clips.length%4],createdAt:Date.now()});
       toast("Clip added");
+      notify("You added a clip", title+(data.dur?" · "+data.dur:"")+" saved to Highlights &amp; Clips","🎬");
     }
     saveAll(); renderClips();
     $("clipFormOverlay").classList.remove("show");
@@ -9363,6 +9608,28 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     $("mmDel").addEventListener("click",()=>{ const id=$("mmDel").dataset.mmid; if(id) mmDelete(id); });
     $("mediaModal").addEventListener("click",e=>{ if(e.target===$("mediaModal")) closeMedia(); });
     mediaRender("screens"); mediaRender("gallery");
+
+    // file manager
+    $("fmSearch").addEventListener("input",fmLoad);
+    $("fmFilters").addEventListener("click",e=>{ const c=e.target.closest("[data-fm]"); if(!c) return; fmCat=c.dataset.fm; document.querySelectorAll("#fmFilters .chip").forEach(b=>b.classList.toggle("sel",b===c)); fmLoad(); });
+    $("fileList").addEventListener("click",e=>{
+      const o=e.target.closest("[data-fmopen]"); if(o){ openMedia(o.dataset.fmopen); return; }
+      const d=e.target.closest("[data-fmdel]"); if(d) mmDelete(d.dataset.fmdel);
+    });
+
+    // notifications pro
+    $("nfTabs").addEventListener("click",e=>{ const t=e.target.closest(".nf-tab"); if(!t) return; document.querySelectorAll(".nf-tab").forEach(b=>b.classList.toggle("sel",b===t)); renderNotifs(); });
+    $("nfList").addEventListener("click",e=>{
+      const d=e.target.closest("[data-nfdel]"); if(d){ nfDel(d.dataset.nfdel); return; }
+      const r=e.target.closest("[data-nfres]"); if(r){ nfRestore(r.dataset.nfres); return; }
+      const k=e.target.closest("[data-nfkill]"); if(k){ nfKill(k.dataset.nfkill); return; }
+      const it=e.target.closest(".nf-item"); if(it){ const l=loadNotifs(); const n=l.find(x=>x.id===it.dataset.nfid); if(n&&!n.read){ n.read=true; saveNotifs(l); renderNotifs(); } }
+    });
+    $("nfReadBtn").addEventListener("click",nfMarkReadAll);
+    $("nfClearBtn").addEventListener("click",nfClearAll);
+    $("nfBinBtn").addEventListener("click",nfEmptyBin);
+    updateNotifBadges();
+
     $("nModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-nmode]"); if(!b) return; state.settings.net.mode=b.dataset.nmode; saveAll(); renderNet(); toast("Network test: "+b.dataset.nmode.toUpperCase()); });
 
     // rgb lighting
