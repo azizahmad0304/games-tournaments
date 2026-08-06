@@ -1817,6 +1817,49 @@
   .nf-btn.kill:hover{border-color:rgba(255,80,120,.6);color:#ff6b92}
   .nf-btn.res:hover{border-color:rgba(43,255,158,.5);color:#2bff9e}
 
+  /* file upload / generic files */
+  .fm-upbtn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#7df9ff,#4da6ff);border:none;color:#081020;padding:10px 18px;border-radius:100px;font-size:11px;font-weight:700;letter-spacing:1px;cursor:pointer;transition:.2s;box-shadow:0 8px 24px -8px rgba(125,249,255,.5)}
+  .fm-upbtn:hover{transform:translateY(-2px);box-shadow:0 12px 28px -6px rgba(125,249,255,.6)}
+  .file-ico{width:46px;height:46px;flex:none;border-radius:12px;display:grid;place-items:center;font-size:22px;background:linear-gradient(135deg,rgba(177,75,255,.14),rgba(0,224,255,.12));border:1px solid rgba(177,75,255,.28)}
+  .fm-drop{display:flex;align-items:center;gap:14px;padding:16px;border-radius:14px;border:1px dashed rgba(0,224,255,.35);background:rgba(0,224,255,.04);justify-content:center;flex-direction:column;text-align:center;color:var(--dim)}
+  .fm-drop .big{font-size:36px;margin-bottom:6px}
+  .fm-drop b{color:#fff;font-size:13px}
+  .fm-drop p{font-size:11px;line-height:1.6}
+  .fm-drop button{margin-top:10px}
+
+  /* dashboard notification bar */
+  .notifbar{border:1px solid rgba(0,224,255,.22);border-radius:18px;background:linear-gradient(135deg,rgba(0,224,255,.07),rgba(177,75,255,.07));padding:16px 18px;margin:22px 0;display:flex;flex-direction:column;gap:10px}
+  .nb-head{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:1px;color:#fff}
+  .nb-head svg{width:16px;height:16px;color:#7df9ff;flex:none}
+  .nb-head b{font-family:'Orbitron';font-weight:700}
+  .nb-head .cnt{background:linear-gradient(135deg,#ff3d6e,#ff7a1a);color:#fff;border-radius:100px;padding:2px 9px;font-size:10px}
+  .nb-head button{margin-left:auto;background:none;border:1px solid rgba(0,224,255,.4);color:#7df9ff;padding:6px 12px;border-radius:100px;font-size:10px;letter-spacing:1px;cursor:pointer;transition:.15s}
+  .nb-head button:hover{background:rgba(0,224,255,.15)}
+  .nb-list{display:flex;flex-direction:column}
+  .nb-item{display:flex;align-items:center;gap:12px;padding:10px 6px;border-bottom:1px solid rgba(255,255,255,.06);cursor:pointer;border-radius:10px;transition:.15s}
+  .nb-item:last-child{border-bottom:none}
+  .nb-item:hover{background:rgba(255,255,255,.05)}
+  .nb-ic{width:34px;height:34px;flex:none;border-radius:10px;display:grid;place-items:center;font-size:15px;background:rgba(125,249,255,.1);border:1px solid rgba(125,249,255,.2)}
+  .nb-txt{flex:1;min-width:0}
+  .nb-txt b{display:block;font-size:12px;color:#cfe3ff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nb-txt span{display:block;font-size:10px;color:var(--dim);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nb-t{font-size:9px;color:#5b6b8c;letter-spacing:1px;flex:none}
+  .nb-dot{width:7px;height:7px;border-radius:50%;background:#ff3d6e;flex:none;margin-left:4px}
+  .nb-item.read .nb-dot{display:none}
+  .bell{position:relative}
+  .bell i{position:absolute;top:4px;right:4px;min-width:15px;height:15px;padding:0 4px;border-radius:100px;background:linear-gradient(135deg,#ff3d6e,#ff7a1a);color:#fff;font-size:9px;font-style:normal;display:grid;place-items:center;border:2px solid var(--pn-grad)}
+  .notif-drop{position:absolute;top:58px;right:14px;width:340px;max-width:calc(100vw - 32px);background:rgba(10,16,32,.96);border:1px solid rgba(0,224,255,.25);border-radius:16px;box-shadow:0 20px 50px rgba(0,0,0,.6);padding:10px;z-index:200;display:none;backdrop-filter:blur(12px)}
+  .notif-drop.show{display:block}
+  .nd-title{display:flex;justify-content:space-between;align-items:center;padding:8px 10px;font-size:11px;letter-spacing:1px;color:#fff;font-family:'Orbitron'}
+  .nd-title button{background:none;border:none;color:#7df9ff;font-size:10px;cursor:pointer;letter-spacing:1px;padding:4px}
+  .nd-item{display:flex;gap:10px;align-items:center;padding:9px 10px;border-radius:10px;cursor:pointer;transition:.15s}
+  .nd-item:hover{background:rgba(255,255,255,.05)}
+  .nd-item .nb-ic{width:30px;height:30px;font-size:13px}
+  .nd-item .nb-txt b{font-size:11px}
+  .nd-item .nb-txt span{font-size:9px}
+  .nd-empty{text-align:center;padding:22px;color:var(--dim);font-size:11px;letter-spacing:1px}
+
+
 </style>
 </head>
 <body>
@@ -1954,9 +1997,15 @@
       </div>
       <div class="premchip" id="premChip" title="Premium member"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 7h20l-4 12a3 3 0 0 1-2.8 2H8.8a3 3 0 0 1-2.8-2z"/><path d="M12 3 9.5 7h5L12 3z"/></svg> PRO</div>
       <div class="hbtns">
+        <button class="iconbtn bell" id="notifBell" title="Notifications"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><i id="notifBellBadge">0</i></button>
         <button class="iconbtn" id="clearAllBtn" title="Clear all tournaments"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>
       </div>
     </header>
+
+    <div class="notif-drop" id="notifDrop">
+      <div class="nd-title"><span>NOTIFICATIONS</span><button id="ndViewAll">VIEW ALL →</button></div>
+      <div id="ndList"></div>
+    </div>
 
     <main id="app">
 
@@ -1977,6 +2026,11 @@
           <div class="adbadge"><svg viewBox="0 0 24 24" class="fill"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg> AD</div>
           <div class="adtrack" id="adTrack"></div>
           <div class="addots" id="adDots"></div>
+        </div>
+
+        <div class="notifbar" id="dashNotifBar" style="display:none">
+          <div class="nb-head"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg><b>NOTIFICATION BAR</b><span class="cnt" id="nbUnread">0</span><button id="nbViewAll">VIEW ALL →</button></div>
+          <div class="nb-list" id="nbList"></div>
         </div>
 
         <div class="section-head">
@@ -2785,7 +2839,7 @@
       <!-- ============ FILE MANAGER ============ -->
       <section id="filesView" class="hidden">
         <div class="page-title">FILE MANAGER</div>
-        <div class="page-sub">Every file stored in the app — your screenshots, gallery pictures &amp; highlight clips. Search, open or delete them.</div>
+        <div class="page-sub">Upload game files from your computer or browse files you already added — screenshots, pictures, clips &amp; any file. Search, open or delete them.</div>
         <div class="fm-toolbar">
           <input class="search" id="fmSearch" placeholder="Search your files..." />
           <div class="fm-filters" id="fmFilters">
@@ -2793,8 +2847,10 @@
             <button class="chip" data-fm="screens">SCREENSHOTS</button>
             <button class="chip" data-fm="gallery">GALLERY</button>
             <button class="chip" data-fm="hl">CLIPS</button>
+            <button class="chip" data-fm="files">GAME FILES</button>
           </div>
         </div>
+        <button class="fm-upbtn" id="fmUpBtn"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg> UPLOAD GAME FILES</button>
         <div class="fm-stats" id="fmStats"></div>
         <div class="filelist" id="fileList"></div>
       </section>
@@ -3482,6 +3538,7 @@
       <div class="top"><span id="mmTitle">MEDIA</span><button class="modal-x" id="mmClose">✕</button></div>
       <div class="body" id="mmBody"></div>
       <div class="md-acts">
+        <a class="tbtn save" id="mmDl" href="#" download style="display:inline-flex;align-items:center;gap:6px;text-decoration:none">⬇ DOWNLOAD</a>
         <button class="tbtn del" id="mmDel">DELETE</button>
       </div>
     </div>
@@ -4207,7 +4264,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     document.querySelectorAll(".nav-item").forEach(n=> n.classList.toggle("active", n.dataset.view===v));
     const vEl=$(VIEWMAP[v]);
     if(vEl){ vEl.classList.remove("vt-in"); void vEl.offsetWidth; vEl.classList.add("vt-in"); }
-    if(v==="home"){ renderStats(); renderGames(); renderRecent(); renderAds(); renderHub(); renderTop3(); renderModeStatus(); renderWidgets(); }
+    if(v==="home"){ renderStats(); renderGames(); renderRecent(); renderAds(); renderHub(); renderTop3(); renderModeStatus(); renderWidgets(); renderNotifBar(); }
     if(v==="players"){ renderPlrSummary(); renderPlayers(); }
     if(v==="teams"){ renderTeamSummary(); renderTeams(); }
     if(v==="matches"){ renderMatchSummary(); renderMatches(); }
@@ -6701,6 +6758,12 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   function mdbClear(){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("media","readwrite").objectStore("media"); const r=t.clear(); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
   function mmUrl(rec){ if(!MM_OBJ[rec.id]) MM_OBJ[rec.id]=URL.createObjectURL(rec.blob||rec.data); return MM_OBJ[rec.id]; }
   function mmIsVideo(rec){ return /video\/|\.(mp4|webm|mkv|mov|m4v|avi|mpeg|wmv)$/i.test((rec.type||"")+" "+rec.name); }
+  function mmIsImage(rec){ return /^image\//i.test(rec.type||""); }
+  function mmFileIcon(name){
+    const ext=((name||"").split(".").pop()||"").toLowerCase();
+    const map={"zip":"📦","rar":"🗜️","7z":"🗜️","exe":"⚙️","dll":"🔧","msi":"🛠️","txt":"📄","md":"📄","log":"📋","json":"🔧","csv":"📊","xml":"🔧","html":"🌐","htm":"🌐","cfg":"🛠️","ini":"🛠️","mp3":"🎵","wav":"🎵","ogg":"🎵","flac":"🎵","torrent":"🧲","sav":"💾","pak":"🎮","wad":"🎮","cfg2":"🛠️"};
+    return map[ext]||"📄";
+  }
   function fmtSize(n){ if(!n) return ""; if(n<1024) return n+" B"; if(n<1048576) return (n/1024).toFixed(1)+" KB"; return (n/1048576).toFixed(1)+" MB"; }
   function pickFiles(accept,multiple){
     return new Promise(res=>{
@@ -6715,8 +6778,10 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   async function mediaAdd(cat, files){
     let added=0;
     for(const f of files){ if(!f) continue; await mdbPut({id:uid(),cat:cat,name:f.name,type:f.type,size:f.size,blob:f,time:Date.now()}); added++; }
-    if(added){ const label=cat==="screens"?"screenshot"+(added>1?"s":""):cat==="gallery"?"picture"+(added>1?"s":""):"clip"+(added>1?"s":""); toast(added+" "+label+" added","ok"); notify("You added "+added+" "+label, cat==="screens"?"New screenshots saved to your media library.":cat==="gallery"?"New pictures added to your gallery.":"New highlight clips uploaded from your PC.", cat==="screens"?"🖼️":cat==="gallery"?"🖼️":"🎬"); }
-    if(cat==="hl") renderClips(); else mediaRender(cat);
+    if(added){ const label=cat==="screens"?"screenshot"+(added>1?"s":""):cat==="gallery"?"picture"+(added>1?"s":""):cat==="hl"?"clip"+(added>1?"s":""):"game file"+(added>1?"s":""); toast(added+" "+label+" added","ok"); notify("You added "+added+" "+label, cat==="screens"?"New screenshots saved to your media library.":cat==="gallery"?"New pictures added to your gallery.":cat==="hl"?"New highlight clips uploaded from your PC.":"New game files uploaded from your computer.", cat==="hl"?"🎬":cat==="files"?"🎮":"🖼️"); }
+    if(cat==="hl") renderClips();
+    else if(cat==="files"){ if($("filesView")&&!$("filesView").classList.contains("hidden")) fmLoad(); if($("storageView")&&!$("storageView").classList.contains("hidden")) stRender(); }
+    else mediaRender(cat);
   }
   function mediaCard(rec){
     const url=mmUrl(rec);
@@ -6733,8 +6798,15 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   function openMedia(id){
     mdbAll().then(list=>{
       const rec=list.find(r=>r.id===id); if(!rec) return;
-      $("mmTitle").textContent=mmIsVideo(rec)?"CLIP":"MEDIA";
-      $("mmBody").innerHTML=(mmIsVideo(rec)?'<video src="'+mmUrl(rec)+'" controls autoplay></video>':'<img src="'+mmUrl(rec)+'" alt=""/>')+'<div class="md-meta">'+esc(rec.name)+' · '+fmtSize(rec.size)+'</div>';
+      const isVid=mmIsVideo(rec), isImg=mmIsImage(rec);
+      $("mmTitle").textContent=isVid?"CLIP":isImg?"MEDIA":"FILE";
+      let body;
+      if(isVid) body='<video src="'+mmUrl(rec)+'" controls autoplay></video>';
+      else if(isImg) body='<img src="'+mmUrl(rec)+'" alt=""/>';
+      else body='<div class="fm-drop"><div class="big">'+mmFileIcon(rec.name)+'</div><b>'+esc(rec.name)+'</b><p>Game file stored in the app · '+fmtSize(rec.size)+'</p><button class="tbtn save" onclick="document.getElementById(\'mmDl\').click()">⬇ DOWNLOAD FILE</button></div>';
+      body+='<div class="md-meta">'+esc(rec.name)+' · '+fmtSize(rec.size)+' · '+((rec.type||"unknown type"))+'</div>';
+      $("mmBody").innerHTML=body;
+      const dl=$("mmDl"); if(dl){ dl.href=mmUrl(rec); dl.download=rec.name||"file"; }
       $("mmDel").dataset.mmid=id;
       $("mediaModal").classList.add("show");
     });
@@ -6764,13 +6836,45 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     saveNotifs(l);
     toast(title,"ok");
     if($("notifsView")&&!$("notifsView").classList.contains("hidden")) renderNotifs();
+    renderNotifBar();
+    renderNotifDrop();
   }
   function nfTime(t){ const s=Math.max(0,Math.round((Date.now()-t)/1000)); if(s<60) return s+"s ago"; if(s<3600) return Math.round(s/60)+"m ago"; if(s<86400) return Math.round(s/3600)+"h ago"; return Math.round(s/86400)+"d ago"; }
   function updateNotifBadges(){
-    const c=loadNotifs().filter(n=>!n.read).length;
+    const all=loadNotifs();
+    const c=all.filter(n=>!n.read).length;
     const cnt=$("cntNotifs"); if(cnt) cnt.textContent=c;
-    const cm=$("cntNotifsMain"); if(cm) cm.textContent=loadNotifs().length;
+    const cm=$("cntNotifsMain"); if(cm) cm.textContent=all.length;
     const cb=$("cntBin"); if(cb) cb.textContent=loadBin().length;
+    const bell=$("notifBellBadge"); if(bell) bell.textContent=c;
+    renderNotifBar();
+  }
+  function renderNotifBar(){
+    const bar=$("dashNotifBar"); if(!bar) return;
+    const all=loadNotifs();
+    if(!all.length){ bar.style.display="none"; return; }
+    bar.style.display="flex";
+    const u=all.filter(n=>!n.read).length;
+    const un=$("nbUnread"); if(un) un.textContent=u>0? u+" NEW" : "ALL CLEAR";
+    const list=$("nbList");
+    list.innerHTML=all.slice(0,5).map(n=>'<div class="nb-item'+(n.read?" read":"")+'" data-nbid="'+n.id+'"><div class="nb-ic">'+(n.icon||"🔔")+'</div><div class="nb-txt"><b>'+esc(n.title)+'</b><span>'+esc(n.desc)+'</span></div><span class="nb-t">'+nfTime(n.time)+'</span><span class="nb-dot"></span></div>').join("")
+      +'<div class="nb-item" data-nbmore="1" style="justify-content:center;color:#7df9ff;font-size:10px;letter-spacing:1px">VIEW ALL NOTIFICATIONS →</div>';
+  }
+  function renderNotifDrop(){
+    const list=$("ndList"); if(!list) return;
+    const all=loadNotifs();
+    list.innerHTML=all.length? all.slice(0,5).map(n=>'<div class="nd-item" data-nbid="'+n.id+'"><div class="nb-ic">'+(n.icon||"🔔")+'</div><div class="nb-txt"><b>'+esc(n.title)+'</b><span>'+esc(n.desc)+'</span></div></div>').join("")
+      : '<div class="nd-empty">No notifications yet — add something in any section.</div>';
+  }
+  function toggleNotifDrop(force){
+    const d=$("notifDrop"); if(!d) return;
+    if(force!==undefined){ d.classList.toggle("show",!!force); return; }
+    d.classList.toggle("show");
+    if(d.classList.contains("show")) renderNotifDrop();
+  }
+  function nbClick(e){
+    const it=e.target.closest("[data-nbid]"); if(it){ const l=loadNotifs(); const n=l.find(x=>x.id===it.dataset.nbid); if(n&&!n.read){ n.read=true; saveNotifs(l); renderNotifBar(); renderNotifDrop(); } switchView("notifications"); return; }
+    const more=e.target.closest("[data-nbmore]"); if(more) switchView("notifications");
   }
   function renderNotifs(){
     const mode=document.querySelector(".nf-tab.sel")? document.querySelector(".nf-tab.sel").dataset.nf : "main";
@@ -6819,12 +6923,17 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const files=list.filter(r=>(fmCat==="all"||r.cat===fmCat)&&(!q||(r.name||"").toLowerCase().includes(q))).sort((a,b)=>b.time-a.time);
     const st=$("fmStats"); if(st) st.innerHTML='<span>'+files.length+' FILE'+(files.length===1?"":"S")+'</span><span>'+fmtSize(files.reduce((s,r)=>s+(r.size||0),0))+'</span>';
     const grid=$("fileList"); if(!grid) return;
+    if(!files.length && fmCat==="files"){
+      grid.innerHTML='<div class="med-empty" style="grid-column:1/-1"><div class="big">🎮</div><h4>No game files yet</h4><p>Click <b>UPLOAD GAME FILES</b> to add files from your computer.</p></div>';
+      return;
+    }
     grid.innerHTML=files.length? files.map(r=>{
-      const url=mmUrl(r);
-      const thumb=mmIsVideo(r)?'<video src="'+url+'" preload="metadata" muted></video>':'<img src="'+url+'" alt=""/>';
-      const cl={screens:"Screenshot",gallery:"Gallery",hl:"Clip"}[r.cat]||"File";
-      return '<div class="file-row"><div class="file-thumb">'+thumb+'</div><div class="file-info"><b>'+esc(r.name)+'</b><span>'+cl+' · '+fmtSize(r.size)+' · '+fmtDate(r.time)+'</span></div><div class="file-acts"><button class="nf-btn res" data-fmopen="'+r.id+'" title="Open">👁</button><button class="nf-btn kill" data-fmdel="'+r.id+'" title="Delete">🗑</button></div></div>';
-    }).join("") : '<div class="med-empty" style="grid-column:1/-1"><div class="big">📁</div><h4>No files here</h4><p>Add screenshots, gallery pictures or clips and they will appear in the file manager.</p></div>';
+      const isVid=mmIsVideo(r), isImg=mmIsImage(r);
+      const thumb=(isVid||isImg)? '<img src="'+mmUrl(r)+'" alt=""/>' : '<div style="font-size:26px">'+mmFileIcon(r.name)+'</div>';
+      const inner=(isVid||isImg)? (isVid?'<video src="'+mmUrl(r)+'" preload="metadata" muted></video>':thumb) : thumb;
+      const cl={screens:"Screenshot",gallery:"Gallery",hl:"Clip",files:"Game File"}[r.cat]||"File";
+      return '<div class="file-row"><div class="file-thumb">'+inner+'</div><div class="file-info"><b>'+esc(r.name)+'</b><span>'+cl+' · '+fmtSize(r.size)+' · '+fmtDate(r.time)+'</span></div><div class="file-acts"><button class="nf-btn res" data-fmopen="'+r.id+'" title="Open">👁</button><button class="nf-btn kill" data-fmdel="'+r.id+'" title="Delete">🗑</button></div></div>';
+    }).join("") : '<div class="med-empty" style="grid-column:1/-1"><div class="big">📁</div><h4>No files here</h4><p>Upload game files or add screenshots, gallery pictures &amp; clips — they all appear here.</p></div>';
   }
 
   /* ===================== STORAGE ===================== */
@@ -6855,7 +6964,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const br=$("stBreak");
     if(br){
       const med=list.reduce((s,r)=>s+(r.size||0),0);
-      const cats=[["screens","🖼️ Screenshots"],["gallery","🖼️ Gallery"],["hl","🎬 Highlight Clips"]];
+      const cats=[["screens","🖼️ Screenshots"],["gallery","🖼️ Gallery"],["hl","🎬 Highlight Clips"],["files","🎮 Game Files"]];
       const rows=cats.map(([c,label])=>{
         const fs=list.filter(r=>r.cat===c);
         const sz=fs.reduce((s,r)=>s+(r.size||0),0);
@@ -9611,11 +9720,20 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
 
     // file manager
     $("fmSearch").addEventListener("input",fmLoad);
+    $("fmUpBtn").addEventListener("click",()=> pickFiles("*/*",true).then(files=>{ if(files.length) mediaAdd("files",files); }));
     $("fmFilters").addEventListener("click",e=>{ const c=e.target.closest("[data-fm]"); if(!c) return; fmCat=c.dataset.fm; document.querySelectorAll("#fmFilters .chip").forEach(b=>b.classList.toggle("sel",b===c)); fmLoad(); });
     $("fileList").addEventListener("click",e=>{
       const o=e.target.closest("[data-fmopen]"); if(o){ openMedia(o.dataset.fmopen); return; }
       const d=e.target.closest("[data-fmdel]"); if(d) mmDelete(d.dataset.fmdel);
     });
+
+    // notification bell + dashboard bar
+    $("notifBell").addEventListener("click",()=> toggleNotifDrop());
+    $("ndViewAll").addEventListener("click",()=>{ toggleNotifDrop(false); switchView("notifications"); });
+    $("nbViewAll").addEventListener("click",()=> switchView("notifications"));
+    $("nbList").addEventListener("click",nbClick);
+    $("ndList").addEventListener("click",nbClick);
+    document.addEventListener("click",e=>{ if(!e.target.closest("#notifDrop")&&!e.target.closest("#notifBell")) toggleNotifDrop(false); });
 
     // notifications pro
     $("nfTabs").addEventListener("click",e=>{ const t=e.target.closest(".nf-tab"); if(!t) return; document.querySelectorAll(".nf-tab").forEach(b=>b.classList.toggle("sel",b===t)); renderNotifs(); });
