@@ -2062,6 +2062,29 @@
   .chatframe-epic .bubble,.chatframe-epic .chat-msg,.chatframe-epic .demo-bub{border:2px solid #9b4dff !important;box-shadow:0 0 0 3px rgba(155,77,255,.2),0 0 0 6px rgba(155,77,255,.08),0 0 18px rgba(155,77,255,.45) !important}
   .chatframe-legend .bubble,.chatframe-legend .chat-msg,.chatframe-legend .demo-bub{border:2px solid #ffd700 !important;box-shadow:0 0 0 3px rgba(255,215,0,.18),0 0 20px rgba(255,215,0,.4) !important}
   .chatframe-mythic .bubble,.chatframe-mythic .chat-msg,.chatframe-mythic .demo-bub{animation:cfbord 1.8s linear infinite !important}
+  @keyframes cfaPulse{0%,100%{border-color:var(--c1);box-shadow:0 0 12px var(--c1),0 0 0 3px color-mix(in srgb,var(--c1) 15%,transparent)}50%{border-color:var(--c2);box-shadow:0 0 26px var(--c2),0 0 0 6px color-mix(in srgb,var(--c2) 15%,transparent)}}
+  @keyframes cfaGlow{0%,100%{box-shadow:0 0 8px var(--c1);border-color:var(--c1)}50%{box-shadow:0 0 30px var(--c2),0 0 42px var(--c1);border-color:var(--c2)}}
+  @keyframes cfaShimmer{0%,100%{outline:1px solid var(--c1);outline-offset:0;box-shadow:0 0 10px var(--c1)}50%{outline:1px solid var(--c2);outline-offset:4px;box-shadow:0 0 26px var(--c2)}}
+  @keyframes cfaFlick{0%,100%{opacity:1;box-shadow:0 0 10px var(--c1)}50%{opacity:.45;box-shadow:0 0 2px var(--c1)}}
+  @keyframes cfaBreath{0%,100%{border-width:2px;box-shadow:0 0 10px var(--c1)}50%{border-width:4px;box-shadow:0 0 30px var(--c2)}}
+  @keyframes cfaRainbow{0%{border-color:#ff3d8a;box-shadow:0 0 16px rgba(255,61,138,.55)}17%{border-color:#ffd54a;box-shadow:0 0 16px rgba(255,213,74,.55)}33%{border-color:#76ff03;box-shadow:0 0 16px rgba(118,255,3,.55)}50%{border-color:#00e0ff;box-shadow:0 0 16px rgba(0,224,255,.55)}67%{border-color:#9b4dff;box-shadow:0 0 16px rgba(155,77,255,.55)}83%{border-color:#ff3d8a;box-shadow:0 0 16px rgba(255,61,138,.55)}100%{border-color:#ff3d8a;box-shadow:0 0 16px rgba(255,61,138,.55)}}
+  .cff-card.cff-rainbow .cff-prev{animation:cfaRainbow 3s linear infinite}
+  .chatframe-rainbow .bubble,.chatframe-rainbow .chat-msg,.chatframe-rainbow .demo-bub{animation:cfaRainbow 3s linear infinite !important}
+  .nav-badge{display:inline-block;min-width:18px;height:18px;line-height:18px;border-radius:100px;background:#ff3d6e;color:#fff;font-size:10px;font-weight:700;text-align:center;padding:0 5px;margin-left:6px}
+  .trash-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:14px}
+  .tstat{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;text-align:center}
+  .tstat span{font-size:9px;letter-spacing:1.5px;color:var(--dim)}
+  .tstat b{display:block;font-size:22px;color:#fff;margin-top:4px}
+  .trash-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+  .trash-tools{display:flex;gap:8px}
+  .trash-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:12px;margin-top:14px}
+  .trash-item{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:12px;backdrop-filter:blur(8px)}
+  .trash-ic{font-size:22px;flex:0 0 auto}
+  .trash-info{flex:1;min-width:0}
+  .trash-info b{display:block;color:#fff;font-size:12.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .trash-info span{display:block;color:var(--dim);font-size:10.5px;margin-top:2px}
+  .trash-acts{display:flex;gap:6px;flex:0 0 auto}
+  .trash-acts .tbtn{padding:6px 9px;font-size:10px}
 
 
 </style>
@@ -2183,6 +2206,7 @@
       <a class="nav-item" data-view="chat"><span class="ni"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span> Chat <span class="cnt" id="cntChats">0</span></a>
       <a class="nav-item" data-view="chatbub"><span class="ni"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></span> Chat Bubbles</a>
       <a class="nav-item" data-view="chatframes"><span class="ni"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span> Chat Frames</a>
+      <a class="nav-item" data-view="trash"><span class="ni"><svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></span> Trash Bin <span class="nav-badge" id="navTrashBadge" style="display:none"></span></a>
       <a class="nav-item" data-view="cast"><span class="ni"><svg viewBox="0 0 24 24"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg></span> Cast</a>
       <div class="nav-sep">AUDIO</div>
       <a class="nav-item" data-view="volume"><span class="ni"><svg viewBox="0 0 24 24"><path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg></span> Volume Booster</a>
@@ -3286,8 +3310,29 @@
       <!-- ============ CHAT FRAMES ============ -->
       <section id="chatFramesView" class="hidden">
         <div class="page-title">🖼️ CHAT FRAMES</div>
-        <div class="page-sub">Pick a frame for your chat messages — only four real frames: Rare, Epic, Legendary &amp; Mythic.</div>
+        <div class="page-sub">Pick a frame for your chat messages — 45 real animated frames: Rare, Epic, Legendary, Mythic &amp; 41 live neon presets with pulsing, glowing, shimmering, flickering &amp; breathing borders.</div>
         <div class="cff-grid" id="cffGrid"></div>
+      </section>
+
+      <!-- ============ TRASH BIN ============ -->
+      <section id="trashView" class="hidden">
+        <div class="page-title">🗑️ TRASH BIN</div>
+        <div class="page-sub">Everything you delete lands here first — tournaments, players, teams, matches, records, media, files, clips, channels &amp; more. Restore anything or delete it for good.</div>
+        <div class="trash-stats">
+          <div class="tstat"><span>DATA ITEMS</span><b id="trashDataCount">0</b></div>
+          <div class="tstat"><span>MEDIA &amp; FILES</span><b id="trashMediaCount">0</b></div>
+          <div class="tstat"><span>TOTAL IN TRASH</span><b id="trashTotal">0</b></div>
+        </div>
+        <div class="setcard">
+          <div class="trash-toolbar">
+            <h4>🗑️ RECENTLY DELETED</h4>
+            <div class="trash-tools">
+              <button class="tbtn save" id="emptyTrashBtn">🗑️ EMPTY TRASH</button>
+              <button class="tbtn edit" id="trashRefreshBtn">↻ REFRESH</button>
+            </div>
+          </div>
+          <div class="trash-grid" id="trashGrid"></div>
+        </div>
       </section>
 
       <!-- ============ GPU ============ -->
@@ -4807,13 +4852,157 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     setTimeout(()=>{ el.classList.add("hide"); setTimeout(()=> el.remove(), 350); }, 2600);
   }
 
+  /* ===================== TRASH (UNIVERSAL BIN) ===================== */
+  const TRASH_KEY="gt_trash_v1";
+  const TRASH_STATE_KEYS=["tournaments","players","members","teams","brackets","matches","records","cups","warm","ranked","cheats","standings","leaderboard","stories","pdd","ach","vbadges","clips"];
+  const TRASH_LABEL={tournaments:"Tournament",players:"Player",members:"Member",teams:"Team",brackets:"Bracket Match",matches:"Match",records:"Record",cups:"Cup",warm:"Warm-up",ranked:"Ranked Match",cheats:"Cheat Report",standings:"Standing Entry",leaderboard:"Leaderboard Entry",stories:"Story",pdd:"Player Profile",ach:"Achievement",vbadges:"Badge",clips:"Clip",channel:"Community Channel",emergency:"Emergency Alert",cast:"Caster",member:"Channel Member"};
+  const TRASH_NAME_FIELD={tournaments:"team",players:"name",members:"name",teams:"name",cups:"name",cheats:"player",standings:"team",leaderboard:"player",stories:"title",pdd:"name",ach:"name",vbadges:"name",clips:"title",channel:"name",emergency:"title",cast:"name",member:"name"};
+  function trashLoad(){ try{ const v=JSON.parse(localStorage.getItem(TRASH_KEY)); return Array.isArray(v)?v:[]; }catch(e){ return []; } }
+  function trashSave(l){ localStorage.setItem(TRASH_KEY,JSON.stringify(l)); trashBadge(); }
+  function trashAdd(entry){ const l=trashLoad(); l.unshift(entry); if(l.length>200) l.length=200; trashSave(l); }
+  function trashName(kind,item){
+    if(!item) return "";
+    const k=TRASH_NAME_FIELD[kind]; if(k&&item[k]) return item[k];
+    if(item.teamA&&item.teamB) return item.teamA+" vs "+item.teamB;
+    return item.name||item.team||item.player||item.title||kind;
+  }
+  function trashIcon(kind){
+    return {tournaments:"🏆",players:"🎮",members:"👥",teams:"🛡️",brackets:"🔀",matches:"⚔️",records:"📜",cups:"🏅",warm:"🔥",ranked:"🏆",cheats:"🕵️",standings:"📊",leaderboard:"🏁",stories:"📖",pdd:"👤",ach:"⭐",vbadges:"🎖️",clips:"🎬",channel:"#️⃣",emergency:"🚨",cast:"🎙️",member:"🧑‍🤝‍🧑"}[kind]||"🗑️";
+  }
+  function trashStateSnap(){
+    const o={};
+    TRASH_STATE_KEYS.forEach(k=>{ o[k]=(state[k]||[]).map(x=>JSON.parse(JSON.stringify(x))); });
+    return o;
+  }
+  function trashDiff(before){
+    try{
+      const after=trashStateSnap();
+      TRASH_STATE_KEYS.forEach(k=>{
+        const b=before[k]||[], a=after[k]||[];
+        const removed=b.filter(x=>x&&x.id!==undefined && !a.some(y=>y.id===x.id));
+        removed.forEach(x=> trashAdd({id:"t"+uid(),kind:k,cat:"data",name:trashName(k,x),data:x,trashedAt:Date.now()}));
+      });
+    }catch(e){}
+  }
+  function trashRestoreData(id){
+    const t=trashLoad();
+    const i=t.find(x=>x.id===id); if(!i) return;
+    const rec=i.data;
+    if(i.kind==="channel"){
+      const d=chLoad()||chSeed();
+      const ch=rec.channel||rec;
+      d.channels.unshift({id:ch.id,name:ch.name,type:ch.type,cat:ch.cat});
+      if(ch.type==="text"&&rec.msgs&&rec.msgs.length){ if(!d.msgs) d.msgs={}; d.msgs[ch.id]=rec.msgs; }
+      chSave(d); renderChannels();
+    } else if(i.kind==="emergency"){
+      const d=emgLoad()||emgSeed();
+      d.alerts.unshift(rec);
+      emgSave(d); renderEmergency(); renderDashEmerg();
+    } else if(i.kind==="cast"){
+      castSave((castLoad()||[]).concat(rec)); renderCast();
+    } else if(i.kind==="member"){
+      const d=chLoad()||chSeed();
+      d.members=d.members||[]; d.members.unshift(rec.member||rec);
+      chSave(d); renderChMembers(d);
+    } else if(state[i.kind]&&Array.isArray(state[i.kind])){
+      state[i.kind].unshift(rec);
+      saveAll();
+      refreshAllViews();
+    }
+    trashSave(t.filter(x=>x.id!==id));
+    toast("Restored "+trashName(i.kind,rec),"ok");
+    renderTrash();
+  }
+  function trashDeleteForever(id){
+    trashSave(trashLoad().filter(x=>x.id!==id));
+    toast("Deleted permanently","warn");
+    renderTrash();
+  }
+  function refreshAllViews(){
+    ["players","teams","matches","brackets","records","cups","warm","ranked","points","leaderboard","story","pdd","ach","vbadges","standings","sec","clips","home"].forEach(v=>{
+      if(VIEWMAP[v]){
+        const el=$(VIEWMAP[v]);
+        if(el&&!el.classList.contains("hidden")) switchView(v);
+      }
+    });
+  }
+  let TRASH_MEDIA_N=0;
+  function trashBadge(){
+    const l=trashLoad();
+    const total=l.length+TRASH_MEDIA_N;
+    const el=document.querySelector('[data-view="trash"] .nav-badge');
+    if(el){ el.textContent=total>0? total:""; el.style.display=total>0?"inline-block":"none"; }
+  }
+  const TRASH_MEDIA_LABEL={screens:"Screenshot",gallery:"Gallery Picture",hl:"Highlight Clip",files:"Game File"};
+  async function renderTrash(){
+    const t=trashLoad();
+    let mt=[];
+    try{ mt=await mtrashAll(); }catch(e){}
+    TRASH_MEDIA_N=mt.length;
+    const total=t.length+mt.length;
+    const c1=$("trashDataCount"), c2=$("trashMediaCount"), ct=$("trashTotal");
+    if(c1) c1.textContent=t.length;
+    if(c2) c2.textContent=mt.length;
+    if(ct) ct.textContent=total;
+    trashBadge();
+    const grid=$("trashGrid"); if(!grid) return;
+    const dataHTML=t.map(e=>`
+      <div class="trash-item">
+        <div class="trash-ic">${trashIcon(e.kind)}</div>
+        <div class="trash-info"><b>${esc(e.name||"Item")}</b><span>${TRASH_LABEL[e.kind]||"Item"} · ${fmtDate(e.trashedAt)}</span></div>
+        <div class="trash-acts">
+          <button class="tbtn edit" data-trash-restore="${e.id}">RESTORE</button>
+          <button class="tbtn del" data-trash-forever="${e.id}">DELETE</button>
+        </div>
+      </div>`).join("");
+    const mediaHTML=mt.map(r=>`
+      <div class="trash-item">
+        <div class="trash-ic">${r.cat==="hl"?"🎬":(r.cat==="files"?"🎮":"🖼️")}</div>
+        <div class="trash-info"><b>${esc(r.name||"Media")}</b><span>${TRASH_MEDIA_LABEL[r.cat]||"File"} · ${fmtSize(r.size)} · ${fmtDate(r.trashedAt)}</span></div>
+        <div class="trash-acts">
+          <button class="tbtn edit" data-mtrash-restore="${r.id}">RESTORE</button>
+          <button class="tbtn del" data-mtrash-forever="${r.id}">DELETE</button>
+        </div>
+      </div>`).join("");
+    grid.innerHTML=(dataHTML+mediaHTML)||'<div class="med-empty" style="grid-column:1/-1"><div class="big">🗑️</div><h4>Trash is empty</h4><p>Deleted items — media, files, tournaments, players, matches &amp; more — land here so you can bring them back any time.</p></div>';
+  }
+  async function restoreMediaTrash(id){
+    let mt=[];
+    try{ mt=await mtrashAll(); }catch(e){}
+    const rec=mt.find(r=>r.id===id); if(!rec) return;
+    await mediaRestore(rec);
+    toast("Restored "+rec.name,"ok");
+    renderTrash();
+    const view=rec.cat==="hl"?"clips":(rec.cat==="files"?"files":rec.cat);
+    if(VIEWMAP[view]){
+      const el=$(VIEWMAP[view]);
+      if(el&&!el.classList.contains("hidden")) switchView(view);
+    }
+  }
+  async function deleteMediaForever(id){
+    await mtrashDel(id);
+    toast("Deleted permanently","warn");
+    renderTrash();
+  }
+  async function emptyTrashAll(){
+    trashSave([]);
+    try{ await mtrashClear(); }catch(e){}
+    toast("Trash emptied","warn");
+    renderTrash();
+  }
+
   /* ===================== CONFIRM MODAL ===================== */
   let pendingCb=null;
-  function openConfirm(msg,cb){ $("confirmMsg").innerHTML=msg; pendingCb=cb; $("confirmOverlay").classList.add("show"); }
+  function openConfirm(msg,cb){
+    $("confirmMsg").innerHTML=msg;
+    const before=trashStateSnap();
+    pendingCb=()=>{ trashDiff(before); cb(); };
+    $("confirmOverlay").classList.add("show");
+  }
   function closeConfirm(){ pendingCb=null; $("confirmOverlay").classList.remove("show"); }
 
   /* ===================== NAVIGATION ===================== */
-  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView",defender:"defenderView",wifi:"wifiView",features:"featuresView",screens:"screensView",gallery:"galleryView",files:"filesView",storage:"storageView",notifications:"notifsView",broadcast:"broadcastView",community:"communityView",emergency:"emergencyView",cast:"castView",chatframes:"chatFramesView",gpu:"gpuView",volume:"volView",headphone:"headphoneView"};
+  const VIEWMAP={home:"dashView",players:"playersView",teams:"teamsView",matches:"matchesView",brackets:"bracketsView",records:"recordsView",cups:"cupsView",warm:"warmView",ranked:"rankedView",points:"pointsView",leaderboard:"lbView",story:"storyView",players2:"pddView",personal:"pddView",ads:"adsView",ach:"achView",vbadges:"vbView",members:"membersView",profile:"profileView",settings:"settingsView",backgrounds:"backgroundsView",register:"registerView",themes:"themesView",learn:"learnView",bgm:"bgmView",music:"musicView",appearance:"appearanceView",opt:"optView",rgb:"rgbView",sec:"secView",premium:"premiumView",shop:"shopView",chat:"chatView",chatbub:"chatbubView",stickers:"stickersView",wallpapers:"wallpapersView",about:"aboutView",collections:"collectionsView",clips:"clipsView",passes:"passesView",datetime:"datetimeView",graphics:"graphicsView",power:"powerView",fps:"fpsView",network:"netView",widgets:"widgetsView",health:"healthView",defender:"defenderView",wifi:"wifiView",features:"featuresView",screens:"screensView",gallery:"galleryView",files:"filesView",storage:"storageView",notifications:"notifsView",broadcast:"broadcastView",community:"communityView",emergency:"emergencyView",cast:"castView",chatframes:"chatFramesView",gpu:"gpuView",volume:"volView",headphone:"headphoneView",trash:"trashView"};
   const VIEWS=Object.keys(VIEWMAP);
   function switchView(v){
     const target=VIEWMAP[v];
@@ -4878,7 +5067,8 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     if(v==="emergency"){ renderEmergency(); }
     if(v==="cast"){ renderCast(); }
     if(v==="chatframes"){ renderChatFrames(); }
-    if(v==="gpu"){ renderGpu(); }
+    if(v==="trash"){ renderTrash(); }
+    if(v==="gpu"){ renderGpu(); gpuAutoDetect(); }
     if(v==="volume"){ renderVol(); }
     if(v==="headphone"){ renderHead(); }
     closeSidebar();
@@ -6971,8 +7161,45 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const t=GPU_MODES[g.mode]||GPU_MODES.high;
     const d=$("gpuDesc"); if(d) d.textContent=t.desc;
     const st=$("gpuStatus"); if(st) st.textContent="OUTPUT · "+t.res+"P @ "+t.hz+"HZ · "+t.fps+" FPS TARGET"+(t.vsync?" · V-SYNC":"")+" · "+(t.motion?"MOTION":"FX OFF");
+    const dev=$("gpuDevice");
+    if(dev && g.device){ dev.textContent=(g.device.toUpperCase()+(g.vramDet?" · "+g.vramDet+"GB VRAM":"")+" · DRIVER "+(g.driver||"—")).replace(/\s+/g," ").trim(); }
     gpuTick();
     applyGpu();
+  }
+  let gpuDetecting=false;
+  function gpuPresetFor(info){
+    if(!info||!info.name) return null;
+    const n=(info.name+" "+info.vendor).toLowerCase();
+    const vram=info.vram||0;
+    const intel=/intel|iris|uhd graphics|hd graphics/i.test(n);
+    const nvidia=/nvidia|geforce|gtx|rtx/i.test(n);
+    const amd=/amd|radeon|vega|rx\s/i.test(n);
+    if(intel&&!nvidia&&!amd) return "fast";
+    if((/rtx|rx\s*(6|7|8|9)/i.test(n)||/arc/i.test(n))&&vram>=8) return "ultra";
+    if(vram>=6) return "high";
+    if(/rtx|gtx|rx|vega/i.test(n)) return "high";
+    return "low";
+  }
+  function gpuAutoDetect(){
+    if(gpuDetecting||!(window.gtGpu&&window.gtGpu.get)) return;
+    gpuDetecting=true;
+    window.gtGpu.get().then(info=>{
+      gpuDetecting=false;
+      if(!info) return;
+      const g=state.settings.gpu=state.settings.gpu||{};
+      const prevName=g.device||"";
+      g.device=info.name; g.vendor=info.vendor||""; g.driver=info.driver||""; g.vramDet=info.vram||null;
+      const mapped=gpuPresetFor(info);
+      if(mapped && g.auto!==false && prevName.toLowerCase()!==(info.name||"").toLowerCase()){
+        g.mode=mapped;
+        const t=GPU_MODES[mapped];
+        if(t){ const gr=state.settings.graphics=state.settings.graphics||{}; gr.preset=t.preset; gr.res=t.res; gr.hz=t.hz; gr.fps=t.fps; gr.vsync=t.vsync; gr.motion=t.motion; Object.assign(state.settings.opt,t.opt); }
+        saveAll(); applyGpu(); renderGpu();
+        notify("GPU auto-detected", info.name+" found on your PC — best preset applied: "+mapped.toUpperCase()+".","🎮");
+      } else {
+        saveAll(); renderGpu();
+      }
+    }).catch(()=>{ gpuDetecting=false; });
   }
 
   /* ===================== VOLUME BOOSTER ===================== */
@@ -7131,6 +7358,9 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     const el=$("heroModes"); if(!el) return;
     el.innerHTML='<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></b> GRAPHICS <b class="hmd-v">'+(gmap[g.preset]||"HIGH")+'</b>'+(g.res?' · '+g.res+'P':'')+(g.hz?' · '+g.hz+'HZ':'')+(g.vsync?" · V-SYNC":"")+'</span><span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2"/><line x1="23" y1="10" x2="23" y2="14"/><path d="M5 10v4"/></svg></b> POWER <b class="hmd-v">'+(pmap[p.plan]||"POWER MODE")+'</b>'+(p.battery?" · SAVER":"")+'</span>'+'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="12" rx="2"/><circle cx="8" cy="13" r="2"/><path d="M14 10h4M14 14h4"/></svg></b> GPU <b class="hmd-v">'+({low:"GPU LOW",high:"GPU HIGH",ultra:"ULTRA",fast:"GPU SUPER FAST"}[gp.mode]||"HIGH")+'</b></span>'+(f.counter?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 17a9 9 0 1 1 14 0"/><path d="M12 17l4-6"/><circle cx="12" cy="17" r="2"/></svg></b> FPS <b class="hmd-v" id="heroFpsV">--</b></span>':'')+(n.pingOn!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></b> PING <b class="hmd-v" id="heroPingV">--</b>MS</span>':'')+(n.monitor!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M4.9 4.9a10 10 0 0 0 0 14.2M19.1 4.9a10 10 0 0 1 0 14.2"/></svg></b> NET <span class="hmd-mini">↓<b id="heroDownV">--</b> ↑<b id="heroUpV">--</b></span></span>':'')+(w.show!==false?'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><line x1="12" y1="20" x2="12.01" y2="20"/></svg></b> WIFI <b class="hmd-v" id="heroWifiV">--</b></span>':'');
     updateNetHud(); updateFpsHud();
+    el.insertAdjacentHTML("beforeend",'<span class="hmodem"><b class="hmd-ico"><svg viewBox="0 0 24 24"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></b> TRASH <b class="hmd-v" id="heroTrashV">0</b></span>');
+    const trc=trashLoad().length+TRASH_MEDIA_N;
+    const hv=$("heroTrashV"); if(hv) hv.textContent=trc;
   }
 
   /* ===================== WIDGETS ===================== */
@@ -7424,11 +7654,21 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   /* ===================== MEDIA (SCREENSHOTS / GALLERY / CLIPS) ===================== */
   const MEDIA_DB="gt_media_v1";
   const MM_OBJ=Object.create(null);
-  function mdbOpen(){ return new Promise((res,rej)=>{ const r=indexedDB.open(MEDIA_DB,1); r.onupgradeneeded=()=>{ const d=r.result; if(!d.objectStoreNames.contains("media")) d.createObjectStore("media",{keyPath:"id"}); }; r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }); }
+  function mdbOpen(){ return new Promise((res,rej)=>{ const r=indexedDB.open(MEDIA_DB,2); r.onupgradeneeded=()=>{ const d=r.result; if(!d.objectStoreNames.contains("media")) d.createObjectStore("media",{keyPath:"id"}); if(!d.objectStoreNames.contains("trash")) d.createObjectStore("trash",{keyPath:"id"}); }; r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }); }
   function mdbPut(rec){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("media","readwrite").objectStore("media"); const r=t.put(rec); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
   function mdbAll(){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("media","readonly").objectStore("media"); const r=t.getAll(); r.onsuccess=()=>res(r.result||[]); r.onerror=()=>rej(r.error); })); }
   function mdbDel(id){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("media","readwrite").objectStore("media"); const r=t.delete(id); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
   function mdbClear(){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("media","readwrite").objectStore("media"); const r=t.clear(); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
+  function mtrashPut(rec){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("trash","readwrite").objectStore("trash"); const r=t.put(rec); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
+  function mtrashAll(){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("trash","readonly").objectStore("trash"); const r=t.getAll(); r.onsuccess=()=>res(r.result||[]); r.onerror=()=>rej(r.error); })); }
+  function mtrashDel(id){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("trash","readwrite").objectStore("trash"); const r=t.delete(id); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
+  function mtrashClear(){ return mdbOpen().then(d=>new Promise((res,rej)=>{ const t=d.transaction("trash","readwrite").objectStore("trash"); const r=t.clear(); r.onsuccess=()=>res(); r.onerror=()=>rej(r.error); })); }
+  function mediaToTrash(rec){
+    return mtrashPut({id:rec.id,kind:"media",cat:rec.cat,name:rec.name,type:rec.type,size:rec.size,blob:rec.blob,time:rec.time,trashedAt:Date.now()}).then(()=>mdbDel(rec.id));
+  }
+  function mediaRestore(rec){
+    return mdbPut({id:rec.id,cat:rec.cat,name:rec.name,type:rec.type,size:rec.size,blob:rec.blob,time:rec.time}).then(()=>mtrashDel(rec.id));
+  }
   function mmUrl(rec){ if(!MM_OBJ[rec.id]) MM_OBJ[rec.id]=URL.createObjectURL(rec.blob||rec.data); return MM_OBJ[rec.id]; }
   function mmIsVideo(rec){ return /video\/|\.(mp4|webm|mkv|mov|m4v|avi|mpeg|wmv)$/i.test((rec.type||"")+" "+rec.name); }
   function mmIsImage(rec){ return /^image\//i.test(rec.type||""); }
@@ -7486,13 +7726,18 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
   }
   function closeMedia(){ $("mediaModal").classList.remove("show"); }
   function mmDelete(id){
-    mdbDel(id).then(()=>{
-      if(MM_OBJ[id]){ try{ URL.revokeObjectURL(MM_OBJ[id]); }catch(e){} delete MM_OBJ[id]; }
-      closeMedia();
-      const up=document.querySelector('[data-mmupdel="'+id+'"]');
-      if(up){ renderClips(); } else { mediaRender("screens"); mediaRender("gallery"); }
-      if($("filesView")&&!$("filesView").classList.contains("hidden")) fmLoad();
-      toast("Deleted","warn");
+    mdbAll().then(list=>{
+      const rec=list.find(r=>r.id===id);
+      const put=()=>{ if(rec){ return mediaToTrash(rec); } return Promise.resolve(); };
+      put().then(()=>{
+        if(MM_OBJ[id]){ try{ URL.revokeObjectURL(MM_OBJ[id]); }catch(e){} delete MM_OBJ[id]; }
+        closeMedia();
+        const up=document.querySelector('[data-mmupdel="'+id+'"]');
+        if(up){ renderClips(); } else { mediaRender("screens"); mediaRender("gallery"); }
+        if($("filesView")&&!$("filesView").classList.contains("hidden")) fmLoad();
+        trashBadge(); renderTrash();
+        toast(rec? "Moved to trash":"Deleted","warn");
+      });
     });
   }
 
@@ -7955,12 +8200,15 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     toast("Channel created","ok");
   }
   function chDel(id){
-    openConfirm("Delete this channel and all its messages?",function(){
+    openConfirm("Delete this channel and all its messages? They move to the trash.",function(){
       const d=chLoad(); if(!d) return;
+      const ch=d.channels.find(c=>c.id===id);
+      const msgs=(d.msgs&&d.msgs[id])||[];
+      if(ch) trashAdd({id:"t"+uid(),kind:"channel",cat:"extra",name:"#"+ch.name,data:{channel:ch,msgs:msgs},trashedAt:Date.now()});
       d.channels=d.channels.filter(c=>c.id!==id);
       if(d.msgs) delete d.msgs[id];
       if(d.sel===id) d.sel=d.channels.length? d.channels[0].id:"";
-      chSave(d); renderChannels(); toast("Channel deleted","warn");
+      chSave(d); renderChannels(); toast("Channel moved to trash","warn");
     });
   }
   function chSend(){
@@ -7989,10 +8237,12 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     toast(name+" added","ok");
   }
   function chRemoveMem(id){
-    openConfirm("Remove this member from the server?",function(){
+    openConfirm("Remove this member from the server? They move to the trash.",function(){
       const d=chLoad(); if(!d) return;
-      d.members=d.members.filter(m=>m.id!==id);
-      chSave(d); renderChannels(); toast("Member removed","warn");
+      const m=d.members.find(x=>x.id===id);
+      if(m) trashAdd({id:"t"+uid(),kind:"member",cat:"extra",name:m.name,data:{member:m},trashedAt:Date.now()});
+      d.members=d.members.filter(x=>x.id!==id);
+      chSave(d); renderChannels(); toast("Member moved to trash","warn");
     });
   }
   function chVoice(cid,join){
@@ -8023,10 +8273,12 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     toast("Emergency alert sent","ok");
   }
   function emgDel(id){
-    openConfirm("Delete this emergency alert?",function(){
+    openConfirm("Delete this emergency alert? It moves to the trash.",function(){
       const d=emgLoad(); if(!d) return;
-      d.alerts=d.alerts.filter(a=>a.id!==id);
-      emgSave(d); renderEmergency(); renderDashEmerg(); toast("Alert deleted","warn");
+      const a=d.alerts.find(x=>x.id===id);
+      if(a) trashAdd({id:"t"+uid(),kind:"emergency",cat:"extra",name:a.title,data:a,trashedAt:Date.now()});
+      d.alerts=d.alerts.filter(x=>x.id!==id);
+      emgSave(d); renderEmergency(); renderDashEmerg(); toast("Alert moved to trash","warn");
     });
   }
   function renderEmergency(){
@@ -8102,19 +8354,57 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     $("castName").focus();
   }
   function castDel(id){
-    openConfirm("Remove this caster from the cast team?",function(){
-      castSave((castLoad()||[]).filter(x=>x.id!==id));
-      renderCast(); toast("Caster removed","warn");
+    openConfirm("Remove this caster from the cast team? They move to the trash.",function(){
+      const d=castLoad()||[];
+      const c=d.find(x=>x.id===id);
+      if(c) trashAdd({id:"t"+uid(),kind:"cast",cat:"extra",name:c.name,data:c,trashedAt:Date.now()});
+      castSave(d.filter(x=>x.id!==id));
+      renderCast(); toast("Caster moved to trash","warn");
     });
   }
 
-  /* ===================== CHAT FRAMES ===================== */
+  /* ===================== CHAT FRAMES (45 ANIMATED FRAMES) ===================== */
+  const CF_COLORS=[
+    {id:"cyan",    c1:"#00e0ff", c2:"#2bff9e"},
+    {id:"magenta", c1:"#ff3d8a", c2:"#b14bff"},
+    {id:"gold",    c1:"#ffd700", c2:"#ff6d00"},
+    {id:"violet",  c1:"#9b4dff", c2:"#00e5ff"},
+    {id:"toxic",   c1:"#76ff03", c2:"#00b0ff"},
+    {id:"rose",    c1:"#f48fb1", c2:"#ff80ab"},
+    {id:"emerald", c1:"#00e676", c2:"#ffd54a"},
+    {id:"crimson", c1:"#ff4d6d", c2:"#ff9a6a"}
+  ];
+  const CF_ANIMS=[
+    {key:"pulse",  name:"Pulse",   a:"cfaPulse",   d:1.8},
+    {key:"glow",   name:"Glow",    a:"cfaGlow",    d:2.2},
+    {key:"shimmer",name:"Shimmer", a:"cfaShimmer", d:2.6},
+    {key:"flicker",name:"Flicker", a:"cfaFlick",   d:1.1},
+    {key:"breath", name:"Breathe", a:"cfaBreath",  d:2.8}
+  ];
   const CH_FRAME_STYLES=[
     {id:"rare",    name:"Rare",      desc:"Clean blue neon edge — the standard verified frame.", pfx:"cff-rare"},
     {id:"epic",    name:"Epic",      desc:"Purple nebula glow with a layered double edge.", pfx:"cff-epic"},
     {id:"legend",  name:"Legendary", desc:"Golden double frame with a dash of shine.", pfx:"cff-legend"},
-    {id:"mythic",  name:"Mythic",    desc:"Animated rainbow border — the rarest frame in the arena.", pfx:"cff-mythic"}
-  ];
+    {id:"mythic",  name:"Mythic",    desc:"Animated rainbow border — the rarest frame in the arena.", pfx:"cff-mythic"},
+    {id:"rainbow", name:"Rainbow",   desc:"Endless rainbow spectrum sweep around every message.", pfx:"cff-rainbow", gen:true, a:"cfaRainbow", d:3}
+  ].concat(
+    CF_COLORS.reduce((arr,c)=>{
+      CF_ANIMS.forEach(n=>{ arr.push({id:"cf"+c.id+n.key, name:n.name+" "+cap(c.id), desc:cap(n.name)+" "+cap(c.id)+" animated frame — "+c.c1+" to "+c.c2+".", pfx:"cff-"+c.id+"-"+n.key, gen:true, a:n.a, d:n.d, c1:c.c1, c2:c.c2}); });
+      return arr;
+    },[])
+  );
+  function cap(s){ return s.charAt(0).toUpperCase()+s.slice(1); }
+  function cffGen(){
+    if(document.getElementById("cffStyles")) return;
+    const ss=document.createElement("style"); ss.id="cffStyles";
+    ss.textContent=CH_FRAME_STYLES.filter(s=>s.gen).map(s=>{
+      const a=s.a, d=s.d||1.8;
+      const card=".cff-card.cff-"+s.id+" .cff-prev{--c1:"+s.c1+";--c2:"+s.c2+";animation:"+a+" "+d+"s ease-in-out infinite}";
+      const chat=".chatframe-"+s.id+" .bubble,.chatframe-"+s.id+" .chat-msg,.chatframe-"+s.id+" .demo-bub{--c1:"+s.c1+";--c2:"+s.c2+";animation:"+a+" "+d+"s ease-in-out infinite !important}";
+      return card+"\n"+chat;
+    }).join("\n");
+    document.head.appendChild(ss);
+  }
   function currentFrame(){ return (state.settings.chatFrame||"rare"); }
   function setChatFrame(id){
     state.settings.chatFrame=id; saveAll();
@@ -8122,12 +8412,14 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     toast("Chat frame: "+id.toUpperCase());
   }
   function applyChatFrame(){
-    document.body.classList.remove("chatframe-rare","chatframe-epic","chatframe-legend","chatframe-mythic");
+    cffGen();
+    CH_FRAME_STYLES.forEach(s=>document.body.classList.remove("chatframe-"+s.id));
     document.body.classList.add("chatframe-"+currentFrame());
   }
   function renderChatFrames(){
     const cur=currentFrame();
     const grid=$("cffGrid"); if(!grid) return;
+    cffGen();
     grid.innerHTML=CH_FRAME_STYLES.map(s=>{
       const sel=s.id===cur;
       return '<div class="cff-card '+s.pfx+(sel?" sel":"")+'" data-cff="'+s.id+'"><div class="cff-prev">GG!</div><h4>'+s.name.toUpperCase()+(sel?'<span class="cff-sel">ACTIVE</span>':"")+'</h4><p>'+s.desc+'</p></div>';
@@ -8422,7 +8714,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     {v:"sec",t:"Anti-Cheat & Security",d:"Report cheaters, ban hackers, harden your login."},
     {v:"themes",t:"Panel Themes",d:"Recolor the whole arena with PC game skins."}
   ];
-  const QUICK=["How do I start?","How many players?","Tell me a joke","Give me a tip","What can you do?","Change password","What's new?"];
+  const QUICK=["How do I start?","How many players?","Tell me a joke","Give me a tip","What can you do?","Change password","What's new?","Where is my trash?"];
   const GAME_ALIASES=[["csgo","CS GO 2"],["cs2","CS GO 2"],["cs go","CS GO 2"],["counter strike","CS GO 2"],["pubg","PUBG PC"],["playerunknown","PUBG PC"],["blood strike","Blood Strike"],["bloodstrike","Blood Strike"],["cod","COD MW19"],["call of duty","COD MW19"],["modern warfare","COD MW19"]];
   const JOKES=[
     "Why did the fragger unplug his PC? He kept getting reported for 'aim'... by himself.",
@@ -8610,7 +8902,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     }
     if(has("what can you do","what do you do","kya kya","capabilities","skills")){
       chatMem.lastTopic="cap";
-      return {html:"I'm your all-in-one arena coach. I can:<br><br>• Guide you through every tab<br>• Track tournaments, players, cups & records<br>• Run your brackets & Anti-Cheat<br>• Recolor themes & backgrounds<br>• Keep the conversation going with you!<br><br>Try <b>'Give me a tip'</b> or <b>'Tell me a joke'</b> anytime.", acts:[act("Open Dashboard","home"),{t:"Give me a tip",fn:()=>chatAsk("Give me a tip")},{t:"Tell me a joke",fn:()=>chatAsk("Tell me a joke")}]};
+      return {html:"I'm your all-in-one arena coach. I can:<br><br>• Guide you through every tab<br>• Track tournaments, players, cups & records<br>• Run your brackets & Anti-Cheat<br>• Watch over your Trash Bin & restore items<br>• Detect your real GPU & pick the best preset<br>• Recolor themes & backgrounds<br>• Keep the conversation going with you!<br><br>Try <b>'Give me a tip'</b>, <b>'Where is my trash?'</b> or <b>'Tell me a joke'</b> anytime.", acts:[act("Open Dashboard","home"),{t:"Give me a tip",fn:()=>chatAsk("Give me a tip")},{t:"Tell me a joke",fn:()=>chatAsk("Tell me a joke")}]};
     }
     if(has("how are you","how r u","kya haal","kaise ho","kesi hai","how's it going")){
       return {html:maybeProbe("I'm feeling sharp and fully loaded, "+tagline()+"! Ready to talk strategy, stats or setups. How about you?")};
@@ -8727,23 +9019,109 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
     if(has("backup","export","import","save data")){
       return {html:maybeProbe("In <b>Settings</b> you'll find <b>Export Backup</b> (download all data as JSON) and <b>Import</b> to restore it. Keep your legacy safe!"), acts:[act("Open Settings","settings")]};
     }
-    if(has("reset","delete all","clear all","wipe")){
-      return {html:maybeProbe("Careful, Champion! <b>Reset All Data</b> in Settings wipes everything and restores demo data. It always asks for confirmation first."), acts:[act("Open Settings","settings")]};
+    if(has("reset","delete all","clear all","wipe")&&!has("preset","presets","reset gpu","reset graphics")){
+      return {html:maybeProbe("Careful, Champion! <b>Reset All Data</b> in Settings wipes everything and restores demo data — but first the current items move to the <b>Trash Bin</b>, so you can still recover them. It always asks for confirmation first."), acts:[act("Open Settings","settings")]};
     }
     if(has("shop","buy","purchase","store","items","skin","weapon case","crate","bundle","coins")){
       return {html:"The <b>Game Shop</b> is live with real gaming loot — CS2 weapon cases, PUBG crates, COD points, Blood Strike bundles &amp; gift cards. You get <b>1,000 coins</b> to start, so pick your items and hit BUY.", acts:[act("Open Shop","shop")]};
     }
-    if(has("chat","message","whatsapp","telegram","talk to","inbox")){
+    if(has("chat","message","whatsapp","telegram","talk to","inbox")&&!has("chat frame","chat frames","bubble frame","frame style")){
       return {html:"The <b>Chat</b> tab works like WhatsApp / Telegram — pick a room, read the thread and send messages. Rooms like <b>Team Strike Wolves</b> and <b>Referees</b> keep your squad connected.", acts:[act("Open Chat","chat")]};
     }
-    if(has("about","about app","version","who made","developer","creator of")){
+    if(has("about","about app","version","who made","developer","creator of")&&!has("gpu","preset","frames","trash","chat frames")){
       return {html:"<b>App About</b> has everything: version, features, credits and the official GitHub page. Built as a single HTML file — no install needed for the web version.", acts:[act("Open About","about")]};
     }
     if(has("create account","signup","sign up","new account","account banao","make account")){
       return {html:"Tap <b>CREATE ACCOUNT</b> on the login screen — pick a username and password and you're in. Your credentials are saved on this device and used for every login.", acts:[{t:"Go to login",fn:()=>switchView("settings")}]};
     }
+
+    /* ---- trash / bin ---- */
+    if(has("trash","trash bin","bin","deleted item","deleted items","restore","where did my","undelete")){
+      const tl=trashLoad();
+      return {html:"Everything you delete — players, tournaments, media, files, clips, channels &amp; more — lands in the <b>Trash Bin</b> first. Right now it holds <b>"+tl.length+"</b> data item(s). Open it to restore anything in one tap or delete it for good.", acts:[act("Open Trash Bin","trash"),{t:"Empty trash",fn:()=>chatAsk("empty the trash")}]};
+    }
+    if(has("empty the trash","empty trash","clear trash","wipe trash","permanently delete")){
+      return {html:"Go to <b>Trash Bin</b> and tap <b>EMPTY TRASH</b> — it asks for confirmation, then wipes every snapshot forever. Anything you restore from the trash comes back to exactly where it was.", acts:[act("Open Trash Bin","trash")]};
+    }
+
+    /* ---- gpu / graphics ---- */
+    if(has("gpu","graphics card","graphics preset","ultra","super fast","rtx","resolution")){
+      const gm=state.settings.gpu||{}, dm=gm.device||null;
+      return {html:"The <b>GPU</b> tab auto-detects your actual graphics card"+(dm?" — detected <b>"+esc(dm)+"</b>":"")+" and picks the best preset for your machine. Four real presets change resolution, FPS, V-Sync &amp; effects instantly: <b>GPU LOW</b> (720P/60Hz), <b>GPU HIGH</b> (1080P/144Hz), <b>ULTRA</b> (4K/240Hz) and <b>GPU SUPER FAST</b> (competition turbo).", acts:[act("Open GPU","gpu")]};
+    }
+
+    /* ---- audio: volume / headphone ---- */
+    if(has("volume booster","volume boost","volume","sound too low","louder","boost sound","audio")){
+      return {html:"The <b>Volume Booster</b> cranks your arena audio from 100% up to <b>300%</b> with a slider and quick presets — perfect when your headphones just aren't loud enough.", acts:[act("Open Volume Booster","volume")]};
+    }
+    if(has("headphone","headset","earphone","surround","virtual","7.1","bass boost","bass profile")){
+      const h=state.settings.head||{};
+      return {html:"<b>Headphone</b> profiles reshape your sound: <b>Balanced</b>, <b>Gaming</b> (7.1 virtual surround), <b>Bass</b> boost and <b>Clarity</b>. Your current profile is <b>"+((h.profile||"balanced").toUpperCase())+"</b>.", acts:[act("Open Headphone","headphone")]};
+    }
+
+    /* ---- chat frames ---- */
+    if(has("chat frame","frames","bubble frame","message frame","frame style")){
+      return {html:"<b>Chat Frames</b> ships <b>45 real animated frames</b> — Rare, Epic, Legendary, Mythic plus 41 live neon presets with pulsing, glowing, shimmering, flickering and breathing borders. Pick one and your chat messages light up.", acts:[act("Open Chat Frames","chatframes")]};
+    }
+
+    /* ---- media ---- */
+    if(has("screenshot","gallery","clip","game file","file upload","media")){
+      return {html:"The <b>Media</b> center stores your screenshots, gallery pictures, highlight clips and game files. Delete anything and it lands in the <b>Trash Bin</b> — restore it any time.", acts:[act("Open Screenshots","screens"),act("Open Files","files"),act("Highlights & Clips","clips")]};
+    }
+
+    /* ---- storage / wifi / fps / power ---- */
+    if(has("storage","disk","drive space","space left","c drive")){
+      return {html:"The <b>Storage</b> tab shows your real Windows drive usage — how much is used and how much is free, straight from your PC in the desktop app.", acts:[act("Open Storage","storage")]};
+    }
+    if(has("wifi","internet","network speed","connection","router")){
+      return {html:"The <b>Wi-Fi</b> panel reads your live connection from Windows — network name, signal, band (2.4/5GHz), channel and link speed.", acts:[act("Open Wi-Fi","wifi")]};
+    }
+    if(has("fps counter","fps","frame rate","fps counter overlay")){
+      return {html:"The <b>FPS</b> tab puts a live frame counter overlay on screen — pick a corner and watch your performance while you play.", acts:[act("Open FPS","fps")]};
+    }
+    if(has("power","battery","laptop mode","power plan","battery saver")){
+      return {html:"<b>Power</b> switches between PC, Laptop, Power and Battery modes with a battery saver toggle — it pairs with the GPU presets for the best balance.", acts:[act("Open Power","power")]};
+    }
+
+    /* ---- cast / emergency / community ---- */
+    if(has("caster","cast","commentary","shoutcast","co-caster")){
+      return {html:"The <b>Cast</b> panel is your commentary team — add casters, co-casters and analysts per game. Removed casters move to the trash, not gone forever.", acts:[act("Open Cast","cast")]};
+    }
+    if(has("emergency","alert","warning","danger","crisis","maintenance")){
+      return {html:"<b>Emergency Alerts</b> broadcast critical warnings — server maintenance, patches, downtime. Post one with a severity level and it shows on the dashboard instantly.", acts:[act("Open Emergency","emergency")]};
+    }
+    if(has("community","channel","server","discord")){
+      return {html:"The <b>Community</b> tab is your mini-Discord — text &amp; voice channels, roles, voice join/leave and member management. Deleted channels &amp; members are recoverable from the trash.", acts:[act("Open Community","community")]};
+    }
+
+    /* ---- passes / collections / extras ---- */
+    if(has("game pass","passes","platinum","bronze pass","silver pass","gold pass")){
+      return {html:"<b>Game Passes</b> has 4 plans — Bronze, Silver, Gold and Platinum — with daily reward claims and a coin balance. Buy a pass and start claiming rewards every day.", acts:[act("Open Game Passes","passes")]};
+    }
+    if(has("collection","collab","merchandise")){
+      return {html:"<b>Collections &amp; Collabs</b> tracks your collectible items and collaborations with friends and brands.", acts:[act("Open Collections","collections")]};
+    }
+    if(has("sticker","emoji pack")){
+      return {html:"The <b>Stickers</b> pack gives your chat personality — grab a few from the stickers tab.", acts:[act("Open Stickers","stickers")]};
+    }
+    if(has("wallpaper","wall")&&!has("wall of")){
+      return {html:"<b>Wallpapers</b> lets you switch the arena backdrop — pick your favorite scene.", acts:[act("Open Wallpapers","wallpapers")]};
+    }
+    if(has("timezone","world clock","datetime","date and time","live clock")){
+      return {html:"The <b>Date &amp; Time</b> tab has a live clock, your zone, world clocks and a timezone selector so you never miss a match time.", acts:[act("Open Date & Time","datetime")]};
+    }
+    if(has("notification","notifications","alerts me","inbox")){
+      return {html:"<b>Notifications</b> keeps an inbox of everything important — activity, alerts and messages. Read or delete them there.", acts:[act("Open Notifications","notifications")]};
+    }
+    if(has("broadcast","live broadcast","announce")){
+      return {html:"<b>Broadcast</b> posts live announcements to the whole arena — perfect for big tournament news.", acts:[act("Open Broadcast","broadcast")]};
+    }
+    if(has("defender","virus","threat","protect my pc")){
+      return {html:"<b>Defender</b> is your PC shield — keep it on and your arena stays protected from threats.", acts:[act("Open Defender","defender")]};
+    }
+
     if(has("new in","whats new","what's new","latest","update","v10.13.13","version")){
-      return {html:"Latest drop <b>v10.13.13</b>:<br>• <b>Original game logos</b> — real CS2, PUBG, Blood Strike, COD MW19, Rainbow Six Siege &amp; COD Mobile icons<br>• <b>Premium shell</b> — glass, gold &amp; glow across the whole arena<br>• <b>Branded loading screen</b> &amp; premium login<br>• <b>Dashboard hero &amp; stat cards</b> upgraded<br>• <b>Tables, modals &amp; forms</b> — premium restyle<br>Plus me, Pinky — sharper and I remember our talk."};
+      return {html:"Latest drop <b>v10.13.13</b>:<br>• <b>Trash Bin</b> — everything you delete lands there, restore it any time<br>• <b>45 real animated chat frames</b> — neon pulse, glow, shimmer &amp; more<br>• <b>Real GPU detection</b> — your actual graphics card is read from Windows and the best preset is applied automatically<br>• <b>Original game logos</b> — real CS2, PUBG, Blood Strike, COD MW19, Rainbow Six Siege &amp; COD Mobile icons<br>• <b>Premium shell</b> — glass, gold &amp; glow across the whole arena<br>• <b>Branded loading screen</b> &amp; premium login<br>• <b>Dashboard hero &amp; stat cards</b> upgraded<br>• <b>Tables, modals &amp; forms</b> — premium restyle<br>Plus me, Pinky — sharper and I remember our talk."};
     }
     if(has("help","guide","how do i start","how to start","begin","learn","walk me through","tour","samjha","help me")){
       chatMem.lastTopic="guide";
@@ -8752,7 +9130,7 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
 
     /* ---- fallback ---- */
     chatMem.lastTopic="";
-    return {html:maybeProbe("Hmm, "+tagline()+", I want to make sure I help you right. Ask about <b>tournaments</b>, <b>players</b>, <b>cups</b>, <b>themes</b> or <b>anti-cheat</b> — or just say <b>'Give me a tip'</b>."), acts:[{t:"Give me a tip",fn:()=>chatAsk("Give me a tip")},{t:"Show me around",fn:startTour}]};
+    return {html:maybeProbe("Hmm, "+tagline()+", I want to make sure I help you right. Ask about <b>tournaments</b>, <b>players</b>, <b>cups</b>, <b>trash</b>, <b>GPU</b>, <b>frames</b> or <b>anti-cheat</b> — or just say <b>'Give me a tip'</b>."), acts:[{t:"Give me a tip",fn:()=>chatAsk("Give me a tip")},{t:"Show me around",fn:startTour}]};
   }
 
   /* ===================== LOGIN / AUTH ===================== */
@@ -10924,8 +11302,8 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
       const d=e.target.closest("[data-mmupdel]"); if(d){ mmDelete(d.dataset.mmupdel); return; }
       const b=e.target.closest("[data-cldel]"); if(b) deleteClip(b.dataset.cldel);
     });
-    $("scClearBtn").addEventListener("click",()=> openConfirm("Delete all your screenshots?",()=>{ mdbAll().then(l=>{ const ids=l.filter(r=>r.cat==="screens").map(r=>r.id); return Promise.all(ids.map(id=>mdbDel(id))); }).then(()=>{ mediaRender("screens"); toast("All screenshots cleared","warn"); }); }));
-    $("galClearBtn").addEventListener("click",()=> openConfirm("Delete all your gallery pictures?",()=>{ mdbAll().then(l=>{ const ids=l.filter(r=>r.cat==="gallery").map(r=>r.id); return Promise.all(ids.map(id=>mdbDel(id))); }).then(()=>{ mediaRender("gallery"); toast("All pictures cleared","warn"); }); }));
+    $("scClearBtn").addEventListener("click",()=> openConfirm("Delete all your screenshots? They move to the trash.",()=>{ mdbAll().then(l=>Promise.all(l.filter(r=>r.cat==="screens").map(r=>mediaToTrash(r)))).then(()=>{ mediaRender("screens"); trashBadge(); renderTrash(); toast("Screenshots moved to trash","warn"); }); }));
+    $("galClearBtn").addEventListener("click",()=> openConfirm("Delete all your gallery pictures? They move to the trash.",()=>{ mdbAll().then(l=>Promise.all(l.filter(r=>r.cat==="gallery").map(r=>mediaToTrash(r)))).then(()=>{ mediaRender("gallery"); trashBadge(); renderTrash(); toast("Pictures moved to trash","warn"); }); }));
     $("mmClose").addEventListener("click",closeMedia);
     $("mmDel").addEventListener("click",()=>{ const id=$("mmDel").dataset.mmid; if(id) mmDelete(id); });
     $("mediaModal").addEventListener("click",e=>{ if(e.target===$("mediaModal")) closeMedia(); });
@@ -11043,6 +11421,18 @@ true,fps:120,res:1080,hz:144}, state.settings.graphics||{});
 
     // chat frames
     $("cffGrid").addEventListener("click",e=>{ const c=e.target.closest("[data-cff]"); if(c) setChatFrame(c.dataset.cff); });
+
+    // trash bin
+    $("trashGrid").addEventListener("click",e=>{
+      const r=e.target.closest("[data-trash-restore]"); if(r){ trashRestoreData(r.dataset.trashRestore); return; }
+      const f=e.target.closest("[data-trash-forever]"); if(f){ trashDeleteForever(f.dataset.trashForever); return; }
+      const mr=e.target.closest("[data-mtrash-restore]"); if(mr){ restoreMediaTrash(mr.dataset.mtrashRestore); return; }
+      const mf=e.target.closest("[data-mtrash-forever]"); if(mf){ deleteMediaForever(mf.dataset.mtrashForever); return; }
+    });
+    $("trashRefreshBtn").addEventListener("click",()=>{ renderTrash(); toast("Trash refreshed"); });
+    $("emptyTrashBtn").addEventListener("click",()=> openConfirm("Empty the entire trash? Everything in it will be permanently deleted.",()=>{ emptyTrashAll(); }));
+    renderTrash();
+    gpuAutoDetect();
 
     $("nModeRow").addEventListener("click",e=>{ const b=e.target.closest("[data-nmode]"); if(!b) return; state.settings.net.mode=b.dataset.nmode; saveAll(); renderNet(); toast("Network test: "+b.dataset.nmode.toUpperCase()); });
 
